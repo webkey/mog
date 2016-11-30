@@ -92,3 +92,17 @@
 /*btn menu*/
 .btn-menu, .btn-menu-close{ display: block; }
 /*btn menu end*/
+
+/*FOOTER*/
+/*footer holder*/
+.footer-holder{
+	padding-top: 18px;
+	padding-bottom: 18px;
+}
+.footer-col{
+	display: block;
+	text-align: center;
+	padding: 6px 0;
+}
+/*footer holder end*/
+/*FOOTER end*/
