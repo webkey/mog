@@ -607,6 +607,37 @@ function slidersInit() {
 }
 /*sliders end*/
 
+/**
+ * responsive tabs
+ * */
+function tabsInit() {
+	var $tabs = $('.js-tabs');
+
+	if ($tabs) {
+
+		$tabs.responsiveTabs({
+			active: 0,
+			rotate: false,
+			startCollapsed: 'accordion',
+			collapsible: 'accordion',
+			setHash: false,
+			animation: 'fade', // slide
+			duration: 300, // default 500
+			animationQueue: true
+		});
+
+	}
+}
+/* responsive tabs end */
+
+/**
+ * image lazy load
+ * */
+function imgLazyLoad() {
+	$('.lazy-load').unveil();
+}
+/*image lazy load end*/
+
 /**!
  * footer at bottom
  * */
@@ -646,6 +677,8 @@ $(document).ready(function(){
 		stickyLayout();
 	}
 	slidersInit();
+	tabsInit();
+	imgLazyLoad();
 
 	footerBottom();
 });
