@@ -245,7 +245,7 @@ function hoverClassInit(){
 	// 	overflow: hidden!important;
 	// }
 
-	// .nav-opened-start .wrapper{ z-index: 99; } // z-index of header must be greater than footer
+	// .nav-opened-before .wrapper{ z-index: 99; } // z-index of header must be greater than footer
 	//
 	// @media only screen and (min-width: [example: 1280px]){
 	// .nav{
@@ -278,7 +278,8 @@ function hoverClassInit(){
 			overlayBoolean: true,
 			animationSpeed: 300,
 			animationSpeedOverlay: null,
-			minWidthItem: 100
+			minWidthItem: 100,
+			mediaWidth: null
 		}, settings || {});
 
 		var self = this,
@@ -304,20 +305,23 @@ function hoverClassInit(){
 		self._overlayAlpha = options.overlayAlpha;
 		self._animateSpeedOverlay = options.animationSpeedOverlay || _animateSpeed;
 		self._minWidthItem = options.minWidthItem;
+		self._mediaWidth = options.mediaWidth;
 
 		self.desktop = device.desktop();
 
 		self.modifiers = {
 			active: 'active',
 			opened: 'nav-opened',
-			openStart: 'nav-opened-start'
+			openStart: 'nav-opened-before'
 		};
 
 		if (self.overlayBoolean) {
 			self.createOverlay();
 		}
 		self.outsideClick();
-		self.preparationAnimation();
+		if ( this._mediaWidth === null || window.innerWidth < this._mediaWidth ) {
+			self.preparationAnimation();
+		}
 		self.eventsBtnMenu();
 		self.eventsBtnMenuClose();
 		self.clearStyles();
@@ -421,7 +425,7 @@ function hoverClassInit(){
 
 	// open nav
 	MainNavigation.prototype.openNav = function() {
-		console.log("openNav");
+		// console.log("openNav");
 
 		var self = this,
 			$html = self.$mainContainer,
@@ -438,19 +442,21 @@ function hoverClassInit(){
 			'transition-duration': '0s'
 		});
 
-		var navTween = new TimelineMax();
+		// var navTween = new TimelineMax();
 
-		navTween
-			.to($navContainer, _animationSpeed / 1000, {
-				yPercent: 0, onComplete: function () {
-					$html.addClass(self.modifiers.opened);
-				}, ease:Cubic.easeOut
-			});
+		TweenMax.to($navContainer, _animationSpeed / 1000, {
+			xPercent: 0,
+			autoAlpha: 1,
+			ease: Cubic.easeOut,
+			onComplete: function () {
+				$html.addClass(self.modifiers.opened);
+			}
+		});
 
 		TweenMax.staggerTo($staggerItems, 0.85, {
-			autoAlpha:1,
-			scale:1,
-			y: 0,
+			// autoAlpha:1,
+			// scale:1,
+			// y: 0,
 			ease:Cubic.easeOut
 		}, 0.1);
 
@@ -464,13 +470,14 @@ function hoverClassInit(){
 
 	// close nav
 	MainNavigation.prototype.closeNav = function() {
-		// console.log("closeNav");
+		console.log("closeNav");
 
 		var self = this,
 			$html = self.$mainContainer,
 			$navContainer = self.$navContainer,
 			$buttonMenu = self.$btnMenu,
-			_animationSpeed = self._animateSpeedOverlay;
+			_animationSpeed = self._animateSpeedOverlay,
+			_mediaWidth = self._mediaWidth;
 
 		$html.removeClass(self.modifiers.opened);
 		$html.removeClass(self.modifiers.openStart);
@@ -481,8 +488,13 @@ function hoverClassInit(){
 		}
 
 		TweenMax.to($navContainer, _animationSpeed / 1000, {
-			yPercent: 120, onComplete: function () {
-				self.preparationAnimation();
+			xPercent: -50,
+			autoAlpha: 0,
+			ease: Cubic.easeOut,
+			onComplete: function () {
+				if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
+					self.preparationAnimation();
+				}
 			}
 		});
 
@@ -491,25 +503,25 @@ function hoverClassInit(){
 
 	// preparation element before animation
 	MainNavigation.prototype.preparationAnimation = function() {
-		var self = this,
-			$navContainer = self.$navContainer,
+		var self = this;
+
+		var $navContainer = self.$navContainer,
 			$staggerItems = self.$staggerItems;
 
-		if (window.innerWidth < 1280) {
-			// console.log("preparationAnimation");
+		// console.log('preparationAnimation');
 
-			TweenMax.set($navContainer, {
-				yPercent: 120,
-				onComplete: function () {
-					$navContainer.show(0);
-				}
-			});
-			TweenMax.set($staggerItems, {
-				autoAlpha: 0,
-				scale: 0.6,
-				y: 100
-			});
-		}
+		TweenMax.set($navContainer, {
+			xPercent: -50,
+			autoAlpha: 0,
+			onComplete: function () {
+				$navContainer.show(0);
+			}
+		});
+		TweenMax.set($staggerItems, {
+			// autoAlpha: 0,
+			// scale: 0.6,
+			// y: 50
+		});
 	};
 
 	// clearing inline styles
@@ -538,15 +550,18 @@ function hoverClassInit(){
  * main navigation for mobile end
  * */
 function mainNavigationForMobile(){
-	var $container = $('.nav');
+	var $container = $('.main-menu');
+
 	if(!$container.length){ return; }
+
 	new MainNavigation({
-		navContainer: '.nav',
-		navMenu: '.nav-list',
-		btnMenu: '.btn-menu',
-		btnMenuClose: '.btn-menu-close',
-		navMenuItem: '.nav-list > li',
-		overlayAppendTo: '.header',
+		navContainer: '.main-menu',
+		navMenu: '.main-menu__list',
+		btnMenu: '.js-btn-menu',
+		btnMenuClose: '.js-btn-menu-close',
+		navMenuItem: '.main-menu__box',
+		overlayAppendTo: 'body',
+		// mediaWidth: 1280,
 		animationSpeed: 300,
 		overlayAlpha: 0.35
 	});
@@ -604,6 +619,80 @@ function slidersInit() {
 			});
 		});
 	}
+
+	/**meter*/
+	var meterCounter = $('.meter-counter').jOdometer({
+		increment: 1,
+		counterStart: '000000',
+		speed:1000,
+		numbersImage: 'img/jodometer-numbers.png',
+		heightNumber: 27,
+		widthNumber: 20,
+		formatNumber: true,
+		spaceNumbers: 1,
+		widthDot: 3
+	});
+
+	var $meterSlider = $('.meter-slider');
+	if($meterSlider.length){
+
+		$meterSlider.each(function () {
+			var $currentSlider = $(this);
+			var $wrapper = $currentSlider.parent();
+
+			var $currentSlide = $wrapper.find('.slide__curr'),
+				$totalSlides = $wrapper.find('.slide__total');
+
+
+
+			$currentSlider.on('init', function (event, slick) {
+
+				$totalSlides.text(slick.$slides.length);
+				$currentSlide.text(slick.currentSlide + 1);
+				changeCounter(slick.$slides[slick.currentSlide]);
+				// changeUnit(slick.$slides[slick.currentSlide]);
+			});
+
+
+			$currentSlider.slick({
+				fade: true,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				// initialSlide: 2,
+				autoplay: true,
+				autoplaySpeed: 6000,
+				infinite: true,
+				speed: 500,
+				dots: false,
+				arrows: true,
+				swipe: false
+			}).on('beforeChange', function (event, slick, currentSlide, nextSlider) {
+				changeCounter(slick.$slides[nextSlider]);
+				// changeUnit(slick.$slides[nextSlider]);
+			}).on('afterChange reInit', function(event, slick, currentSlide, nextSlide) {
+				$currentSlide.text(currentSlide + 1);
+			});
+
+		});
+	}
+
+	function changeCounter(currentSlider){
+		var dataCount = $(currentSlider).data('count');
+		meterCounter.goToNumber(dataCount);
+		var meterImg = $('.meter-counter img');
+		meterImg.attr('src','img/jodometer-numbers.png');
+		for(var i = 0; i < String(dataCount).length; i++){
+			meterImg.eq(i).attr('src','img/jodometer-numbers-color.png');
+		}
+	}
+
+	// function changeUnit(currentSlider){
+	// 	var dataUnit = $(currentSlider).data('unit');
+	// 	$('.meter-unit__text').stop().fadeOut('200', function () {
+	// 		$(this).text(dataUnit);
+	// 	}).delay(100).fadeIn('200');
+	// }
+	/**meter end*/
 }
 /*sliders end*/
 
@@ -637,6 +726,18 @@ function imgLazyLoad() {
 	$('.lazy-load').unveil();
 }
 /*image lazy load end*/
+
+/*scroll to map*/
+function scrollToMap() {
+	$('.map-link a').on('click', function (e) {
+		e.preventDefault();
+
+		var scrollTop = $('.branches-section').offset().top - $('.nav').outerHeight() - 40;
+
+		TweenMax.to(window, 1, {scrollTo:{y:scrollTop}, ease: Power2.easeInOut});
+	})
+}
+/*scroll to map end*/
 
 /**!
  * footer at bottom
@@ -679,6 +780,7 @@ $(document).ready(function(){
 	slidersInit();
 	tabsInit();
 	imgLazyLoad();
+	scrollToMap();
 
 	footerBottom();
 });

@@ -7,6 +7,8 @@
  Sticky-kit v1.1.2;
  Slick Slider v. 1.6.0;
  responsive-tabs;
+ jOdometer;
+ ScrollToPlugin;
  jQuery Unveil;
  */
 
@@ -95,15 +97,33 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
 /**responsive-tabs end*/
 
 /**
- * jQuery Unveil
- * A very lightweight jQuery plugin to lazy load images
- * http://luis-almeida.github.com/unveil
+ * jOdometer (1.2)
+ * // 2012.02.14 // <http://www.frontendmatters.com/projects/jquery-plugins/jodometer/>
  *
- * Licensed under the MIT license.
- * Copyright 2013 Luís Almeida
- * https://github.com/luis-almeida
+ * REQUIRES jQuery 1.2.3+ <http://jquery.com/>
+ *
+ * Copyright (c) 2008 TrafficBroker <http://www.trafficbroker.co.uk>
+ * Licensed under GPL and MIT licenses
+ *
+ * @author Jesus Carrera <jesus.carrera@frontendmatters.com>
  */
-// !function(t){t.fn.unveil=function(i,e){function n(){var i=a.filter(function(){var i=t(this);if(!i.is(":hidden")){var e=o.scrollTop(),n=e+o.height(),r=i.offset().top,s=r+i.height();return s>=e-u&&n+u>=r}});r=i.trigger("unveil"),a=a.not(r)}var r,o=t(window),u=i||0,s=window.devicePixelRatio>1,l=s?"data-src-retina":"data-src",a=this;return this.one("unveil",function(){var t=this.getAttribute(l);t=t||this.getAttribute("data-src"),t&&(this.setAttribute("src",t),"function"==typeof e&&e.call(this))}),o.on("scroll.unveil resize.unveil lookup.unveil",n),n(),this}}(window.jQuery||window.Zepto);
+(function(a){a.fn.jOdometer=function(b){function s(a,c,d){if(c!=d){a.stop();if(c==0){a.animate({top:10*b.heightNumber*-1+e},b.speed,b.easing).animate({top:e},1,"linear")}else{if(c<d){a.animate({top:10*b.heightNumber*-1+e},b.speed*((10-d)/10),"linear").animate({top:e},1,"linear").animate({top:c*b.heightNumber*-1+e},b.speed*d/10,b.easing)}else{a.animate({top:c*b.heightNumber*-1+e},b.speed,b.easing)}}}}function r(b){i=String(b).split(".");if(h.length>0){for(m=0;m<h.length;m++){oldDigit=h[m];if(i[1]){h[m]=i[1].charAt(m)}if(h[m]==""){h[m]="0"}s(a(".jodometer_decimal_"+m,c),parseInt(h[m]),parseInt(oldDigit))}}n=i[0];l=n.length-1;for(m=0;m<g.length;m++){oldDigit=g[m];g[m]=n.charAt(l);if(g[m]==""){g[m]="0"}s(a(".jodometer_integer_"+m,c),parseInt(g[m]),parseInt(oldDigit));l--}}function q(a){if(a!=undefined){clearInterval(p);f=a;r(f)}else{r(f);f=f+b.increment}if(b.counterEnd!=false&&f>=b.counterEnd){clearInterval(p);r(b.counterEnd)}}if(this.length>1){this.each(function(){a(this).jOdometer(b)});return this}b=a.extend({},a.fn.jOdometer.defaults,b);this.goToNumber=function(a){q(a)};var c=a(this);var d=this;var e=-b.heightNumber;var f=parseFloat(b.counterStart);var g=[];var h=[];var i=String(b.counterStart).split(".");var j=0;var k=0;if(i[1]){var l=0;for(var m=i[1].length-1;m>-1;m--){h[m]=i[1].charAt(m);a(this).append('<img style="position:absolute; right:'+(l*b.widthNumber+b.offsetRight+l*b.spaceNumbers)+"px; top:"+(parseInt(h[m])*b.heightNumber*-1+e)+'px;" class="jodometer_decimal_'+m+'" src="'+b.numbersImage+'" alt="Decimal '+(m+1)+'" />');l++}a(this).append('<div style="position:absolute; width:'+b.widthDot+"px; height:"+b.heightNumber+"px; background:url("+b.numbersImage+") no-repeat center "+(12*b.heightNumber*-1+e)+"px; right:"+(i[1].length*b.widthNumber+b.offsetRight+i[1].length*b.spaceNumbers)+'px;" class="jodometer_dot"></div>');j=i[1].length;k=b.widthDot}var n=i[0];var l=n.length-1;var o=0;for(var m=0;m<n.length;m++){g[m]=n.charAt(l);if(b.formatNumber&&m>0&&m%3==0){a(this).append('<div style="position:absolute; width:'+b.widthDot+"px; height:"+b.heightNumber+"px; background:url("+b.numbersImage+") no-repeat center bottom; right:"+(m*b.widthNumber+j*b.widthNumber+k+o+b.offsetRight+j*b.spaceNumbers+m*b.spaceNumbers+b.spaceNumbers)+'px;" class="jodometer_dot"></div>');o+=b.widthDot+b.spaceNumbers}a(this).append('<img style="position:absolute; right:'+(m*b.widthNumber+j*b.widthNumber+k+o+b.offsetRight+j*b.spaceNumbers+m*b.spaceNumbers+b.spaceNumbers)+"px; top:"+(parseInt(g[m])*b.heightNumber*-1+e)+'px;" class="jodometer_integer_'+m+'" src="'+b.numbersImage+'" alt="Integer '+(m+1)+'" />');l--}if(parseFloat(b.counterStart)!=b.counterEnd||b.counterEnd.toString()=="false"&&parseFloat(b.counterStart)==0){var p=setInterval(function(){q()},b.delayTime)}return this};a.fn.jOdometer.defaults={counterStart:"0000.00",counterEnd:false,delayTime:1e3,increment:.01,speed:500,easing:"swing",numbersImage:"/images/jodometer-numbers.png",formatNumber:false,heightNumber:31,widthNumber:14,offsetRight:0,spaceNumbers:0,widthDot:10}})(jQuery);
+/**--- jOdometer end ---*/
+
+/**!
+ * ScrollToPlugin
+ * VERSION: 1.8.1
+ * DATE: 2016-07-20
+ * UPDATES AND DOCS AT: http://greensock.com
+ *
+ * @license Copyright (c) 2008-2016, GreenSock. All rights reserved.
+ * This work is subject to the terms at http://greensock.com/standard-license or for
+ * Club GreenSock members, the software agreement that was issued with your membership.
+ *
+ * @author: Jack Doyle, jack@greensock.com
+ **/
+var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof global?global:this||window;(_gsScope._gsQueue||(_gsScope._gsQueue=[])).push(function(){"use strict";var t=document.documentElement,e=window,s=function(s,i){var o="x"===i?"Width":"Height",n="scroll"+o,l="client"+o,h=document.body;return s===e||s===t||s===h?Math.max(t[n],h[n])-(e["inner"+o]||t[l]||h[l]):s[n]-s["offset"+o]},i=function(t){return"string"==typeof t&&(t=TweenLite.selector(t)),t.length&&t!==e&&t[0]&&t[0].style&&!t.nodeType&&(t=t[0]),t===e||t.nodeType&&t.style?t:null},o=function(s,i){var o="scroll"+("x"===i?"Left":"Top");return s===e&&(null!=s.pageXOffset?o="page"+i.toUpperCase()+"Offset":s=null!=t[o]?t:document.body),function(){return s[o]}},n=function(s,n){var l=i(s).getBoundingClientRect(),h=!n||n===e||n===document.body,r=(h?t:n).getBoundingClientRect(),u={x:l.left-r.left,y:l.top-r.top};return!h&&n&&(u.x+=o(n,"x")(),u.y+=o(n,"y")()),u},l=function(t,e,i){var o=typeof t;return"number"===o||"string"===o&&"="===t.charAt(1)?t:"max"===t?s(e,i):Math.min(s(e,i),n(t,e)[i])},h=_gsScope._gsDefine.plugin({propName:"scrollTo",API:2,global:!0,version:"1.8.1",init:function(t,s,i){return this._wdw=t===e,this._target=t,this._tween=i,"object"!=typeof s?(s={y:s},"string"==typeof s.y&&"max"!==s.y&&"="!==s.y.charAt(1)&&(s.x=s.y)):s.nodeType&&(s={y:s,x:s}),this.vars=s,this._autoKill=s.autoKill!==!1,this.getX=o(t,"x"),this.getY=o(t,"y"),this.x=this.xPrev=this.getX(),this.y=this.yPrev=this.getY(),null!=s.x?(this._addTween(this,"x",this.x,l(s.x,t,"x")-(s.offsetX||0),"scrollTo_x",!0),this._overwriteProps.push("scrollTo_x")):this.skipX=!0,null!=s.y?(this._addTween(this,"y",this.y,l(s.y,t,"y")-(s.offsetY||0),"scrollTo_y",!0),this._overwriteProps.push("scrollTo_y")):this.skipY=!0,!0},set:function(t){this._super.setRatio.call(this,t);var i=this._wdw||!this.skipX?this.getX():this.xPrev,o=this._wdw||!this.skipY?this.getY():this.yPrev,n=o-this.yPrev,l=i-this.xPrev,r=h.autoKillThreshold;this.x<0&&(this.x=0),this.y<0&&(this.y=0),this._autoKill&&(!this.skipX&&(l>r||-r>l)&&i<s(this._target,"x")&&(this.skipX=!0),!this.skipY&&(n>r||-r>n)&&o<s(this._target,"y")&&(this.skipY=!0),this.skipX&&this.skipY&&(this._tween.kill(),this.vars.onAutoKill&&this.vars.onAutoKill.apply(this.vars.onAutoKillScope||this._tween,this.vars.onAutoKillParams||[]))),this._wdw?e.scrollTo(this.skipX?i:this.x,this.skipY?o:this.y):(this.skipY||(this._target.scrollTop=this.y),this.skipX||(this._target.scrollLeft=this.x)),this.xPrev=this.x,this.yPrev=this.y}}),r=h.prototype;h.max=s,h.getOffset=n,h.autoKillThreshold=7,r._kill=function(t){return t.scrollTo_x&&(this.skipX=!0),t.scrollTo_y&&(this.skipY=!0),this._super._kill.call(this,t)}}),_gsScope._gsDefine&&_gsScope._gsQueue.pop()(),function(t){"use strict";var e=function(){return(_gsScope.GreenSockGlobals||_gsScope)[t]};"function"==typeof define&&define.amd?define(["TweenLite"],e):"undefined"!=typeof module&&module.exports&&(require("../TweenLite.js"),module.exports=e())}("ScrollToPlugin");
+
 /**
  * jQuery Unveil
  * A very lightweight jQuery plugin to lazy load images
@@ -114,50 +134,5 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
  * https://github.com/luis-almeida
  */
 
-;(function($) {
-
-	$.fn.unveil = function(threshold, callback) {
-
-		var $w = $(window),
-			th = threshold || 0,
-			retina = window.devicePixelRatio > 1,
-			attrib = retina? "data-src-retina" : "data-src",
-			images = this,
-			loaded;
-
-		this.one("unveil", function() {
-			var source = this.getAttribute(attrib);
-			source = source || this.getAttribute("data-src");
-			if (source) {
-				this.setAttribute("src", source);
-				if (typeof callback === "function") callback.call(this);
-			}
-		});
-
-		function unveil() {
-			var inview = images.filter(function() {
-				var $e = $(this);
-				if ($e.is(":hidden")) return;
-
-				var wt = $w.scrollTop(),
-					wb = wt + $w.height(),
-					et = $e.offset().top,
-					eb = et + $e.height();
-
-				return eb >= wt - th && et <= wb + th;
-			});
-
-			loaded = inview.trigger("unveil");
-			images = images.not(loaded);
-		}
-
-		$w.on("scroll.unveil resize.unveil lookup.unveil", unveil);
-
-		unveil();
-
-		return this;
-
-	};
-
-})(window.jQuery || window.Zepto);
+;!function(t){t.fn.unveil=function(i,e){function n(){var i=a.filter(function(){var i=t(this);if(!i.is(":hidden")){var e=o.scrollTop(),n=e+o.height(),r=i.offset().top,s=r+i.height();return s>=e-u&&n+u>=r}});r=i.trigger("unveil"),a=a.not(r)}var r,o=t(window),u=i||0,s=window.devicePixelRatio>1,l=s?"data-src-retina":"data-src",a=this;return this.one("unveil",function(){var t=this.getAttribute(l);t=t||this.getAttribute("data-src"),t&&(this.setAttribute("src",t),"function"==typeof e&&e.call(this))}),o.on("scroll.unveil resize.unveil lookup.unveil",n),n(),this}}(window.jQuery||window.Zepto);
 /**jQuery Unveil end*/
