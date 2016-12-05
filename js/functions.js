@@ -196,7 +196,7 @@ function navFixed(){
 
 				currentItem.prop('hoverTimeout', setTimeout(function () {
 					currentItem.removeClass(_hover);
-				}, 100));
+				}, 200));
 			});
 
 		}
@@ -224,6 +224,104 @@ function hoverClassInit(){
 	}
 }
 /*toggle hover class end*/
+
+/*main navigation*/
+
+(function ($) {
+	// external js:
+	// 1) device.js 0.2.7 (widgets.js);
+	// 2) resizeByWidth (resize only width);
+
+	var PositionDropMenu = function (settings) {
+		var options = $.extend({
+			navContainer: null,
+			navList: null,
+			navMenuItem: 'li',
+			navDropMenu: '.js-nav-drop'
+		},settings || {});
+
+		this.options = options;
+
+		var container = $(options.navContainer);
+		this.$navContainer = container;
+		this.$navList = $(options.navList);
+		this.$navMenuItem = $(options.navMenuItem, container);     // Пункты навигации.
+		this.$navDropMenu = $(options.navDropMenu, container);     // Дроп-меню всех уровней.
+
+		this.modifiers = {
+			alignRight: 'align-right'
+		};
+
+		this.addAlignDropClass();
+		this.removeAlignDropClass();
+	};
+
+	PositionDropMenu.prototype.createAlignDropClass = function (item, drop) {
+		var self = this,
+			alightRightClass = self.modifiers.alignRight,
+			$navContainer = self.$navContainer;
+
+		console.log("drop.length: ", drop.length);
+
+		var navContainerPosRight = $navContainer.offset().left + $navContainer.outerWidth();
+		var navDropPosRight = drop.offset().left + drop.outerWidth();
+
+		if(navContainerPosRight < navDropPosRight){
+			console.log('add align drop class');
+			item.addClass(alightRightClass);
+		}
+	};
+
+	PositionDropMenu.prototype.addAlignDropClass = function () {
+		var self = this,
+			$navContainer = self.$navContainer,
+			navMenuItem = self.options.navMenuItem,
+			alightRightClass = self.modifiers.alignRight;
+
+		$navContainer.on('click', ''+navMenuItem+'', function () {
+			var $this = $(this);
+			var $drop = $this.find(self.$navDropMenu);
+
+			if ( !device.desktop() && $drop.length && !$this.hasClass(alightRightClass)) {
+				self.createAlignDropClass($this, $drop);
+			}
+		});
+
+		$navContainer.on('mouseenter', '' + navMenuItem + '', function () {
+			var $this = $(this);
+			var $drop = $this.find(self.$navDropMenu);
+
+			if ( device.desktop() && $drop.length && !$this.hasClass(alightRightClass)) {
+				self.createAlignDropClass($this, $drop);
+			}
+		});
+	};
+
+	PositionDropMenu.prototype.removeAlignDropClass = function () {
+		var self = this;
+		$(window).on('resizeByWidth', function () {
+			self.$navMenuItem.removeClass(self.modifiers.alignRight );
+		});
+	};
+
+	window.PositionDropMenu = PositionDropMenu;
+
+}(jQuery));
+
+function addPositionClass(){
+	var $nav = $('.nav');
+
+	if($nav.length){
+		new PositionDropMenu({
+			navContainer: '.nav',
+			navList: '.nav__list',
+			navMenuItem: 'li',
+			navMenuAnchor: 'a',
+			navDropMenu: '.js-nav-drop'
+		});
+	}
+}
+/*main navigation end*/
 
 /**!
  * main navigation
@@ -488,7 +586,7 @@ function hoverClassInit(){
 		}
 
 		TweenMax.to($navContainer, _animationSpeed / 1000, {
-			xPercent: -50,
+			xPercent: -80,
 			autoAlpha: 0,
 			ease: Cubic.easeOut,
 			onComplete: function () {
@@ -511,7 +609,7 @@ function hoverClassInit(){
 		// console.log('preparationAnimation');
 
 		TweenMax.set($navContainer, {
-			xPercent: -50,
+			xPercent: -80,
 			autoAlpha: 0,
 			onComplete: function () {
 				$navContainer.show(0);
@@ -599,11 +697,11 @@ function stickyLayout(){
 }
 /*sticky layout end*/
 
-/**!
+/**
  * sliders
  * */
 function slidersInit() {
-		//promo slider
+	//promo slider
 	var $promoSliders = $('.promo-slider');
 
 	if($promoSliders.length) {
@@ -616,6 +714,40 @@ function slidersInit() {
 				infinite: true,
 				dots: false,
 				arrows: true
+			});
+		});
+	}
+
+	//promo slider
+	var $infoSliders = $('.info-center-content');
+
+	if($infoSliders.length) {
+		$infoSliders.each(function() {
+			var $currentSlider = $(this);
+
+			$currentSlider.find('.info__list').slick({
+				infinite: false,
+				dots: true,
+				arrows: true,
+				slidesToShow: 4,
+				slidesToScroll: 1,
+				responsive: [
+					{
+						breakpoint: 1376,
+						settings: {
+							slidesToShow: 3
+						}
+					},
+					{
+						breakpoint: 1030,
+						settings: {
+							slidesToShow: 2
+						}
+					}
+					// You can unslick at a given breakpoint now by adding:
+					// settings: "unslick"
+					// instead of a settings object
+				]
 			});
 		});
 	}
@@ -773,6 +905,7 @@ $(document).ready(function(){
 	headerShow();
 	navFixed();
 	hoverClassInit();
+	addPositionClass();
 	mainNavigationForMobile();
 	if(DESKTOP){
 		stickyLayout();

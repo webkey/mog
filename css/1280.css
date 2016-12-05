@@ -3,3 +3,25 @@
 .nav__list>li>a{
 	font-size: 12px;
 }
+
+.promo-section-holder .promo-slider,
+.promo-section-holder .slick-dotted.slick-slider {
+	margin-left: 300px;
+}
+.promo-slider__content{
+	background: -moz-linear-gradient(left,  rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.18) 13%, rgba(255,255,255,0.74) 49%, rgba(255,255,255,0.94) 65%, rgba(255,255,255,1) 72%, rgba(255,255,255,1) 100%);
+	background: -webkit-linear-gradient(left,  rgba(255,255,255,0.03) 0%,rgba(255,255,255,0.18) 13%,rgba(255,255,255,0.74) 49%,rgba(255,255,255,0.94) 65%,rgba(255,255,255,1) 72%,rgba(255,255,255,1) 100%);
+	background: linear-gradient(to right,  rgba(255,255,255,0.03) 0%,rgba(255,255,255,0.18) 13%,rgba(255,255,255,0.74) 49%,rgba(255,255,255,0.94) 65%,rgba(255,255,255,1) 72%,rgba(255,255,255,1) 100%);
+}
+
+.promo-section .liked {
+	float: left;
+	width: 260px;
+}
+.liked__inner {
+	padding: 15px 10px 15px 86px;
+}
+.liked__icon {
+	left: 15px;
+	width: 60px;
+}
