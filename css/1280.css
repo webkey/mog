@@ -45,3 +45,15 @@
 	left: 15px;
 	width: 60px;
 }
+
+/*news*/
+.news__img {
+	width: 130px;
+	margin-right: 25px;
+	margin-bottom: 20px;
+}
+.news__data{
+	width: 130px;
+	padding: 3px;
+}
+/*news end*/

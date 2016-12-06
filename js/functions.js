@@ -862,33 +862,73 @@ function imgLazyLoad() {
 /*scroll to map*/
 function scrollToMap() {
 	$('.map-link a').on('click', function (e) {
-		e.preventDefault();
+		var $target = $('.branches-section');
 
-		var scrollTop = $('.branches-section').offset().top - $('.nav').outerHeight() - 40;
+		if ($target.length) {
+			e.preventDefault();
 
-		TweenMax.to(window, 1, {scrollTo:{y:scrollTop}, ease: Power2.easeInOut});
+			var scrollTop = $target.offset().top - $('.nav').outerHeight() - 40;
+
+			TweenMax.to(window, 1, {scrollTo: {y: scrollTop}, ease: Power2.easeInOut});
+		}
 	})
 }
 /*scroll to map end*/
 
 /*scroll to top*/
 function scrollToTop() {
-	var $page = $('html'),
-		minScrollTop = 300;
+	var $btnToTop = $('.btn-to-top');
 
-	$(window).on('load scroll resizeByWidth', function () {
-		var currentScrollTop = $(window).scrollTop();
+	if ($btnToTop.length) {
+		var $page = $('html'),
+			minScrollTop = 300;
 
-		$page.toggleClass('to-top-show', (currentScrollTop >= minScrollTop));
-	});
+		$(window).on('load scroll resizeByWidth', function () {
+			var currentScrollTop = $(window).scrollTop();
 
-	$('.btn-to-top').on('click', function (e) {
-		e.preventDefault();
+			$page.toggleClass('to-top-show', (currentScrollTop >= minScrollTop));
+		});
 
-		TweenMax.to(window, 0.3, {scrollTo:{y:0}, ease: Power2.easeInOut});
-	})
+		$btnToTop.on('click', function (e) {
+			e.preventDefault();
+
+			TweenMax.to(window, 0.3, {scrollTo: {y: 0}, ease: Power2.easeInOut});
+		})
+	}
 }
 /*scroll to map end*/
+
+/**!
+ * drop language
+ * */
+function toggleYears() {
+
+	if ($('.years').length) {
+
+		$('.js-years-open').on('click', function (e) {
+			e.preventDefault();
+
+			$(this).closest('.years').toggleClass('years-opened');
+
+			e.stopPropagation();
+		});
+
+		$(document).on('click closeDropYears', function () {
+			closeDropYears();
+		});
+
+		$('.years-drop').on('click', function (e) {
+			e.stopPropagation();
+		});
+
+		function closeDropYears() {
+			$('.years').removeClass('years-opened');
+		}
+
+	}
+
+}
+/*drop language end*/
 
 /**!
  * footer at bottom
@@ -934,6 +974,7 @@ $(document).ready(function(){
 	imgLazyLoad();
 	scrollToMap();
 	scrollToTop();
+	toggleYears();
 
 	footerBottom();
 });

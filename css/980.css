@@ -11,14 +11,16 @@
 .header{ }
 .home-page .header{ }
 .main{
-	padding-top: 0;
 	padding-bottom: 40px;
+}
+.home-page .main{
+	padding-top: 0;
 }
 .main-holder{ }
 .content-wrap{ }
-.content{ }
+.content{ margin-left: 0; }
 .home-page .content{ }
-.sidebar{ }
+.sidebar{ display: none; }
 .sidebar-holder{ }
 .footer{ }
 .sheet{ }
@@ -63,6 +65,7 @@
 	line-height: 40px;
 	letter-spacing: 0.05em;
 	padding: 0 15px;
+	color: #fff;
 }
 .desktop .user-options a:hover,
 .desktop .home-page .user-options a:hover,
@@ -76,6 +79,7 @@
 	height: 22px;
 	width: 22px;
 }
+.user-options svg path { fill: #fff; }
 .desktop .user-options a:hover svg path,
 .desktop .home-page .user-options a:hover svg path,
 .desktop .user-options a:focus svg path,
@@ -110,6 +114,7 @@
 	box-shadow: -1px 0 0 0 rgba(255, 255, 255, 0.35);
 }
 .desktop .user-options a:before{ display: none; }
+.user-options a span{ border-color: #fff; }
 /*user options end*/
 
 /*logo*/
@@ -327,7 +332,6 @@
 /*branches end*/
 /*CONTENT end*/
 /*MAIN end*/
-
 
 /*FOOTER*/
 /*footer common*/
