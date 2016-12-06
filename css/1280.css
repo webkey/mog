@@ -3,6 +3,26 @@
 .nav__list>li>a{
 	font-size: 12px;
 }
+.logo {
+	padding: 0 0 0 94px;
+	width: 450px;
+}
+.logo-img{
+	width: 70px;
+}
+.logo-text > b {
+	font-size: 14px;
+}
+
+.user-options {
+	padding-left: 470px;
+}
+.user-options a span{
+	display: none;
+}
+.user-options a .text-for-mobile{
+	display: inline-block;
+}
 
 .promo-section-holder .promo-slider,
 .promo-section-holder .slick-dotted.slick-slider {

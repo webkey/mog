@@ -52,11 +52,12 @@ table {
 	border-spacing: 0;
 }
 /*my reset*/
-a, input, button{
+/*a, input, button,
+a:focus, input:focus, button:focus{
 	-webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
 	-webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
 	outline: none !important;
-}
+}*/
 body{ -webkit-font-smoothing: antialiased; }
 body, html{ height: 100%; width: 100%; }
 select[disabled]{ cursor: default; }
@@ -88,7 +89,7 @@ body{
 	height: 100%;
 	color: #262626;
 	background: #f2f2f2;
-	min-width: 320px;
+	min-width: 768px;
 }
 body.home-page{
 	background: #fff;
@@ -1328,7 +1329,8 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .header-holder{
 	padding: 40px 0 80px;
 	position: relative;
-	overflow: hidden;
+	min-height: 146px;
+	box-sizing: border-box;
 }
 .header-holder:before,
 .header-holder:after { content: ""; display: table; }
@@ -1457,7 +1459,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	top: calc(50% - 20px);
 	right: 0;
 	width: 100%;
-	padding: 0 0 0 530px;
+	padding: 0 25px 0 530px;
 	margin: 0;
 	line-height: 1;
 	list-style: none;
@@ -1473,7 +1475,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	display: inline-block;
 	vertical-align: top;
 	text-align: left;
-	padding-left: 20px;
+	padding: 8px 0 8px 20px;
 }
 .user-options li:after{
 	content: '';
@@ -1492,6 +1494,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .user-options a{
 	display: inline-block;
 	vertical-align: top;
+	position: relative;
 	font-family: 'lato-regular', sans-serif;
 	font-size: 14px;
 	line-height: 18px;
@@ -1506,11 +1509,42 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .home-page .user-options a{
 	color: #fff;
 }
+.desktop .user-options a:before{
+	content: '';
+	position: absolute;
+	left: -22px;
+	top: -9px;
+	height: calc(100% + 18px);
+	width: calc(100% + 44px);
+	background: #00619d;
+	opacity: 0;
+	-webkit-transform: scale(0.96, 0.96);
+	-ms-transform: scale(0.96, 0.96);
+	transform: scale(0.96, 0.96);
+	-webkit-transition-property: opacity, -webkit-transform;
+	transition-property: opacity, transform;
+	-webkit-transition-duration: 0.6s;
+	transition-duration: 0.6s;
+}
+.desktop .user-options a:hover:before{
+	opacity: 1;
+	-webkit-transform: scale(1, 1);
+	-ms-transform: scale(1, 1);
+	transform: scale(1, 1);
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+}
 .user-options svg{
+	display: inline-block;
+	position: relative;
 	height: 26px;
 	width: 26px;
 	vertical-align: middle;
 	margin-right: 6px;
+}
+.user-options .login-link svg,
+.user-options .search-link svg{
+	margin: 0;
 }
 .user-options svg path{
 	fill: #262626;
@@ -1524,13 +1558,16 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	fill: #fff;
 }
 .desktop .user-options a:hover svg path,
-.desktop .home-page .user-options a:hover svg path,
-.desktop .user-options a:focus svg path,
-.desktop .home-page .user-options a:focus svg path{
+.desktop .user-options a:focus svg path{
 	fill: #00619d;
+}
+.desktop .home-page .user-options a:hover svg path,
+.desktop .home-page .user-options a:focus svg path{
+	fill: #fff;
 }
 .user-options a span{
 	display: inline-block;
+	position: relative;
 	line-height: 1;
 	border-bottom: 1px dotted #262626;
 	vertical-align: middle;
@@ -1538,6 +1575,9 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	transition-property: border;
 	-webkit-transition-duration: 0.2s;
 	transition-duration: 0.2s;
+}
+.user-options a .text-for-mobile{
+	display: none;
 }
 .home-page .user-options a span{
 	border-color: #fff;
@@ -3780,6 +3820,84 @@ a.links__inner{
 }
 /*developer end*/
 /*footer bottom end*/
+
+/*btn to top*/
+.btn-to-top{
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	width: 50px;
+	height: 60px;
+	background: #000;
+	font-size: 0;
+	line-height: 0;
+	z-index: 999;
+	opacity: 0.2;
+	visibility: hidden;
+	-webkit-transform: translate(100px, 1px);
+	-ms-transform: translate(100px, 1px);
+	transform: translate(100px, 1px);
+	-webkit-transition-property: opacity, visibility, -webkit-transform;
+	transition-property: opacity, visibility, transform;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+}
+.to-top-show .btn-to-top{
+	opacity: 0.18;
+	visibility: visible;
+	-webkit-transform: translate(0, 1px);
+	-ms-transform: translate(0, 1px);
+	transform: translate(0, 1px);
+}
+.desktop .btn-to-top:hover{
+	opacity: 0.45;
+}
+.btn-to-top:before{
+	content: '';
+	position: absolute;
+	right: 100%;
+	top: 0;
+	height: 100%;
+	width: 60px;
+	margin-right: -30px;
+	background: inherit;
+	-webkit-transform: skew(-45deg);
+	-ms-transform: skew(-45deg);
+	transform: skew(-45deg);
+}
+.btn-to-top i{
+	position: absolute;
+	right: 50%;
+	top: 50%;
+	height: 10px;
+	width: 18px;
+	margin: -5px 0 0 0;
+	z-index: 1;
+}
+.btn-to-top i:before,
+.btn-to-top i:after{
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: 2px;
+	width: 12px;
+	border-radius: 5px;
+	background: #fff;
+}
+.btn-to-top i:before{
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	margin: -2px 0 0 -9px;
+}
+.btn-to-top i:after{
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+	margin: -2px 0 0 -2px;
+}
+/*btn to top end*/
 
 /*FOOTER end*/
 

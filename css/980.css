@@ -34,6 +34,7 @@
 .header-holder {
 	padding: 0;
 	height: 120px;
+	min-height: 0;
 }
 
 /*user options*/
@@ -108,16 +109,11 @@
 	padding: 0;
 	box-shadow: -1px 0 0 0 rgba(255, 255, 255, 0.35);
 }
-.user-options .login-link svg,
-.user-options .search-link svg{
-	margin: 0;
-}
+.desktop .user-options a:before{ display: none; }
 /*user options end*/
 
 /*logo*/
-.logo{
-	padding-left: 94px;
-}
+.logo{ width: 510px; }
 .logo-img{
 	width: 50px;
 	height: 50px;
@@ -130,6 +126,7 @@
 	height: 20px;
 	margin-top: -10px;
 }
+.logo-text > b { font-size: 16px; }
 /*logo end*/
 /*HEADER end*/
 
