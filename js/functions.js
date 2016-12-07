@@ -261,13 +261,10 @@ function hoverClassInit(){
 			alightRightClass = self.modifiers.alignRight,
 			$navContainer = self.$navContainer;
 
-		console.log("drop.length: ", drop.length);
-
 		var navContainerPosRight = $navContainer.offset().left + $navContainer.outerWidth();
 		var navDropPosRight = drop.offset().left + drop.outerWidth();
 
 		if(navContainerPosRight < navDropPosRight){
-			console.log('add align drop class');
 			item.addClass(alightRightClass);
 		}
 	};
@@ -859,7 +856,9 @@ function imgLazyLoad() {
 }
 /*image lazy load end*/
 
-/*scroll to map*/
+/**
+ * scroll to map
+ * */
 function scrollToMap() {
 	$('.map-link a').on('click', function (e) {
 		var $target = $('.branches-section');
@@ -875,7 +874,9 @@ function scrollToMap() {
 }
 /*scroll to map end*/
 
-/*scroll to top*/
+/**
+ * scroll to top
+ * */
 function scrollToTop() {
 	var $btnToTop = $('.btn-to-top');
 
@@ -930,6 +931,34 @@ function toggleYears() {
 }
 /*drop language end*/
 
+/**
+ * form success for example
+ * */
+function formSuccess() {
+	if ( $('.subscription-form').length ) {
+
+		$('form', '.subscription-form').submit(function (event) {
+
+			var $form = $(this);
+			var $formWrap = $form.parent();
+
+			if ( $("input", $form).val().length ) {
+				$formWrap.removeClass('error-form');
+				$formWrap.addClass('success-form');
+
+				return;
+			}
+
+			$formWrap.removeClass('success-form');
+			$formWrap.addClass('error-form');
+
+			event.preventDefault();
+		});
+
+	}
+}
+/* form success for example end */
+
 /**!
  * footer at bottom
  * */
@@ -975,6 +1004,7 @@ $(document).ready(function(){
 	scrollToMap();
 	scrollToTop();
 	toggleYears();
+	formSuccess();
 
 	footerBottom();
 });
