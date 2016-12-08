@@ -977,12 +977,12 @@ input[type="radio"] { display:none }
 input[type="radio"] + label:before,
 input[type="radio"] + span:before{
 	content: '';
-	height: 18px;
-	width: 18px;
+	height: 24px;
+	width: 24px;
 	position: absolute;
 	left: 0;
 	top: 50%;
-	margin-top: -9px;
+	margin-top: -12px;
 	border-radius: 50px;
 	border: 1px solid #008acf;
 	box-sizing: border-box;
@@ -1005,13 +1005,13 @@ input[type="radio"] + span:after{
 }
 input[type="radio"] + label>span:after,
 input[type="radio"] + span>i:after {
-	content:'';
-	width:10px;
-	height: 10px;
+	content: '';
+	width: 12px;
+	height: 12px;
 	position: absolute;
 	top: 50%;
-	left: 4px;
-	margin-top: -5px;
+	left: 6px;
+	margin-top: -6px;
 	border-radius: 50%;
 	overflow: hidden;
 	background: #008acf;
