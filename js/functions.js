@@ -2,7 +2,6 @@ var docElem = window.document.documentElement,
 	didScroll,
 	scrollPosition;
 
-// trick to prevent scrolling when opening/closing button
 function noScrollFn() {
 	window.scrollTo( scrollPosition ? scrollPosition.x : 0, scrollPosition ? scrollPosition.y : 0 );
 }
@@ -26,45 +25,14 @@ function scrollHandler() {
 		didScroll = true;
 		setTimeout( function() { scrollPage(); }, 60 );
 	}
-};
+}
 
 function scrollPage() {
 	scrollPosition = { x : window.pageXOffset || docElem.scrollLeft, y : window.pageYOffset || docElem.scrollTop };
 	didScroll = false;
-};
+}
 
 scrollFn();
-
-(function() {
-
-
-	[].slice.call( document.querySelectorAll( '.morph-button' ) ).forEach( function( bttn ) {
-		new UIMorphingButton( bttn, {
-			closeEl : '.icon-close',
-			onBeforeOpen : function() {
-				// don't allow to scroll
-				noScroll();
-			},
-			onAfterOpen : function() {
-				// can scroll again
-				canScroll();
-			},
-			onBeforeClose : function() {
-				// don't allow to scroll
-				noScroll();
-			},
-			onAfterClose : function() {
-				// can scroll again
-				canScroll();
-			}
-		} );
-	} );
-
-	// for demo purposes only
-	[].slice.call( document.querySelectorAll( 'form button' ) ).forEach( function( bttn ) {
-		bttn.addEventListener( 'click', function( ev ) { ev.preventDefault(); } );
-	} );
-})();
 
 
 /**!
@@ -654,13 +622,16 @@ function addPositionClass(){
 		}
 
 		TweenMax.to($navContainer, _animationSpeed / 1000, {
-			xPercent: -80,
-			autoAlpha: 0,
+			xPercent: -100,
 			ease: Cubic.easeOut,
 			onComplete: function () {
 				if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
 					self.preparationAnimation();
 				}
+
+				TweenMax.set($navContainer, {
+					autoAlpha: 0
+				});
 
 				canScroll();
 			}
@@ -679,7 +650,7 @@ function addPositionClass(){
 		// console.log('preparationAnimation');
 
 		TweenMax.set($navContainer, {
-			xPercent: -80,
+			xPercent: -100,
 			autoAlpha: 0,
 			onComplete: function () {
 				$navContainer.show(0);
@@ -782,13 +753,15 @@ function slidersInit() {
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				infinite: true,
+				autoplay: true,
+				autoplaySpeed: 4000,
 				dots: false,
 				arrows: true
 			});
 		});
 	}
 
-	//promo slider
+	//info slider
 	var $infoSliders = $('.info-center-content');
 
 	if($infoSliders.length) {
@@ -1060,6 +1033,10 @@ function footerBottom(){
 /*footer at bottom end*/
 
 /** ready/load/resize document **/
+
+$(window).on('load', function () {
+	$('html').addClass('page-load');
+});
 
 $(document).ready(function(){
 	placeholderInit();
