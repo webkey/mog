@@ -1040,24 +1040,24 @@ input[type="radio"]:checked + span>i:after {
 	animation-iteration-count:1;
 }
 
-@-webkit-keyframes bounce{
-	0% { -webkit-transform:scale(0.8); opacity:0.4}
-	50%{ -webkit-transform:scale(1.4); opacity:1}
+@-webkit-keyframes bounce {
+	0%  { -webkit-transform:scale(0.8); opacity:0.4}
+	50% { -webkit-transform:scale(1.4); opacity:1}
 	100%{ -webkit-transform:scale(1); opacity:1}
 }
-@keyframes bounce{
-	0% { transform:scale(0.8); opacity:0.4}
-	50%{ transform:scale(1.4); opacity:1}
+@keyframes bounce {
+	0%  { transform:scale(0.8); opacity:0.4}
+	50% { transform:scale(1.4); opacity:1}
 	100%{ transform:scale(1); opacity:1}
 }
-@-webkit-keyframes bounceout{
-	0% { -webkit-transform:scale(0); opacity:1;}
-	50%{ -webkit-transform:scale(1.4); opacity:1;}
+@-webkit-keyframes bounceout {
+	0%  { -webkit-transform:scale(0); opacity:1;}
+	50% { -webkit-transform:scale(1.4); opacity:1;}
 	100%{ -webkit-transform:scale(0); opacity:0.4;}
 }
-@keyframes bounceout{
-	0% { transform:scale(0); opacity:1;}
-	50%{ transform:scale(1.4); opacity:1;}
+@keyframes bounceout {
+	0%  { transform:scale(0); opacity:1;}
+	50% { transform:scale(1.4); opacity:1;}
 	100%{ transform:scale(0); opacity:0.4;}
 }
 
