@@ -828,7 +828,6 @@ textarea.error .placeholder{ color: #ff3300; opacity: 1; }
 	padding: 0;
 	margin: 0;
 	list-style: none;
-	line-height: 24px;
 }
 .checkbox-list li,
 .user-content .checkbox-list li,
@@ -860,12 +859,12 @@ input[type="radio"] + label,
 input[type="checkbox"] + label:before,
 .check-label>span>i:before{
 	content: '';
-	height: 18px;
-	width: 18px;
+	height: 24px;
+	width: 24px;
 	position: absolute;
 	left: 0;
 	top: 50%;
-	margin-top: -9px;
+	margin-top: -12px;
 	border-radius: 0;
 	border: 1px solid #008acf;
 	box-sizing: border-box;
@@ -921,19 +920,19 @@ input[type="checkbox"] + span:after{
 input[type="checkbox"] + label>span:before,
 input[type="checkbox"] + span:before{
 	transform: rotate(45deg);
-	transform-origin: 0 7px;
+	transform-origin: 0 8px;
 	z-index: 1;
 }
 input[type="checkbox"] + label>span:after,
 input[type="checkbox"] + span:after{
 	transform: rotate(-50deg);
-	transform-origin: 0 10px;
+	transform-origin: 0 16px;
 	left: 22px;
 }
 input[type="checkbox"]:checked + label>span:before,
 input[type="checkbox"]:checked + span:before{
-	width: 7px;
-	margin: -4px 0 0 0;
+	width: 8px;
+	margin: -3px 0 0 0;
 	-webkit-transition-property: width;
 	transition-property: width;
 	-webkit-transition-duration: 0.1s;
@@ -943,8 +942,8 @@ input[type="checkbox"]:checked + span:before{
 }
 input[type="checkbox"]:checked + label>span:after,
 input[type="checkbox"]:checked + span:after{
-	width: 11px;
-	margin: 0 0 0 -8px;
+	width: 16px;
+	margin: 0 0 0 -2px;
 	-webkit-transition-property: width;
 	transition-property: width;
 	-webkit-transition-duration: 0.1s;
