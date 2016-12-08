@@ -1029,9 +1029,6 @@ input[type="radio"] + span>i:after {
 	animation:bounceout 0s;
 	animation-iteration-count:1;
 	animation-fill-mode:forwards;
-
-	opacity: 0;
-
 }
 
 input[type="radio"]:checked + label>span:after,
@@ -1041,8 +1038,6 @@ input[type="radio"]:checked + span>i:after {
 
 	animation:bounce 0.3s;
 	animation-iteration-count:1;
-
-	opacity: 1;
 }
 
 @-webkit-keyframes bounce{
