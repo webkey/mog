@@ -637,6 +637,10 @@
 								</div>
 								<div class="form-row">
 									<div class="input-wrap">
+										<h3>
+											<span class="mark">Checkbox outside label</span>
+										</h3>
+
 										<ul class="checkbox-list">
 											<li>
 												<input type="checkbox" name="checkbox-normal" id="checkbox-normal" />
@@ -656,6 +660,9 @@
 											</li>
 										</ul>
 
+										<h3>
+											<span class="mark">Checkbox inside label</span>
+										</h3>
 										<ul class="checkbox-list">
 											<li>
 												<label class="check-label">
@@ -684,13 +691,17 @@
 										</ul>
 									</div>
 									<div class="input-wrap">
+										<h3>
+											<span class="mark">Radiobutton outside label</span>
+										</h3>
+
 										<ul class="radio-list">
 											<li>
-												<input type="radio" name="radio-gender" id="radio-male" checked />
+												<input type="radio" name="testRadioOutside" id="radio-male" checked />
 												<label for="radio-male"><span>Male</span></label>
 											</li>
 											<li>
-												<input type="radio" name="radio-gender" id="radio-female" />
+												<input type="radio" name="testRadioOutside" id="radio-female" />
 												<label for="radio-female"><span>Female</span></label>
 											</li>
 											<li>
@@ -700,6 +711,36 @@
 											<li>
 												<input type="radio" name="radio-checked-disabled" id="radio-checked-disabled" checked disabled />
 												<label for="radio-checked-disabled"><span>Checked & Disabled</span></label>
+											</li>
+										</ul>
+
+										<h3>
+											<span class="mark">Radiobutton inside label</span>
+										</h3>
+										<ul class="checkbox-list">
+											<li>
+												<label class="radio-label">
+													<input type="radio" name="testRadioInside" />
+													<span><i></i>Male</span>
+												</label>
+											</li>
+											<li>
+												<label class="radio-label">
+													<input type="radio" name="testRadioInside" checked />
+													<span><i></i>Female</span>
+												</label>
+											</li>
+											<li>
+												<label class="radio-label">
+													<input type="radio" name="radio-disabled" disabled />
+													<span><i></i>Disabled</span>
+												</label>
+											</li>
+											<li>
+												<label class="radio-label">
+													<input type="radio" name="radio-checked-disabled" checked disabled />
+													<span><i></i>Checked & Disabled</span>
+												</label>
 											</li>
 										</ul>
 									</div>
