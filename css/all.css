@@ -54,8 +54,6 @@ table {
 /*my reset*/
 a, input, button,
 a:focus, input:focus, button:focus{
-	-webkit-appearance: none;
-	-moz-appearance: none;
 	-webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
 	-webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
 	outline: none !important;
@@ -65,6 +63,10 @@ body, html{ height: 100%; width: 100%; }
 select[disabled]{ cursor: default; }
 form { margin:0; padding:0; }
 input{ vertical-align: middle; }
+input{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
 input[type=radio], input[type=checkbox], select{ cursor: pointer; }
 *:focus{ outline: none; -moz-outline: 3px solid #fff !important; }
 input[type="radio"]:focus{ -moz-outline-radius: 12px !important; -moz-outline-offset: 0 !important; }
