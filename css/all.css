@@ -63,9 +63,11 @@ body, html{ height: 100%; width: 100%; }
 select[disabled]{ cursor: default; }
 form { margin:0; padding:0; }
 input{ vertical-align: middle; }
-input{
+textarea,
+input,
+button{
 	-webkit-appearance: none;
-	-moz-appearance: none;
+	border-radius: 0;
 }
 input[type=radio], input[type=checkbox], select{ cursor: pointer; }
 *:focus{ outline: none; -moz-outline: 3px solid #fff !important; }
