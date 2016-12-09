@@ -3554,12 +3554,15 @@ a.links__inner{
 .info__title{
 	position: relative;
 	padding: 50px 30px 30px;
-	font-family: 'lato-heavy', sans-serif;
-	font-size: 20px;
+	font-family: 'lato-black', sans-serif;
+	font-size: 18px;
 	line-height: 24px;
 	color: #262626;
 	text-align: center;
 	box-sizing: border-box;
+}
+.info__title_alt{
+	padding: 25px 30px;
 }
 .info__title .text-wrap{
 	overflow: hidden;
