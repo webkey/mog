@@ -70,6 +70,62 @@ function placeholderInit(){
 }
 /*placeholder end*/
 
+/*toggle class for input on focus*/
+
+function inputToggleFocusClass() {
+	var $fieldWrap = $('.input-wrap');
+
+	if ($fieldWrap.length) {
+		var $inputsAll = $fieldWrap.find( "input, textarea, select" );
+
+		$inputsAll.focus(function() {
+			var $thisField = $(this);
+
+			$thisField
+				.closest($fieldWrap)
+				.addClass('focus');
+
+		}).blur(function() {
+			var $thisField = $(this);
+
+			$thisField
+				.closest($fieldWrap)
+				.removeClass('focus');
+		});
+	}
+}
+
+function inputHasValueClass() {
+	var $fieldWrap = $('.input-wrap');
+
+	if ($fieldWrap.length) {
+		var $inputsAll = $fieldWrap.find( "input, textarea, select" );
+		var _classHasValue = 'has-value';
+
+		function switchHasValue() {
+			var $currentField = $(this);
+			var $currentFieldWrap = $currentField.closest($fieldWrap);
+
+			$currentFieldWrap.removeClass(_classHasValue);
+
+			//first element of the select must have a value empty ("")
+			if ($currentField.val() != '') {
+				$currentFieldWrap.addClass(_classHasValue);
+			}
+		}
+
+		$.each($inputsAll, function () {
+			switchHasValue.call(this);
+		});
+
+		$inputsAll.on('change', function () {
+			switchHasValue.call(this);
+		});
+	}
+}
+
+/*toggle class for input on focus end*/
+
 /**!
  * print
  * */
@@ -411,13 +467,15 @@ function addPositionClass(){
 			animationSpeed: 300,
 			animationSpeedOverlay: null,
 			minWidthItem: 100,
-			mediaWidth: null
+			mediaWidth: null,
+			closeOnResize: true,
+			closeEsc: true // close popup on click Esc
 		}, settings || {});
 
-		var self = this,
-			container = $(options.navContainer),
+		var container = $(options.navContainer),
 			_animateSpeed = options.animationSpeed;
 
+		var self = this;
 		self.options = options;
 		self.$mainContainer = $(options.mainContainer);            // . по умолчанию <html></html>
 		self.$navMenu = $(options.navMenu);
@@ -438,6 +496,8 @@ function addPositionClass(){
 		self._animateSpeedOverlay = options.animationSpeedOverlay || _animateSpeed;
 		self._minWidthItem = options.minWidthItem;
 		self._mediaWidth = options.mediaWidth;
+		self.closeOnResize = options.closeOnResize;
+		self.closeEsc = options.closeEsc;
 
 		self.desktop = device.desktop();
 
@@ -447,22 +507,17 @@ function addPositionClass(){
 			openStart: 'nav-opened-before'
 		};
 
-		if (self.overlayBoolean) {
-			self.createOverlay();
-		}
 		self.outsideClick();
-		if ( this._mediaWidth === null || window.innerWidth < this._mediaWidth ) {
+		if ( self._mediaWidth === null || window.innerWidth < self._mediaWidth ) {
 			self.preparationAnimation();
 		}
-		self.eventsBtnMenu();
+		self.toggleMenu();
 		self.eventsBtnMenuClose();
 		self.clearStyles();
+		self.closeNavOnEsc();
 	};
 
 	MainNavigation.prototype.navIsOpened = false;
-
-	// init tween animation
-	MainNavigation.prototype.overlayTween = new TimelineMax({paused: true});
 
 	// overlay append to "overlayAppendTo"
 	MainNavigation.prototype.createOverlay = function () {
@@ -478,37 +533,37 @@ function addPositionClass(){
 			height: '100%',
 			left: 0,
 			top: 0,
-			background: '#000'
+			background: '#000',
+			onComplete: function () {
+				TweenMax.to($overlay, self._animateSpeedOverlay / 1000, {autoAlpha: self._overlayAlpha});
+			}
 		});
-
-		self.overlayTween.to($overlay, self._animateSpeedOverlay / 1000, {autoAlpha: self._overlayAlpha});
 	};
 
-	// show/hide overlay
-	MainNavigation.prototype.showOverlay = function (close) {
+	// toggle overlay
+	MainNavigation.prototype.toggleOverlay = function (close) {
 		var self = this,
-			overlayTween = self.overlayTween;
+			$overlay = self.$overlay;
 
 		if (close === false) {
-			overlayTween.reverse();
+			TweenMax.to($overlay, self._animateSpeedOverlay / 1000, {
+				autoAlpha: 0,
+				onComplete: function () {
+					$overlay.remove();
+				}
+			});
 			return false;
 		}
 
-		if (overlayTween.progress() != 0 && !overlayTween.reversed()) {
-			overlayTween.reverse();
-			return false;
-		}
-
-		overlayTween.play();
+		self.createOverlay();
 	};
 
-	// events btn menu
-	MainNavigation.prototype.eventsBtnMenu = function () {
+	// toggle menu
+	MainNavigation.prototype.toggleMenu = function () {
 		var self = this,
 			$buttonMenu = self.$btnMenu;
 
 		$buttonMenu.on('click', function (e) {
-
 			e.preventDefault();
 
 			if (self.navIsOpened) {
@@ -554,6 +609,16 @@ function addPositionClass(){
 		})
 	};
 
+	// close popup on click to "Esc" key
+	MainNavigation.prototype.closeNavOnEsc = function () {
+		var self = this;
+
+		$(document).keyup(function(e) {
+			if (self.navIsOpened && self.closeEsc && e.keyCode == 27) {
+				self.closeNav();
+			}
+		});
+	};
 
 	// open nav
 	MainNavigation.prototype.openNav = function() {
@@ -573,8 +638,6 @@ function addPositionClass(){
 			'-webkit-transition-duration': '0s',
 			'transition-duration': '0s'
 		});
-
-		// var navTween = new TimelineMax();
 
 		TweenMax.to($navContainer, _animationSpeed / 1000, {
 			xPercent: 0,
@@ -596,7 +659,7 @@ function addPositionClass(){
 
 
 		if (self.overlayBoolean) {
-			self.showOverlay();
+			self.toggleOverlay();
 		}
 
 		self.navIsOpened = true;
@@ -618,7 +681,7 @@ function addPositionClass(){
 		$buttonMenu.removeClass(self.modifiers.active);
 
 		if (self.overlayBoolean) {
-			self.showOverlay(false);
+			self.toggleOverlay(false);
 		}
 
 		TweenMax.to($navContainer, _animationSpeed / 1000, {
@@ -671,14 +734,20 @@ function addPositionClass(){
 			$staggerItems = self.$staggerItems;
 
 		//clear on horizontal resize
-		$(window).on('resizeByWidth', function () {
-			if (!$btnMenu.is(':visible')) {
-				$navContainer.attr('style', '');
-				$staggerItems.attr('style', '');
-			} else {
-				self.closeNav();
-			}
-		});
+		if (self.closeOnResize === true) {
+
+			$(window).on('resizeByWidth', function () {
+				if (self.navIsOpened) {
+					if (!$btnMenu.is(':visible')) {
+						$navContainer.attr('style', '');
+						$staggerItems.attr('style', '');
+					} else {
+						self.closeNav();
+					}
+				}
+			});
+
+		}
 	};
 
 	window.MainNavigation = MainNavigation;
@@ -689,23 +758,70 @@ function addPositionClass(){
  * main navigation for mobile end
  * */
 function mainNavigationForMobile(){
-	var $container = $('.main-menu');
+	if($('.main-menu').length){
 
-	if(!$container.length){ return; }
+		new MainNavigation({
+			navContainer: '.main-menu',
+			navMenu: '.main-menu__list',
+			btnMenu: '.js-btn-menu',
+			btnMenuClose: '.js-btn-menu-close',
+			navMenuItem: '.main-menu__box',
+			overlayAppendTo: 'body',
+			closeOnResize: true,
+			// mediaWidth: 1280,
+			animationSpeed: 300,
+			overlayAlpha: 0.35
+		});
 
-	new MainNavigation({
-		navContainer: '.main-menu',
-		navMenu: '.main-menu__list',
-		btnMenu: '.js-btn-menu',
-		btnMenuClose: '.js-btn-menu-close',
-		navMenuItem: '.main-menu__box',
-		overlayAppendTo: 'body',
-		// mediaWidth: 1280,
-		animationSpeed: 300,
-		overlayAlpha: 0.35
-	});
+	}
 }
 /*main navigation for mobile end*/
+
+/**
+ * search popup
+ * */
+function searchPopup(){
+	if($('.search-popup').length){
+
+		new MainNavigation({
+			navContainer: '.search-popup',
+			navMenu: '.main-menu__list',
+			btnMenu: '.search-link a',
+			btnMenuClose: '.js-btn-menu-close',
+			navMenuItem: '.main-menu__box',
+			overlayAppendTo: 'body',
+			closeOnResize: false,
+			// mediaWidth: 1280,
+			animationSpeed: 300,
+			overlayAlpha: 0.35
+		});
+
+	}
+}
+/*search popup end*/
+
+/**
+ * enter popup
+ * */
+function enterPopup(){
+	if($('.enter-popup').length){
+
+		new MainNavigation({
+			navContainer: '.enter-popup',
+			navMenu: '.main-menu__list',
+			btnMenu: '.login-link a',
+			btnMenuClose: '.js-btn-menu-close',
+			navMenuItem: '.main-menu__box',
+			overlayAppendTo: 'body',
+			closeOnResize: false,
+			// mediaWidth: 1280,
+			animationSpeed: 300,
+			overlayAlpha: 0.35
+		});
+
+	}
+}
+/*enter popup end*/
 
 /**
  * sticky layout
@@ -1039,12 +1155,16 @@ $(window).on('load', function () {
 
 $(document).ready(function(){
 	placeholderInit();
+	inputToggleFocusClass();
+	inputHasValueClass();
 	printShow();
 	headerShow();
 	navFixed();
 	hoverClassInit();
 	addPositionClass();
 	mainNavigationForMobile();
+	searchPopup();
+	enterPopup();
 	if(DESKTOP){
 		stickyLayout();
 	}
