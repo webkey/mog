@@ -950,12 +950,12 @@ function scrollToTop() {
  * */
 function toggleYears() {
 
-	if ($('.years').length) {
+	if ($('.js-choice-wrap').length) {
 
-		$('.js-years-open').on('click', function (e) {
+		$('.js-choice-open').on('click', function (e) {
 			e.preventDefault();
 
-			$(this).closest('.years').toggleClass('years-opened');
+			$(this).closest('.js-choice-wrap').toggleClass('years-opened');
 
 			e.stopPropagation();
 		});
@@ -964,14 +964,13 @@ function toggleYears() {
 			closeDropYears();
 		});
 
-		$('.years-drop').on('click', function (e) {
-			e.stopPropagation();
-		});
-
 		function closeDropYears() {
-			$('.years').removeClass('years-opened');
+			$('.js-choice-wrap').removeClass('years-opened');
 		}
 
+		$('.js-choice-drop').on('click', 'a', function () {
+			$(this).closest('.js-choice-wrap').find('.js-choice-open span').text($(this).find('span').text());
+		});
 	}
 
 }

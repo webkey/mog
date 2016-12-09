@@ -16,7 +16,7 @@ small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
+table, caption, tbody, tfoot, thead,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
@@ -547,10 +547,12 @@ table{
 }
 table td,
 table th{
-	padding: 8px;
-	border: 1px solid #99bddb;
 	font-size: 14px;
-	line-height: 1.4;
+	line-height: 18px;
+	color: #262626;
+	padding: 15px 20px 16px;
+	box-sizing: border-box;
+	border-color: #e6e6e6;
 }
 /*default table end*/
 
@@ -561,42 +563,42 @@ table th{
 	-webkit-overflow-scrolling: touch;
 	margin: 0 0 20px;
 }
-.user-content .tbl{
+.tbl{
 	table-layout: fixed;
-	border: 1px solid #99bddb;
 	margin-bottom: 20px;
 }
 .table_auto .tbl{
 	margin: 0;
 }
-.user-content .tbl td,
-.user-content .tbl th{
-	font: 14px/20px Arial, Helvetica, sans-serif;
-	color: #333;
+.tbl td,
+.tbl th{
+	color: #262626;
 	background-color: #fff;
-	border: solid #99bddb;
-	border-width: 0 0 0 1px;
+	border: 1px solid #e6e6e6;
 	padding: 13px 12px;
 }
-.user-content .tbl tbody tr:nth-child(even) td{
-	background: #e5eef6;
+.tbl,
+.tbl td,
+.tbl th{
+	border: 1px solid #e6e6e6;
 }
-.user-content .tbl td:first-child{
+.tbl td:first-child{
 	text-align: left;
 }
-.user-content .tbl tbody td:first-child,
-.user-content .tbl tfoot td:first-child{
+.tbl tbody td:first-child,
+.tbl tfoot td:first-child{
 	border-left-width: 0;
 }
-.user-content .tbl th,
-.user-content .tbl thead td{
-	line-height: 17px;
-	color: #fff;
-	background: #0059a6;
+.tbl th,
+.tbl thead td{
+	font-family: 'lato-black', sans-serif;
 	padding: 16px 12px 17px;
 }
-.user-content .tbl tfoot td{
-	background: #e5eef6;
+.tbl th,
+.tbl thead td,
+.tbl tfoot td,
+.tbl tr td:first-child{
+	background: #f2f2f2;
 }
 /*table styling end*/
 
@@ -2000,7 +2002,8 @@ li.align-right > .nav__drop{
 	-webkit-transition-duration: 0.8s;
 	transition-duration: 0.8s;
 }
-.desktop .main-menu__box a:hover{
+.desktop .main-menu__box a:hover,
+.main-menu__box .current > a{
 	color: #008acf;
 	-webkit-transition-duration: 0.2s;
 	transition-duration: 0.2s;
@@ -2015,6 +2018,9 @@ li.align-right > .nav__drop{
 .desktop .main-menu__box ul a:hover span,
 .desktop .main-menu__box ul a:focus span{
 	border-bottom: 1px solid rgba(0, 138, 207, 0.4);
+}
+.main-menu__box ul li.current > a span{
+	border-color: transparent;
 }
 .main-menu__heading{
 	display: block;
@@ -4199,7 +4205,6 @@ a.links__inner{
 	font-size: inherit;
 	line-height: inherit;
 	text-decoration: none;
-	padding-top: 5px;
 	-webkit-transition-property: color;
 	transition-property: color;
 	-webkit-transition-duration: 0.2s;
