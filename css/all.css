@@ -1026,7 +1026,7 @@ input[type="radio"]:disabled + span>i:after{ background: #b9b9b9; }
 	overflow: hidden;
 	text-overflow: '';
 	cursor: pointer;
-	padding: 13px 40px 13px 18px;
+	padding: 12px 40px 12px 18px;
 	white-space: nowrap;
 	text-indent: 0;
 	width: 100%;
@@ -1055,9 +1055,10 @@ input[type="radio"]:disabled + span>i:after{ background: #b9b9b9; }
 }
 .select select{
 	font-size: 16px;
-	line-height: 18px;
+	line-height: 23px;
 	height: 50px;
-	padding: 15px 40px 15px 18px;
+	padding: 12px 40px 12px 18px;
+	box-sizing: border-box;
 }
 .select button.cselect{ z-index: 2; }
 .select select:focus,
@@ -1866,6 +1867,7 @@ li.align-right > .nav__drop{
 	position: relative;
 	height: 60px;
 	border-bottom: 1px solid #d9d9d9;
+	box-sizing: border-box;
 }
 .main-menu__head .logo{
 	display: block;
@@ -2465,7 +2467,7 @@ li.align-right > .nav__drop{
 .search-form__field{
 	overflow: hidden;
 	position: relative;
-	padding-top: 60px;
+	padding-top: 35px;
 }
 input.search-form__input{
 	border: none;
