@@ -126,11 +126,28 @@ function inputHasValueClass() {
 }
 
 function inputFilledClass() {
-	var $fieldWrap = $('.input-wrap');
+	var $fieldWrap = $('.js-field-effects');
 
 	if ($fieldWrap.length) {
 		var $inputsAll = $fieldWrap.find( "input, textarea, select" );
 		var _classFilled = 'input--filled';
+
+		$inputsAll.focus(function() {
+			var $thisField = $(this);
+
+			$thisField
+				.closest($fieldWrap)
+				.addClass(_classFilled);
+
+		}).blur(function() {
+			var $thisField = $(this);
+
+			if ($thisField.val() == '') {
+				$thisField
+					.closest($fieldWrap)
+					.removeClass(_classFilled);
+			}
+		});
 
 		function switchHasValue() {
 			var $currentField = $(this);
@@ -932,6 +949,12 @@ function slidersInit() {
 						settings: {
 							slidesToShow: 2
 						}
+					},
+					{
+						breakpoint: 700,
+						settings: {
+							slidesToShow: 1
+						}
 					}
 					// You can unslick at a given breakpoint now by adding:
 					// settings: "unslick"
@@ -1185,8 +1208,8 @@ $(window).on('load', function () {
 
 $(document).ready(function(){
 	placeholderInit();
-	inputToggleFocusClass();
-	inputHasValueClass();
+	// inputToggleFocusClass();
+	// inputHasValueClass();
 	inputFilledClass();
 	printShow();
 	headerShow();

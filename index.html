@@ -285,7 +285,7 @@
 						<section class="regard-section">
 							<div class="regard">
 								<div class="regard__item" style="background-image: url(img/img-regard-01.jpg);">
-									<a class="regard__inner" href="#"><i class="depict-regard-number"></i><span>телефон аварийной службы</span></a>
+									<a class="regard__inner" href="tel:104"><i class="depict-regard-number"></i><span>телефон аварийной службы</span></a>
 								</div>
 								<div class="regard__item" style="background-image: url(img/img-regard-02.jpg);">
 									<a class="regard__inner" href="#"><i class="depict-regard-safety"><svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="55.8 13.5 500.4 612" enable-background="new 55.8 13.5 500.4 612" xml:space="preserve"> <path d="M196,417H416v-38.3H196V417z M196,327.4H416v-38.2H196V327.4z M517.4,92.2C465,92.2,370.8,81.6,306,13.5 C241.2,81.6,147,92.2,94.6,92.2c-23.7,0-38.8-2.2-38.8-2.2s0,110,0,267.8S306,625.5,306,625.5s250.2-110,250.2-267.8 s0-267.8,0-267.8S541.1,92.2,517.4,92.2z M518,357.8c0,100.7-141,190.7-212,225.5C235,548.6,94,458.7,94,357.8V130.4h0.5 c50.4,0,139.7-9.2,211.4-65.4c71.8,56.2,161,65.4,211.4,65.4h0.5V357.8z M196,237.7H416v-38.3H196V237.7z"/> </svg></i><span>ваша безопасность</span></a>
@@ -859,6 +859,103 @@
 </div>
 <!--MAIN MENU end-->
 
+<!--search popup-->
+<div class="popup search-popup">
+	<div class="main-menu__head">
+		<a href="index.html" class="logo">Могилевоблгаз</a> <a href="#" class="btn-menu-close js-btn-menu-close"><i></i><span>Закрыть</span></a>
+	</div>
+	<div class="main-menu__content">
+		<div class="layout">
+			<!-- search form -->
+			<div class="search-form">
+				<form action="#" method="get">
+					<div class="search-form__field js-field-effects">
+						<input class="search-form__input" type="search" id="search-form-field">
+						<div class="search-form__label">
+							<label for="search-form-field">Поиск<span>...</span></label>
+						</div>
+						<div class="search-form__btn">
+							<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 26.6 612 612" enable-background="new 0 26.6 612 612" xml:space="preserve"> <path d="M355.9,26.6c-141.2,0-256.2,114.9-256.2,256.1c0,63.8,23.6,122.2,62.3,167L5.6,606.3c-7.5,7.3-7.5,19.4,0,26.8 c3.7,3.7,8.5,5.6,13.4,5.6c4.8,0,9.7-1.9,13.4-5.6l156.4-156.4c44.9,38.7,103.3,62.3,167,62.3C497.1,538.9,612,424,612,282.8 S497.1,26.6,355.9,26.6z M355.9,501c-120.3,0-218.3-98-218.3-218.3S235.5,64.5,355.8,64.5s218.3,97.8,218.3,218.2 S476.2,501,355.9,501z"></path> </svg>
+							<input type="submit" value="">
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- search form end -->
+		</div>
+	</div>
+</div>
+<!--search popup end-->
+
+<!--enter popup-->
+<div class="popup enter-popup">
+	<div class="main-menu__head">
+		<a href="index.html" class="logo">Могилевоблгаз</a> <a href="#" class="btn-menu-close js-btn-menu-close"><i></i><span>Закрыть</span></a>
+	</div>
+	<div class="main-menu__content">
+		<div class="layout">
+			<!-- enter form -->
+			<div class="enter-form">
+				<form action="#" method="get">
+					<div class="form-row">
+						<div class="input-wrap">
+							<div class="label-holder">
+								<label for="expl-label-03">Текстовое поле первое: <span class="form-mark">*</span></label>
+							</div>
+							<input type="text" placeholder="Текстовое поле первое" id="expl-label-03" />
+						</div>
+						<div class="input-wrap">
+							<div class="label-holder">
+								<label for="expl-label-04">Текстовое поле второе: <span class="form-mark">*</span></label>
+							</div>
+							<input type="text" placeholder="Текстовое поле второе" id="expl-label-04" />
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="input-wrap">
+							<div class="label-holder">
+								<label for="expl-label-05">Текстовое поле третье: <span class="form-mark">*</span></label>
+							</div>
+							<input type="text" placeholder="Текстовое поле третье" id="expl-label-05" />
+						</div>
+						<div class="input-wrap">
+							<div class="label-holder">
+								<label for="expl-label-06">Пример селекта: <span class="form-mark">*</span></label>
+							</div>
+							<div class="select">
+								<select class="cselect" name="filter-type" id="expl-label-06">
+									<option value="0">Выбрать отдел</option>
+									<option value="1">Овощи и фрукты</option>
+									<option value="2">Мясо, рыба, птица, колбасные изделия</option>
+									<option value="3">Бакалея</option>
+									<option value="4">Вода, напитки, соки, кофе, чай</option>
+									<option value="3">Детское питание</option>
+									<option value="3">Продукция собственного производства</option>
+									<option value="3">Молочные продукты, яйца</option>
+									<option value="3">Замороженные продукты</option>
+									<option value="3">Шоколад, конфеты и другие сладости</option>
+									<option value="3">Парфюмерия и косметика</option>
+									<option value="3">Товары для животных</option>
+									<option value="3">Товары для дома</option>
+									<option value="3">Канцелярские товары</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="input-wrap">
+						<div class="label-holder">
+							<label for="expl-label-07">Сообщение:</label>
+						</div>
+						<textarea placeholder="Сообщение" id="expl-label-07"></textarea>
+					</div>
+				</form>
+			</div>
+			<!-- enter form end -->
+		</div>
+	</div>
+</div>
+<!--enter popup end-->
+
 <!--footer-->
 <footer class="footer">
 	<!--footer common-->
@@ -948,103 +1045,6 @@
 <!--btn to top-->
 <a href="#" class="btn-to-top"><i></i>Вверх</a>
 <!--btn to top end-->
-
-<!--search popup-->
-<div class="popup search-popup">
-	<div class="main-menu__head">
-		<a href="index.html" class="logo">Могилевоблгаз</a> <a href="#" class="btn-menu-close js-btn-menu-close"><i></i><span>Закрыть</span></a>
-	</div>
-	<div class="main-menu__content">
-		<div class="layout">
-			<!-- search form -->
-			<div class="search-form">
-				<form action="#" method="get">
-					<div class="input-wrap">
-						<div class="label-holder">
-							<label for="search-form-field">Поиск по сайту</label>
-						</div>
-						<input type="search" placeholder="Поиск..." id="search-form-field">
-						<div class="btn-search">
-							<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 26.6 612 612" enable-background="new 0 26.6 612 612" xml:space="preserve"> <path d="M355.9,26.6c-141.2,0-256.2,114.9-256.2,256.1c0,63.8,23.6,122.2,62.3,167L5.6,606.3c-7.5,7.3-7.5,19.4,0,26.8 c3.7,3.7,8.5,5.6,13.4,5.6c4.8,0,9.7-1.9,13.4-5.6l156.4-156.4c44.9,38.7,103.3,62.3,167,62.3C497.1,538.9,612,424,612,282.8 S497.1,26.6,355.9,26.6z M355.9,501c-120.3,0-218.3-98-218.3-218.3S235.5,64.5,355.8,64.5s218.3,97.8,218.3,218.2 S476.2,501,355.9,501z"></path> </svg>
-							<input type="submit" value="">
-						</div>
-					</div>
-				</form>
-			</div>
-			<!-- search form end -->
-		</div>
-	</div>
-</div>
-<!--search popup end-->
-
-<!--enter popup-->
-<div class="popup enter-popup">
-	<div class="main-menu__head">
-		<a href="index.html" class="logo">Могилевоблгаз</a> <a href="#" class="btn-menu-close js-btn-menu-close"><i></i><span>Закрыть</span></a>
-	</div>
-	<div class="main-menu__content">
-		<div class="layout">
-			<!-- enter form -->
-			<div class="enter-form">
-				<form action="#" method="get">
-					<div class="form-row">
-						<div class="input-wrap">
-							<div class="label-holder">
-								<label for="expl-label-03">Текстовое поле первое: <span class="form-mark">*</span></label>
-							</div>
-							<input type="text" placeholder="Текстовое поле первое" id="expl-label-03" />
-						</div>
-						<div class="input-wrap">
-							<div class="label-holder">
-								<label for="expl-label-04">Текстовое поле второе: <span class="form-mark">*</span></label>
-							</div>
-							<input type="text" placeholder="Текстовое поле второе" id="expl-label-04" />
-						</div>
-					</div>
-					<div class="form-row">
-						<div class="input-wrap">
-							<div class="label-holder">
-								<label for="expl-label-05">Текстовое поле третье: <span class="form-mark">*</span></label>
-							</div>
-							<input type="text" placeholder="Текстовое поле третье" id="expl-label-05" />
-						</div>
-						<div class="input-wrap">
-							<div class="label-holder">
-								<label for="expl-label-06">Пример селекта: <span class="form-mark">*</span></label>
-							</div>
-							<div class="select">
-								<select class="cselect" name="filter-type" id="expl-label-06">
-									<option value="0">Выбрать отдел</option>
-									<option value="1">Овощи и фрукты</option>
-									<option value="2">Мясо, рыба, птица, колбасные изделия</option>
-									<option value="3">Бакалея</option>
-									<option value="4">Вода, напитки, соки, кофе, чай</option>
-									<option value="3">Детское питание</option>
-									<option value="3">Продукция собственного производства</option>
-									<option value="3">Молочные продукты, яйца</option>
-									<option value="3">Замороженные продукты</option>
-									<option value="3">Шоколад, конфеты и другие сладости</option>
-									<option value="3">Парфюмерия и косметика</option>
-									<option value="3">Товары для животных</option>
-									<option value="3">Товары для дома</option>
-									<option value="3">Канцелярские товары</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="input-wrap">
-						<div class="label-holder">
-							<label for="expl-label-07">Сообщение:</label>
-						</div>
-						<textarea placeholder="Сообщение" id="expl-label-07"></textarea>
-					</div>
-				</form>
-			</div>
-			<!-- enter form end -->
-		</div>
-	</div>
-</div>
-<!--enter popup end-->
 
 <!--JQuery library-->
 <!--jQuery with fallback to the 1.* for old IE-->

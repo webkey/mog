@@ -194,12 +194,7 @@
 .promo-section .liked-list li{
 	display: inline-block;
 	vertical-align: top;
-	border: solid #369ad9;
-	border-width: 0 0 0 1px;
 	width: 24.98%;
-}
-.promo-section .liked-list li:first-child{
-	border: none;
 }
 .promo-section .liked{
 	float: none;
@@ -286,7 +281,8 @@
 	width: 40px;
 }
 .links__frame{
-	padding: 30px 10px 0;
+	padding: 0 10px;
+	max-width: 240px;
 }
 .links__content{
 	display: block;
@@ -323,11 +319,6 @@
 	position: relative;
 	top: auto;
 	left: auto;
-	height: 505px;
-	width: 447px;
-	-webkit-transform: translate(-40px, 0);
-	-ms-transform: translate(-40px, 0);
-	transform: translate(-40px, 0);
 }
 /*branches end*/
 /*CONTENT end*/

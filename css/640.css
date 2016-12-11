@@ -1,1 +1,13 @@
 @media only screen and (max-width: 639px){}
+
+/*FOOTER*/
+/*footer common*/
+.footer-nav__col {
+	width: 99.98%;
+}
+/*footer common end*/
+
+/*footer bottom*/
+.footer-bottom-holder { }
+/*footer bottom end*/
+/*FOOTER end*/
