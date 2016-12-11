@@ -77,20 +77,21 @@ function inputToggleFocusClass() {
 
 	if ($fieldWrap.length) {
 		var $inputsAll = $fieldWrap.find( "input, textarea, select" );
+		var _classFocus = 'input--focus';
 
 		$inputsAll.focus(function() {
 			var $thisField = $(this);
 
 			$thisField
 				.closest($fieldWrap)
-				.addClass('focus');
+				.addClass(_classFocus);
 
 		}).blur(function() {
 			var $thisField = $(this);
 
 			$thisField
 				.closest($fieldWrap)
-				.removeClass('focus');
+				.removeClass(_classFocus);
 		});
 	}
 }
@@ -100,7 +101,7 @@ function inputHasValueClass() {
 
 	if ($fieldWrap.length) {
 		var $inputsAll = $fieldWrap.find( "input, textarea, select" );
-		var _classHasValue = 'has-value';
+		var _classHasValue = 'has--value';
 
 		function switchHasValue() {
 			var $currentField = $(this);
@@ -111,6 +112,35 @@ function inputHasValueClass() {
 			//first element of the select must have a value empty ("")
 			if ($currentField.val() != '') {
 				$currentFieldWrap.addClass(_classHasValue);
+			}
+		}
+
+		$.each($inputsAll, function () {
+			switchHasValue.call(this);
+		});
+
+		$inputsAll.on('change', function () {
+			switchHasValue.call(this);
+		});
+	}
+}
+
+function inputFilledClass() {
+	var $fieldWrap = $('.input-wrap');
+
+	if ($fieldWrap.length) {
+		var $inputsAll = $fieldWrap.find( "input, textarea, select" );
+		var _classFilled = 'input--filled';
+
+		function switchHasValue() {
+			var $currentField = $(this);
+			var $currentFieldWrap = $currentField.closest($fieldWrap);
+
+			$currentFieldWrap.removeClass(_classFilled);
+
+			//first element of the select must have a value empty ("")
+			if ($currentField.val() != '') {
+				$currentFieldWrap.addClass(_classFilled);
 			}
 		}
 
@@ -1157,6 +1187,7 @@ $(document).ready(function(){
 	placeholderInit();
 	inputToggleFocusClass();
 	inputHasValueClass();
+	inputFilledClass();
 	printShow();
 	headerShow();
 	navFixed();
