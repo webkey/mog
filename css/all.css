@@ -2461,7 +2461,7 @@ li.align-right > .nav__drop{
 
 /*search form*/
 .search-form{
-	max-width: 640px;
+	max-width: 800px;
 	margin: 0 auto;
 }
 .search-form__field{
@@ -2471,13 +2471,13 @@ li.align-right > .nav__drop{
 }
 input.search-form__input{
 	border: none;
-	height: 60px;
+	height: 50px;
 	width: 100%;
-	padding: 14px 60px 14px 20px;
+	padding: 11px 60px 11px 20px;
 	margin: 0;
 	font-family: 'lato-light', sans-serif;
-	font-size: 24px;
-	line-height: 32px;
+	font-size: 20px;
+	line-height: 28px;
 	letter-spacing: 0.05em;
 	color: #f9f7f6;
 	border-radius: 0;
@@ -2491,7 +2491,7 @@ input.search-form__input{
 	position: absolute;
 	left: 0;
 	bottom: 0;
-	height: 60px;
+	height: 50px;
 	text-align: left;
 	pointer-events: none;
 	-webkit-font-smoothing: antialiased;
@@ -2507,9 +2507,9 @@ input.search-form__input{
 	position: relative;
 	display: block;
 	padding: 0;
-	font-family: 'lato-black', sans-serif;
-	font-size: 32px;
-	line-height: 60px;
+	font-family: 'lato-regular', sans-serif;
+	font-size: 24px;
+	line-height: 50px;
 	letter-spacing: 0.05em;
 	color: #696969;
 	overflow: hidden;
@@ -2563,8 +2563,8 @@ input.search-form__input{
 	position: absolute;
 	right: 0;
 	bottom: 0;
-	width: 60px;
-	height: 60px;
+	width: 50px;
+	height: 50px;
 	z-index: 99;
 	-webkit-transform: translate(10px, 0);
 	-ms-transform: translate(10px, 0);
@@ -2578,12 +2578,12 @@ input.search-form__input{
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	width: 40px;
-	height: 40px;
-	margin: -20px 0 0 -20px;
+	width: 24px;
+	height: 24px;
+	margin: -12px 0 0 -12px;
 }
 .search-form__btn svg path{
-	fill: #696969;
+	fill: #a8a8a8;
 	-webkit-transition: fill 0.2s;
 	transition: fill 0.2s;
 }
@@ -3121,7 +3121,7 @@ input.search-form__input{
 	position: absolute;
 	left: 30px;
 	top: 50%;
-	width: 60px;
+	line-height: 1;
 	text-align: center;
 	-webkit-transform: translate(0, -50%);
 	-ms-transform: translate(0, -50%);
@@ -3405,6 +3405,7 @@ input.search-form__input{
 	vertical-align: top;
 	box-sizing: border-box;
 	box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+	overflow: hidden;
 
 	font-size: 16px;
 	letter-spacing: normal;

@@ -2,9 +2,6 @@
 
 /*MAIN BLOCKS*/
 .wrapper{ }
-[class*="bg-figure-"]{ }
-.home-page .bg-figure-one{ display: none; }
-.nav-fixed .bg-figure-one{ }
 .bg-figure-two{ }
 .bg-figure-three{ }
 .home-page [class*="bg-figure-"]{ }
@@ -20,6 +17,10 @@
 .sidebar-holder{ }
 .footer{ }
 .sheet{ }
+.layout{
+	padding-left: 30px;
+	padding-right: 30px;
+}
 .header .layout,
 .home-page .main .layout{ }
 /*MAIN BLOCKS end*/
@@ -27,16 +28,14 @@
 /*HEADER*/
 .header-holder { }
 
-/*user options*/
-.user-options{ }
-/*user options end*/
-
 /*logo*/
 .logo {
 	width: 310px;
 	padding-left: 84px;
+	overflow: hidden;
 }
 .logo-img { left: 20px; }
+.logo-title { height: 32px; }
 .logo-title > strong {
 	height: 16px;
 	margin-top: -8px;
@@ -87,8 +86,11 @@
 /*promo section*/
 .promo-section { }
 /*promo slider*/
-.promo-section-holder .promo-slider,
-.promo-section-holder .slick-dotted.slick-slider { }
+.promo-slider__content{
+	background: -moz-linear-gradient(left,  rgba(255,255,255,0.64) 0%, rgba(255,255,255,0.82) 32%, rgba(255,255,255,0.95) 62%, rgba(255,255,255,1) 77%, rgba(255,255,255,1) 100%);
+	background: -webkit-linear-gradient(left,  rgba(255,255,255,0.64) 0%,rgba(255,255,255,0.82) 32%,rgba(255,255,255,0.95) 62%,rgba(255,255,255,1) 77%,rgba(255,255,255,1) 100%);
+	background: linear-gradient(to right,  rgba(255,255,255,0.64) 0%,rgba(255,255,255,0.82) 32%,rgba(255,255,255,0.95) 62%,rgba(255,255,255,1) 77%,rgba(255,255,255,1) 100%);
+}
 /*promo slider end*/
 
 .promo-section .liked-list li {
@@ -102,14 +104,16 @@
 	margin-bottom: 38px;
 }
 .regard__inner {
-	padding: 0 13px 15px;
+	padding: 15px 10px;
 }
 .depict-regard-number {
 	width: 49px;
 	height: 22px;
+}
+[class*="depict-regard"]{
 	margin-right: 10px;
 }
-[class*="depict-regard"] svg {
+[class*="depict-regard"] svg{
 	width: 30px;
 	height: 30px;
 }
@@ -128,11 +132,23 @@
 /*links end*/
 
 /*info center*/
-.info-center-section { }
+.info-center-header {
+	font-size: 30px;
+	line-height: 38px;
+}
 /*info center end*/
 
 /*branches*/
-.branches-section { }
+.branches-section {
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+.branches-map {
+	height: 360px;
+}
+.meter{
+	height: 438px;
+}
 /*branches end*/
 /*CONTENT end*/
 /*MAIN end*/
