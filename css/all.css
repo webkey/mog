@@ -1335,7 +1335,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	float: left;
 	position: relative;
 	padding: 0 0 0 120px;
-	width: 510px;
+	width: 520px;
 	box-sizing: border-box;
 	text-decoration: none;
 	color: #262626;
@@ -1426,8 +1426,8 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	transform: translate(0, 100%);
 	-webkit-transition-property: -webkit-transform, opacity, visibility;
 	transition-property: transform, opacity, visibility;
-	-webkit-transition-duration: 0.2s;
-	transition-duration: 0.2s;
+	-webkit-transition-duration: 0.2s, 0.1s, 0.1s;
+	transition-duration: 0.2s, 0.1s, 0.1s;
 	-webkit-transition-timing-function: cubic-bezier(0.46, 0.03, 0.52, 0.96);
 	transition-timing-function: cubic-bezier(0.46, 0.03, 0.52, 0.96);
 }
@@ -1438,12 +1438,13 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	-webkit-transform: translate(0, 0);
 	-ms-transform: translate(0, 0);
 	transform: translate(0, 0);
-	-webkit-transition-duration: 0.22s;
-	transition-duration: 0.22s;
+	-webkit-transition-delay: 0s, 0.1s, 0.1s;
+	transition-delay: 0s, 0.1s, 0.1s;
 }
 .logo-text > b{
 	display: block;
 	position: relative;
+	font-family: 'lato-black', sans-serif;
 	font-size: 16px;
 	line-height: 24px;
 }
