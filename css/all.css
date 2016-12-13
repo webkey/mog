@@ -1270,164 +1270,6 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:before,
 div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content: none; }
 /*multiselect menu end*/
 /*select end*/
-
-/*input file*/
-.upload-file{
-	width: 0;
-	height: 0;
-	font-size: 0;
-	line-height: 0;
-	border: none;
-	background: none;
-}
-.upload-file__label{
-	display: inline-block;
-	font-size: 16px;
-	line-height: 24px;
-	color: #666;
-	text-align: center;
-	vertical-align: top;
-	padding: 12px 27px 12px 23px;
-	margin: 0 0 13px;
-	cursor: pointer;
-	border: 1px solid #ccc;
-	background: #f3f3f3;
-	border-radius: 4px;
-	box-sizing: border-box;
-	box-shadow: 0 0 0 rgba(0, 0, 0, 0.0);
-	-webkit-transition-property: -webkit-transform, box-shadow;
-	transition-property: transform, box-shadow;
-	-webkit-transition-duration: 0.2s;
-	transition-duration: 0.2s;
-}
-.desktop .upload-file__label:hover{
-	box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
-	-webkit-transform: scale(1.2, 1.2);
-	-ms-transform: scale(1.2, 1.2);
-	transform: scale(1.2, 1.2);
-}
-.depict-clip{
-	display: inline-block;
-	vertical-align: middle;
-	box-sizing: border-box;
-	background: #d9d9d9;
-	-webkit-background-size: contain;
-	background-size: contain;
-	width:16px;
-	height:20px;
-	margin-right: 12px;
-}
-.no-backgroundsize .depict-clip{ background-image: url(../img/depict-clip.png); }
-.upload-file__label span{
-	display: inline-block;
-	vertical-align: middle;
-}
-
-/*js filer*/
-.upload-file__container .jFiler-input{ display: none; }
-.jFiler-items{ padding-top: 20px; }
-.jFiler-items-list,
-.user-content .jFiler-items-list,
-.jFiler-items-list ul,
-.user-content .jFiler-items-list ul{
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-.jFiler-item,
-.user-content .jFiler-item,
-.user-content .jFiler-item:first-child,
-.jFiler-items-list ul li,
-.user-content .jFiler-items-list ul li,
-.user-content .jFiler-items-list ul li:first-child{ padding: 0 0 6px; }
-.jFiler-item:before,
-.user-content .jFiler-item:before,
-.user-content .jFiler-item:first-child:before,
-.jFiler-items-list ul li:before,
-.user-content .jFiler-items-list ul li:before{ content: none; }
-
-.jFiler-item-inner:before,
-.jFiler-item-inner:after{ content: ""; display: table; }
-.jFiler-item-inner:after{ clear: both; }
-
-.jFiler-item-icon.pull-left{
-	float: left;
-	margin-right: 5px;
-}
-.icon-jfi-file-o:before{
-	font-size: 30px;
-	line-height: 1;
-}
-.jFiler-item-info{
-	padding: 5px 35px 0 0;
-	overflow: hidden;
-	position: relative;
-}
-.jFiler-item-title{
-	overflow: hidden;
-	position: relative;
-	-ms-text-overflow: ellipsis;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-.jFiler-item-others{
-	font-style: normal;
-	font-size: 16px;
-	color: #999;
-}
-.jFiler-item-others > span{ margin-right: 5px; }
-.jFiler-item .list-inline li{ padding: 0 !important; }
-
-.jFiler-item-assets{
-	position: absolute;
-	right: 0;
-	top: 7px;
-}
-.jFiler-item-trash-action{
-	display: block;
-	position: relative;
-	width: 20px;
-	height: 20px;
-	background: #666;
-	border-radius: 50%;
-	cursor: pointer;
-	-webkit-transition-property: -webkit-transform, background;
-	transition-property: transform, background;
-	-webkit-transition-duration: 0.5s;
-	transition-duration: 0.5s;
-}
-.jFiler-items-list .jFiler-item-trash-action:hover{
-	background: #016c42;
-	-webkit-transform: rotate(90deg);
-	-ms-transform: rotate(90deg);
-	transform: rotate(90deg);
-	-webkit-transition-duration: 0.6s;
-	transition-duration: 0.6s;
-}
-.jFiler-item-trash-action:before,
-.jFiler-item-trash-action:after{
-	content: '';
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	height: 2px;
-	width: 12px;
-	margin: -1px 0 0 -6px;
-	background: #fff;
-	border-radius: 2px;
-}
-.jFiler-item-trash-action:before{
-	-webkit-transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
-	transform: rotate(45deg);
-}
-.jFiler-item-trash-action:after{
-	-webkit-transform: rotate(-45deg);
-	-ms-transform: rotate(-45deg);
-	transform: rotate(-45deg);
-}
-/*js filer end*/
-/*input file end*/
 /*FORM STYLE end*/
 
 /*download files items*/
@@ -2922,9 +2764,6 @@ input.search-form__input{
 	height: 140px;
 	max-height: 140px;
 }
-.user-form .upload-file__container{
-	max-width: 300px;
-}
 .user-form .form-footer{ padding-left: 220px; }
 .user-form .form-buttons{
 	float: left;
@@ -2932,11 +2771,6 @@ input.search-form__input{
 }
 .user-form .form-note{ overflow: hidden; }
 .user-form .form-note__item{ padding: 0; }
-.user-form .upload-file__label,
-.user-form input[type="submit"]{
-	min-width: 208px;
-	box-sizing: border-box;
-}
 /*user form end*/
 
 /*CONTENT*/
