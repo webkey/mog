@@ -1174,6 +1174,160 @@ function formSuccess() {
 }
 /* form success for example end */
 
+/**
+ * tab switcher
+ * */
+function tabSwitcher() {
+	// external js:
+	// 1) TweetMax VERSION: 1.19.0 (widgets.js);
+	// 2) resizeByWidth (resize only width);
+
+	var $main = $('.main');
+
+	var $container = $('.js-tab-container');
+
+	if ( !$container.length ) return false;
+
+	if($main.length){
+		var $anchor = $('.js-tab-anchor'),
+			$content = $('.js-tab-content'),
+			activeClass = 'active',
+			animationSpeed = 0,
+			animationHeightSpeed = 0.08;
+
+		$.each($main, function () {
+			var $this = $(this),
+				$thisAnchor = $this.find($anchor),
+				$thisContainer = $this.find($container),
+				$thisContent = $this.find($content),
+				initialDataAtr = $thisAnchor.eq(0).data('for'),
+				activeDataAtr = false;
+
+			// prepare traffic content
+			function prepareTrafficContent() {
+				$thisContainer.css({
+					'display': 'block',
+					'position': 'relative',
+					'overflow': 'hidden'
+				});
+
+				$thisContent.css({
+					'display': 'block',
+					'position': 'absolute',
+					'left': 0,
+					'right': 0,
+					'width': '100%',
+					'z-index': -1
+				});
+
+				switchContent();
+			}
+
+			prepareTrafficContent();
+
+			// toggle content
+			$thisAnchor.on('click', function (e) {
+				e.preventDefault();
+
+				var $cur = $(this),
+					dataFor = $cur.data('for');
+
+				if (activeDataAtr === dataFor) return false;
+
+				initialDataAtr = dataFor;
+
+				switchContent();
+			});
+
+			// switch content
+			function switchContent() {
+				toggleContent();
+				changeHeightContainer();
+				toggleActiveClass();
+			}
+
+			// show active content and hide other
+			function toggleContent() {
+
+				$thisContainer.css('height', $thisContainer.outerHeight());
+
+				$thisContent.css({
+					'position': 'absolute',
+					'left': 0,
+					'right': 0
+				});
+
+				TweenMax.set($thisContent, {
+					autoAlpha: 0,
+					'z-index': -1
+				});
+
+				var $initialContent = $thisContent.filter('[data-id="' + initialDataAtr + '"]');
+
+				$initialContent.css('z-index', 2);
+
+				TweenMax.to($initialContent, animationSpeed, {
+					autoAlpha: 1
+				});
+			}
+
+			// change container's height
+			function changeHeightContainer() {
+				var $initialContent = $thisContent.filter('[data-id="' + initialDataAtr + '"]');
+
+				TweenMax.to($thisContainer, animationHeightSpeed, {
+					'height': $initialContent.outerHeight(),
+					onComplete: function () {
+
+						$thisContainer.css('height', 'auto');
+
+						$initialContent.css({
+							'position': 'relative',
+							'left': 'auto',
+							'right': 'auto'
+						});
+					}
+				});
+			}
+
+			// toggle class active
+			function toggleActiveClass(){
+				$thisAnchor.removeClass(activeClass);
+				$thisContent.removeClass(activeClass);
+
+				// toggleStateThumb();
+
+				if (initialDataAtr !== activeDataAtr) {
+
+					activeDataAtr = initialDataAtr;
+
+					$thisAnchor.filter('[data-for="' + initialDataAtr + '"]').addClass(activeClass);
+					$thisContent.filter('[data-id="' + initialDataAtr + '"]').addClass(activeClass);
+
+					return false;
+				}
+
+				activeDataAtr = false;
+			}
+		});
+	}
+}
+/* tab switcher end */
+
+/**
+ * file input
+ * */
+function fileInput() {
+	$('.upload-file').each(function () {
+		$(this).filer({
+			showThumbs: true,
+			addMore: true,
+			allowDuplicates: false,
+			limit: 1
+		});
+	});
+}
+/*file input end end*/
 
 /**!
  * footer at bottom
@@ -1230,6 +1384,8 @@ $(document).ready(function(){
 	scrollToTop();
 	toggleYears();
 	formSuccess();
+	tabSwitcher();
+	fileInput();
 
 	footerBottom();
 });
