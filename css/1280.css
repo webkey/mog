@@ -38,10 +38,10 @@
 	float: left;
 	width: 260px;
 }
-.liked__inner {
+.promo-section .liked__inner {
 	padding: 15px 10px 15px 86px;
 }
-.liked__icon {
+.promo-section .liked__icon {
 	left: 15px;
 }
 

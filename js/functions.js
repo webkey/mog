@@ -100,7 +100,7 @@ function inputHasValueClass() {
 	var $fieldWrap = $('.input-wrap');
 
 	if ($fieldWrap.length) {
-		var $inputsAll = $fieldWrap.find( "input, textarea, select" );
+		var $inputsAll = $fieldWrap.find( 'input[type="email"], input[type="search"], :text, textarea, select' );
 		var _classHasValue = 'has--value';
 
 		function switchHasValue() {
@@ -129,7 +129,7 @@ function inputFilledClass() {
 	var $fieldWrap = $('.js-field-effects');
 
 	if ($fieldWrap.length) {
-		var $inputsAll = $fieldWrap.find( "input, textarea, select" );
+		var $inputsAll = $fieldWrap.find( 'input[type="email"], input[type="search"], :text, textarea, select' );
 		var _classFilled = 'input--filled';
 
 		$inputsAll.focus(function() {
@@ -1147,34 +1147,6 @@ function toggleYears() {
 /*drop language end*/
 
 /**
- * form success for example
- * */
-function formSuccess() {
-	if ( $('.subscription-form').length ) {
-
-		$('form', '.subscription-form').submit(function (event) {
-
-			var $form = $(this);
-			var $formWrap = $form.parent();
-
-			if ( $("input", $form).val().length ) {
-				$formWrap.removeClass('error-form');
-				$formWrap.addClass('success-form');
-
-				return;
-			}
-
-			$formWrap.removeClass('success-form');
-			$formWrap.addClass('error-form');
-
-			event.preventDefault();
-		});
-
-	}
-}
-/* form success for example end */
-
-/**
  * tab switcher
  * */
 function tabSwitcher() {
@@ -1355,6 +1327,58 @@ function footerBottom(){
 }
 /*footer at bottom end*/
 
+/**
+ * form success for example
+ * */
+function formSuccessExample() {
+	var $form = $('form');
+
+	if ( $form.length ) {
+
+		$form.submit(function (event) {
+			event.preventDefault();
+
+			var $thisForm = $(this);
+			testValidateForm($thisForm);
+		});
+
+		$(':text, input[type="email"], textarea').on('keyup change', function () {
+			var $form = $(this).closest('form');
+			if ($form.parent().hasClass('error-form')) {
+				testValidateForm($form);
+			}
+		})
+
+	}
+
+	function testValidateForm(form) {
+		var $thisFormWrap = form.parent();
+
+		var $inputs = $(':text, input[type="email"], textarea', form);
+
+		var inputsLength = $inputs.length;
+		var inputsHasValueLength = $inputs.filter(function () {
+			return $(this).val().length;
+		}).length;
+
+		$thisFormWrap.toggleClass('error-form', inputsLength !== inputsHasValueLength);
+		$thisFormWrap.toggleClass('success-form', inputsLength === inputsHasValueLength);
+
+		$.each($inputs, function () {
+			var $thisInput = $(this);
+			var thisInputVal = $thisInput.val();
+			var $thisInputWrap = $thisInput.parent();
+
+			$thisInput.toggleClass('error', !thisInputVal.length);
+			$thisInput.toggleClass('success', !!thisInputVal.length);
+
+			$thisInputWrap.toggleClass('error', !thisInputVal.length);
+			$thisInputWrap.toggleClass('success', !!thisInputVal.length);
+		});
+	}
+}
+/* form success for example end */
+
 /** ready/load/resize document **/
 
 $(window).on('load', function () {
@@ -1364,7 +1388,7 @@ $(window).on('load', function () {
 $(document).ready(function(){
 	placeholderInit();
 	// inputToggleFocusClass();
-	// inputHasValueClass();
+	inputHasValueClass();
 	inputFilledClass();
 	printShow();
 	headerShow();
@@ -1383,9 +1407,10 @@ $(document).ready(function(){
 	scrollToMap();
 	scrollToTop();
 	toggleYears();
-	formSuccess();
 	tabSwitcher();
 	fileInput();
 
 	footerBottom();
+
+	formSuccessExample();
 });
