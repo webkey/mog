@@ -600,7 +600,7 @@
 										</div>
 										<div class="select">
 											<select class="cselect" name="filter-type" id="expl-label-06">
-												<option value="0">Выбрать отдел</option>
+												<option value="">Выбрать отдел</option>
 												<option value="1">Овощи и фрукты</option>
 												<option value="2">Мясо, рыба, птица, колбасные изделия</option>
 												<option value="3">Бакалея</option>
@@ -963,59 +963,123 @@
 		<div class="layout">
 			<!-- enter form -->
 			<div class="enter-form">
-				<form action="#" method="get">
-					<div class="form-row">
-						<div class="input-wrap">
-							<div class="label-holder">
-								<label for="expl-label-03">Текстовое поле первое: <span class="form-mark">*</span></label>
-							</div>
-							<input type="text" placeholder="Текстовое поле первое" id="expl-label-03" />
+				<div class="callback js-tabs">
+					<div class="switch-callback">
+						<div class="switch-callback__hand js-tab-anchor active" data-for="tab-login-form">
+							<a href="#"><span>Вход</span></a>
 						</div>
-						<div class="input-wrap">
-							<div class="label-holder">
-								<label for="expl-label-04">Текстовое поле второе: <span class="form-mark">*</span></label>
-							</div>
-							<input type="text" placeholder="Текстовое поле второе" id="expl-label-04" />
+						<div class="switch-callback__hand js-tab-anchor" data-for="tab-registration-form">
+							<a href="#"><span>Регистрация</span></a>
 						</div>
 					</div>
-					<div class="form-row">
-						<div class="input-wrap">
-							<div class="label-holder">
-								<label for="expl-label-05">Текстовое поле третье: <span class="form-mark">*</span></label>
+
+					<div class="callback-container js-tab-container">
+						<div class="callback-content js-tab-content" data-id="tab-login-form">
+							<div class="text-layout">
+								<div class="user-form">
+									<form action="#" method="get">
+										<div class="input-wrap">
+											<div class="label-holder">
+												<label for="login-form__email-field">Email или номер мобильного телефона:</label>
+											</div>
+											<div class="input-holder">
+												<input type="text" id="login-form__email-field">
+											</div>
+										</div>
+										<div class="input-wrap">
+											<div class="label-holder">
+												<label for="login-form__password-field">Пароль:</label>
+											</div>
+											<div class="input-holder">
+												<input type="password" id="login-form__password-field">
+											</div>
+										</div>
+
+										<div class="form-footer">
+											<div class="form-buttons">
+												<button class="btn-default btn-submit">Вход</button>
+											</div>
+											<div class="form-note">
+												<div class="form-note__item"><a href="#">Забыли пароль?</a></div>
+											</div>
+										</div>
+									</form>
+								</div>
 							</div>
-							<input type="text" placeholder="Текстовое поле третье" id="expl-label-05" />
 						</div>
-						<div class="input-wrap">
-							<div class="label-holder">
-								<label for="expl-label-06">Пример селекта: <span class="form-mark">*</span></label>
-							</div>
-							<div class="select">
-								<select class="cselect" name="filter-type" id="expl-label-06">
-									<option value="0">Выбрать отдел</option>
-									<option value="1">Овощи и фрукты</option>
-									<option value="2">Мясо, рыба, птица, колбасные изделия</option>
-									<option value="3">Бакалея</option>
-									<option value="4">Вода, напитки, соки, кофе, чай</option>
-									<option value="3">Детское питание</option>
-									<option value="3">Продукция собственного производства</option>
-									<option value="3">Молочные продукты, яйца</option>
-									<option value="3">Замороженные продукты</option>
-									<option value="3">Шоколад, конфеты и другие сладости</option>
-									<option value="3">Парфюмерия и косметика</option>
-									<option value="3">Товары для животных</option>
-									<option value="3">Товары для дома</option>
-									<option value="3">Канцелярские товары</option>
-								</select>
+						<div class="callback-content js-tab-content" data-id="tab-registration-form">
+							<div class="text-layout">
+								<div class="user-form">
+									<form action="#" method="get" class="test-validate">
+										<div class="input-wrap">
+											<div class="label-holder">
+												<label for="registration-form__lname-field">Фамилия:</label>
+											</div>
+											<div class="input-holder">
+												<input type="text" id="registration-form__lname-field">
+												<span class="error-note">Проверьте правильность ввода</span>
+											</div>
+										</div>
+										<div class="input-wrap">
+											<div class="label-holder">
+												<label for="registration-form__fname-field">Имя:</label>
+											</div>
+											<div class="input-holder">
+												<input type="text" id="registration-form__fname-field">
+												<span class="error-note">Проверьте правильность ввода</span>
+											</div>
+										</div>
+										<div class="input-wrap">
+											<div class="label-holder">
+												<label for="registration-form__phone-field">Мобильный телефон*:</label>
+											</div>
+											<div class="input-holder">
+												<input type="text" id="registration-form__phone-field">
+												<span class="error-note">Проверьте правильность ввода</span>
+											</div>
+										</div>
+										<div class="input-wrap">
+											<div class="label-holder">
+												<label for="registration-form__tel-field">Дополнительный телефон:</label>
+											</div>
+											<div class="input-holder">
+												<input type="text" id="registration-form__tel-field">
+												<span class="error-note">Проверьте правильность ввода</span>
+											</div>
+										</div>
+										<div class="input-wrap">
+											<div class="label-holder">
+												<label for="registration-form__email-field">Электронная почта:</label>
+											</div>
+											<div class="input-holder">
+												<input type="email" id="registration-form__email-field">
+												<span class="error-note">Проверьте правильность ввода</span>
+											</div>
+										</div>
+										<div class="input-wrap">
+											<div class="label-holder">
+												<label for="registration-form__password-field">Пароль*:</label>
+											</div>
+											<div class="input-holder">
+												<input type="password" id="registration-form__password-field">
+												<span class="error-note">Проверьте правильность ввода</span>
+											</div>
+										</div>
+
+										<div class="form-footer">
+											<div class="form-buttons">
+												<button class="btn-default btn-submit">Регистрация</button>
+											</div>
+											<div class="form-note">
+												<div class="form-note__item">* Поля обязательны для заполнения</div>
+											</div>
+										</div>
+									</form>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="input-wrap">
-						<div class="label-holder">
-							<label for="expl-label-07">Сообщение:</label>
-						</div>
-						<textarea placeholder="Сообщение" id="expl-label-07"></textarea>
-					</div>
-				</form>
+				</div>
 			</div>
 			<!-- enter form end -->
 		</div>

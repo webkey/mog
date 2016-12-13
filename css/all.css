@@ -378,7 +378,7 @@ button{
 /*btn-default*/
 [class*="btn-default"]{
 	position: relative;
-	font-family: 'lato-heavy', sans-serif;
+	font-family: 'lato-black', sans-serif;
 	font-size: 14px;
 	line-height: 20px;
 	letter-spacing: 0.05em;
@@ -404,12 +404,12 @@ button{
 
 /*btn-default-alt*/
 .btn-default-alt{
-	color: #d32e2e;
-	border: 2px solid #d32e2e;
+	color: #008acf;
+	border: 2px solid #008acf;
 	background: #fff;
 }
 .btn-default-alt:hover{
-	background: #b41e18;
+	background: #008acf;
 	color: #fff;
 }
 /*btn-default-alt end*/
@@ -696,9 +696,9 @@ textarea{
 	font-size: 16px;
 	line-height: 24px;
 	letter-spacing: normal;
-	height: 58px;
+	height: 60px;
 	width: 100%;
-	padding: 15px 20px;
+	padding: 16px 20px;
 	background: #ededed;
 	box-shadow: none;
 	border: 2px solid transparent;
@@ -707,6 +707,7 @@ textarea{
 	-webkit-transition-duration: 0.2s;
 	transition-duration: 0.2s;
 	box-sizing: border-box;
+	cursor: pointer;
 }
 input[type="text"]:hover,
 input[type="password"]:hover,
@@ -821,6 +822,7 @@ textarea:focus,
 .has--value textarea{
 	border-color: #d9d9d9;
 	background: #fff;
+	cursor: text;
 }
 /*form focus end*/
 /*form error*/
@@ -1092,6 +1094,14 @@ input[type="radio"]:disabled + span>i:after{ background: #b9b9b9; }
 	background: #fff;
 	width: auto;
 	margin: 0;
+	cursor: pointer;
+	-webkit-transition-property: background;
+	transition-property: background;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+}
+.desktop .jFiler-input-dragDrop:hover{
+	background: #ededed;
 }
 .jFiler-input-dragDrop .jFiler-input-icon{
 	margin-top: 0;
@@ -1170,13 +1180,13 @@ input[type="radio"]:disabled + span>i:after{ background: #b9b9b9; }
 	overflow: hidden;
 	text-overflow: '';
 	cursor: pointer;
-	padding: 12px 40px 12px 18px;
+	padding: 16px 40px 16px 18px;
 	white-space: nowrap;
 	text-indent: 0;
 	width: 100%;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	background: #fff;
+	border: 2px solid transparent;
+	border-radius: 0;
+	background: #ededed;
 	-webkit-font-smoothing: antialiased;
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -1193,23 +1203,23 @@ input[type="radio"]:disabled + span>i:after{ background: #b9b9b9; }
 .select button.cselect .select-inner{
 	font-family: 'lato-light', sans-serif;
 	font-size: 16px;
-	line-height: 22px;
+	line-height: 24px;
 	text-transform: none;
-	color: #666;
+	color: #262626;
 }
 .select select{
-	font-size: 16px;
-	line-height: 23px;
-	height: 50px;
-	padding: 12px 40px 12px 18px;
+	height: 60px;
+	padding: 16px 40px 16px 18px;
 	box-sizing: border-box;
 }
 .select button.cselect{ z-index: 2; }
 .select select:focus,
 .select button.cselect:focus .select-inner,
-.select button.cselect.ui-state-active .select-inner{
-	color: #666;
-	border-color: #666;
+.select button.cselect.ui-state-active .select-inner,
+.has--value .select select,
+.has--value .select button.cselect .select-inner{
+	border-color: #d9d9d9;
+	background: #fff;
 }
 
 .select:before,
@@ -1222,7 +1232,7 @@ button.cselect .ui-icon .arrow-select:after{
 	top: 50%;
 	width: 10px;
 	height: 3px;
-	background: #00619d;
+	background: #262626;
 	border-radius: 2px;
 	margin-top: -1px;
 	box-sizing: border-box;
@@ -2780,6 +2790,13 @@ input.search-form__input{
 }
 /*search form end*/
 
+/*enter form*/
+.enter-form{
+	max-width: 800px;
+	margin: 0 auto;
+}
+/*enter form end*/
+
 /*user form*/
 .user-form{
 	background: #fff;
@@ -2826,10 +2843,16 @@ input.search-form__input{
 	height: 140px;
 	max-height: 140px;
 }
-.user-form .form-footer{ padding-left: 220px; }
+.user-form .form-footer{
+	padding-left: 220px;
+	overflow: hidden;
+}
 .user-form .form-buttons{
 	float: left;
 	margin-right: 20px;
+}
+.user-form .form-buttons .btn-submit{
+	width: 200px;
 }
 .user-form .form-note{
 	overflow: hidden;
@@ -2848,9 +2871,9 @@ input.search-form__input{
 .user-form .form-note__item{
 	display: inline-block;
 	vertical-align: middle;
-	width: calc(100% - 2px);
-	font-size: 16px;
-	line-height: 25px;
+	width: calc(100% - 4px);
+	font-size: 14px;
+	line-height: 17px;
 	letter-spacing: normal;
 }
 /*user form end*/
@@ -5072,7 +5095,8 @@ a.links__inner{
 	box-sizing: border-box;
 	border: 1px solid #d9d9d9;
 
-	display: none;
+	opacity: 0;
+	visibility: hidden;
 }
 .popup:after{
 	content: '';

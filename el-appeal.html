@@ -261,7 +261,7 @@
 							<h2>Форма обратной связи</h2>
 
 							<!--callback-->
-							<div class="callback">
+							<div class="callback js-tabs">
 								<div class="switch-callback">
 									<div class="switch-callback__hand js-tab-anchor active" data-for="callback-form-physical">
 										<a href="#"><span>Физическим лицам</span></a>
@@ -275,7 +275,7 @@
 									<div class="callback-content js-tab-content" data-id="callback-form-physical">
 										<div class="text-layout">
 											<div class="user-form">
-												<form action="#" method="get">
+												<form action="#" method="get" class="test-validate">
 													<div class="input-wrap">
 														<div class="label-holder">
 															<label for="physical-form__name-field">Фамилия:</label>
@@ -379,7 +379,7 @@
 													</div>
 													<div class="form-footer">
 														<div class="form-buttons">
-															<input class="btn-default" type="submit" value="Отправить">
+															<button class="btn-default btn-submit">Отправить</button>
 														</div>
 														<div class="form-note">
 															<div class="form-note__item">Все поля обязательны для заполнения</div>
@@ -682,7 +682,7 @@
 						<li><a href="tel:(022) 276-31-08">(022) 276-31-08</a> (приемная)</li>
 					</ul>
 					<div class="subscription-form">
-						<form action="javascript:void(0)" method="get">
+						<form action="javascript:void(0)" method="get" class="test-validate">
 							<div class="input-wrap">
 								<input type="text" placeholder="E-mail для подписки">
 								<input type="submit" value="submit">

@@ -1154,7 +1154,7 @@ function tabSwitcher() {
 	// 1) TweetMax VERSION: 1.19.0 (widgets.js);
 	// 2) resizeByWidth (resize only width);
 
-	var $main = $('.main');
+	var $main = $('.js-tabs');
 
 	var $container = $('.js-tab-container');
 
@@ -1425,7 +1425,7 @@ function footerBottom(){
  * form success for example
  * */
 function formSuccessExample() {
-	var $form = $('form');
+	var $form = $('form.test-validate');
 
 	if ( $form.length ) {
 
@@ -1436,19 +1436,19 @@ function formSuccessExample() {
 			testValidateForm($thisForm);
 		});
 
-		$(':text, input[type="email"], textarea').on('keyup change', function () {
-			var $form = $(this).closest('form');
-			if ($form.parent().hasClass('error-form')) {
-				testValidateForm($form);
-			}
-		})
+		// $(':text, input[type="email"], textarea', $form).on('keyup change', function () {
+		// 	var $form = $(this).closest('form');
+		// 	if ($form.parent().hasClass('error-form')) {
+		// 		testValidateForm($form);
+		// 	}
+		// })
 
 	}
 
 	function testValidateForm(form) {
 		var $thisFormWrap = form.parent();
 
-		var $inputs = $(':text, input[type="email"], textarea', form);
+		var $inputs = $(':text, input[type="email"], input[type="password"], textarea', form);
 
 		var inputsLength = $inputs.length;
 		var inputsHasValueLength = $inputs.filter(function () {
