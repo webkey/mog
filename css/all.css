@@ -298,7 +298,6 @@ strong em{
 	z-index: 5;
 	background: #008acf;
 }
-.sheet,
 .text-layout,
 .breadcrumbs-list,
 .user-content .breadcrumbs-list,
@@ -307,7 +306,6 @@ strong em{
 	padding-right: 40px;
 	box-sizing: border-box;
 }
-.sheet .full-width,
 .text-layout .full-width{
 	margin-left: -40px;
 	margin-right: -40px;
