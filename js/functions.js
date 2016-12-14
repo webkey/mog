@@ -1286,6 +1286,232 @@ function tabSwitcher() {
 }
 /* tab switcher end */
 
+/**!
+ * accordion
+ * */
+/*<div class="{accordionContainer} js-accordion__container">
+	<div class="{accordionItem} js-accordion__item">
+	<div class="{accordionHeader} js-accordion__header">
+	<a href="#" class="{accordionHand} js-accordion__hand">Heading 1</a>
+</div>
+<div style="display: none;" class="{accordionContent} js-accordion__content">Content 1</div>
+</div>
+<div class="{accordionItem} js-accordion__item">
+	<div class="{accordionHeader} js-accordion__header">
+	<a href="#" class="{accordionHand} js-accordion__hand">Heading 2</a>
+</div>
+<div style="display: none;" class="{accordionContent} js-accordion__content">Content 2</div>
+</div>
+</div>*/
+(function ($) {
+	var JsAccordion = function (settings) {
+		var options = $.extend({
+			accordionContainer: null,
+			accordionItem: null,
+			accordionHeader: null, // wrap for accordion's switcher
+			accordionHand: null, // accordion's switcher
+			accordionContent: null,
+			indexInit: 0, // if "false", all accordion are closed
+			animateSpeed: 300,
+			scrollToTop: false, // if true, scroll to current accordion;
+			clickOutside: false, // if true, close current accordion's content on click outside accordion;
+			collapseInside: true // collapse attachments
+		}, settings || {});
+
+		this.options = options;
+		var container = $(options.accordionContainer);
+
+		this.$accordionContainer = container;
+		this.$accordionItem = $(options.accordionItem, container);
+		this.$accordionHeader = $(options.accordionHeader, container);
+		this.$accordionHand = $(options.accordionHand, container);
+		this.$accordionContent = options.accordionContent ?
+			$(options.accordionContent, container) :
+			this.$accordionHeader.next();
+
+		this.scrollToTop = options.scrollToTop;
+		this.clickOutside = options.clickOutside;
+		this._indexInit = options.indexInit;
+		this._animateSpeed = options.animateSpeed;
+		this._collapseInside = options.collapseInside;
+
+		this.modifiers = {
+			activeItem: 'js-accordion__item_active',
+			activeHeader: 'js-accordion__header_active',
+			activeHand: 'js-accordion__hand_active',
+			activeContent: 'js-accordion__panel_active'
+		};
+
+		this.bindEvents();
+		this.activeAccordion();
+	};
+
+	JsAccordion.prototype.bindEvents = function () {
+		var self = this,
+			$accordionContent = self.$accordionContent,
+			animateSpeed = self._animateSpeed;
+
+		// $('body').on('click', self.options.accordionHand, function (e) {
+		$('.js-accordion__hand').on('click', function (e) {
+			e.preventDefault();
+
+			var $currentHand = $(this),
+				$currentHeader = $(this).closest(self.$accordionHeader),
+				$currentItem = $(this).closest(self.$accordionItem),
+				$currentItemContent = $currentHeader.next();
+
+			if ($accordionContent.is(':animated')) return;
+
+			if ($currentHeader.hasClass(self.modifiers.activeHeader)){
+
+				$currentItem.removeClass(self.modifiers.activeItem);
+				$currentHeader.removeClass(self.modifiers.activeHeader);
+				$currentHand.removeClass(self.modifiers.activeHand);
+				$currentItemContent.removeClass(self.modifiers.activeContent);
+
+				$currentItemContent.slideUp(animateSpeed, function () {
+
+					// console.log('closed');
+
+					if (self._collapseInside) {
+						var $internalContent = $currentItem.find(self.$accordionHeader).next();
+
+						$.each($internalContent, function () {
+							if ($(this).hasClass(self.modifiers.activeContent)) {
+								$(this).slideUp(self._animateSpeed, function () {
+									// console.log('closed attachment');
+								});
+							}
+						});
+
+						$currentItem.find(self.$accordionItem).removeClass(self.modifiers.activeItem);
+						$currentItem.find(self.$accordionHeader).removeClass(self.modifiers.activeHeader);
+						$currentItem.find(self.$accordionHand).removeClass(self.modifiers.activeHand);
+						$internalContent.removeClass(self.modifiers.activeContent);
+					}
+				});
+
+				return;
+			}
+
+			$currentItem.siblings().find(self.$accordionHeader).next().slideUp(self._animateSpeed, function () {
+				// console.log('closed siblings');
+			});
+
+			$currentItem.siblings().removeClass(self.modifiers.activeItem);
+			$currentItem.siblings().find(self.$accordionHeader).removeClass(self.modifiers.activeHeader);
+			$currentItem.siblings().find(self.$accordionHand).removeClass(self.modifiers.activeHand);
+			$currentItem.siblings().find(self.$accordionHeader).next().removeClass(self.modifiers.activeContent);
+
+			$currentItemContent.slideDown(animateSpeed, function () {
+				// console.log('opened');
+				self.scrollPosition($currentItem);
+			});
+
+			$currentItem.addClass(self.modifiers.activeItem);
+			$currentHeader.addClass(self.modifiers.activeHeader);
+			$currentHand.addClass(self.modifiers.activeHand);
+			$currentItemContent.addClass(self.modifiers.activeContent);
+
+			e.stopPropagation();
+		});
+
+		$(document).click(function () {
+			if (self.clickOutside) {
+				self.closeAllAccordions();
+			}
+		});
+
+		$accordionContent.on('click', function(e){
+			e.stopPropagation();
+		});
+	};
+
+	// show current accordion's content
+	JsAccordion.prototype.activeAccordion = function() {
+		var self = this;
+		var indexInit = self._indexInit;
+
+		if ( indexInit === false ) return false;
+
+		$.each(self.$accordionContainer, function () {
+			var $currentItem = $(this).children().eq(indexInit);
+
+			$currentItem.addClass(self.modifiers.activeItem);
+			$currentItem.children(self.$accordionHeader).addClass(self.modifiers.activeHeader);
+			$currentItem.children(self.$accordionHeader).find(self.$accordionHand).addClass(self.modifiers.activeHand);
+			$currentItem.children(self.$accordionHeader).next().addClass(self.modifiers.activeContent).slideDown(self._animateSpeed, function () {
+				// console.log('opened active');
+				self.scrollPosition($currentItem);
+			});
+		});
+	};
+
+	// close all accordions
+	JsAccordion.prototype.closeAllAccordions = function() {
+		var self = this;
+
+		self.$accordionHeader.next().slideUp(self._animateSpeed, function () {
+			console.log('closed all');
+		});
+
+		var modifiers = self.modifiers;
+
+		self.$accordionItem.removeClass(modifiers.activeItem);
+		self.$accordionHeader.removeClass(modifiers.activeHeader);
+		self.$accordionHand.removeClass(modifiers.activeHand);
+		self.$accordionHeader.next().removeClass(modifiers.activeContent);
+	};
+
+	// open all accordions
+	JsAccordion.prototype.openAllAccordions = function() {
+		var self = this;
+
+		self.$accordionHeader.next().slideDown(self._animateSpeed, function () {
+			console.log('open all');
+		});
+
+		var modifiers = self.modifiers;
+
+		self.$accordionItem.addClass(modifiers.activeItem);
+		self.$accordionHeader.addClass(modifiers.activeHeader);
+		self.$accordionHand.addClass(modifiers.activeHand);
+		self.$accordionHeader.next().addClass(modifiers.activeContent);
+	};
+
+	JsAccordion.prototype.scrollPosition = function (event) {
+		var self = this;
+		if (self.scrollToTop) {
+			$('html, body').animate({ scrollTop: self.$accordionItem.eq(event).offset().top }, self._animateSpeed);
+		}
+	};
+
+	window.JsAccordion = JsAccordion;
+}(jQuery));
+/*accordion end*/
+
+/**
+ * default accordion
+ * */
+function jsAccordion() {
+	// accordion default
+	var $accordion = $('.js-accordion__container');
+
+	if($accordion.length){
+		new JsAccordion({
+			accordionContainer: '.js-accordion__container',
+			accordionItem: '.js-accordion__item',
+			accordionHeader: '.js-accordion__header',
+			accordionHand: '.js-accordion__hand',
+			// accordionContent: '.accordion-panel',
+			indexInit: false,
+			clickOutside: false,
+			animateSpeed: 150
+		});
+	}
+}
+/*default accordion end*/
+
 /**
  * file input
  * */
@@ -1502,6 +1728,7 @@ $(document).ready(function(){
 	scrollToTop();
 	toggleYears();
 	tabSwitcher();
+	jsAccordion();
 	fileInput();
 
 	footerBottom();
