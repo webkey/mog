@@ -1,13 +1,13 @@
 @media only screen and (max-width: 639px){}
 /*MAIN MENU*/
-.main-menu__head .logo{
+.extra-popup__head .logo{
 	left: 30px;
 }
-.main-menu__head .logo {
+.extra-popup__head .logo {
 	margin-left: 0;
 }
 .main-menu__box{ width: 99.98%; }
-.main-menu__content { padding: 30px 0 10px; }
+.extra-popup__content { padding: 30px 0 10px; }
 .main-menu__box { padding: 0 30px 30px; }
 /*MAIN MENU end*/
 

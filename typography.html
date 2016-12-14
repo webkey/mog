@@ -538,7 +538,7 @@
 								<span class="mark">Default buttons</span>
 							</h3>
 							<div style="padding: 0 0 20px;">
-								<a href="#" class="btn-default">Link</a>
+								<a href="#" class="btn-default" data-label="Link">Link</a>
 							</div>
 							<div style="padding: 0 0 20px;">
 								<input class="btn-default" type="submit" value="Type submit">
@@ -832,11 +832,11 @@
 <!--wrapper end-->
 
 <!--MAIN MENU-->
-<div class="popup main-menu">
-	<div class="main-menu__head">
+<div class="extra-popup main-menu">
+	<div class="extra-popup__head">
 		<a href="index.html" class="logo">Могилевоблгаз</a> <a href="#" class="btn-menu-close js-btn-menu-close"><i></i><span>Закрыть</span></a>
 	</div>
-	<div class="main-menu__content">
+	<div class="extra-popup__content">
 		<div class="layout">
 			<div class="main-menu__holder">
 				<div class="main-menu__box">
@@ -927,11 +927,11 @@
 <!--MAIN MENU end-->
 
 <!--search popup-->
-<div class="popup search-popup">
-	<div class="main-menu__head">
+<div class="extra-popup search-popup">
+	<div class="extra-popup__head">
 		<a href="index.html" class="logo">Могилевоблгаз</a> <a href="#" class="btn-menu-close js-btn-menu-close"><i></i><span>Закрыть</span></a>
 	</div>
-	<div class="main-menu__content">
+	<div class="extra-popup__content">
 		<div class="layout">
 			<!-- search form -->
 			<div class="search-form">
@@ -955,29 +955,29 @@
 <!--search popup end-->
 
 <!--enter popup-->
-<div class="popup enter-popup">
-	<div class="main-menu__head">
+<div class="extra-popup enter-popup">
+	<div class="extra-popup__head">
 		<a href="index.html" class="logo">Могилевоблгаз</a> <a href="#" class="btn-menu-close js-btn-menu-close"><i></i><span>Закрыть</span></a>
 	</div>
-	<div class="main-menu__content">
+	<div class="extra-popup__content">
 		<div class="layout">
 			<!-- enter form -->
 			<div class="enter-form">
-				<div class="callback js-tabs">
-					<div class="switch-callback">
-						<div class="switch-callback__hand js-tab-anchor active" data-for="tab-login-form">
-							<a href="#"><span>Вход</span></a>
+				<div class="custom-tabs js-tabs">
+					<div class="custom-tabs__nav">
+						<div class="custom-tabs__tab">
+							<a href="#" class="js-tab-anchor active" data-for="tab-login-form"><span>Вход</span></a>
 						</div>
-						<div class="switch-callback__hand js-tab-anchor" data-for="tab-registration-form">
-							<a href="#"><span>Регистрация</span></a>
+						<div class="custom-tabs__tab">
+							<a href="#" class="js-tab-anchor" data-for="tab-registration-form"><span>Регистрация</span></a>
 						</div>
 					</div>
 
-					<div class="callback-container js-tab-container">
-						<div class="callback-content js-tab-content" data-id="tab-login-form">
+					<div class="custom-tabs__panels js-tab-container">
+						<div class="custom-tabs__panel js-tab-content" data-id="tab-login-form">
 							<div class="text-layout">
 								<div class="user-form">
-									<form action="#" method="get">
+									<form action="#" method="get" class="test-validate">
 										<div class="input-wrap">
 											<div class="label-holder">
 												<label for="login-form__email-field">Email или номер мобильного телефона:</label>
@@ -992,12 +992,13 @@
 											</div>
 											<div class="input-holder">
 												<input type="password" id="login-form__password-field">
+												<span class="error-note">Проверьте правильность регистрационных данных</span>
 											</div>
 										</div>
 
 										<div class="form-footer">
 											<div class="form-buttons">
-												<button class="btn-default btn-submit">Вход</button>
+												<button class="btn-default btn-submit" data-label="Вход">Вход</button>
 											</div>
 											<div class="form-note">
 												<div class="form-note__item"><a href="#">Забыли пароль?</a></div>
@@ -1007,13 +1008,13 @@
 								</div>
 							</div>
 						</div>
-						<div class="callback-content js-tab-content" data-id="tab-registration-form">
+						<div class="custom-tabs__panel js-tab-content" data-id="tab-registration-form">
 							<div class="text-layout">
 								<div class="user-form">
 									<form action="#" method="get" class="test-validate">
 										<div class="input-wrap">
 											<div class="label-holder">
-												<label for="registration-form__lname-field">Фамилия:</label>
+												<label for="registration-form__lname-field">Фамилия:*</label>
 											</div>
 											<div class="input-holder">
 												<input type="text" id="registration-form__lname-field">
@@ -1022,7 +1023,7 @@
 										</div>
 										<div class="input-wrap">
 											<div class="label-holder">
-												<label for="registration-form__fname-field">Имя:</label>
+												<label for="registration-form__fname-field">Имя:*</label>
 											</div>
 											<div class="input-holder">
 												<input type="text" id="registration-form__fname-field">
@@ -1031,7 +1032,7 @@
 										</div>
 										<div class="input-wrap">
 											<div class="label-holder">
-												<label for="registration-form__phone-field">Мобильный телефон*:</label>
+												<label for="registration-form__phone-field">Мобильный телефон:*</label>
 											</div>
 											<div class="input-holder">
 												<input type="text" id="registration-form__phone-field">
@@ -1049,7 +1050,7 @@
 										</div>
 										<div class="input-wrap">
 											<div class="label-holder">
-												<label for="registration-form__email-field">Электронная почта:</label>
+												<label for="registration-form__email-field">Электронная почта:*</label>
 											</div>
 											<div class="input-holder">
 												<input type="email" id="registration-form__email-field">
@@ -1058,17 +1059,26 @@
 										</div>
 										<div class="input-wrap">
 											<div class="label-holder">
-												<label for="registration-form__password-field">Пароль*:</label>
+												<label for="registration-form__password-field">Пароль:*</label>
 											</div>
 											<div class="input-holder">
 												<input type="password" id="registration-form__password-field">
-												<span class="error-note">Проверьте правильность ввода</span>
+												<span class="error-note">Необходимо ввести пароль</span>
+											</div>
+										</div>
+										<div class="input-wrap">
+											<div class="label-holder">
+												<label for="registration-form__repeat-field">Повторите пароль*:</label>
+											</div>
+											<div class="input-holder">
+												<input type="password" id="registration-form__repeat-field">
+												<span class="error-note">Пароли не совпадают</span>
 											</div>
 										</div>
 
 										<div class="form-footer">
 											<div class="form-buttons">
-												<button class="btn-default btn-submit">Регистрация</button>
+												<button class="btn-default btn-submit" data-label="Регистрация">Регистрация</button>
 											</div>
 											<div class="form-note">
 												<div class="form-note__item">* Поля обязательны для заполнения</div>
