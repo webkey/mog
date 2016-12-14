@@ -924,6 +924,48 @@ function slidersInit() {
 		});
 	}
 
+	//promo slider
+	var $imagesSlider = $('.images-slider__list');
+
+	if($imagesSlider.length){
+
+		$imagesSlider.each(function () {
+			var $currentSlider = $(this);
+			var $wrapper = $currentSlider.parent();
+
+			var $currentSlide = $wrapper.find('.slide__curr'),
+				$totalSlides = $wrapper.find('.slide__total');
+
+			$currentSlider.on('init', function (event, slick) {
+
+				$totalSlides.text(slick.$slides.length);
+				$currentSlide.text(slick.currentSlide + 1);
+				changeCounterImages(slick.$slides[slick.currentSlide]);
+			});
+
+			$currentSlider.slick({
+				fade: true,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				// initialSlide: 2,
+				infinite: true,
+				dots: false,
+				arrows: true
+			}).on('beforeChange', function (event, slick, currentSlide, nextSlider) {
+				changeCounterImages(slick.$slides[nextSlider]);
+				// changeUnit(slick.$slides[nextSlider]);
+			}).on('afterChange reInit', function(event, slick, currentSlide, nextSlide) {
+				$currentSlide.text(currentSlide + 1);
+			});
+
+		});
+	}
+
+	function changeCounterImages(currentSlider){
+		var dataCount = $(currentSlider).data('count');
+		meterCounter.goToNumber(dataCount);
+	}
+
 	//info slider
 	var $infoSliders = $('.info-center-content');
 
@@ -966,20 +1008,19 @@ function slidersInit() {
 	}
 
 	/**meter*/
-	var meterCounter = $('.meter-counter').jOdometer({
-		increment: 1,
-		counterStart: '000000',
-		speed:1000,
-		numbersImage: 'img/jodometer-numbers.png',
-		heightNumber: 27,
-		widthNumber: 20,
-		formatNumber: true,
-		spaceNumbers: 1,
-		widthDot: 3
-	});
-
 	var $meterSlider = $('.meter-slider');
 	if($meterSlider.length){
+		var meterCounter = $('.meter-counter').jOdometer({
+			increment: 1,
+			counterStart: '000000',
+			speed:1000,
+			numbersImage: 'img/jodometer-numbers.png',
+			heightNumber: 27,
+			widthNumber: 20,
+			formatNumber: true,
+			spaceNumbers: 1,
+			widthDot: 3
+		});
 
 		$meterSlider.each(function () {
 			var $currentSlider = $(this);
@@ -988,16 +1029,13 @@ function slidersInit() {
 			var $currentSlide = $wrapper.find('.slide__curr'),
 				$totalSlides = $wrapper.find('.slide__total');
 
-
-
 			$currentSlider.on('init', function (event, slick) {
 
 				$totalSlides.text(slick.$slides.length);
 				$currentSlide.text(slick.currentSlide + 1);
-				changeCounter(slick.$slides[slick.currentSlide]);
+				changeCounterMeter(slick.$slides[slick.currentSlide]);
 				// changeUnit(slick.$slides[slick.currentSlide]);
 			});
-
 
 			$currentSlider.slick({
 				fade: true,
@@ -1012,7 +1050,7 @@ function slidersInit() {
 				arrows: true,
 				swipe: false
 			}).on('beforeChange', function (event, slick, currentSlide, nextSlider) {
-				changeCounter(slick.$slides[nextSlider]);
+				changeCounterMeter(slick.$slides[nextSlider]);
 				// changeUnit(slick.$slides[nextSlider]);
 			}).on('afterChange reInit', function(event, slick, currentSlide, nextSlide) {
 				$currentSlide.text(currentSlide + 1);
@@ -1021,7 +1059,7 @@ function slidersInit() {
 		});
 	}
 
-	function changeCounter(currentSlider){
+	function changeCounterMeter(currentSlider){
 		var dataCount = $(currentSlider).data('count');
 		meterCounter.goToNumber(dataCount);
 		var meterImg = $('.meter-counter img');
