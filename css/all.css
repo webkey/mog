@@ -3225,7 +3225,9 @@ li.align-right > .nav__drop{
 	position: relative;
 	padding-top: 35px;
 }
-input.search-form__input{
+input.search-form__input,
+input.search-form__input:hover,
+input.search-form__input:focus{
 	border: none;
 	height: 50px;
 	width: 100%;
@@ -3239,7 +3241,13 @@ input.search-form__input{
 	border-radius: 0;
 	background: none;
 	z-index: 998;
+}
+input.search-form__input{
 	opacity: 0;
+	cursor: pointer;
+}
+.input--filled input.search-form__input{
+	cursor: text;
 }
 
 .search-form__label{
