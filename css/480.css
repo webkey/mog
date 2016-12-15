@@ -201,6 +201,22 @@
 	padding: 0 15px 30px;
 }
 /*video list end*/
+
+/*contacts info*/
+.contacts-info__figure,
+.contacts-info__figure_circle{
+	display: block;
+	width: auto;
+	margin: 0 0 20px;
+}
+.contacts-info__img{
+	display: inline-block;
+}
+.contacts-info__figure + .contacts-info__text{
+	display: block;
+	width: auto;
+}
+/*contacts info end*/
 /*CONTENT end*/
 /*MAIN end*/
 

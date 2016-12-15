@@ -41,6 +41,9 @@
 }
 .header .layout,
 .home-page .main .layout{ }
+.user-content .bottom-space {
+	margin-bottom: 50px;
+}
 /*MAIN BLOCKS end*/
 
 /*HEADER*/
@@ -105,6 +108,9 @@
 	height: 34px;
 }
 
+.expander__content{
+	padding-bottom: 18px;
+}
 .expander__frame {
 	padding: 18px 20px;
 }
@@ -230,6 +236,29 @@
 	padding: 0 15px 30px;
 }
 /*video list end*/
+
+/*contacts info*/
+.contacts-info__item {
+	width: 99.98%;
+	padding-bottom: 20px;
+}
+/*contacts info end*/
+
+/*contacts map*/
+.contacts-map__info{
+	position: relative;
+	right: auto;
+	top: auto;
+	width: auto;
+	padding: 18px 20px 0;
+	max-height: none;
+	box-shadow: none;
+	border-bottom: 1px solid #d9d9d9;
+	-webkit-transform: none;
+	-ms-transform: none;
+	transform: none;
+}
+/*contacts map end*/
 /*CONTENT end*/
 /*MAIN end*/
 

@@ -1683,6 +1683,60 @@ function fileInput() {
 /*file input end end*/
 
 /**!
+ * contacts map
+ * */
+function contactsMap() {
+	var myMap,
+		myPlacemark,
+		mapId = "#contacts-map",
+		$mapId = $(mapId),
+		coord = [53.855983, 30.325848],
+		center = [],
+		baseImageURL = 'img/';
+
+	if (window.innerWidth > 768) {
+		for (var i = 0; i < coord.length; i++) {
+			if (i == 1) {
+				center.push(coord[i] + 0.06);
+				continue
+			}
+			center.push(coord[i] + 0.02);
+		}
+	} else {
+		center = coord
+	}
+
+	/*initial map*/
+	if ( $mapId.length ) {
+		ymaps.ready(init);
+
+		function init(){
+			/*create new map object*/
+			myMap = new ymaps.Map (mapId.substring(1), {
+				center: center,
+				zoom: 11,
+				controls: ['fullscreenControl', 'zoomControl']
+			});
+
+			myPlacemark = new ymaps.Placemark(coord, {
+				hintContent: "Республика Беларусь, 212030, г. Могилев, ул. Габровская, 11"
+			}, {
+				iconLayout: 'default#image',
+				iconImageHref: baseImageURL + 'depict-map-2x.png',
+				iconImageSize: [97, 79],
+				iconImageOffset: [-35, -77]
+			});
+
+			myMap.geoObjects.add(myPlacemark);
+
+			/*behaviors setting map*/
+			myMap.behaviors.disable('scrollZoom');
+		}
+	}
+}
+/*contacts map end*/
+
+/**!
  * footer at bottom
  * */
 function footerBottom(){
@@ -1794,6 +1848,7 @@ $(document).ready(function(){
 	tabSwitcher();
 	jsAccordion();
 	fileInput();
+	contactsMap();
 
 	footerBottom();
 
