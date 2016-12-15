@@ -928,42 +928,44 @@ function slidersInit() {
 	var $imagesSlider = $('.images-slider__list');
 
 	if($imagesSlider.length){
+		var slideCounterTpl = '' +
+			'<div class="slider__counter">' +
+			'<span class="slide__curr">0</span> / <span class="slide__total">0</span>' +
+			'</div>';
 
 		$imagesSlider.each(function () {
 			var $currentSlider = $(this);
-			var $wrapper = $currentSlider.parent();
 
-			var $currentSlide = $wrapper.find('.slide__curr'),
-				$totalSlides = $wrapper.find('.slide__total');
+			var $sliderWrap = $currentSlider.closest('.images-slider'),
+				$slideTitle = $sliderWrap.find('.flashes__item');
 
 			$currentSlider.on('init', function (event, slick) {
+				$(slick.$slider).append($(slideCounterTpl).clone());
 
-				$totalSlides.text(slick.$slides.length);
-				$currentSlide.text(slick.currentSlide + 1);
-				changeCounterImages(slick.$slides[slick.currentSlide]);
+				$('.slide__total', $(slick.$slider)).text(slick.$slides.length);
+				$('.slide__curr', $(slick.$slider)).text(slick.currentSlide + 1);
 			});
 
 			$currentSlider.slick({
 				fade: true,
+				speed: 200  ,
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				// initialSlide: 2,
+				lazyLoad: 'ondemand',
 				infinite: true,
 				dots: false,
 				arrows: true
 			}).on('beforeChange', function (event, slick, currentSlide, nextSlider) {
-				changeCounterImages(slick.$slides[nextSlider]);
 				// changeUnit(slick.$slides[nextSlider]);
 			}).on('afterChange reInit', function(event, slick, currentSlide, nextSlide) {
-				$currentSlide.text(currentSlide + 1);
+				$('.slide__curr', $(slick.$slider)).text(currentSlide + 1);
+
+				$slideTitle.hide();
+				$slideTitle.eq(currentSlide).fadeIn();
 			});
 
 		});
-	}
-
-	function changeCounterImages(currentSlider){
-		var dataCount = $(currentSlider).data('count');
-		meterCounter.goToNumber(dataCount);
 	}
 
 	//info slider
@@ -1352,6 +1354,7 @@ function tabSwitcher() {
 			indexInit: 0, // if "false", all accordion are closed
 			animateSpeed: 300,
 			scrollToTop: false, // if true, scroll to current accordion;
+			scrollToTopSpeed: 300,
 			clickOutside: false, // if true, close current accordion's content on click outside accordion;
 			collapseInside: true // collapse attachments
 		}, settings || {});
@@ -1368,6 +1371,7 @@ function tabSwitcher() {
 			this.$accordionHeader.next();
 
 		this.scrollToTop = options.scrollToTop;
+		this._scrollToTopSpeed = options.scrollToTopSpeed;
 		this.clickOutside = options.clickOutside;
 		this._indexInit = options.indexInit;
 		this._animateSpeed = options.animateSpeed;
@@ -1389,8 +1393,12 @@ function tabSwitcher() {
 			$accordionContent = self.$accordionContent,
 			animateSpeed = self._animateSpeed;
 
-		// $('body').on('click', self.options.accordionHand, function (e) {
-		$('.js-accordion__hand').on('click', function (e) {
+		self.$accordionHand.on('click', 'a', function (e) {
+			e.stopPropagation();
+		});
+
+		// self.$accordionContainer.on('click', self.options.accordionHand, function (e) {
+		self.$accordionHand.on('click', function (e) {
 			e.preventDefault();
 
 			var $currentHand = $(this),
@@ -1517,10 +1525,10 @@ function tabSwitcher() {
 		self.$accordionHeader.next().addClass(modifiers.activeContent);
 	};
 
-	JsAccordion.prototype.scrollPosition = function (event) {
+	JsAccordion.prototype.scrollPosition = function (element) {
 		var self = this;
 		if (self.scrollToTop) {
-			$('html, body').animate({ scrollTop: self.$accordionItem.eq(event).offset().top }, self._animateSpeed);
+			$('html, body').animate({ scrollTop: element.offset().top - $('.main-nav-frame').outerHeight() }, self._scrollToTopSpeed);
 		}
 	};
 
@@ -1541,6 +1549,8 @@ function jsAccordion() {
 			accordionItem: '.js-accordion__item',
 			accordionHeader: '.js-accordion__header',
 			accordionHand: '.js-accordion__hand',
+			scrollToTop: true,
+			scrollToTopSpeed: 200,
 			// accordionContent: '.accordion-panel',
 			indexInit: false,
 			clickOutside: false,
