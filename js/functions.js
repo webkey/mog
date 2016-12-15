@@ -258,7 +258,9 @@ function navFixed(){
 		self.$drop = $(options.drop, container);
 
 		self.modifiers = {
-			hover: 'hover'
+			hover: 'hover',
+			hoverNext: 'hover_next',
+			hoverPrev: 'hover_prev'
 		};
 
 		self.addClassHover();
@@ -273,17 +275,19 @@ function navFixed(){
 	HoverClass.prototype.addClassHover = function () {
 		var self = this,
 			_hover = this.modifiers.hover,
+			_hoverNext = this.modifiers.hoverNext,
+			_hoverPrev = this.modifiers.hoverPrev,
 			$item = self.$item,
 			item = self.options.item,
 			$container = self.$container;
 
 		if (!DESKTOP) {
+
 			$container.on('click', ''+item+'', function (e) {
 				var $currentAnchor = $(this);
 				var currentItem = $currentAnchor.closest($item);
 
 				if (!currentItem.has(self.$drop).length){ return; }
-
 
 				e.stopPropagation();
 
@@ -308,35 +312,36 @@ function navFixed(){
 			$(document).on('click', function () {
 				$item.removeClass(_hover);
 			});
+
 		} else {
 			$container.on('mouseenter', ''+item+'', function () {
+
 				var currentItem = $(this);
 
 				if (currentItem.prop('hoverTimeout')) {
-					currentItem.prop('hoverTimeout',
-						clearTimeout(currentItem.prop('hoverTimeout')
-						)
-					);
+					currentItem.prop('hoverTimeout', clearTimeout(currentItem.prop('hoverTimeout')));
 				}
 
 				currentItem.prop('hoverIntent', setTimeout(function () {
 					currentItem.addClass(_hover);
+					currentItem.next().addClass(_hoverNext);
+					currentItem.prev().addClass(_hoverPrev);
 				}, 50));
 
-			});
-			$container.on('mouseleave', ''+ item+'', function () {
+			}).on('mouseleave', ''+ item+'', function () {
+
 				var currentItem = $(this);
 
 				if (currentItem.prop('hoverIntent')) {
-					currentItem.prop('hoverIntent',
-						clearTimeout(currentItem.prop('hoverIntent')
-						)
-					);
+					currentItem.prop('hoverIntent', clearTimeout(currentItem.prop('hoverIntent')));
 				}
 
 				currentItem.prop('hoverTimeout', setTimeout(function () {
 					currentItem.removeClass(_hover);
+					currentItem.next().removeClass(_hoverNext);
+					currentItem.prev().removeClass(_hoverPrev);
 				}, 50));
+
 			});
 
 		}

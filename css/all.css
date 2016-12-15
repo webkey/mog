@@ -1914,7 +1914,6 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	top: 100%;
 	display: block;
 	width: 320px;
-	margin-left: -1px;
 	opacity: 0;
 	visibility: hidden;
 	border: 1px solid #d9d9d9;
@@ -1964,7 +1963,7 @@ li.align-right > [class*="nav__drop"]{
 	border-top: 1px solid #e0e0e0;
 }
 
-[class*="-nav__drop"] li:first-child > a{
+[class*="nav__drop"] li:first-child > a{
 	border: none;
 }
 [class*="nav__drop"] li.has-drop > a{ padding-right: 60px; }
@@ -1972,6 +1971,10 @@ li.align-right > [class*="nav__drop"]{
 [class*="nav__drop"] li.hover > a,
 .no-js [class*="nav__drop"] li:hover > a{
 	background: #f3f3f3;
+}
+
+[class*="nav__list"] > li:first-child > [class*="nav__drop"]{
+	border-top: none;
 }
 /*[class*="nav__drop"] li.active > a,
 [class*="nav__drop"] li.current > a{
@@ -2027,6 +2030,7 @@ li.align-right > [class*="nav__drop"]{
 .nav__drop{
 	min-width: 100%;
 	border-top: none;
+	margin-left: -1px;
 }
 li.align-right > .nav__drop{
 	left: auto;
@@ -2054,7 +2058,8 @@ li.align-right > .nav__drop{
 	-ms-text-overflow: ellipsis;
 	text-overflow: ellipsis;
 	background: #00619d;
-	border-right: 1px solid transparent;
+	border: solid transparent;
+	border-width: 0 1px 1px 0;
 	box-sizing: border-box;
 	z-index: 2;
 }
@@ -2094,7 +2099,10 @@ li.align-right > .nav__drop{
 .nav__list > li.hover > a:before,
 .nav__list > li.active > a:before,
 .nav__list > li.current > a:before,
-.desktop .nav__list > li > a:focus:before{ opacity: 0; }
+.desktop .nav__list > li > a:focus:before,
+.nav__list > li.hover_next > a:before,
+.nav__list > li.active + li > a:before,
+.nav__list > li.current + li > a:before{ opacity: 0; }
 /*styles to menu level 1 end*/
 
 /*styles to menu level 2*/
