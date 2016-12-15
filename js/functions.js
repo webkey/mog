@@ -1717,9 +1717,12 @@ function formSuccessExample() {
 	if ( $form.length ) {
 
 		$form.submit(function (event) {
+			var $thisForm = $(this);
+
+			if ($thisForm.parent().hasClass('success-form')) return;
+
 			event.preventDefault();
 
-			var $thisForm = $(this);
 			testValidateForm($thisForm);
 		});
 
