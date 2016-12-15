@@ -253,7 +253,7 @@ strong em{
 	background: none;
 }
 .main{
-	padding: 40px 0 100px;
+	padding: 40px 0;
 	position: relative;
 	clear: both;
 	z-index: 4;
@@ -329,7 +329,6 @@ strong em{
 .heading h2{
 	padding: 0;
 }
-.bottom-space{ margin-bottom: 50px; }
 /*MAIN BLOCKS end*/
 
 /*sp*/
@@ -455,9 +454,6 @@ button{
 .desktop [class*="btn-default"]:hover{
 	background: #0d77b9;
 }
-.desktop [class*="btn-default"]:active{
-	background: #008acf;
-}
 /*btn-default end*/
 
 /*btn-default-alt*/
@@ -471,6 +467,54 @@ button{
 	color: #fff;
 }
 /*btn-default-alt end*/
+
+/*btn-download*/
+.btn-download{
+	font-family: 'lato-black', sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	cursor: pointer;
+	color: #fff;
+	padding: 18px 28px;
+	border: none;
+	background: #008acf no-repeat -999px -999px;
+	box-sizing: border-box;
+	-webkit-transition-property: color, background;
+	transition-property: color, background;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+}
+.desktop .btn-download:hover{
+	background-color: #0d77b9;
+}
+.btn-download > span{
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	padding-left: 36px;
+	background: inherit;
+}
+.desktop .accordion-title .file-link:hover{
+	color: #008acf;
+}
+.btn-download > span:before{
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	height: 40px;
+	width: 32px;
+	background: no-repeat -60px 50%;
+	background-image: inherit;
+	-webkit-background-size: 87px;
+	background-size: 87px;
+	-webkit-transform: translate(0, -50%);
+	-ms-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+}
+/*btn-download end*/
 /*btn end*/
 
 /*USER CONTENT*/
@@ -488,6 +532,7 @@ button{
 .user-content ol+h5{
 	padding-top: 10px;
 }
+.user-content .bottom-space{ margin-bottom: 50px; }
 
 /*list*/
 .user-content ul,
@@ -2699,7 +2744,7 @@ li.align-right > .nav__drop{
 }
 /*tabs end*/
 
-/*accordion*/
+/*expander*/
 .expander{
 	counter-reset: section;
 	margin-bottom: -1px;
@@ -2719,7 +2764,6 @@ li.align-right > .nav__drop{
 
 .accordion-header{
 	position: relative;
-	min-height: 78px;
 	line-height: 1;
 	box-sizing: border-box;
 }
@@ -2728,7 +2772,7 @@ li.align-right > .nav__drop{
 	min-height: inherit;
 	position: relative;
 	cursor: pointer;
-	padding: 24px 40px 24px 0;
+	padding: 28px 40px 28px 0;
 	box-sizing: border-box;
 	-webkit-transition-property: border-color;
 	transition-property: border-color;
@@ -2750,6 +2794,8 @@ li.align-right > .nav__drop{
 	border-radius: 50px;
 	overflow: hidden;
 	margin-right: 36px;
+	margin-top: -4px;
+	margin-bottom: -4px;
 }
 .accordion-title{
 	display: inline-block;
@@ -2758,17 +2804,31 @@ li.align-right > .nav__drop{
 	font-family: 'lato-bold', sans-serif;
 	font-size: 22px;
 	line-height: 30px;
-	color: #000;
 	box-sizing: border-box;
 	-webkit-transition-property: color;
 	transition-property: color;
 	-webkit-transition-duration: 0.2s;
 	transition-duration: 0.2s;
 }
+.accordion-title,
+.desktop .accordion-hand.js-accordion__no-hover:hover .accordion-title{
+	color: #000;
+}
 .accordion-figure + .accordion-title{
 	width: calc(100% - 152px);
 }
-.accordion-title .file-link{
+.desktop .accordion-hand:hover .accordion-title{
+	color: #008acf;
+}
+.expander.ordered > .expander__item .accordion-title:before {
+	position: relative;
+	display: inline-block;
+	content: counter(section) ".";
+	padding: 0 10px 0 0;
+	box-sizing: border-box;
+}
+
+.file-link{
 	position: relative;
 	display: inline-block;
 	vertical-align: top;
@@ -2784,21 +2844,21 @@ li.align-right > .nav__drop{
 	-webkit-transition-duration: 0.2s;
 	transition-duration: 0.2s;
 }
-.desktop .accordion-title .file-link:hover{
+.desktop .file-link:hover{
 	color: #008acf;
 }
-.accordion-title .file-link:before,
-.accordion-title .file-link:after{
+.file-link:before,
+.file-link:after{
 	content: '';
 	position: absolute;
 	left: 0;
 	top: 50%;
 	height: 40px;
 	width: 20px;
-	background: no-repeat -38px 50%;
+	background: no-repeat -26px 50%;
 	background-image: inherit;
-	-webkit-background-size: 58px;
-	background-size: 58px;
+	-webkit-background-size: 72px;
+	background-size: 72px;
 	opacity: 0;
 	-webkit-transform: translate(0, -50%);
 	-ms-transform: translate(0, -50%);
@@ -2808,25 +2868,15 @@ li.align-right > .nav__drop{
 	-webkit-transition-duration: 0.2s;
 	transition-duration: 0.2s;
 }
-.accordion-title .file-link:before{
+.file-link:before{
 	opacity: 1;
 	background-position: 0 50%;
 }
-.desktop .accordion-title .file-link:hover:before{
+.desktop .file-link:hover:before{
 	opacity: 0;
 }
-.desktop .accordion-title .file-link:hover:after{
+.desktop .file-link:hover:after{
 	opacity: 1;
-}
-.desktop .accordion-hand:hover .accordion-title{
-	color: #008acf;
-}
-.expander.ordered > .expander__item .accordion-title:before {
-	position: relative;
-	display: inline-block;
-	content: counter(section) ".";
-	padding: 0 10px 0 0;
-	box-sizing: border-box;
 }
 
 .accordion-angle{
@@ -2836,11 +2886,14 @@ li.align-right > .nav__drop{
 	width: 38px;
 	height: 38px;
 	border-radius: 50%;
-	background: #fff;
 	border: 2px solid #008acf;
 	-webkit-transform: translate(0, -50%);
 	-ms-transform: translate(0, -50%);
 	transform: translate(0, -50%);
+}
+.accordion-angle,
+.desktop .accordion-hand.js-accordion__no-hover:hover .accordion-angle{
+	background: #fff;
 }
 .js-accordion__header_active .accordion-angle{
 	-webkit-transform: translate(0, -50%) rotate(-180deg);
@@ -2853,22 +2906,29 @@ li.align-right > .nav__drop{
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	height: 3px;
+	height: 2px;
 	width: 10px;
-	background: #008acf;
 	border-radius: 2px;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+.accordion-angle:before,
+.accordion-angle:after,
+.desktop .accordion-hand.js-accordion__no-hover:hover .accordion-angle:before,
+.desktop .accordion-hand.js-accordion__no-hover:hover .accordion-angle:after{
+	background: #008acf;
 }
 .accordion-angle:before{
 	-webkit-transform: rotate(45deg);
 	-ms-transform: rotate(45deg);
 	transform: rotate(45deg);
-	margin: -1px 0 0 -8px;
+	margin: 0 0 0 -8px;
 }
 .accordion-angle:after{
 	-webkit-transform: rotate(-45deg);
 	-ms-transform: rotate(-45deg);
 	transform: rotate(-45deg);
-	margin: -1px 0 0 -2px;
+	margin: 0 0 0 -2px;
 }
 .accordion-angle,
 .accordion-angle:before,
@@ -2931,6 +2991,10 @@ li.align-right > .nav__drop{
 	margin-bottom: 0;
 }
 
+.accordion-frame__footer{
+	text-align: center;
+}
+
 .accordion-panel .expander{
 	float: left;
 	margin: -40px;
@@ -2965,6 +3029,21 @@ li.align-right > .nav__drop{
 .accordion-panel .accordion-angle:before,
 .accordion-panel .accordion-angle:after {
 	background: #b3b3b3;
+	width: 14px;
+	height: 2px;
+	border-radius: 0;
+}
+.accordion-panel .accordion-angle:before{
+	-webkit-transform: rotate(0);
+	-ms-transform: rotate(0);
+	transform: rotate(0);
+	margin: -1px 0 0 -7px;
+}
+.accordion-panel .accordion-angle:after{
+	-webkit-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	transform: rotate(90deg);
+	margin: -1px 0 0 -7px;
 }
 .desktop .accordion-panel .accordion-hand:hover .accordion-angle{
 	background: none;
@@ -2972,6 +3051,11 @@ li.align-right > .nav__drop{
 .desktop .accordion-panel .accordion-hand:hover .accordion-angle:before,
 .desktop .accordion-panel .accordion-hand:hover .accordion-angle:after{
 	background: #008acf;
+}
+.accordion-panel .js-accordion__header_active .accordion-angle:after{
+	-webkit-transform: rotate(0);
+	-ms-transform: rotate(0);
+	transform: rotate(0);
 }
 
 .accordion-panel .accordion-panel{
@@ -3036,7 +3120,7 @@ li.align-right > .nav__drop{
 	-webkit-transition-delay: 0.08s;
 	transition-delay: 0.08s;
 }
-/*accordion end*/
+/*expander end*/
 
 /*social networks*/
 .social-networks{
@@ -3842,6 +3926,7 @@ input.search-form__input{
 	height: 0;
 	width: 0;
 	border: none;
+	color: #999;
 }
 .breadcrumbs-list li:first-child{
 	padding-left: 0;
@@ -5092,7 +5177,7 @@ a.links__inner{
 }
 
 .video__show{
-	padding: 0 0 30px;
+	padding: 0 0 22px;
 }
 .video-holder {
 	position: relative;

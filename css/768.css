@@ -7,7 +7,9 @@
 .home-page [class*="bg-figure-"]{ }
 .header{ }
 .home-page .header{ }
-.main{ }
+.main {
+	padding: 30px 0;
+}
 .home-page .main{ }
 .main-holder{ }
 .content-wrap{ }
@@ -16,7 +18,18 @@
 .sidebar{ display: none; }
 .sidebar-holder{ }
 .footer{ }
-.sheet{ }
+.text-layout,
+.breadcrumbs-list,
+.user-content .breadcrumbs-list,
+.accordion-header {
+	padding-left: 30px;
+	padding-right: 30px;
+	box-sizing: border-box;
+}
+.text-layout .full-width{
+	margin-left: -30px;
+	margin-right: -30px;
+}
 .layout{
 	padding-left: 30px;
 	padding-right: 30px;
@@ -64,6 +77,23 @@
 /*slider*/
 .slick-arrow{ }
 /*slider end*/
+
+/*expander*/
+.accordion-figure {
+	width: 80px;
+	height: 80px;
+	margin-right: 26px;
+}
+/*expander end*/
+
+/*flashes*/
+.flashes__label {
+	float: none;
+	width: auto;
+	padding-bottom: 20px;
+	margin-top: 0;
+}
+/*flashes end*/
 
 /*tabs*/
 .tab-controls li,
@@ -150,6 +180,16 @@
 	height: 438px;
 }
 /*branches end*/
+
+/*video list*/
+.video__list{
+	margin: 0 -15px;
+}
+.video__list .video__item{
+	width: 49.98%;
+	padding: 0 15px 30px;
+}
+/*video list end*/
 /*CONTENT end*/
 /*MAIN end*/
 

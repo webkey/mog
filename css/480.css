@@ -12,16 +12,10 @@
 .home-page .main{ }
 .main-holder{ }
 .content-wrap{ }
-.content{ }
 .home-page .content{ }
 .sidebar{ display: none; }
 .sidebar-holder{ }
 .footer{ }
-.sheet{ }
-.layout{
-	padding-left: 20px;
-	padding-right: 20px;
-}
 .header .layout,
 .home-page .main .layout{ }
 /*MAIN BLOCKS end*/

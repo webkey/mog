@@ -1381,7 +1381,8 @@ function tabSwitcher() {
 			activeItem: 'js-accordion__item_active',
 			activeHeader: 'js-accordion__header_active',
 			activeHand: 'js-accordion__hand_active',
-			activeContent: 'js-accordion__panel_active'
+			activeContent: 'js-accordion__panel_active',
+			noHoverClass: 'js-accordion__no-hover'
 		};
 
 		this.bindEvents();
@@ -1391,10 +1392,17 @@ function tabSwitcher() {
 	JsAccordion.prototype.bindEvents = function () {
 		var self = this,
 			$accordionContent = self.$accordionContent,
-			animateSpeed = self._animateSpeed;
+			animateSpeed = self._animateSpeed,
+			modifiers = self.modifiers;
 
 		self.$accordionHand.on('click', 'a', function (e) {
 			e.stopPropagation();
+		});
+
+		self.$accordionHand.on('mouseenter', 'a', function () {
+			$(this).closest(self.$accordionHand).addClass(modifiers.noHoverClass);
+		}).on('mouseleave', 'a', function () {
+			$(this).closest(self.$accordionHand).removeClass(modifiers.noHoverClass);
 		});
 
 		// self.$accordionContainer.on('click', self.options.accordionHand, function (e) {
@@ -1408,12 +1416,12 @@ function tabSwitcher() {
 
 			if ($accordionContent.is(':animated')) return;
 
-			if ($currentHeader.hasClass(self.modifiers.activeHeader)){
+			if ($currentHeader.hasClass(modifiers.activeHeader)){
 
-				$currentItem.removeClass(self.modifiers.activeItem);
-				$currentHeader.removeClass(self.modifiers.activeHeader);
-				$currentHand.removeClass(self.modifiers.activeHand);
-				$currentItemContent.removeClass(self.modifiers.activeContent);
+				$currentItem.removeClass(modifiers.activeItem);
+				$currentHeader.removeClass(modifiers.activeHeader);
+				$currentHand.removeClass(modifiers.activeHand);
+				$currentItemContent.removeClass(modifiers.activeContent);
 
 				$currentItemContent.slideUp(animateSpeed, function () {
 
@@ -1444,20 +1452,20 @@ function tabSwitcher() {
 				// console.log('closed siblings');
 			});
 
-			$currentItem.siblings().removeClass(self.modifiers.activeItem);
-			$currentItem.siblings().find(self.$accordionHeader).removeClass(self.modifiers.activeHeader);
-			$currentItem.siblings().find(self.$accordionHand).removeClass(self.modifiers.activeHand);
-			$currentItem.siblings().find(self.$accordionHeader).next().removeClass(self.modifiers.activeContent);
+			$currentItem.siblings().removeClass(modifiers.activeItem);
+			$currentItem.siblings().find(self.$accordionHeader).removeClass(modifiers.activeHeader);
+			$currentItem.siblings().find(self.$accordionHand).removeClass(modifiers.activeHand);
+			$currentItem.siblings().find(self.$accordionHeader).next().removeClass(modifiers.activeContent);
 
 			$currentItemContent.slideDown(animateSpeed, function () {
 				// console.log('opened');
 				self.scrollPosition($currentItem);
 			});
 
-			$currentItem.addClass(self.modifiers.activeItem);
-			$currentHeader.addClass(self.modifiers.activeHeader);
-			$currentHand.addClass(self.modifiers.activeHand);
-			$currentItemContent.addClass(self.modifiers.activeContent);
+			$currentItem.addClass(modifiers.activeItem);
+			$currentHeader.addClass(modifiers.activeHeader);
+			$currentHand.addClass(modifiers.activeHand);
+			$currentItemContent.addClass(modifiers.activeContent);
 
 			e.stopPropagation();
 		});
