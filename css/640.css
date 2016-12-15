@@ -1,26 +1,8 @@
 @media only screen and (max-width: 639px){}
 /*MAIN BLOCKS*/
-.content{
-	border-width: 1px 0;
-}
-.text-layout,
-.breadcrumbs-list,
-.user-content .breadcrumbs-list,
-.accordion-header {
-	padding-left: 20px;
-	padding-right: 20px;
-}
-.text-layout .full-width{
-	margin-left: -20px;
-	margin-right: -20px;
-}
 .layout{
 	padding-left: 20px;
 	padding-right: 20px;
-}
-.main .layout{
-	padding-left: 0;
-	padding-right: 0;
 }
 /*MAIN BLOCKS end*/
 

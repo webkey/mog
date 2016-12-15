@@ -8,12 +8,14 @@
 .header{ }
 .home-page .header{ }
 .main {
-	padding: 30px 0;
+	padding: 0;
 }
 .home-page .main{ }
 .main-holder{ }
 .content-wrap{ }
-.content{ }
+.content{
+	border-width: 1px 0;
+}
 .home-page .content{ }
 .sidebar{ display: none; }
 .sidebar-holder{ }
@@ -21,18 +23,21 @@
 .text-layout,
 .breadcrumbs-list,
 .user-content .breadcrumbs-list,
-.accordion-header {
-	padding-left: 30px;
-	padding-right: 30px;
-	box-sizing: border-box;
+.expander__header {
+	padding-left: 20px;
+	padding-right: 20px;
 }
 .text-layout .full-width{
-	margin-left: -30px;
-	margin-right: -30px;
+	margin-left: -20px;
+	margin-right: -20px;
 }
 .layout{
 	padding-left: 30px;
 	padding-right: 30px;
+}
+.main .layout{
+	padding-left: 0;
+	padding-right: 0;
 }
 .header .layout,
 .home-page .main .layout{ }
@@ -79,11 +84,46 @@
 /*slider end*/
 
 /*expander*/
+.expander__hand {
+	padding: 20px 40px 20px 0;
+}
+.expander__title {
+	font-size: 18px;
+	line-height: 26px;
+}
+.accordion-figure + .expander__title {
+	width: calc(100% - 122px);
+}
 .accordion-figure {
 	width: 80px;
 	height: 80px;
 	margin-right: 26px;
 }
+
+.expander__angle {
+	width: 34px;
+	height: 34px;
+}
+
+.expander__frame {
+	padding: 18px 20px;
+}
+.expander__panel .expander{
+	width: calc(100% + 40px);
+	margin: -18px -20px;
+}
+.expander__panel .expander__panel {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.expander__panel .expander .expander__frame{
+	padding: 18px 20px;
+}
+.expander__panel .expander__title {
+	font-size: 16px;
+	line-height: 22px;
+}
+
 /*expander end*/
 
 /*flashes*/

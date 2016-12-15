@@ -20,6 +20,12 @@
 .home-page .main .layout{ }
 /*MAIN BLOCKS end*/
 
+/*USER CONTENT*/
+.user-content .bottom-space {
+	margin-bottom: 40px;
+}
+/*USER CONTENT end*/
+
 /*HEADER*/
 .header-holder { }
 
@@ -82,6 +88,15 @@
 	padding: 0 0 30px;
 }
 /*section end*/
+
+/*expander*/
+.accordion-figure {
+	display: none;
+}
+.accordion-figure + .expander__title {
+	width: calc(100% - 10px);
+}
+/*expander end*/
 
 /*CONTENT*/
 /*promo section*/
@@ -176,6 +191,16 @@
 	height: 280px;
 }
 /*branches end*/
+
+/*video list*/
+.video__list{
+	margin: 0 -15px;
+}
+.video__list .video__item{
+	width: 100%;
+	padding: 0 15px 30px;
+}
+/*video list end*/
 /*CONTENT end*/
 /*MAIN end*/
 

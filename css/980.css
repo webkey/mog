@@ -320,6 +320,12 @@
 	left: auto;
 }
 /*branches end*/
+
+/*video list*/
+.video__list .video__item{
+	width: 33.28%;
+}
+/*video list end*/
 /*CONTENT end*/
 /*MAIN end*/
 
