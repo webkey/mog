@@ -8,9 +8,17 @@
 /*video list end*/
 
 /*contacts info*/
-.contacts-info__item {
+.info-container__item {
 	width: 99.98%;
 }
 /*contacts info end*/
+
+/*products*/
+/*grid view*/
+.grid-view-activated .products__item{
+	width: 49.98%;
+}
+/*grid view end*/
+/*products end*/
 /*CONTENT end*/
 

@@ -1,5 +1,20 @@
 @media only screen and (max-width: 767px){}
 
+/*------ TYPOGRAPHIC STYLES ------*/
+h1{
+	font-size: 30px;
+	line-height: 42px;
+}
+h2{
+	font-size: 24px;
+	line-height: 34px;
+}
+h3{
+	font-size: 18px;
+	line-height: 32px;
+}
+/*------ TYPOGRAPHIC STYLES end ------*/
+
 /*MAIN BLOCKS*/
 .wrapper{ }
 .bg-figure-two{ }
@@ -41,10 +56,22 @@
 }
 .header .layout,
 .home-page .main .layout{ }
-.user-content .bottom-space {
+.user-content .bottom-space{
 	margin-bottom: 50px;
 }
 /*MAIN BLOCKS end*/
+
+.user-content blockquote {
+	padding-left: 0;
+}
+.user-content blockquote q{
+	font-size: 20px;
+	line-height: 26px;
+	border-width: 4px;
+}
+.files .files-item{
+	width: 100%;
+}
 
 /*HEADER*/
 .header-holder { }
@@ -238,7 +265,7 @@
 /*video list end*/
 
 /*contacts info*/
-.contacts-info__item {
+.info-container__item {
 	width: 99.98%;
 	padding-bottom: 20px;
 }
@@ -259,6 +286,24 @@
 	transform: none;
 }
 /*contacts map end*/
+
+/*products*/
+.products__inner {
+	padding: 28px 20px;
+}
+/*grid view*/
+.grid-view-activated .products__item{
+	width: 49.98%;
+}
+.grid-view-activated .products__inner{
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.grid-view-activated .products__item .btn-bay {
+	bottom: 28px;
+}
+/*grid view end*/
+/*products end*/
 /*CONTENT end*/
 /*MAIN end*/
 
