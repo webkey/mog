@@ -1232,7 +1232,7 @@ function tabSwitcher() {
 				$thisAnchor = $this.find($anchor),
 				$thisContainer = $this.find($container),
 				$thisContent = $this.find($content),
-				initialDataAtr = $content.find('.active').data('for'),
+				initialDataAtr = $this.find('.active').data('for'),
 				activeDataAtr = false;
 
 			// prepare traffic content
@@ -1273,9 +1273,11 @@ function tabSwitcher() {
 
 			// switch content
 			function switchContent() {
-				toggleContent();
-				changeHeightContainer();
-				toggleActiveClass();
+				if (initialDataAtr) {
+					toggleContent();
+					changeHeightContainer();
+					toggleActiveClass();
+				}
 			}
 
 			// show active content and hide other
@@ -1802,6 +1804,14 @@ function equalHeightInit() {
 
 	if ($productsItem.length) {
 		$productsItem.matchHeight({
+			byRow: true, property: 'height', target: null, remove: false
+		});
+	}
+
+	var $cardBarTab = $('.card-bar__tab');
+
+	if ($cardBarTab.length) {
+		$cardBarTab.matchHeight({
 			byRow: true, property: 'height', target: null, remove: false
 		});
 	}

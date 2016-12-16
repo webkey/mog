@@ -576,6 +576,7 @@ button{
 .user-content ol > li:before{
 	position: relative;
 	display: inline-block;
+	vertical-align: top;
 	text-align: left;
 	font-family: 'lato-bold', sans-serif;
 	font-size: 12px;
@@ -5915,7 +5916,7 @@ a.links__inner{
 
 /*card*/
 .card{
-
+	padding: 30px 0 0;
 }
 .card:before,
 .card:after { content: ""; display: table; }
@@ -6053,6 +6054,98 @@ a.links__inner{
 	color: #262626;
 }
 /*card end*/
+
+/*card bar*/
+.card-bar{
+	overflow: hidden;
+}
+.card-bar__nav{
+	margin: 0 -2px;
+}
+.card-bar__nav:before,
+.card-bar__nav:after { content: ""; display: table; }
+.card-bar__nav:after { clear: both; }
+.card-bar__tab{
+	float: left;
+	width: 25%;
+	text-align: center;
+	box-sizing: border-box;
+}
+.card-bar__tab a{
+	display: block;
+	padding: 20px 12px;
+	height: 100%;
+	font-family: 'lato-heavy', sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #262626;
+	border: solid #d9d9d9;
+	border-width: 1px 1px 1px 0;
+	box-sizing: border-box;
+	-webkit-transition-property: color, background;
+	transition-property: color, background;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+}
+.card-bar__tab:first-child a{
+	border-left-width: 1px;
+}
+.card-bar__tab a i{
+	display: block;
+	padding: 0 0 10px;
+}
+.card-bar__tab a svg{
+	display: inline-block;
+	width: 46px;
+	height: 46px;
+}
+.card-bar__tab a path{
+	fill: #262626;
+	-webkit-transition-property: fill;
+	transition-property: fill;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+}
+.card-bar__tab a span{
+	border-bottom: 1px dotted #262626;
+	-webkit-transition-property: border-color;
+	transition-property: border-color;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+}
+
+.desktop .card-bar__tab a:hover,
+.card-bar__tab a.active{
+	color: #008acf;
+}
+.card-bar__tab a.active{
+	border-bottom-color: transparent;
+}
+.desktop .card-bar__tab a:hover path,
+.desktop .card-bar__tab a.active path{
+	fill: #008acf;
+}
+.desktop .card-bar__tab a:hover span{
+	border-color: #008acf;
+}
+.card-bar__tab a.active span,
+.desktop .card-bar__tab a.active span{
+	border-color: transparent;
+}
+
+.card-bar__panel{
+	border-bottom: 1px solid #d9d9d9;
+	padding: 30px 0;
+}
+.card-bar__panel .text-layout > p:last-child,
+.card-bar__panel .text-layout > ol:last-child,
+.card-bar__panel .text-layout > ul:last-child{
+	padding-bottom: 0;
+}
+/*card bar end*/
 /*CONTENT end*/
 
 /*SIDEBAR*/
