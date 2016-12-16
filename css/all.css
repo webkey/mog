@@ -5785,23 +5785,16 @@ a.links__inner{
 	font-size: 0;
 	letter-spacing: -4px;
 }
-.products__figure:before{
-	content: '';
-	display: inline-block;
-	vertical-align: middle;
-	height: 100%;
-	text-align: center;
-}
 .products__img{
-	display: inline-block;
-	vertical-align: middle;
-	width: calc(100% - 2px);
+	display: block;
+	height: 100%;
 	font-size: 16px;
 	letter-spacing: normal;
 }
 .products__img img{
 	display: block;
 	margin: 0 auto;
+	max-height: 100%;
 }
 
 .products__content{
@@ -5914,6 +5907,90 @@ a.links__inner{
 }
 /*grid view end*/
 /*products end*/
+
+/*card*/
+.card{
+
+}
+.card:before,
+.card:after { content: ""; display: table; }
+.card:after { clear: both; }
+
+.card__visual{
+	float: left;
+	width: 50%;
+	box-sizing: border-box;
+}
+
+.card__content{
+	float: right;
+	width: 50%;
+}
+.card__title{
+	padding: 0 0 10px;
+}
+.card__title h1,
+.card__title h2{
+	font-family: 'lato-bold', sans-serif;
+	font-size: 22px;
+	line-height: 36px;
+	color: #262626;
+	margin: 0;
+	padding: 0;
+}
+.card__state{
+	font-size: 16px;
+	line-height: 24px;
+	padding-left: 30px;
+	margin-bottom: 20px;
+	position: relative;
+}
+.card__state i{
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	-webkit-transform: translate(0, -50%);
+	-ms-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+}
+.card__state_on i{
+	background: #00a143;
+}
+.card__state_off i{
+	background: #f3f3f3;
+}
+.card__state i:before,
+.card__state i:after{
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: 2px;
+	border-radius: 2px;
+	background: #fff;
+	-webkit-transition-property: background;
+	transition-property: background;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+}
+.card__state i:before{
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+	margin: -1px 0 0 -7px;
+	width: 6px;
+}
+.card__state i:after{
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	margin: -1px 0 0 -1px;
+	width: 8px;
+}
+/*card end*/
 /*CONTENT end*/
 
 /*SIDEBAR*/
@@ -6045,7 +6122,6 @@ a.links__inner{
 }
 /*menu end*/
 /*SIDEBAR end*/
-
 /*MAIN end*/
 
 /*FOOTER*/
