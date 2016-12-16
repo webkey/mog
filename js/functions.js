@@ -1098,7 +1098,7 @@ function slidersInit() {
  * responsive tabs
  * */
 function tabsInit() {
-	var $tabs = $('.js-tabs');
+	var $tabs = $('.js-controller');
 
 	if ($tabs) {
 
@@ -1232,7 +1232,7 @@ function tabSwitcher() {
 				$thisAnchor = $this.find($anchor),
 				$thisContainer = $this.find($container),
 				$thisContent = $this.find($content),
-				initialDataAtr = $thisAnchor.eq(0).data('for'),
+				initialDataAtr = $content.find('.active').data('for'),
 				activeDataAtr = false;
 
 			// prepare traffic content
@@ -1798,12 +1798,13 @@ function toggleView() {
 /*toggle view shops end*/
 
 function equalHeightInit() {
-	$('.products__item').matchHeight({
-		byRow: true,
-		property: 'height',
-		target: null,
-		remove: false
-	});
+	var $productsItem = $('.products__item');
+
+	if ($productsItem.length) {
+		$productsItem.matchHeight({
+			byRow: true, property: 'height', target: null, remove: false
+		});
+	}
 }
 
 /**!
