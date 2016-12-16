@@ -1437,8 +1437,12 @@ function tabSwitcher() {
 
 						$.each($internalContent, function () {
 							if ($(this).hasClass(self.modifiers.activeContent)) {
+
+								self.scrollPosition($currentItem);
+
 								$(this).slideUp(self._animateSpeed, function () {
 									// console.log('closed attachment');
+									self.scrollPosition($currentItem);
 								});
 							}
 						});
@@ -1461,6 +1465,8 @@ function tabSwitcher() {
 			$currentItem.siblings().find(self.$accordionHeader).removeClass(modifiers.activeHeader);
 			$currentItem.siblings().find(self.$accordionHand).removeClass(modifiers.activeHand);
 			$currentItem.siblings().find(self.$accordionHeader).next().removeClass(modifiers.activeContent);
+
+			self.scrollPosition($currentItem);
 
 			$currentItemContent.slideDown(animateSpeed, function () {
 				// console.log('opened');
@@ -1499,9 +1505,13 @@ function tabSwitcher() {
 			$currentItem.addClass(self.modifiers.activeItem);
 			$currentItem.children(self.$accordionHeader).addClass(self.modifiers.activeHeader);
 			$currentItem.children(self.$accordionHeader).find(self.$accordionHand).addClass(self.modifiers.activeHand);
+
+			// self.scrollPosition($currentItem);
+
 			$currentItem.children(self.$accordionHeader).next().addClass(self.modifiers.activeContent).slideDown(self._animateSpeed, function () {
 				// console.log('opened active');
-				self.scrollPosition($currentItem);
+
+				// self.scrollPosition($currentItem);
 			});
 		});
 	};
@@ -1563,7 +1573,7 @@ function jsAccordion() {
 			accordionHeader: '.js-accordion__header',
 			accordionHand: '.js-accordion__hand',
 			scrollToTop: true,
-			scrollToTopSpeed: 200,
+			scrollToTopSpeed: 150,
 			// accordionContent: '.accordion-panel',
 			indexInit: false,
 			clickOutside: false,

@@ -2762,6 +2762,13 @@ li.align-right > .nav__drop{
 .expander__content{
 	padding: 0 0 40px;
 }
+.expander__content h4{
+	font-family: 'lato-black', sans-serif;
+	font-size: 16px;
+	line-height: 30px;
+	color: #262626;
+	text-transform: none;
+}
 .expander + .expander__content,
 .expander__content + .expander{
 	border-top: 1px solid #d9d9d9;
@@ -5255,7 +5262,7 @@ a.links__inner{
 .contacts-info__sub-title{
 	display: block;
 	padding: 0 0 20px;
-	font-family: 'lato-semibold', sans-serif;
+	font-family: 'lato-black', sans-serif;
 	color: #262626;
 }
 .contacts-info__sub-title{
@@ -6049,6 +6056,9 @@ a.links__inner{
 	.footer-common,
 	.video-section,
 	.btn-download,
+	.content-foot,
+	.contacts-map__info,
+	.contacts-map__frame,
 	.print-hidden{ display: none !important; }
 	.layout{ padding: 0 !important; }
 	.text-layout,
@@ -6192,6 +6202,10 @@ a.links__inner{
 		display: none !important;
 	}
 	/*expander end*/
+
+	/*contacts map*/
+	.map-for-print{ display: block !important; }
+	/*contacts map end*/
 
 	/*FOOTER*/
 	.developer_logo{
