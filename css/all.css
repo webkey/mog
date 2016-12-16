@@ -418,41 +418,57 @@ button{
 	padding: inherit;
 	pointer-events: none;
 	box-sizing: border-box;
-	-webkit-transition-property: opacity, background, -webkit-transform;
-	transition-property: opacity, background, transform;
-	-webkit-transition-duration: 0.1s;
-	transition-duration: 0.1s;
-	-webkit-transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
-	transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+	-webkit-transition-property: opacity, -webkit-transform;
+	transition-property: opacity, transform;
+	-webkit-transition-duration: 0.1s, 0.1s;
+	transition-duration: 0.1s, 0.1s;
+	-webkit-transition-timing-function: ease-in-out;
+	transition-timing-function: ease-in-out;
+}
+.desktop [class*="btn-default"]:hover{
+	background: #0d77b9;
 }
 [class*="btn-default"]:before{
-	-webkit-transform: translate(0, 0) scale(1, 1);
-	-ms-transform: translate(0, 0) scale(1, 1);
-	transform: translate(0, 0) scale(1, 1);
+	opacity: 1;
+	-webkit-transform: translate(0, 0);
+	-ms-transform: translate(0, 0);
+	transform: translate(0, 0);
+	/*-webkit-transform: translate(0, 0) scale(1, 1);*/
+	/*-ms-transform: translate(0, 0) scale(1, 1);*/
+	/*transform: translate(0, 0) scale(1, 1);*/
 	-webkit-transition-delay: 0.1s;
 	transition-delay: 0.1s;
 }
 .desktop [class*="btn-default"]:hover:before{
-	-webkit-transform: translate(0, -100%) scale(0.8, 0.8);
-	-ms-transform: translate(0, -100%) scale(0.8, 0.8);
-	transform: translate(0, -100%) scale(0.8, 0.8);
+	opacity: 0;
+	-webkit-transform: translate(0, -40%);
+	-ms-transform: translate(0, -40%);
+	transform: translate(0, -40%);
+	/*-webkit-transform: translate(0, -100%) scale(0.8, 0.8);*/
+	/*-ms-transform: translate(0, -100%) scale(0.8, 0.8);*/
+	/*transform: translate(0, -100%) scale(0.8, 0.8);*/
 	-webkit-transition-delay: 0s;
 	transition-delay: 0s;
 }
 [class*="btn-default"]:after{
-	-webkit-transform: translate(0, 100%) scale(0.8, 0.8);
-	-ms-transform: translate(0, 100%) scale(0.8, 0.8);
-	transform: translate(0, 100%) scale(0.8, 0.8);
+	opacity: 0;
+	-webkit-transform: translate(0, 40%);
+	-ms-transform: translate(0, 40%);
+	transform: translate(0, 40%);
+	/*-webkit-transform: translate(0, 100%) scale(0.8, 0.8);*/
+	/*-ms-transform: translate(0, 100%) scale(0.8, 0.8);*/
+	/*transform: translate(0, 100%) scale(0.8, 0.8);*/
 }
 .desktop [class*="btn-default"]:hover:after{
-	-webkit-transform: translate(0, 0) scale(1, 1);
-	-ms-transform: translate(0, 0) scale(1, 1);
-	transform: translate(0, 0) scale(1, 1);
-	-webkit-transition-delay: 0.1s;
-	transition-delay: 0.1s;
-}
-.desktop [class*="btn-default"]:hover{
-	background: #0d77b9;
+	opacity: 1;
+	-webkit-transform: translate(0, 0);
+	-ms-transform: translate(0, 0);
+	transform: translate(0, 0);
+	/*-webkit-transform: translate(0, 0) scale(1, 1);*/
+	/*-ms-transform: translate(0, 0) scale(1, 1);*/
+	/*transform: translate(0, 0) scale(1, 1);*/
+	/*-webkit-transition-delay: 0s, 0.1s;*/
+	/*transition-delay: 0s, 0.1s;*/
 }
 /*btn-default end*/
 
