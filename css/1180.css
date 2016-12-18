@@ -19,6 +19,12 @@
 	width: 49.98%;
 }
 /*grid view end*/
+.tape-slider .grid-view-activated .products__item{
+	width: 280px;
+}
+/*tape slider*/
+
+/*tape slider end*/
 /*products end*/
 /*CONTENT end*/
 

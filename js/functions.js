@@ -1214,6 +1214,27 @@ function tabSwitcher() {
 	// 1) TweetMax VERSION: 1.19.0 (widgets.js);
 	// 2) resizeByWidth (resize only width);
 
+	/*
+	 <!--html-->
+	 <div class="some-class js-tabs" data-collapsed="true">
+	 <!--if has data-collapsed="true" one click open tab content, two click close collapse tab content-->
+	 <div class="some-class__nav">
+	 <div class="some-class__tab">
+	 <a href="#" class="js-tab-anchor" data-for="some-id-01">Text tab 01</a>
+	 </div>
+	 <div class="some-class__tab">
+	 <a href="#" class="js-tab-anchor" data-for="some-id-02">Text tab 02</a>
+	 </div>
+	 </div>
+
+	 <div class="some-class__panels js-tab-container">
+	 <div class="some-class__panel js-tab-content" data-id="some-id-01">Text content 01</div>
+	 <div class="some-class__panel js-tab-content" data-id="some-id-02">Text content 02</div>
+	 </div>
+	 </div>
+	 <!--html end-->
+	*/
+
 	var $main = $('.js-tabs');
 
 	var $container = $('.js-tab-container');
@@ -1264,6 +1285,15 @@ function tabSwitcher() {
 				var $cur = $(this),
 					dataFor = $cur.data('for');
 
+				if ($this.data('collapsed') === true && activeDataAtr === dataFor) {
+
+					toggleActiveClass();
+					toggleContent(false);
+					changeHeightContainer(false);
+
+					return;
+				}
+
 				if (activeDataAtr === dataFor) return false;
 
 				initialDataAtr = dataFor;
@@ -1296,6 +1326,8 @@ function tabSwitcher() {
 					'z-index': -1
 				});
 
+				if ( arguments[0] === false ) return;
+
 				var $initialContent = $thisContent.filter('[data-id="' + initialDataAtr + '"]');
 
 				$initialContent.css('z-index', 2);
@@ -1308,6 +1340,14 @@ function tabSwitcher() {
 			// change container's height
 			function changeHeightContainer() {
 				var $initialContent = $thisContent.filter('[data-id="' + initialDataAtr + '"]');
+
+				if ( arguments[0] === false ) {
+					TweenMax.to($thisContainer, animationHeightSpeed, {
+						'height': 0
+					});
+
+					return;
+				}
 
 				TweenMax.to($thisContainer, animationHeightSpeed, {
 					'height': $initialContent.outerHeight(),
@@ -1822,7 +1862,11 @@ function equalHeightInit() {
  */
 function tapeSlider() {
 	'use strict';
+
 	var $frame  = $('.tape-slider__frame');
+
+	if (!$frame.length) return;
+
 	var $wrap   = $frame.parent();
 
 	var options = {
@@ -1834,7 +1878,6 @@ function tapeSlider() {
 		touchDragging: 1,
 		releaseSwing: 1,
 		startAt: 0,
-		scrollBar: $wrap.find('.tape-slider__scrollbar'),
 		scrollBy: 0,
 		speed: 300,
 		elasticBounds: 1,
@@ -1858,7 +1901,6 @@ function tapeSlider() {
 	});
 }
 /*similar slider*/
-
 
 /**!
  * footer at bottom
@@ -1947,6 +1989,10 @@ $(window).on('load', function () {
 	$('html').addClass('page-load');
 });
 
+$(window).on('load resizeByWidth', function () {
+	$('html').toggleClass('small-screen', window.innerWidth < 768);
+});
+
 $(document).ready(function(){
 	placeholderInit();
 	// inputToggleFocusClass();
@@ -1975,6 +2021,7 @@ $(document).ready(function(){
 	contactsMap();
 	toggleView();
 	equalHeightInit();
+	tapeSlider();
 
 	footerBottom();
 

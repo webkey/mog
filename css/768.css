@@ -304,6 +304,46 @@ h3{
 }
 /*grid view end*/
 /*products end*/
+
+/*card*/
+.card-visual {
+	float: none;
+	width: auto;
+	min-height: 0;
+	padding: 0 0 30px;
+	text-align: center;
+}
+.card-description, .card__title {
+	float: none;
+	width: auto;
+	padding-left: 0;
+	padding-right: 0;
+}
+.card__title {
+	padding-bottom: 30px;
+}
+.card__title h1,
+.card__title h2{
+	text-align: center;
+}
+/*card end*/
+
+/*card bar*/
+.card-bar__tab a {
+	padding: 15px 8px;
+	font-size: 12px;
+	line-height: 18px;
+	letter-spacing: 0.025em;
+}
+.card-bar__tab a svg {
+	width: 40px;
+	height: 40px;
+}
+/*card bar end*/
+
+/*similar products*/
+
+/*similar products end*/
 /*CONTENT end*/
 /*MAIN end*/
 

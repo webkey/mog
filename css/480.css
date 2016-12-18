@@ -70,6 +70,26 @@
 /*button menu end*/
 
 /*MAIN*/
+/*popup*/
+.extra-popup__head{
+	height: 40px;
+}
+.btn-menu-close {
+	width: 40px;
+	height: 40px;
+}
+.btn-menu-close > i{
+	margin: -1px 0 0 -12px;
+}
+.btn-menu-close > i,
+.btn-menu-close > i:before,
+.btn-menu-close > i:after{
+	width: 24px;
+}
+.extra-popup__content {
+	padding: 20px 0 0;
+}
+
 /*slider*/
 .slick-arrow{ }
 /*slider end*/
@@ -97,10 +117,7 @@
 	width: calc(100% - 10px);
 }
 /*expander end*/
-
-/*CONTENT*/
 /*promo section*/
-.promo-section { }
 /*promo slider*/
 .promo-slider__title {
 	font-size: 20px;
@@ -136,6 +153,8 @@
 	letter-spacing: normal;
 }
 /*promo section end*/
+
+/*CONTENT*/
 
 /*regard*/
 .regard-section {
@@ -236,6 +255,22 @@
 }
 /*grid view end*/
 /*products end*/
+
+/*card bar*/
+.card-bar__panel {
+	padding: 18px 0;
+}
+.card-bar__tab a {
+	padding: 15px 5px;
+	font-size: 10px;
+	line-height: 18px;
+	letter-spacing: normal;
+}
+.card-bar__tab a svg {
+	width: 32px;
+	height: 32px;
+}
+/*card bar end*/
 /*CONTENT end*/
 /*MAIN end*/
 
