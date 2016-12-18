@@ -253,8 +253,13 @@ textarea,
 }
 
 /*CONTENT*/
+/*article options*/
+.share-box__label{
+	padding-left: 20px;
+}
+/*promo slider end*/
+
 /*promo section*/
-.promo-section { }
 /*promo slider*/
 .promo-slider__content{
 	background: -moz-linear-gradient(left,  rgba(255,255,255,0.64) 0%, rgba(255,255,255,0.82) 32%, rgba(255,255,255,0.95) 62%, rgba(255,255,255,1) 77%, rgba(255,255,255,1) 100%);
@@ -311,7 +316,7 @@ textarea,
 /*branches*/
 .branches-section {
 	padding-bottom: 0;
-	margin-bottom: 0;
+	margin-bottom: 30px;
 }
 .branches-map {
 	height: 360px;
@@ -320,6 +325,20 @@ textarea,
 	height: 438px;
 }
 /*branches end*/
+
+/*news*/
+.news__inner{
+	padding: 30px 20px;
+}
+.news__img{
+	float: none;
+	margin: 0 0 20px;
+}
+.news__img + .news__data{
+	left: 20px;
+	top: 30px;
+}
+/*news end*/
 
 /*video list*/
 .video__list{
@@ -339,6 +358,9 @@ textarea,
 /*contacts info end*/
 
 /*contacts map*/
+.contacts-map__frame {
+	height: 320px;
+}
 .contacts-map__info{
 	position: relative;
 	right: auto;
@@ -358,6 +380,14 @@ textarea,
 .products__inner {
 	padding: 28px 20px;
 }
+.products__figure{
+	margin-right: 20px;
+	width: 128px;
+}
+.products__item .btn-bay {
+	left: 168px;
+	bottom: 30px;
+}
 /*grid view*/
 .grid-view-activated .products__item{
 	width: 49.98%;
@@ -366,7 +396,11 @@ textarea,
 	padding-left: 20px;
 	padding-right: 20px;
 }
+.grid-view-activated .products__figure{
+	width: 158px;
+}
 .grid-view-activated .products__item .btn-bay {
+	left: 50%;
 	bottom: 28px;
 }
 /*grid view end*/
@@ -407,10 +441,6 @@ textarea,
 	height: 40px;
 }
 /*card bar end*/
-
-/*similar products*/
-
-/*similar products end*/
 /*CONTENT end*/
 /*MAIN end*/
 
