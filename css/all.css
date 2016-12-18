@@ -2079,6 +2079,11 @@ li.align-right > .nav__drop{
 .desktop .nav__list > li > a:focus{
 	color: #008acf;
 	background: #fff;
+}
+.nav__list > li.has-drop.hover > a,
+.no-js .nav__list > li.has-drop:hover > a,
+.nav__list > li.has-drop.hover + li.current.hover_next > a,
+.nav__list > li.has-drop.hover + li.current.hover_prev > a{
 	border-color: #d9d9d9;
 }
 
