@@ -1817,6 +1817,49 @@ function equalHeightInit() {
 	}
 }
 
+/*!
+ similar slider
+ */
+function tapeSlider() {
+	'use strict';
+	var $frame  = $('.tape-slider__frame');
+	var $wrap   = $frame.parent();
+
+	var options = {
+		horizontal: 1,
+		itemNav: 'basic',
+		smart: 1,
+		activateOn: 'click',
+		mouseDragging: 1,
+		touchDragging: 1,
+		releaseSwing: 1,
+		startAt: 0,
+		scrollBar: $wrap.find('.tape-slider__scrollbar'),
+		scrollBy: 0,
+		speed: 300,
+		elasticBounds: 1,
+		easing: 'easeOutExpo',
+		dragHandle: 1,
+		dynamicHandle: 1,
+		clickBar: 1,
+
+		// Buttons
+		prevPage: $wrap.find('.tape-slider__prev'),
+		nextPage: $wrap.find('.tape-slider__next')
+	};
+	var frame = new Sly($frame, options);
+
+	// Initiate frame
+	frame.init();
+
+	// Reload on resize
+	$(window).on('resize', function () {
+		frame.reload();
+	});
+}
+/*similar slider*/
+
+
 /**!
  * footer at bottom
  * */
