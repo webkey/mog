@@ -61,6 +61,7 @@ h3{
 }
 /*MAIN BLOCKS end*/
 
+/*USER CONTENT*/
 .user-content blockquote {
 	padding-left: 0;
 }
@@ -72,6 +73,35 @@ h3{
 .files .files-item{
 	width: 100%;
 }
+/*FORM STYLES*/
+/*elements form style*/
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="search"],
+textarea {
+	height: 50px;
+	padding: 11px 18px;
+}
+.select select{
+	height: 50px;
+	padding: 11px 40px 11px 16px;
+}
+.select button.cselect .select-inner{
+	padding: 11px 40px 11px 18px;
+}
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea,
+.form-row,
+.input-wrap {
+	margin-bottom: 20px;
+	position: relative;
+}
+/*elements form style end*/
+/*FORM STYLES end*/
+/*USER CONTENT end*/
 
 /*HEADER*/
 .header-holder { }
@@ -109,6 +139,44 @@ h3{
 /*button menu end*/
 
 /*MAIN*/
+/*custom tabs*/
+.custom-tabs__tab { min-height: 68px; }
+.custom-tabs__tab a > span {
+	font-size: 20px;
+	line-height: 26px;
+	letter-spacing: 0.025em;
+}
+/*custom tabs end*/
+
+/*user form*/
+.user-form { max-width: 420px; }
+.custom-tabs__panel{ padding-top: 40px; }
+.user-form .label-holder{
+	float: none;
+	width: auto;
+	box-sizing: border-box;
+	padding: 0 0 5px;
+}
+.user-form .label-holder:before{
+	height: auto;
+}
+.user-form .input-holder,
+.user-form .form-footer{
+	margin-left: 0;
+	padding-left: 0;
+}
+.user-form .form-buttons {
+	float: none;
+	margin: 0 0 20px;
+}
+.user-form .form-note {
+	height: auto;
+}
+.user-form .form-note:before{
+	content: none;
+}
+/*user form end*/
+
 /*slider*/
 .slick-arrow{ }
 /*slider end*/
@@ -156,7 +224,6 @@ h3{
 	font-size: 16px;
 	line-height: 22px;
 }
-
 /*expander end*/
 
 /*flashes*/
@@ -181,8 +248,8 @@ h3{
 .section-title h1,
 .section-title h2,
 .section-title h3 {
-	font-size: 30px;
-	line-height: 38px;
+	font-size: 24px;
+	line-height: 34px;
 }
 
 /*CONTENT*/

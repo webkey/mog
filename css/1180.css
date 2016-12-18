@@ -1,5 +1,33 @@
-@media only screen and (max-width: 1180px){}
+@media only screen and (min-width: 980px) and (max-width: 1180px){}
 
+/*MAIN*/
+/*custom tabs*/
+.custom-tabs__tab { min-height: 68px; }
+.custom-tabs__tab a > span {
+	font-size: 20px;
+	line-height: 26px;
+	letter-spacing: 0.025em;
+}
+/*custom tabs end*/
+
+/*user form*/
+
+.custom-tabs__panel{ padding-top: 40px; }
+.user-form .label-holder{
+	float: none;
+	width: auto;
+	box-sizing: border-box;
+	padding: 0 0 5px;
+}
+.user-form .label-holder:before{
+	height: auto;
+}
+.user-form .input-holder,
+.user-form .form-footer{
+	margin-left: 0;
+	padding-left: 0;
+}
+/*user form end*/
 /*CONTENT*/
 /*video list*/
 .video__list .video__item{
@@ -27,4 +55,4 @@
 /*tape slider end*/
 /*products end*/
 /*CONTENT end*/
-
+/*MAIN end*/

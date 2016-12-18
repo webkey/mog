@@ -320,26 +320,12 @@
 	left: auto;
 }
 /*branches end*/
-
-/*video list*/
-.video__list .video__item{
-	width: 33.28%;
-}
-/*video list end*/
-
-/*contacts info*/
-.info-container__item {
-	width: 49.98%;
-}
 /*contacts info end*/
-
-/*products*/
-/*grid view*/
-.grid-view-activated .products__item{
-	width: 33.28%;
-}
 /*grid view end*/
-/*products end*/
+.tape-slider .grid-view-activated .products__item{
+	width: 280px;
+}
+/*tape slider*/
 /*CONTENT end*/
 /*MAIN end*/
 

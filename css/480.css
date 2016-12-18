@@ -21,6 +21,9 @@
 /*MAIN BLOCKS end*/
 
 /*USER CONTENT*/
+.important-note__content {
+	padding: 20px;
+}
 .user-content .bottom-space {
 	margin-bottom: 40px;
 }
@@ -70,6 +73,22 @@
 /*button menu end*/
 
 /*MAIN*/
+/*custom tabs*/
+.custom-tabs__tab { min-height: 58px; }
+.custom-tabs__tab a > span {
+	font-size: 18px;
+	line-height: 22px;
+	letter-spacing: normal;
+}
+/*custom tabs end*/
+
+/*user form*/
+.custom-tabs__panel{
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+/*user form end*/
+
 /*popup*/
 .extra-popup__head{
 	height: 40px;
