@@ -2884,13 +2884,6 @@ li.align-right > .nav__drop{
 .expander__content{
 	padding: 0 0 40px;
 }
-.expander__content h4{
-	font-family: 'lato-black', sans-serif;
-	font-size: 16px;
-	line-height: 30px;
-	color: #262626;
-	text-transform: none;
-}
 .expander + .expander__content,
 .expander__content + .expander{
 	border-top: 1px solid #d9d9d9;
@@ -3098,6 +3091,7 @@ li.align-right > .nav__drop{
 	border-top: 1px solid #d9d9d9;
 	box-sizing: border-box;
 	display: none;
+	color: #262626;
 }
 .no-js .expander__panel{ display: block; }
 .expander__panel:before,
@@ -3115,6 +3109,13 @@ li.align-right > .nav__drop{
 }
 .expander__panel:after{
 	bottom: -20px;
+}
+.expander__panel h4{
+	font-family: 'lato-black', sans-serif;
+	font-size: 16px;
+	line-height: 30px;
+	color: #262626;
+	text-transform: none;
 }
 
 .expander__frame{
