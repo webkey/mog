@@ -2178,6 +2178,10 @@ li.align-right > .nav__drop{
 	border: solid transparent;
 	border-width: 0 1px 1px 0;
 	box-sizing: border-box;
+	-webkit-transition-property: border-color;
+	transition-property: border-color;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
 	z-index: 2;
 }
 .nav__list > li:last-child > a{ border-right: none; }
@@ -2195,8 +2199,8 @@ li.align-right > .nav__drop{
 }
 .nav__list > li.has-drop.hover > a,
 .no-js .nav__list > li.has-drop:hover > a,
-.nav__list > li.has-drop.hover + li.current.hover_next > a,
-.nav__list > li.has-drop.hover + li.current.hover_prev > a{
+.nav__list > li.current.hover_next > a,
+.nav__list > li.current.hover_prev > a{
 	border-color: #d9d9d9;
 }
 
