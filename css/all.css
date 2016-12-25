@@ -5260,12 +5260,80 @@ a.links__inner{
 
 /*branches map*/
 .branches-map{
-	background: url(../img/barnches-map.png) no-repeat 100% 50%;
+	/*background: url(../img/barnches-map.png) no-repeat 100% 50%;*/
 	height: 640px;
 	-webkit-background-size: contain;
 	background-size: contain;
 }
+.branches-map svg{
+	max-width: 100%;
+	max-height: 100%;
+}
+#map-mog-branches g{
+	width: 100%;
+}
+#map-mog-branches a{
+	text-decoration: none;
+	color: #fff;
+}
+#map-mog-branches a:hover{
+	z-index: 9;
+	position: relative;
+}
+#map-mog-branches path{
+	-webkit-transition-property: stroke, fill;
+	transition-property: stroke, fill;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+	fill: #fff;
+	stroke: #145f98;
+	stroke-width: 1;
+}
+#map-mog-branches a:hover path{
+	fill: #145f98;
+	stroke: #6496bb;
+}
+
+#map-mog-branches path.map-mog-all{
+	stroke: #236a9f;
+	stroke-width: 2;
+}
+
+#map-mog-branches a text{
+	cursor: pointer;
+	display: initial;
+	font-family: 'lato-black', sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+	fill: #145f98;
+	-webkit-transition-property: opacity;
+	transition-property: opacity;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+}
+#map-mog-branches a:hover text{
+	/*opacity: 0;*/
+}
+
+#map-mog-branches a image{
+	/*opacity: 0;*/
+	-webkit-transition-property: opacity;
+	transition-property: opacity;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+}
+#map-mog-branches a:hover image{
+	opacity: 1;
+}
+
+.logo-mog{
+	display: block;
+	background: url(../img/depict-fire.png) no-repeat;
+	width: 26px;
+	height: 38px;
+}
 /*branches map end*/
+
 /*branches end*/
 
 /*news*/
