@@ -516,7 +516,8 @@
 	.text-layout,
 	.breadcrumbs-list,
 	.user-content .breadcrumbs-list,
-	.expander__header {
+	.expander__header,
+	.calc__box{
 		padding-left: 20px;
 		padding-right: 20px;
 	}
@@ -919,6 +920,16 @@
 		height: 40px;
 	}
 	/*card bar end*/
+
+	/*calculation form*/
+	.calc__row {
+		padding-bottom: 10px;
+	}
+	.calc__box {
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	/*calculation form end*/
 	/*CONTENT end*/
 	/*MAIN end*/
 

@@ -1388,7 +1388,7 @@ function tabSwitcher() {
 }
 /* tab switcher end */
 
-/**!
+/**
  * accordion
  * */
 /*<div class="{accordionContainer} js-accordion__container">
@@ -1749,7 +1749,7 @@ function fileInput() {
 }
 /*file input end end*/
 
-/**!
+/**
  * contacts map
  * */
 function contactsMap() {
@@ -1902,7 +1902,16 @@ function tapeSlider() {
 }
 /*similar slider*/
 
-/**!
+/*custom spinner*/
+function customSpinner() {
+	$(".spinner").spinner({
+		numberFormat: "n",
+		min: 0
+	});
+}
+/*custom spinner end*/
+
+/**
  * footer at bottom
  * */
 function footerBottom(){
@@ -2022,6 +2031,7 @@ $(document).ready(function(){
 	toggleView();
 	equalHeightInit();
 	tapeSlider();
+	customSpinner();
 
 	footerBottom();
 
