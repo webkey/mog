@@ -2019,10 +2019,10 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	letter-spacing: normal;
 	color: #262626;
 	text-decoration: none;
-	-webkit-transition-property: color, padding, background, border, height;
-	transition-property: color, padding, background, border, height;
-	-webkit-transition-duration: 0.1s;
-	transition-duration: 0.1s;
+	-webkit-transition-property: color, padding, background-color, border-color, height;
+	transition-property: color, padding, background-color, border-color, height;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
 }
 
 [class*="nav__drop"]{
@@ -2178,10 +2178,6 @@ li.align-right > .nav__drop{
 	border: solid transparent;
 	border-width: 0 1px 1px 0;
 	box-sizing: border-box;
-	-webkit-transition-property: border-color;
-	transition-property: border-color;
-	-webkit-transition-duration: 0.2s;
-	transition-duration: 0.2s;
 	z-index: 2;
 }
 .nav__list > li:last-child > a{ border-right: none; }
@@ -6474,6 +6470,7 @@ a.links__inner{
 	list-style: none;
 	padding: 0;
 	margin: 0;
+	font-family: lato-light, sans-serif;
 }
 .menu > li{
 	position: relative;
