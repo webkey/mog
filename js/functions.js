@@ -450,7 +450,7 @@ function hoverClassInit(){
 
 }(jQuery));
 
-function addPositionClass(){
+function addAlignClass(){
 	var $nav = $('.nav');
 
 	if($nav.length){
@@ -1992,6 +1992,68 @@ function formSuccessExample() {
 }
 /* form success for example end */
 
+/*add ui position add class*/
+function addPositionClass(position, feedback, obj){
+	console.log("obj: ", obj);
+	removePositionClass(obj);
+	obj.css( position );
+	obj
+		.addClass( feedback.vertical )
+		.addClass( feedback.horizontal );
+}
+/*add ui position remove class*/
+function removePositionClass(obj){
+	obj.removeClass('top');
+	obj.removeClass('bottom');
+	obj.removeClass('center');
+	obj.removeClass('left');
+	obj.removeClass('right');
+}
+
+/* branches map popup */
+function branchesMapPopup(){
+	if ($('.branches-map-popup-js').length) {
+
+		$('.branches-map-js').on('click', 'g', function(e){
+			var $this = $(this);
+			console.log("this: ", $this);
+			var popup = $('.branches-map-popup-js');
+
+			popup.fadeIn();
+
+			popup.position({
+				of: $(this),
+				my: "center bottom",
+				at: "center top",
+				collision: "flipfit flipfit",
+				using: function( position, feedback ) {
+					addPositionClass(position, feedback, $(this));
+				}
+			});
+
+			// popup.fadeIn();
+			var yourClick = true;
+
+			$(document).bind('click.popupCallback', function (e) {
+				if ( !yourClick  && $(e.target).closest(popup).length == 0 || $(e.target).is('.btn-close')  )
+				{
+					popup.fadeOut();
+					$(document).unbind('click.popupCallback');
+				}
+				yourClick  = false;
+			});
+
+			$('.btn-close-popup-js').on('click', function (e) {
+				e.preventDefault();
+			});
+
+			e.preventDefault();
+		});
+
+	}
+}
+/* branches map popup end */
+
 /** ready/load/resize document **/
 
 $(window).on('load', function () {
@@ -2011,7 +2073,7 @@ $(document).ready(function(){
 	headerShow();
 	navFixed();
 	hoverClassInit();
-	addPositionClass();
+	addAlignClass();
 	mainNavigationForMobile();
 	searchPopup();
 	enterPopup();
@@ -2032,6 +2094,7 @@ $(document).ready(function(){
 	equalHeightInit();
 	tapeSlider();
 	customSpinner();
+	branchesMapPopup();
 
 	footerBottom();
 
