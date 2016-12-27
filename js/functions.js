@@ -1414,6 +1414,7 @@ function tabSwitcher() {
 			accordionHand: null, // accordion's switcher
 			accordionContent: null,
 			indexInit: 0, // if "false", all accordion are closed
+			showFromHash: true, // if "false", all accordion are closed
 			animateSpeed: 300,
 			scrollToTop: false, // if true, scroll to current accordion;
 			scrollToTopSpeed: 300,
@@ -1448,13 +1449,12 @@ function tabSwitcher() {
 		};
 
 		this.bindEvents();
-		this.activeAccordion();
-
-		$(window).on('load', function () {
-			var query = window.location.hash;
-
-			console.log("query: ", query);
-		})
+		if (options.indexInit !== false) {
+			this.activeAccordion();
+		}
+		if (options.showFromHash) {
+		}
+		this.hashAccordion();
 	};
 
 	JsAccordion.prototype.bindEvents = function () {
@@ -1473,13 +1473,12 @@ function tabSwitcher() {
 			$(this).closest(self.$accordionHand).removeClass(modifiers.noHoverClass);
 		});
 
-		// self.$accordionContainer.on('click', self.options.accordionHand, function (e) {
 		self.$accordionHand.on('click', function (e) {
 			e.preventDefault();
 
 			var $currentHand = $(this),
-				$currentHeader = $(this).closest(self.$accordionHeader),
-				$currentItem = $(this).closest(self.$accordionItem),
+				$currentHeader = $currentHand.closest(self.$accordionHeader),
+				$currentItem = $currentHand.closest(self.$accordionItem),
 				$currentItemContent = $currentHeader.next();
 
 			if ($accordionContent.is(':animated')) return;
@@ -1510,6 +1509,7 @@ function tabSwitcher() {
 							}
 						});
 
+
 						$currentItem.find(self.$accordionItem).removeClass(self.modifiers.activeItem);
 						$currentItem.find(self.$accordionHeader).removeClass(self.modifiers.activeHeader);
 						$currentItem.find(self.$accordionHand).removeClass(self.modifiers.activeHand);
@@ -1520,14 +1520,16 @@ function tabSwitcher() {
 				return;
 			}
 
-			$currentItem.siblings().find(self.$accordionHeader).next().slideUp(self._animateSpeed, function () {
+			var $siblings = $currentItem.siblings();
+
+			$siblings.find(self.$accordionHeader).next().slideUp(self._animateSpeed, function () {
 				// console.log('closed siblings');
 			});
 
-			$currentItem.siblings().removeClass(modifiers.activeItem);
-			$currentItem.siblings().find(self.$accordionHeader).removeClass(modifiers.activeHeader);
-			$currentItem.siblings().find(self.$accordionHand).removeClass(modifiers.activeHand);
-			$currentItem.siblings().find(self.$accordionHeader).next().removeClass(modifiers.activeContent);
+			$siblings.removeClass(modifiers.activeItem);
+			$siblings.find(self.$accordionHeader).removeClass(modifiers.activeHeader);
+			$siblings.find(self.$accordionHand).removeClass(modifiers.activeHand);
+			$siblings.find(self.$accordionHeader).next().removeClass(modifiers.activeContent);
 
 			self.scrollPosition($currentItem);
 
@@ -1553,6 +1555,56 @@ function tabSwitcher() {
 		$accordionContent.on('click', function(e){
 			e.stopPropagation();
 		});
+	};
+
+	// show accordion's content from hash tag
+	JsAccordion.prototype.hashAccordion = function() {
+		var self = this;
+		var modifiers = self.modifiers,
+			hashTag = window.location.hash;
+
+		if ( !hashTag ) return false;
+
+		var activeItemClass = modifiers.activeItem;
+		var activeHeaderClass = modifiers.activeHeader;
+		var activeHandClass = modifiers.activeHand;
+		var activeContentClass = modifiers.activeContent;
+
+		var $accordionHeader = self.$accordionHeader;
+		var $accordionItem = self.$accordionItem;
+
+		var $currentItem = $(hashTag);
+		var $currentItemParents = $currentItem.parents().filter($accordionItem);
+
+		// open parents accordion
+
+		if ($currentItemParents.length) {
+			var $currentHeaderParents = $currentItemParents.children($accordionHeader),
+				$currentHandParents = $currentItemParents.children($accordionItem),
+				$currentItemContentParents = $currentHeaderParents.next();
+
+			$currentItemContentParents.slideDown(0);
+
+			$currentItemParents.addClass(activeItemClass);
+			$currentHeaderParents.addClass(activeHeaderClass);
+			$currentHandParents.addClass(activeHandClass);
+			$currentItemContentParents.addClass(activeContentClass);
+		}
+
+		// open current accordion
+
+		var $currentHeader = $currentItem.children($accordionHeader),
+			$currentHand = $currentHeader.children($accordionItem),
+			$currentItemContent = $currentHeader.next();
+
+		$currentItemContent.slideDown(0, function () {
+			self.scrollPosition($currentItem);
+		});
+
+		$currentItem.addClass(activeItemClass);
+		$currentHeader.addClass(activeHeaderClass);
+		$currentHand.addClass(activeHandClass);
+		$currentItemContent.addClass(activeContentClass);
 	};
 
 	// show current accordion's content
