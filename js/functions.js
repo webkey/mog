@@ -1449,6 +1449,12 @@ function tabSwitcher() {
 
 		this.bindEvents();
 		this.activeAccordion();
+
+		$(window).on('load', function () {
+			var query = window.location.hash;
+
+			console.log("query: ", query);
+		})
 	};
 
 	JsAccordion.prototype.bindEvents = function () {
@@ -1994,7 +2000,6 @@ function formSuccessExample() {
 
 /*add ui position add class*/
 function addPositionClass(position, feedback, obj){
-	console.log("obj: ", obj);
 	removePositionClass(obj);
 	obj.css( position );
 	obj
@@ -2012,44 +2017,95 @@ function removePositionClass(obj){
 
 /* branches map popup */
 function branchesMapPopup(){
+	// external js:
+	// 1) TweetMax VERSION: 1.19.0 (widgets.js);
+	// 2) debouncedresize (resize only width);
+
 	if ($('.branches-map-popup-js').length) {
 
-		$('.branches-map-js').on('click', 'g', function(e){
+		var $popup = $('.branches-map-popup-js');
+		var $corner = $('.branches-popup__cornet');
+		var animateSpeed = 0.3;
+		var popupIsOpen = false;
+
+		$('.branches-map-js svg').on('click', 'a', function(e){
+			e.preventDefault();
 			var $this = $(this);
-			console.log("this: ", $this);
-			var popup = $('.branches-map-popup-js');
 
-			popup.fadeIn();
+			var id = $this.attr('href');
 
-			popup.position({
-				of: $(this),
-				my: "center bottom",
-				at: "center top",
-				collision: "flipfit flipfit",
+			var $thisPopup = $(id);
+
+
+			e.stopPropagation();
+
+			closePopup();
+
+			TweenMax.to($thisPopup, animateSpeed, {
+				autoAlpha: 1,
+				onComplete: function () {
+					popupIsOpen = true;
+				}
+			});
+
+			$popup.position({
+				my: "center bottom-20",
+				of: event,
+				collision: "flipfit"
+			});
+
+			$corner.position({
+				my: "center bottom-21",
+				of: event,
+				collision: "flipfit",
 				using: function( position, feedback ) {
 					addPositionClass(position, feedback, $(this));
 				}
 			});
 
-			// popup.fadeIn();
-			var yourClick = true;
+			// var yourClick = true;
 
-			$(document).bind('click.popupCallback', function (e) {
-				if ( !yourClick  && $(e.target).closest(popup).length == 0 || $(e.target).is('.btn-close')  )
-				{
-					popup.fadeOut();
-					$(document).unbind('click.popupCallback');
-				}
-				yourClick  = false;
-			});
+			// $(document).bind('click.popupCallback', function (e) {
+			// 	if ( !yourClick && $(e.target).closest($popup).length == 0 || $(e.target).is('.btn-close')  )
+			// 	{
+			// 		TweenMax.to($popup, animateSpeed, {
+			// 			autoAlpha: 0
+			// 		});
+			//
+			// 		$(document).unbind('click.popupCallback');
+			// 	}
+			// 	yourClick  = false;
+			// });
 
-			$('.btn-close-popup-js').on('click', function (e) {
-				e.preventDefault();
-			});
-
-			e.preventDefault();
 		});
 
+		$(document).on('click', function () {
+			closePopup();
+		});
+
+		$popup.on('click', function (e) {
+			e.stopPropagation();
+		});
+
+		$('.btn-close-popup-js').on('click', function (e) {
+			e.preventDefault();
+			closePopup();
+		});
+
+		$(document).keyup(function(e) {
+			if (popupIsOpen && e.keyCode == 27) {
+				closePopup();
+			}
+		});
+
+		function closePopup() {
+			TweenMax.to($popup, animateSpeed, {
+				autoAlpha: 0,
+				onComplete: function () {
+					popupIsOpen = false;
+				}
+			});
+		}
 	}
 }
 /* branches map popup end */
