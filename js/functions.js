@@ -1946,6 +1946,30 @@ function tapeSlider() {
 
 	var $frame  = $('.tape-slider__frame');
 
+	function setWidthSlide() {
+		$.each($frame, function () {
+			var $thisSlider = $(this);
+			var widthSlide;
+
+
+			if (Modernizr.mq('(max-width: 480px)')) {
+				widthSlide = $thisSlider.outerWidth();
+			} else if (Modernizr.mq('(max-width: 800px)')) {
+				widthSlide = $thisSlider.outerWidth() / 2;
+			} else if (Modernizr.mq('(max-width: 980px)')) {
+				widthSlide = $thisSlider.outerWidth() / 3;
+			} else if (Modernizr.mq('(max-width: 1170px)')) {
+				widthSlide = $thisSlider.outerWidth() / 2;
+			} else {
+				widthSlide = $thisSlider.outerWidth()/3
+			}
+
+			$thisSlider.find('.products__item').width(widthSlide);
+		})
+	}
+
+	setWidthSlide();
+
 	if (!$frame.length) return;
 
 	var $wrap   = $frame.parent();
@@ -1978,6 +2002,7 @@ function tapeSlider() {
 
 	// Reload on resize
 	$(window).on('resize', function () {
+		setWidthSlide();
 		frame.reload();
 	});
 }
