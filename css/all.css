@@ -2259,8 +2259,8 @@ li.align-right > .nav__drop{
 	box-sizing: border-box;
 	-webkit-transition-property: border, height;
 	transition-property: border, height;
-	-webkit-transition-duration: 0.1s;
-	transition-duration: 0.1s;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
 
 	font-size: 0;
 	letter-spacing: -4px;
