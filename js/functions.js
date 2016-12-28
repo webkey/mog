@@ -2161,6 +2161,13 @@ function branchesMapPopup(){
 			}
 		});
 
+		$('.extra-popup').on('click', function (e) {
+			e.preventDefault();
+			if (popupIsOpen) {
+				closePopup();
+			}
+		});
+
 		$(document).keyup(function(e) {
 			if (popupIsOpen && e.keyCode == 27) {
 				closePopup();

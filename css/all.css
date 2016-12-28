@@ -4804,7 +4804,7 @@ a.links__inner{ cursor: pointer; }
 /*info center end*/
 
 /*branches*/
-.branches-section{ padding: 0 0 90px; }
+.branches-section{ padding: 0 0 30px; }
 .branches{
 	position: relative;
 	min-height: 505px;
@@ -4953,7 +4953,12 @@ a.links__inner{ cursor: pointer; }
 /*meter end*/
 
 /*branches map*/
-.branches-map{ position: relative; }
+.branches-map{
+	position: relative;
+	padding: 0 0 30px;
+	max-width: 1100px;
+	margin: 0 auto;
+}
 .branches-map-svg{
 	max-width: 100%;
 	max-height: 100%;
@@ -5079,7 +5084,6 @@ a.links__inner{ cursor: pointer; }
 	height: 0;
 	width: 0;
 	position: absolute;
-	pointer-events: none;
 }
 .branches-popup__cornet:after {
 	border-color: rgba(255, 255, 255, 0);
