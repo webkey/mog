@@ -1475,8 +1475,6 @@ function tabSwitcher() {
 		if (options.indexInit !== false) {
 			this.activeAccordion();
 		}
-		if (options.showFromHash) {
-		}
 		this.hashAccordion();
 	};
 

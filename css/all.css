@@ -4489,19 +4489,13 @@ a.links__inner{ cursor: pointer; }
 }
 .info-center-content{ margin: 0 auto; }
 @media only screen and (max-width: 1375px){
-	.info-center-content{
-		max-width: 950px;
-	}
+	.info-center-content{ max-width: 950px; }
 }
 @media only screen and (max-width: 1029px){
-	.info-center-content{
-		max-width: 620px;
-	}
+	.info-center-content{ max-width: 620px; }
 }
 @media only screen and (max-width: 699px){
-	.info-center-content{
-		max-width: 290px;
-	}
+	.info-center-content{ max-width: 290px; }
 }
 .info-center-header{
 	display: inline-block;
@@ -6797,9 +6791,7 @@ a.links__inner{ cursor: pointer; }
 		text-shadow: none !important;
 	}
 	body,
-	body *{
-		line-height: 1.5 !important;
-	}
+	body *{ line-height: 1.5 !important; }
 	h1{
 		font-size: 28px !important;
 		line-height: 1.2 !important;
@@ -6812,15 +6804,9 @@ a.links__inner{ cursor: pointer; }
 		font-size: 20px !important;
 		line-height: 1.2 !important;
 	}
-	h4{
-		font-size: 16px !important;
-	}
-	h5{
-		font-size: 14px !important;
-	}
-	h6{
-		font-size: 12px !important;
-	}
+	h4{ font-size: 16px !important; }
+	h5{ font-size: 14px !important; }
+	h6{ font-size: 12px !important; }
 	a, a:visited{ text-decoration: underline; }
 	a[href^=http]:after { content:" <" attr(href) "> "; }
 	a[href]:after{ content: " (" attr(href) ")"; }
@@ -6949,9 +6935,7 @@ a.links__inner{ cursor: pointer; }
 		display: inline-block;
 		vertical-align: middle;
 	}
-	.logo-title{
-		height: auto !important;
-	}
+	.logo-title{ height: auto !important; }
 	.logo-title > strong {
 		position: static !important;
 		left: auto !important;
@@ -6975,23 +6959,15 @@ a.links__inner{ cursor: pointer; }
 	.r-tabs .r-tabs-panel{ page-break-after: always; }
 	.r-tabs .r-tabs-accordion-title a{ text-decoration: none; }
 
-	.main{
-		padding: 0 !important;
-	}
+	.main{ padding: 0 !important; }
 	/*expander*/
-	.expander__item{
-		padding: 10pt 0 0 !important;
-	}
-	.expander__item .expander__item{
-		padding: 0 !important;
-	}
+	.expander__item{ padding: 10pt 0 0 !important; }
+	.expander__item .expander__item{ padding: 0 !important; }
 	.expander__hand{
 		border: none !important;
 		padding: 0 0 20px !important;
 	}
-	.expander__angle{
-		display: none !important;
-	}
+	.expander__angle{ display: none !important; }
 	.expander{
 		width: auto !important;
 		margin: 0 !important;
@@ -7009,12 +6985,8 @@ a.links__inner{ cursor: pointer; }
 		border: none !important;
 	}
 	.expander__frame:before,
-	.expander__frame:after{
-		content: none !important;
-	}
-	.file-link{
-		display: none !important;
-	}
+	.expander__frame:after{ content: none !important; }
+	.file-link{ display: none !important; }
 	/*expander end*/
 
 	/*contacts map*/
