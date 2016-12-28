@@ -1936,8 +1936,8 @@ function equalHeightInit() {
 	}
 }
 
-/*!
- similar slider
+/**
+ * similar slider
  */
 function tapeSlider() {
 	'use strict';
@@ -2006,7 +2006,9 @@ function tapeSlider() {
 }
 /*similar slider*/
 
-/*custom spinner*/
+/**
+ * custom spinner
+ * */
 function customSpinner() {
 	$(".spinner").spinner({
 		numberFormat: "n",
@@ -2014,6 +2016,30 @@ function customSpinner() {
 	});
 }
 /*custom spinner end*/
+
+/**
+ * toggle form tab
+ * */
+function toggleFormTab() {
+	var $calcForm = $('.calc-form');
+
+	if ($calcForm.length) {
+
+		$calcForm.on('click', ':radio', function () {
+			var $this = $(this);
+
+			console.log("$this.val(): ", $this.val());
+			console.log("$this.attr('name'): ", $this.attr('name'));
+
+			var $thisCalcForm = $this.closest($calcForm);
+
+			$thisCalcForm.find("." + $this.attr('name')).hide(0);
+			$thisCalcForm.find("." + $this.val()).show(0);
+		})
+
+	}
+}
+/*toggle form tab end*/
 
 /**
  * footer at bottom
@@ -2256,6 +2282,7 @@ $(document).ready(function(){
 	equalHeightInit();
 	tapeSlider();
 	customSpinner();
+	toggleFormTab();
 	branchesMapPopup();
 
 	footerBottom();

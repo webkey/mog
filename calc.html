@@ -165,7 +165,7 @@
 											<div class="sub1-nav__drop js-nav-drop">
 												<ul class="sub2-nav__list">
 													<li><a href="calc.html"><span>Калькулятор расчета суммы к оплате за потребленный газ</span></a></li>
-													<li><a href="temp_info-pay.html"><span>Получение информации о состоянии оплаты за потребленный газ и наличии/отсутствии льгот для бытовых абонентов Могилевской области</span></a></li>
+													<li><a href="calc-card.html"><span>Получение информации о состоянии оплаты за потребленный газ и наличии/отсутствии льгот для бытовых абонентов Могилевской области</span></a></li>
 												</ul>
 											</div>
 										</li>
@@ -239,18 +239,18 @@
 										<div class="calc__title">Оплата по:</div>
 										<div class="calc__row">
 											<label class="radio-label">
-												<input type="radio" name="paymentType" checked="">
+												<input value="tar" type="radio" name="opl" checked="">
 												<span><i></i>Тарифу</span>
 											</label>
 										</div>
 										<div class="calc__row">
 											<label class="radio-label">
-												<input type="radio" name="paymentType">
+												<input value="sh" type="radio" name="opl">
 												<span><i></i>Счетчику</span>
 											</label>
 										</div>
 									</div>
-									<div class="calc__box">
+									<div class="calc__box opl tar">
 										<div class="calc__row">
 											<label class="radio-label">
 												<input type="radio" name="gradeEquipment" checked="">
@@ -268,6 +268,24 @@
 												<input type="radio" name="gradeEquipment">
 												<span><i></i>Наличие газовой плиты и газового водонагревателя</span>
 											</label>
+										</div>
+									</div>
+									<div class="calc__box opl sh" style="display: none;">
+										<div class="calc__row">
+											<label class="radio-label">
+												<input type="radio" name="p2" checked="" value="t1">
+												<span><i></i>При наличии индивидуальных газовых отопительных приборов и (или) газовых водонагревателей (газовых отопительных приборов для нагрева воды)</span>
+											</label>
+										</div>
+										<div class="calc__row">
+											<label class="radio-label">
+												<input type="radio" name="p2" value="t2">
+												<span><i></i>При отсутствии индивидуальных газовых отопительных приборов</span>
+											</label>
+										</div>
+										<div class="calc__row">
+											<label for="kg0" class="label-alt">Объем газа(куб.метров):</label>
+											<input type="text" id="kg0" size="5" value="1">
 										</div>
 									</div>
 									<div class="calc__box">
@@ -309,7 +327,7 @@
 								<a href="temp_el-services.html"><span>Электронные услуги</span><i></i></a>
 								<ul>
 									<li class="current"><a href="calc.html"><span>Калькулятор расчета суммы к оплате за потребленный газ</span></a></li>
-									<li><a href="temp_info-pay.html"><span>Получение информации о состоянии оплаты за потребленный газ и наличии/отсутствии льгот для бытовых абонентов Могилевской области</span></a></li>
+									<li><a href="calc-card.html"><span>Получение информации о состоянии оплаты за потребленный газ и наличии/отсутствии льгот для бытовых абонентов Могилевской области</span></a></li>
 								</ul>
 							</li>
 							<li><a href="shop.html"><span>Магазин</span></a></li>
