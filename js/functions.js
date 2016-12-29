@@ -1657,7 +1657,7 @@ function tabSwitcher() {
 		var self = this;
 
 		self.$accordionHeader.next().slideUp(self._animateSpeed, function () {
-			console.log('closed all');
+			// console.log('closed all');
 		});
 
 		var modifiers = self.modifiers;
@@ -1673,7 +1673,7 @@ function tabSwitcher() {
 		var self = this;
 
 		self.$accordionHeader.next().slideDown(self._animateSpeed, function () {
-			console.log('open all');
+			// console.log('open all');
 		});
 
 		var modifiers = self.modifiers;
@@ -2027,9 +2027,6 @@ function toggleFormTab() {
 
 		$calcForm.on('click', ':radio', function () {
 			var $this = $(this);
-
-			console.log("$this.val(): ", $this.val());
-			console.log("$this.attr('name'): ", $this.attr('name'));
 
 			var $thisCalcForm = $this.closest($calcForm);
 
