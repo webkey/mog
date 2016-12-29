@@ -6302,7 +6302,7 @@ a.links__inner{ cursor: pointer; }
 	border-color: #008acf;
 }
 .calc__box .captcha{
-	padding-top: 20px;
+	padding-bottom: 20px;
 }
 .label-alt + input[type="text"].error,
 .calc__title + input[type="text"].error,
