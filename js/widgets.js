@@ -11,6 +11,8 @@
  ScrollToPlugin;
  jQuery Unveil;
  jQuery.filer minified;
+ jquery-match-height master;
+ sly 1.6.1;
  */
 
 /**
@@ -149,7 +151,8 @@ var _gsScope="undefined"!=typeof module&&module.exports&&"undefined"!=typeof glo
 /**jQuery.filer minified*/
 
 /**
- * jquery-match-height master by @liabru
+ * jquery-match-height master
+ * by @liabru
  * http://brm.io/jquery-match-height/
  * License: MIT
  */
