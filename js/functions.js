@@ -1521,7 +1521,7 @@ function tabSwitcher() {
 						$.each($internalContent, function () {
 							if ($(this).hasClass(self.modifiers.activeContent)) {
 
-								self.scrollPosition($currentItem);
+								// self.scrollPosition($currentItem);
 
 								$(this).slideUp(self._animateSpeed, function () {
 									// console.log('closed attachment');
@@ -1552,7 +1552,7 @@ function tabSwitcher() {
 			$siblings.find(self.$accordionHand).removeClass(modifiers.activeHand);
 			$siblings.find(self.$accordionHeader).next().removeClass(modifiers.activeContent);
 
-			self.scrollPosition($currentItem);
+			// self.scrollPosition($currentItem);
 
 			$currentItemContent.slideDown(animateSpeed, function () {
 				// console.log('opened');
@@ -1686,7 +1686,7 @@ function tabSwitcher() {
 
 	JsAccordion.prototype.scrollPosition = function (element) {
 		var self = this;
-		if (self.scrollToTop) {
+		if (self.scrollToTop && !$('html, body').is('animated')) {
 			$('html, body').animate({ scrollTop: element.offset().top - $('.main-nav-frame').outerHeight() }, self._scrollToTopSpeed);
 		}
 	};
@@ -1709,11 +1709,11 @@ function jsAccordion() {
 			accordionHeader: '.js-accordion__header',
 			accordionHand: '.js-accordion__hand',
 			scrollToTop: true,
-			scrollToTopSpeed: 150,
+			scrollToTopSpeed: 300,
 			// accordionContent: '.accordion-panel',
 			indexInit: false,
 			clickOutside: false,
-			animateSpeed: 150
+			animateSpeed: 300
 		});
 	}
 }
