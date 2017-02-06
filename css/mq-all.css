@@ -89,6 +89,12 @@
 	.tape-slider .grid-view-activated .products__item{ width: 280px; }
 	/*tape slider end*/
 	/*products end*/
+
+	/*leaders*/
+	.leaders li{
+		width: 49.98%;
+	}
+	/*leaders end*/
 	/*CONTENT end*/
 	/*MAIN end*/
 }
@@ -410,6 +416,8 @@
 		padding-left: 20px;
 		padding-right: 20px;
 	}
+	.user-content > .text-layout > *:last-child{ margin-bottom: 30px !important; }
+	.user-content > .text-layout + .content-foot{ margin-top: -31px !important; }
 	.text-layout .full-width{
 		margin-left: -20px;
 		margin-right: -20px;
@@ -739,6 +747,12 @@
 		padding-bottom: 20px;
 	}
 	/*calculation form end*/
+
+	/*leaders*/
+	.leaders li{
+		width: 49.98%;
+	}
+	/*leaders end*/
 	/*CONTENT end*/
 	/*MAIN end*/
 }
@@ -1030,6 +1044,12 @@
 		height: 32px;
 	}
 	/*card bar end*/
+
+	/*leaders*/
+	.leaders li{
+		width: 100%;
+	}
+	/*leaders end*/
 	/*CONTENT end*/
 	/*MAIN end*/
 }
