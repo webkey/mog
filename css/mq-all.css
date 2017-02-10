@@ -6,6 +6,12 @@
 /*@import url(480.css) only screen and (max-width:479px);*/
 
 @media only screen and (max-width: 1279px){
+	.layout{
+		max-width: calc(1280px + 60px);
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+
 	.nav__list>li>a{ font-size: 12px; }
 	.logo {
 		padding: 0 0 0 94px;
@@ -106,6 +112,10 @@
 	.home-page .main{ padding-top: 0; }
 	.content{ margin-left: 0; }
 	.sidebar{ display: none; }
+	.layout{
+		padding-left: 20px;
+		padding-right: 20px;
+	}
 	.header .layout,
 	.home-page .main .layout{
 		max-width: none;
