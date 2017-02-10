@@ -2174,14 +2174,14 @@ function branchesMapPopup(){
 
 			$thisPopup.position({
 				my: "center bottom-20",
-				of: event,
+				of: e,
 				collision: "flipfit flip",
 				within: withinElement
 			});
 
 			$corner.position({
 				my: "center bottom-21",
-				of: event,
+				of: e,
 				collision: "flipfit flip",
 				within: withinElement,
 				using: function( position, feedback ) {
