@@ -2238,6 +2238,346 @@ function branchesMapPopup(){
 }
 /* branches map popup end */
 
+/**
+ * Add labels on info map
+ * */
+
+(function($){
+	var defaults = {
+		obj: {},
+		containerClass: 'added-labels-to-map',
+		tpl: null,
+		dataEvent: 'data-event',
+		counter: null,
+		number: null,
+		modifiers: {
+			showLabel: "show-label",
+			showCount: "show-count"
+		}
+
+		// Add callback functions
+		// created: function () {} // Возов вконце функции init()
+	};
+
+	function AddLabelsEvents(element, options) {
+		var self = this;
+
+		self.config = $.extend(true, {}, defaults, options);
+
+		self.element = element;
+
+		// create jquery foreignObject
+		// self.foreignObject = $(document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject' ));
+		self.labelsTpl = $('<div class="info-map-labels"></div>');
+
+		self.callbacks();
+		self.createLabels(); //
+		self.init(); // create DOM structure of the plugins
+	}
+
+	/** get coordinates of an element's center */
+	AddLabelsEvents.prototype.getElementCenter = function (container, element) {
+		var bboxContainer = container[0].getBBox(),
+			containerWidth = bboxContainer.width,
+			containerHeight = bboxContainer.height;
+
+		var bbox = element[0].getBBox(),
+			middleX = bbox.x + (bbox.width / 2),
+			middleY = bbox.y + (bbox.height / 2);
+
+		var middleXPercent = middleX/containerWidth*100 + '%',
+			middleYPercent = middleY/containerHeight*100 + '%';
+
+
+		return {x: middleXPercent, y: middleYPercent};
+	};
+
+	/** track events */
+	AddLabelsEvents.prototype.callbacks = function () {
+		var self = this;
+		$.each(self.config, function (key, value) {
+			if(typeof value === 'function') {
+				self.element.on(key + '.addLabelsEvents', function (e, param) {
+					return value(e, self.element, param);
+				});
+			}
+		});
+	};
+
+	AddLabelsEvents.prototype.createLabels = function () {
+		var self = this;
+		var obj = self.config.obj;
+
+		$.each(obj, function (key, val) {
+			var $item = self.element.find('[data-href="' + key + '"]');
+
+			var labelGroupTpl = self.labelsTpl.clone();
+
+			// console.log("labelGroupTpl: ", labelGroupTpl);
+
+			var elementCenter = self.getElementCenter(self.element, $item);
+			// console.log("elementCenter: ", elementCenter);
+			labelGroupTpl
+				.css({
+					left: elementCenter.x,
+					top: elementCenter.y
+				})
+				.append(self.config.tpl)
+				.attr('data-region', key)
+				.insertAfter(self.element);
+
+			$.each(val, function (event, count) {
+				var $label = labelGroupTpl.find('[' + self.config.dataEvent + '="' +event+ '"]');
+				$label.addClass(self.config.modifiers.showLabel);
+
+				var valCount = count <= 1 ? false : count;
+				if(valCount){
+					$label.find(self.config.counter).addClass(self.config.modifiers.showCount);
+					$label.find(self.config.number).text(valCount);
+				}
+			})
+		});
+	};
+
+	AddLabelsEvents.prototype.init = function () {
+
+		this.element.addClass(this.config.containerClass);
+
+		this.element.trigger('created.addLabelsEvents');
+
+	};
+
+	$.fn.addLabelsEvents = function (options) {
+		'use strict';
+
+		new AddLabelsEvents(this, options);
+
+		return this;
+	};
+})(jQuery);
+
+function addLabelsOnMap() {
+	var $infoMapSvg = $('#infoMapSvg');
+	if($infoMapSvg.length){
+		var regionsEventsObj = (window.regionsEvents !== undefined) ? regionsEvents : {};
+		$infoMapSvg.addLabelsEvents({
+			obj: regionsEventsObj,
+			tpl: $('script[data-template="info-map-labels"]').html(),
+			counter: '.info-map-count',
+			number: '.info-map-number'
+		});
+	}
+}
+
+/* info map popup */
+function infoMapPopup(){
+	// external js:
+	// 2) resizeByWidth (resize only width);
+	// 3) addPositionClass, removePositionClass;
+
+	var $popup = $('.info-map-popup-js');
+	if ($popup.length) {
+
+		var $container = $('.info-map-js');
+		var $region = $container.find('a[data-href]');
+		var $corner = $('.info-map-popup__corner');
+		var animateSpeed = 0;
+		var popupIsOpen = false;
+		var classActive = 'active';
+		var tplOverlayClass = "info-map-popup__overlay";
+		var tplOverlay = $('<div class="'+ tplOverlayClass +'"></div>');
+
+		if (DESKTOP) {
+			$region.mouseenter(function (e) {
+
+				var $this = $(this);
+				var $thisPopup = $('#' + $this.attr('data-href'));
+
+				if (popupIsOpen) {
+					return;
+				}
+				if (!$thisPopup.length || popupIsOpen) {
+					return;
+				}
+
+				e.stopPropagation();
+
+				openPopupForDesktop($this, $thisPopup, $corner);
+
+			}).mouseleave(function () {
+				closePopup();
+			});
+		} else {
+			$region.on('click', function (e) {
+
+				var $this = $(this);
+				var $thisPopup = $('#' + $this.attr('data-href'));
+
+				if (popupIsOpen) {
+					return;
+				}
+				if (!$thisPopup.length || popupIsOpen) {
+					return;
+				}
+
+				e.stopPropagation();
+
+				if (popupIsOpen) {
+					closePopup();
+				}
+
+				openPopupForTouchscreen($this, $thisPopup);
+
+			});
+		}
+
+		if (DESKTOP) {
+			$('.info-map-labels').mouseenter(function (e) {
+
+				var $this = $(this);
+				var $thisPopup = $('#' + $this.attr('data-region'));
+
+				if (popupIsOpen) {
+					return;
+				}
+				if (!$thisPopup.length || popupIsOpen) {
+					return;
+				}
+
+				e.stopPropagation();
+
+				openPopupForDesktop($container.find('g[data-href*='+$this.attr('data-region')+']'), $thisPopup, $corner);
+
+			}).mouseleave(function () {
+				closePopup();
+			});
+		} else {
+			$('.info-map-labels').on('click', function (e) {
+
+				var $this = $(this);
+				var $thisPopup = $('#' + $this.attr('data-region'));
+
+				if (popupIsOpen) {
+					return;
+				}
+				if (!$thisPopup.length || popupIsOpen) {
+					return;
+				}
+
+				e.stopPropagation();
+
+				if (popupIsOpen) {
+					closePopup();
+				}
+
+				openPopupForTouchscreen($container.find('g[data-href*='+$this.attr('data-region')+']'), $thisPopup);
+
+			});
+		}
+
+		function openPopupForDesktop(element, popup, corner) {
+			element.addClass(classActive);
+			popup.stop().fadeIn(animateSpeed, function () {
+				popup.addClass(classActive);
+				popupIsOpen = true;
+			});
+
+			popup.position({
+				my: "center bottom",
+				at: "center top",
+				of: element,
+				collision: "flipfit flip",
+				within: $container,
+				using: function (position, feedback) {
+					addPositionClass(position, feedback, $(this));
+				}
+			});
+
+			corner.position({
+				my: "center bottom-1",
+				at: "center top",
+				of: element,
+				collision: "flipfit flip",
+				within: $container,
+				using: function (position, feedback) {
+					addPositionClass(position, feedback, $(this));
+				}
+			});
+		}
+
+		function openPopupForTouchscreen(element, popup) {
+			/* css */
+			/* if touchscreen */
+			/*
+			* position: fixed;
+			* left: 50%;
+			* top: 50%;
+			* transform: translate(-50%, -50%)
+			* */
+
+			element.addClass(classActive);
+			popup.stop().fadeIn(animateSpeed, function () {
+				popup.addClass(classActive);
+				popupIsOpen = true;
+			});
+			$('html').addClass('css-scroll-fixed mapPopupIsOpen');
+			tplOverlay.clone().appendTo(popup.parent());
+
+		}
+
+		// $(document).on('click', function () {
+		// 	if (popupIsOpen) {
+		// 		closePopup();
+		// 	}
+		// });
+
+		$(document).on('click', function(event){
+			if(!popupIsOpen) return;
+
+			if( $(event.target).closest($popup).length) {
+				return;
+			}
+
+			closePopup();
+			event.stopPropagation();
+		});
+
+		// $popup.on('click', function (e) {
+		// 	e.stopPropagation();
+		// });
+
+		$('.btn-close-popup-js').on('click', function (e) {
+			e.preventDefault();
+			if (popupIsOpen) {
+				closePopup();
+			}
+		});
+
+		$(document).keyup(function(e) {
+			if (popupIsOpen && e.keyCode === 27) {
+				closePopup();
+			}
+		});
+
+		$(window).on('resizeByWidth', function () {
+			if (popupIsOpen) {
+				closePopup();
+			}
+		});
+
+		function closePopup() {
+			$region.removeClass(classActive);
+			$popup.removeClass(classActive);
+			$("." + tplOverlayClass).remove();
+			$('html').removeClass('css-scroll-fixed mapPopupIsOpen');
+
+			$popup.filter(':visible').stop().fadeOut(animateSpeed, function () {
+				popupIsOpen = false;
+			});
+		}
+	}
+}
+
 /** ready/load/resize document **/
 
 $(window).on('load', function () {
@@ -2281,6 +2621,8 @@ $(document).ready(function(){
 	customSpinner();
 	toggleFormTab();
 	branchesMapPopup();
+	addLabelsOnMap();
+	infoMapPopup();
 
 	footerBottom();
 
