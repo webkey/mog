@@ -2155,6 +2155,10 @@ function branchesMapPopup(){
 			var $this = $(this);
 			var $thisPopup = $($this.attr('href'));
 
+			if($thisPopup.length === 0) {
+				return;
+			}
+
 			e.stopPropagation();
 
 			if (popupIsOpen) {
@@ -2168,9 +2172,13 @@ function branchesMapPopup(){
 			});
 
 			var withinElement = $this.closest('.extra-popup__content');
-			if ($('body').hasClass('home-page')) {
+
+			if (withinElement.length === 0) {
 				withinElement = $(window);
 			}
+			// if ($('body').hasClass('home-page')) {
+			// 	withinElement = $(window);
+			// }
 
 			$thisPopup.position({
 				my: "center bottom-20",
@@ -2309,14 +2317,11 @@ function branchesMapPopup(){
 		var obj = self.config.obj;
 
 		$.each(obj, function (key, val) {
-			var $item = self.element.find('[data-href="' + key + '"]');
+			var $item = self.element.find('[href="#' + key + '"]');
 
 			var labelGroupTpl = self.labelsTpl.clone();
 
-			// console.log("labelGroupTpl: ", labelGroupTpl);
-
 			var elementCenter = self.getElementCenter(self.element, $item);
-			// console.log("elementCenter: ", elementCenter);
 			labelGroupTpl
 				.css({
 					left: elementCenter.x,
@@ -2325,6 +2330,8 @@ function branchesMapPopup(){
 				.append(self.config.tpl)
 				.attr('data-region', key)
 				.insertAfter(self.element);
+
+			$item.addClass('has-labels');
 
 			$.each(val, function (event, count) {
 				var $label = labelGroupTpl.find('[' + self.config.dataEvent + '="' +event+ '"]');
@@ -2366,215 +2373,6 @@ function addLabelsOnMap() {
 			counter: '.info-map-count',
 			number: '.info-map-number'
 		});
-	}
-}
-
-/* info map popup */
-function infoMapPopup(){
-	// external js:
-	// 2) resizeByWidth (resize only width);
-	// 3) addPositionClass, removePositionClass;
-
-	var $popup = $('.info-map-popup-js');
-	if ($popup.length) {
-
-		var $container = $('.info-map-js');
-		var $region = $container.find('a[data-href]');
-		var $corner = $('.info-map-popup__corner');
-		var animateSpeed = 0;
-		var popupIsOpen = false;
-		var classActive = 'active';
-		var tplOverlayClass = "info-map-popup__overlay";
-		var tplOverlay = $('<div class="'+ tplOverlayClass +'"></div>');
-
-		if (DESKTOP) {
-			$region.mouseenter(function (e) {
-
-				var $this = $(this);
-				var $thisPopup = $('#' + $this.attr('data-href'));
-
-				if (popupIsOpen) {
-					return;
-				}
-				if (!$thisPopup.length || popupIsOpen) {
-					return;
-				}
-
-				e.stopPropagation();
-
-				openPopupForDesktop($this, $thisPopup, $corner);
-
-			}).mouseleave(function () {
-				closePopup();
-			});
-		} else {
-			$region.on('click', function (e) {
-
-				var $this = $(this);
-				var $thisPopup = $('#' + $this.attr('data-href'));
-
-				if (popupIsOpen) {
-					return;
-				}
-				if (!$thisPopup.length || popupIsOpen) {
-					return;
-				}
-
-				e.stopPropagation();
-
-				if (popupIsOpen) {
-					closePopup();
-				}
-
-				openPopupForTouchscreen($this, $thisPopup);
-
-			});
-		}
-
-		if (DESKTOP) {
-			$('.info-map-labels').mouseenter(function (e) {
-
-				var $this = $(this);
-				var $thisPopup = $('#' + $this.attr('data-region'));
-
-				if (popupIsOpen) {
-					return;
-				}
-				if (!$thisPopup.length || popupIsOpen) {
-					return;
-				}
-
-				e.stopPropagation();
-
-				openPopupForDesktop($container.find('g[data-href*='+$this.attr('data-region')+']'), $thisPopup, $corner);
-
-			}).mouseleave(function () {
-				closePopup();
-			});
-		} else {
-			$('.info-map-labels').on('click', function (e) {
-
-				var $this = $(this);
-				var $thisPopup = $('#' + $this.attr('data-region'));
-
-				if (popupIsOpen) {
-					return;
-				}
-				if (!$thisPopup.length || popupIsOpen) {
-					return;
-				}
-
-				e.stopPropagation();
-
-				if (popupIsOpen) {
-					closePopup();
-				}
-
-				openPopupForTouchscreen($container.find('g[data-href*='+$this.attr('data-region')+']'), $thisPopup);
-
-			});
-		}
-
-		function openPopupForDesktop(element, popup, corner) {
-			element.addClass(classActive);
-			popup.stop().fadeIn(animateSpeed, function () {
-				popup.addClass(classActive);
-				popupIsOpen = true;
-			});
-
-			popup.position({
-				my: "center bottom",
-				at: "center top",
-				of: element,
-				collision: "flipfit flip",
-				within: $container,
-				using: function (position, feedback) {
-					addPositionClass(position, feedback, $(this));
-				}
-			});
-
-			corner.position({
-				my: "center bottom-1",
-				at: "center top",
-				of: element,
-				collision: "flipfit flip",
-				within: $container,
-				using: function (position, feedback) {
-					addPositionClass(position, feedback, $(this));
-				}
-			});
-		}
-
-		function openPopupForTouchscreen(element, popup) {
-			/* css */
-			/* if touchscreen */
-			/*
-			* position: fixed;
-			* left: 50%;
-			* top: 50%;
-			* transform: translate(-50%, -50%)
-			* */
-
-			element.addClass(classActive);
-			popup.stop().fadeIn(animateSpeed, function () {
-				popup.addClass(classActive);
-				popupIsOpen = true;
-			});
-			$('html').addClass('css-scroll-fixed mapPopupIsOpen');
-			tplOverlay.clone().appendTo(popup.parent());
-
-		}
-
-		// $(document).on('click', function () {
-		// 	if (popupIsOpen) {
-		// 		closePopup();
-		// 	}
-		// });
-
-		$(document).on('click', function(event){
-			if(!popupIsOpen) return;
-
-			if( $(event.target).closest($popup).length) {
-				return;
-			}
-
-			closePopup();
-			event.stopPropagation();
-		});
-
-		// $popup.on('click', function (e) {
-		// 	e.stopPropagation();
-		// });
-
-		$('.btn-close-popup-js').on('click', function (e) {
-			e.preventDefault();
-			if (popupIsOpen) {
-				closePopup();
-			}
-		});
-
-		$(document).keyup(function(e) {
-			if (popupIsOpen && e.keyCode === 27) {
-				closePopup();
-			}
-		});
-
-		$(window).on('resizeByWidth', function () {
-			if (popupIsOpen) {
-				closePopup();
-			}
-		});
-
-		function closePopup() {
-			$region.removeClass(classActive);
-			$popup.removeClass(classActive);
-			$("." + tplOverlayClass).remove();
-			$('html').removeClass('css-scroll-fixed mapPopupIsOpen');
-
-			$popup.filter(':visible').stop().fadeOut(animateSpeed, function () {
-				popupIsOpen = false;
-			});
-		}
 	}
 }
 
@@ -2622,7 +2420,6 @@ $(document).ready(function(){
 	toggleFormTab();
 	branchesMapPopup();
 	addLabelsOnMap();
-	infoMapPopup();
 
 	footerBottom();
 
