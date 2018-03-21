@@ -2376,6 +2376,69 @@ function addLabelsOnMap() {
 	}
 }
 
+/**
+ * !datepicker initial
+ * */
+function datePickerInit() {
+	var _dataLocation = $('html').attr('lang');
+
+	var $customDate = $('.custom-date');
+	if ($customDate) {
+		$customDate.flatpickr({
+			"locale": _dataLocation,
+			// defaultDate: 'today',
+			altInput: true,
+			clickopens: false,
+			wrap: true,
+			altFormat: 'd.m.Y',
+			maxDate: 'today',
+			disableMobile: false
+		});
+	}
+
+	var $customDateFrom = $('.custom-date--from');
+	var $customDateTo = $('.custom-date--to');
+	var $customDateContainer = $customDateFrom.closest('.form-row');
+
+	if ($customDateFrom) {
+		$.each($customDateContainer, function () {
+			var $thisContainer = $(this);
+			var dateFrom, dateTo;
+
+			dateFrom = $thisContainer.find($customDateFrom).flatpickr({
+				// minDate: 'today',
+				"locale": _dataLocation,
+				altInput: true,
+				clickopens: false,
+				wrap: true,
+				altFormat: 'd.m.Y',
+				maxDate: 'today',
+				disableMobile: false,
+				onChange: function (el, date) {
+					var minDateVal = date || null;
+
+					dateTo.set("minDate", minDateVal);
+				}
+			});
+
+			dateTo = $thisContainer.find($customDateTo).flatpickr({
+				// minDate: 'today',
+				"locale": _dataLocation,
+				altInput: true,
+				clickopens: false,
+				wrap: true,
+				altFormat: 'd.m.Y',
+				maxDate: 'today',
+				disableMobile: false,
+				onChange: function (el, date) {
+					var maxDateVal = date || 'today';
+					dateFrom.set("maxDateVal", maxDateVal);
+				}
+			});
+		});
+	}
+}
+
 /** ready/load/resize document **/
 
 $(window).on('load', function () {
@@ -2420,6 +2483,7 @@ $(document).ready(function(){
 	toggleFormTab();
 	branchesMapPopup();
 	addLabelsOnMap();
+	datePickerInit();
 
 	footerBottom();
 

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
-<!--[if lt IE 9]>      <html class="no-js old-ie" lang=""> <![endif]-->
-<!--[if IE 9]>         <html class="no-js ie9" lang=""> <![endif]-->
-<!--[if gt IE 9]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<!--[if lt IE 9]>      <html class="no-js old-ie" lang="ru"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js ie9" lang="ru"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="ru"> <!--<![endif]-->
 <head>
 	<meta charset="UTF-8">
 	<title>Состояние аварийности по Могилёвской области</title>
@@ -307,6 +307,36 @@
 								</ul>
 							</div>
 
+							<div>
+								<p>Выберите дату или диапазон дат:</p>
+
+								<form action="#" method="post">
+									<div class="input-wrap custom-date" style="width: 200px;">
+										<input  type="text" placeholder="Выбирите дату" data-input/>
+										<a class="input-button" title="Очистить поле" data-clear>
+											<i class="icon-close">Очистить</i>
+										</a>
+									</div>
+
+									<div class="form-row">
+										<div class="input-wrap custom-date--from">
+											<input class="" type="text" placeholder="Дата начала" data-input/>
+											<a class="input-button" title="Очистить поле" data-clear>
+												<i class="icon-close">Очистить</i>
+											</a>
+										</div>
+										<div class="input-wrap custom-date--to">
+											<input class="" type="text" placeholder="Дата конца" data-input/>
+											<a class="input-button" title="Очистить поле" data-clear>
+												<i class="icon-close">Очистить</i>
+											</a>
+										</div>
+									</div>
+
+									<button class="btn-default">Отправить</button>
+								</form>
+							</div>
+
 							<div class="info-map info-map-js">
 								<div class="info-map-regions">
 									<script>
@@ -516,7 +546,7 @@
 								<table class="tbl-dates">
 									<thead>
 										<tr>
-											<th colspan="2"><b>Характер неисправности</b></th>
+											<th colspan="2"><b>Характер <br> неисправности</b></th>
 											<!--<th>Характер неисправности</th>-->
 											<th>
 												<div class="has-tooltip">
@@ -588,10 +618,10 @@
 													<div class="custom-tooltip">Восстановлена работа домовых регуляторов давления газа</div>
 												</div>
 											</th>
-											<th><b>Итого по области:</b></th>
+											<th><b>Итого <br> по области:</b></th>
 										</tr>
 										<tr>
-											<th rowspan="2"><b>Данные с начала года</b></th>
+											<th rowspan="2"><b>Данные <br> с начала года</b></th>
 											<th><b>2017</b></th>
 											<th>35</th>
 											<th>48</th>
