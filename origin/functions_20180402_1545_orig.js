@@ -1150,9 +1150,9 @@ function slidersInit() {
 		var dataCount = $(currentSlider).data('count');
 		meterCounter.goToNumber(dataCount);
 		var meterImg = $('.meter-counter img');
-		meterImg.attr('src','img/jodometer-numbers.png');
+		meterImg.attr('src','/local/templates/.default/img/jodometer-numbers.png');
 		for(var i = 0; i < String(dataCount).length; i++){
-			meterImg.eq(i).attr('src','img/jodometer-numbers-color.png');
+			meterImg.eq(i).attr('src','/local/templates/.default/img/jodometer-numbers-color.png');
 		}
 	}
 
@@ -1573,7 +1573,7 @@ function tabSwitcher() {
 								// self.scrollPosition($currentItem);
 
 								$(this).slideUp(self._animateSpeed, function () {
-									// console.log('closed attachment');
+									console.log('closed attachment');
 									self.scrollPosition($currentItem);
 								});
 							}
@@ -1736,7 +1736,7 @@ function tabSwitcher() {
 	JsAccordion.prototype.scrollPosition = function (element) {
 		var self = this;
 		if (self.scrollToTop && !$('html, body').is('animated')) {
-			$('html, body').animate({ scrollTop: element.offset().top - $('.main-nav-frame').outerHeight() }, self._scrollToTopSpeed);
+			$('html, body').animate({ scrollTop: element.offset().top - $('.main-nav-frame').outerHeight() }, self._scrollToTopSpeed, function () {});
 		}
 	};
 
@@ -1772,108 +1772,74 @@ function jsAccordion() {
  * file input
  * */
 function fileInput() {
-	$('.upload-file').each(function () {
-		// $(this).filer({
-		// 	showThumbs: true,
-		// 	addMore: true,
-		// 	allowDuplicates: false,
-		// 	limit: 1
-		// });
-		$(this).filer({
-			limit: null,
-			maxSize: null,
-			changeInput: '<div class="jFiler-input-dragDrop"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><strong>Перетащите файл или кликните по полю</strong></div></div></div>',
-			showThumbs: true,
-			theme: "dragdropbox",
-			captions: {
-				button: "Choose Files",
-				feedback: "Choose files To Upload",
-				feedback2: "files were chosen",
-				drop: "Drop file here to Upload",
-				removeConfirmation: "Вы уверены, что хотите удалить этот файл?",
-				errors: {
-					filesLimit: "Only {{fi-limit}} files are allowed to be uploaded.",
-					filesType: "Only Images are allowed to be uploaded.",
-					filesSize: "{{fi-name}} is too large! Please upload file up to {{fi-maxSize}} MB.",
-					filesSizeAll: "Files you've choosed are too large! Please upload files up to {{fi-maxSize}} MB."
-				}
-			},
-			// templates: {
-				// box: '<ul class="jFiler-items-list jFiler-items-grid"></ul>',
-				// item: '<li class="jFiler-item">\
-				// 		<div class="jFiler-item-container">\
-				// 			<div class="jFiler-item-inner">\
-				// 				<div class="jFiler-item-thumb">\
-				// 					<div class="jFiler-item-status"></div>\
-				// 					<div class="jFiler-item-thumb-overlay">\
-				// 						<div class="jFiler-item-info">\
-				// 							<div style="display:table-cell;vertical-align: middle;">\
-				// 								<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name}}</b></span>\
-				// 								<span class="jFiler-item-others">{{fi-size2}}</span>\
-				// 							</div>\
-				// 						</div>\
-				// 					</div>\
-				// 					{{fi-image}}\
-				// 				</div>\
-				// 				<div class="jFiler-item-assets jFiler-row">\
-				// 					<ul class="list-inline pull-left">\
-				// 						<li>{{fi-progressBar}}</li>\
-				// 					</ul>\
-				// 					<ul class="list-inline pull-right">\
-				// 						<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
-				// 					</ul>\
-				// 				</div>\
-				// 			</div>\
-				// 		</div>\
-				// 	</li>',
-				// itemAppend: '<li class="jFiler-item">\
-				// 			<div class="jFiler-item-container">\
-				// 				<div class="jFiler-item-inner">\
-				// 					<div class="jFiler-item-thumb">\
-				// 						<div class="jFiler-item-status"></div>\
-				// 						<div class="jFiler-item-thumb-overlay">\
-				// 							<div class="jFiler-item-info">\
-				// 								<div style="display:table-cell;vertical-align: middle;">\
-				// 									<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name}}</b></span>\
-				// 									<span class="jFiler-item-others">{{fi-size2}}</span>\
-				// 								</div>\
-				// 							</div>\
-				// 						</div>\
-				// 						{{fi-image}}\
-				// 					</div>\
-				// 					<div class="jFiler-item-assets jFiler-row">\
-				// 						<ul class="list-inline pull-left">\
-				// 							<li><span class="jFiler-item-others">{{fi-icon}}</span></li>\
-				// 						</ul>\
-				// 						<ul class="list-inline pull-right">\
-				// 							<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
-				// 						</ul>\
-				// 					</div>\
-				// 				</div>\
-				// 			</div>\
-				// 		</li>',
-				// progressBar: '<div class="bar"></div>',
-				// itemAppendToEnd: false,
-				// canvasImage: true,
-				// removeConfirmation: true,
-				// _selectors: {
-				// 	list: '.jFiler-items-list',
-				// 	item: '.jFiler-item',
-				// 	progressBar: '.bar',
-				// 	remove: '.jFiler-item-trash-action'
-				// }
-			// },
-			addMore: false,
-			allowDuplicates: true,
-			clipBoardPaste: true,
-			dragDrop: {
-				dragEnter: null,
-				dragLeave: null,
-				drop: null,
-				dragContainer: null
-			}
-		});
-	});
+    $('.upload-file').each(function () {
+        // $(this).filer({
+        // 	showThumbs: true,
+        // 	addMore: true,
+        // 	allowDuplicates: false,
+        // 	limit: 1
+        // });
+        $(this).filer({
+            limit: 1,
+//			maxSize: null,
+            changeInput: '<div class="jFiler-input-dragDrop"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><strong>Кликните по полю для выбора файла</strong></div></div></div>',
+            showThumbs: true,
+            theme: "dragdropbox",
+            captions: {
+                button: "Choose Files",
+                feedback: "Choose files To Upload",
+                feedback2: "files were chosen",
+                drop: "Drop file here to Upload",
+                removeConfirmation: "Вы уверены, что хотите удалить этот файл?",
+                errors: {
+                    filesLimit: "Only {{fi-limit}} files are allowed to be uploaded.",
+                    filesType: "Only Images are allowed to be uploaded.",
+                    filesSize: "{{fi-name}} is too large! Please upload file up to {{fi-maxSize}} MB.",
+                    filesSizeAll: "Files you've choosed are too large! Please upload files up to {{fi-maxSize}} MB."
+                }
+            },
+            addMore: true,
+            allowDuplicates: false,
+            clipBoardPaste: true,
+            dragDrop: {
+                dragEnter: null,
+                dragLeave: null,
+                drop: null,
+                dragContainer: null
+            }
+        });
+    });
+
+    $('.upload-file-click').each(function () {
+        $(this).filer({
+            limit: 1,
+            changeInput: '<div class="jFiler-input-dragDrop"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><strong>Прикрепить файл</strong></div></div></div>',
+            showThumbs: true,
+            theme: "dragdropbox",
+            captions: {
+                button: "Choose Files",
+                feedback: "Choose files To Upload",
+                feedback2: "files were chosen",
+                drop: "Drop file here to Upload",
+                removeConfirmation: "Вы уверены, что хотите удалить этот файл?",
+                errors: {
+                    filesLimit: "Для загрузки разрешен только {{fi-limit}} файл.",
+                    filesType: "Only Images are allowed to be uploaded.",
+                    filesSize: "{{fi-name}} is too large! Please upload file up to {{fi-maxSize}} MB.",
+                    filesSizeAll: "Files you've choosed are too large! Please upload files up to {{fi-maxSize}} MB."
+                }
+            },
+            addMore: true,
+            allowDuplicates: false,
+            clipBoardPaste: true,
+            // dragDrop: {
+            //     dragEnter: null,
+            //     dragLeave: null,
+            //     drop: null,
+            //     dragContainer: null
+            // }
+        });
+    });
 }
 /*file input end end*/
 
@@ -1887,7 +1853,7 @@ function contactsMap() {
 		$mapId = $(mapId),
 		coord = [53.855983, 30.325848],
 		center = [],
-		baseImageURL = 'img/';
+		baseImageURL = '/local/templates/.default/img/';
 
 	if (window.innerWidth > 768) {
 		for (var i = 0; i < coord.length; i++) {
@@ -2208,10 +2174,6 @@ function branchesMapPopup(){
 			var $this = $(this);
 			var $thisPopup = $($this.attr('href'));
 
-			if($thisPopup.length === 0) {
-				return;
-			}
-
 			e.stopPropagation();
 
 			if (popupIsOpen) {
@@ -2225,13 +2187,9 @@ function branchesMapPopup(){
 			});
 
 			var withinElement = $this.closest('.extra-popup__content');
-
-			if (withinElement.length === 0) {
+			if ($('body').hasClass('home-page')) {
 				withinElement = $(window);
 			}
-			// if ($('body').hasClass('home-page')) {
-			// 	withinElement = $(window);
-			// }
 
 			$thisPopup.position({
 				my: "center bottom-20",
@@ -2268,8 +2226,7 @@ function branchesMapPopup(){
 			}
 		});
 
-		$('.extra-popup').on('click', function (e) {
-			e.preventDefault();
+		$('.extra-popup').on('click', function () {
 			if (popupIsOpen) {
 				closePopup();
 			}
@@ -2298,199 +2255,6 @@ function branchesMapPopup(){
 	}
 }
 /* branches map popup end */
-
-/**
- * Add labels on info map
- * */
-
-(function($){
-	var defaults = {
-		obj: {},
-		containerClass: 'added-labels-to-map',
-		tpl: null,
-		dataEvent: 'data-event',
-		counter: null,
-		number: null,
-		modifiers: {
-			showLabel: "show-label",
-			showCount: "show-count"
-		}
-
-		// Add callback functions
-		// created: function () {} // Возов вконце функции init()
-	};
-
-	function AddLabelsEvents(element, options) {
-		var self = this;
-
-		self.config = $.extend(true, {}, defaults, options);
-
-		self.element = element;
-
-		// create jquery foreignObject
-		// self.foreignObject = $(document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject' ));
-		self.labelsTpl = $('<div class="info-map-labels"></div>');
-
-		self.callbacks();
-		self.createLabels(); //
-		self.init(); // create DOM structure of the plugins
-	}
-
-	/** get coordinates of an element's center */
-	AddLabelsEvents.prototype.getElementCenter = function (container, element) {
-		var bboxContainer = container[0].getBBox(),
-			containerWidth = bboxContainer.width,
-			containerHeight = bboxContainer.height;
-
-		var bbox = element[0].getBBox(),
-			middleX = bbox.x + (bbox.width / 2),
-			middleY = bbox.y + (bbox.height / 2);
-
-		var middleXPercent = middleX/containerWidth*100 + '%',
-			middleYPercent = middleY/containerHeight*100 + '%';
-
-
-		return {x: middleXPercent, y: middleYPercent};
-	};
-
-	/** track events */
-	AddLabelsEvents.prototype.callbacks = function () {
-		var self = this;
-		$.each(self.config, function (key, value) {
-			if(typeof value === 'function') {
-				self.element.on(key + '.addLabelsEvents', function (e, param) {
-					return value(e, self.element, param);
-				});
-			}
-		});
-	};
-
-	AddLabelsEvents.prototype.createLabels = function () {
-		var self = this;
-		var obj = self.config.obj;
-
-		$.each(obj, function (key, val) {
-			var $item = self.element.find('[href="#' + key + '"]');
-
-			var labelGroupTpl = self.labelsTpl.clone();
-
-			var elementCenter = self.getElementCenter(self.element, $item);
-			labelGroupTpl
-				.css({
-					left: elementCenter.x,
-					top: elementCenter.y
-				})
-				.append(self.config.tpl)
-				.attr('data-region', key)
-				.insertAfter(self.element);
-
-			$item.addClass('has-labels');
-
-			$.each(val, function (event, count) {
-				var $label = labelGroupTpl.find('[' + self.config.dataEvent + '="' +event+ '"]');
-				$label.addClass(self.config.modifiers.showLabel);
-
-				var valCount = count <= 1 ? false : count;
-				if(valCount){
-					$label.find(self.config.counter).addClass(self.config.modifiers.showCount);
-					$label.find(self.config.number).text(valCount);
-				}
-			})
-		});
-	};
-
-	AddLabelsEvents.prototype.init = function () {
-
-		this.element.addClass(this.config.containerClass);
-
-		this.element.trigger('created.addLabelsEvents');
-
-	};
-
-	$.fn.addLabelsEvents = function (options) {
-		'use strict';
-
-		new AddLabelsEvents(this, options);
-
-		return this;
-	};
-})(jQuery);
-
-function addLabelsOnMap() {
-	var $infoMapSvg = $('#infoMapSvg');
-	if($infoMapSvg.length){
-		var regionsEventsObj = (window.regionsEvents !== undefined) ? regionsEvents : {};
-		$infoMapSvg.addLabelsEvents({
-			obj: regionsEventsObj,
-			tpl: $('script[data-template="info-map-labels"]').html(),
-			counter: '.info-map-count',
-			number: '.info-map-number'
-		});
-	}
-}
-
-/**
- * !datepicker initial
- * */
-function datePickerInit() {
-	var _dataLocation = $('html').attr('lang');
-
-	var $customDate = $('.custom-date');
-	if ($customDate) {
-		$customDate.flatpickr({
-			"locale": _dataLocation,
-			// defaultDate: 'today',
-			altInput: true,
-			clickopens: false,
-			wrap: true,
-			altFormat: 'd.m.Y',
-			maxDate: 'today',
-			disableMobile: false
-		});
-	}
-
-	var $customDateFrom = $('.custom-date--from');
-	var $customDateTo = $('.custom-date--to');
-	var $customDateContainer = $customDateFrom.closest('.form-row');
-
-	if ($customDateFrom) {
-		$.each($customDateContainer, function () {
-			var $thisContainer = $(this);
-			var dateFrom, dateTo;
-
-			dateFrom = $thisContainer.find($customDateFrom).flatpickr({
-				// minDate: 'today',
-				"locale": _dataLocation,
-				altInput: true,
-				clickopens: false,
-				wrap: true,
-				altFormat: 'd.m.Y',
-				maxDate: 'today',
-				disableMobile: false,
-				onChange: function (el, date) {
-					var minDateVal = date || null;
-
-					dateTo.set("minDate", minDateVal);
-				}
-			});
-
-			dateTo = $thisContainer.find($customDateTo).flatpickr({
-				// minDate: 'today',
-				"locale": _dataLocation,
-				altInput: true,
-				clickopens: false,
-				wrap: true,
-				altFormat: 'd.m.Y',
-				maxDate: 'today',
-				disableMobile: false,
-				onChange: function (el, date) {
-					var maxDateVal = date || 'today';
-					dateFrom.set("maxDateVal", maxDateVal);
-				}
-			});
-		});
-	}
-}
 
 /** ready/load/resize document **/
 
@@ -2537,10 +2301,8 @@ $(document).ready(function(){
 	customSpinner();
 	toggleFormTab();
 	branchesMapPopup();
-	addLabelsOnMap();
-	datePickerInit();
 
 	footerBottom();
 
-	formSuccessExample();
+	// formSuccessExample();
 });

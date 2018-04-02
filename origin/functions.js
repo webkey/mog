@@ -1150,9 +1150,9 @@ function slidersInit() {
 		var dataCount = $(currentSlider).data('count');
 		meterCounter.goToNumber(dataCount);
 		var meterImg = $('.meter-counter img');
-		meterImg.attr('src','img/jodometer-numbers.png');
+		meterImg.attr('src','/local/templates/.default/img/jodometer-numbers.png');
 		for(var i = 0; i < String(dataCount).length; i++){
-			meterImg.eq(i).attr('src','img/jodometer-numbers-color.png');
+			meterImg.eq(i).attr('src','/local/templates/.default/img/jodometer-numbers-color.png');
 		}
 	}
 
@@ -1736,7 +1736,7 @@ function tabSwitcher() {
 	JsAccordion.prototype.scrollPosition = function (element) {
 		var self = this;
 		if (self.scrollToTop && !$('html, body').is('animated')) {
-			$('html, body').animate({ scrollTop: element.offset().top - $('.main-nav-frame').outerHeight() }, self._scrollToTopSpeed);
+			$('html, body').animate({ scrollTop: element.offset().top - $('.main-nav-frame').outerHeight() }, self._scrollToTopSpeed, function () {});
 		}
 	};
 
@@ -1772,108 +1772,74 @@ function jsAccordion() {
  * file input
  * */
 function fileInput() {
-	$('.upload-file').each(function () {
-		// $(this).filer({
-		// 	showThumbs: true,
-		// 	addMore: true,
-		// 	allowDuplicates: false,
-		// 	limit: 1
-		// });
-		$(this).filer({
-			limit: null,
-			maxSize: null,
-			changeInput: '<div class="jFiler-input-dragDrop"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><strong>Перетащите файл или кликните по полю</strong></div></div></div>',
-			showThumbs: true,
-			theme: "dragdropbox",
-			captions: {
-				button: "Choose Files",
-				feedback: "Choose files To Upload",
-				feedback2: "files were chosen",
-				drop: "Drop file here to Upload",
-				removeConfirmation: "Вы уверены, что хотите удалить этот файл?",
-				errors: {
-					filesLimit: "Only {{fi-limit}} files are allowed to be uploaded.",
-					filesType: "Only Images are allowed to be uploaded.",
-					filesSize: "{{fi-name}} is too large! Please upload file up to {{fi-maxSize}} MB.",
-					filesSizeAll: "Files you've choosed are too large! Please upload files up to {{fi-maxSize}} MB."
-				}
-			},
-			// templates: {
-				// box: '<ul class="jFiler-items-list jFiler-items-grid"></ul>',
-				// item: '<li class="jFiler-item">\
-				// 		<div class="jFiler-item-container">\
-				// 			<div class="jFiler-item-inner">\
-				// 				<div class="jFiler-item-thumb">\
-				// 					<div class="jFiler-item-status"></div>\
-				// 					<div class="jFiler-item-thumb-overlay">\
-				// 						<div class="jFiler-item-info">\
-				// 							<div style="display:table-cell;vertical-align: middle;">\
-				// 								<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name}}</b></span>\
-				// 								<span class="jFiler-item-others">{{fi-size2}}</span>\
-				// 							</div>\
-				// 						</div>\
-				// 					</div>\
-				// 					{{fi-image}}\
-				// 				</div>\
-				// 				<div class="jFiler-item-assets jFiler-row">\
-				// 					<ul class="list-inline pull-left">\
-				// 						<li>{{fi-progressBar}}</li>\
-				// 					</ul>\
-				// 					<ul class="list-inline pull-right">\
-				// 						<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
-				// 					</ul>\
-				// 				</div>\
-				// 			</div>\
-				// 		</div>\
-				// 	</li>',
-				// itemAppend: '<li class="jFiler-item">\
-				// 			<div class="jFiler-item-container">\
-				// 				<div class="jFiler-item-inner">\
-				// 					<div class="jFiler-item-thumb">\
-				// 						<div class="jFiler-item-status"></div>\
-				// 						<div class="jFiler-item-thumb-overlay">\
-				// 							<div class="jFiler-item-info">\
-				// 								<div style="display:table-cell;vertical-align: middle;">\
-				// 									<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name}}</b></span>\
-				// 									<span class="jFiler-item-others">{{fi-size2}}</span>\
-				// 								</div>\
-				// 							</div>\
-				// 						</div>\
-				// 						{{fi-image}}\
-				// 					</div>\
-				// 					<div class="jFiler-item-assets jFiler-row">\
-				// 						<ul class="list-inline pull-left">\
-				// 							<li><span class="jFiler-item-others">{{fi-icon}}</span></li>\
-				// 						</ul>\
-				// 						<ul class="list-inline pull-right">\
-				// 							<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
-				// 						</ul>\
-				// 					</div>\
-				// 				</div>\
-				// 			</div>\
-				// 		</li>',
-				// progressBar: '<div class="bar"></div>',
-				// itemAppendToEnd: false,
-				// canvasImage: true,
-				// removeConfirmation: true,
-				// _selectors: {
-				// 	list: '.jFiler-items-list',
-				// 	item: '.jFiler-item',
-				// 	progressBar: '.bar',
-				// 	remove: '.jFiler-item-trash-action'
-				// }
-			// },
-			addMore: false,
-			allowDuplicates: true,
-			clipBoardPaste: true,
-			dragDrop: {
-				dragEnter: null,
-				dragLeave: null,
-				drop: null,
-				dragContainer: null
-			}
-		});
-	});
+    $('.upload-file').each(function () {
+        // $(this).filer({
+        // 	showThumbs: true,
+        // 	addMore: true,
+        // 	allowDuplicates: false,
+        // 	limit: 1
+        // });
+        $(this).filer({
+            limit: 1,
+//			maxSize: null,
+            changeInput: '<div class="jFiler-input-dragDrop"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><strong>Кликните по полю для выбора файла</strong></div></div></div>',
+            showThumbs: true,
+            theme: "dragdropbox",
+            captions: {
+                button: "Choose Files",
+                feedback: "Choose files To Upload",
+                feedback2: "files were chosen",
+                drop: "Drop file here to Upload",
+                removeConfirmation: "Вы уверены, что хотите удалить этот файл?",
+                errors: {
+                    filesLimit: "Only {{fi-limit}} files are allowed to be uploaded.",
+                    filesType: "Only Images are allowed to be uploaded.",
+                    filesSize: "{{fi-name}} is too large! Please upload file up to {{fi-maxSize}} MB.",
+                    filesSizeAll: "Files you've choosed are too large! Please upload files up to {{fi-maxSize}} MB."
+                }
+            },
+            addMore: true,
+            allowDuplicates: false,
+            clipBoardPaste: true,
+            dragDrop: {
+                dragEnter: null,
+                dragLeave: null,
+                drop: null,
+                dragContainer: null
+            }
+        });
+    });
+
+    $('.upload-file-click').each(function () {
+        $(this).filer({
+            limit: 1,
+            changeInput: '<div class="jFiler-input-dragDrop"><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><strong>Прикрепить файл</strong></div></div></div>',
+            showThumbs: true,
+            theme: "dragdropbox",
+            captions: {
+                button: "Choose Files",
+                feedback: "Choose files To Upload",
+                feedback2: "files were chosen",
+                drop: "Drop file here to Upload",
+                removeConfirmation: "Вы уверены, что хотите удалить этот файл?",
+                errors: {
+                    filesLimit: "Для загрузки разрешен только {{fi-limit}} файл.",
+                    filesType: "Only Images are allowed to be uploaded.",
+                    filesSize: "{{fi-name}} is too large! Please upload file up to {{fi-maxSize}} MB.",
+                    filesSizeAll: "Files you've choosed are too large! Please upload files up to {{fi-maxSize}} MB."
+                }
+            },
+            addMore: true,
+            allowDuplicates: false,
+            clipBoardPaste: true,
+            // dragDrop: {
+            //     dragEnter: null,
+            //     dragLeave: null,
+            //     drop: null,
+            //     dragContainer: null
+            // }
+        });
+    });
 }
 /*file input end end*/
 
@@ -1887,7 +1853,7 @@ function contactsMap() {
 		$mapId = $(mapId),
 		coord = [53.855983, 30.325848],
 		center = [],
-		baseImageURL = 'img/';
+		baseImageURL = '/local/templates/.default/img/';
 
 	if (window.innerWidth > 768) {
 		for (var i = 0; i < coord.length; i++) {
@@ -2542,5 +2508,5 @@ $(document).ready(function(){
 
 	footerBottom();
 
-	formSuccessExample();
+	// formSuccessExample();
 });

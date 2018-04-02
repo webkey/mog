@@ -365,14 +365,6 @@
 	/*branches*/
 	.branches-section { padding: 0 0 40px; }
 	.branches{ padding-left: 0; }
-	.branches-link{
-		position: relative;
-		bottom: 60px;
-		right: auto;
-		padding: 0 20px;
-		font-size: 14px;
-		line-height: 18px;
-	}
 	.meter {
 		display: block;
 		margin: 0 auto;
@@ -404,6 +396,8 @@
 	.footer-figure-left { margin-right: 360px; }
 	.footer-figure-right { margin-left: 400px; }
 	/*FOOTER end*/
+
+
 }
 
 @media only screen and (max-width: 767px){
@@ -805,6 +799,7 @@
 }
 
 @media only screen and (max-width: 639px){
+    
 	/*MAIN BLOCKS*/
 	.layout{
 		padding-left: 20px;
