@@ -2433,25 +2433,64 @@ function addLabelsOnMap() {
  * !datepicker initial
  * */
 function datePickerInit() {
+	// html
+// 	<div class="input-wrap custom-date" style="width: 200px;">
+// 		<input  type="text" placeholder="Выбирите дату" data-input/>
+// 	<a class="input-button" title="Очистить поле" data-clear>
+// 	<i class="icon-close">Очистить</i>
+// 		</a>
+// 		</div>
+//
+// 		<div class="form-row">
+// 		<div class="input-wrap custom-date--from">
+// 		<input class="" type="text" placeholder="Дата начала" data-input/>
+// 	<a class="input-button" title="Очистить поле" data-clear>
+// 	<i class="icon-close">Очистить</i>
+// 		</a>
+// 		</div>
+// 		<div class="input-wrap custom-date--to">
+// 		<input class="" type="text" placeholder="Дата конца" data-input/>
+// 	<a class="input-button" title="Очистить поле" data-clear>
+// 	<i class="icon-close">Очистить</i>
+// 		</a>
+// 		</div>
+// 		</div>
+
 	var _dataLocation = $('html').attr('lang');
 
-	var $customDate = $('.custom-date-js');
+	var $customDate = $('.custom-date');
 	if ($customDate) {
 		$customDate.flatpickr({
-			'locale': _dataLocation,
-			mode: 'range',
-			altInput: true,
-			clickopens: false,
-			wrap: true,
-			altFormat: 'd.m.Y',
-			maxDate: 'today',
-			defaultDate: 'today',
-			disableMobile: false,
-			onClose: function (selectedDates, dateStr, instance) {
-				console.log("selectedDates: ", selectedDates);
-				console.log("dateStr: ", dateStr);
-				console.log("instance: ", instance);
-			}
+			"locale": _dataLocation, // defaultDate: 'today',
+			altInput: true, clickopens: false, wrap: true, altFormat: 'd.m.Y', maxDate: 'today', disableMobile: false
+		});
+	}
+
+	var $customDateFrom = $('.custom-date--from');
+	var $customDateTo = $('.custom-date--to');
+	var $customDateContainer = $customDateFrom.closest('.form-row');
+
+	if ($customDateFrom) {
+		$.each($customDateContainer, function () {
+			var $thisContainer = $(this);
+			var dateFrom, dateTo;
+
+			dateFrom = $thisContainer.find($customDateFrom).flatpickr({
+				// minDate: 'today',
+				"locale": _dataLocation, altInput: true, clickopens: false, wrap: true, altFormat: 'd.m.Y', maxDate: 'today', disableMobile: false, onChange: function (el, date) {
+					var minDateVal = date || null;
+
+					dateTo.set("minDate", minDateVal);
+				}
+			});
+
+			dateTo = $thisContainer.find($customDateTo).flatpickr({
+				// minDate: 'today',
+				"locale": _dataLocation, altInput: true, clickopens: false, wrap: true, altFormat: 'd.m.Y', maxDate: 'today', disableMobile: false, onChange: function (el, date) {
+					var maxDateVal = date || 'today';
+					dateFrom.set("maxDateVal", maxDateVal);
+				}
+			});
 		});
 	}
 }

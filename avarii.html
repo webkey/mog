@@ -308,32 +308,21 @@
 							</div>
 
 							<div>
-								<p>Выберите дату или диапазон дат:</p>
 
 								<form action="#" method="post">
-									<div class="input-wrap custom-date" style="width: 200px;">
-										<input  type="text" placeholder="Выбирите дату" data-input/>
-										<a class="input-button" title="Очистить поле" data-clear>
-											<i class="icon-close">Очистить</i>
-										</a>
-									</div>
-
-									<div class="form-row">
-										<div class="input-wrap custom-date--from">
-											<input class="" type="text" placeholder="Дата начала" data-input/>
-											<a class="input-button" title="Очистить поле" data-clear>
-												<i class="icon-close">Очистить</i>
-											</a>
+									<div class="input-wrap custom-date custom-date-js">
+										<div class="label-holder">
+											<label for="date-range">Выберите дату или диапазон дат:</label>
 										</div>
-										<div class="input-wrap custom-date--to">
-											<input class="" type="text" placeholder="Дата конца" data-input/>
+										<div class="input-holder">
+											<input id="date-range" type="text" placeholder="Дата" data-input/>
 											<a class="input-button" title="Очистить поле" data-clear>
 												<i class="icon-close">Очистить</i>
 											</a>
 										</div>
 									</div>
 
-									<button class="btn-default">Отправить</button>
+									<!--<button class="btn-default">Отправить</button>-->
 								</form>
 							</div>
 
