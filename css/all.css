@@ -7227,13 +7227,15 @@ a.links__inner{ cursor: pointer; }
 }
 /*map legend end */
 .custom-date{
-	display: inline-block;
-	vertical-align: top;
+	margin-bottom: 20px;
 }
 .custom-date .input-holder{
+	display: inline-block;
+	vertical-align: top;
 	position: relative;
 	max-width: 320px;
 	width: 100%;
+	margin-bottom: 10px;
 }
 .custom-date input[type="text"]{
 	border: 1px solid #d9d9d9;
@@ -7288,6 +7290,9 @@ a.links__inner{ cursor: pointer; }
 	-webkit-transform: rotate(-45deg);
 	-ms-transform: rotate(-45deg);
 	transform: rotate(-45deg);
+}
+.custom-date button{
+	padding: 10px 20px;
 }
 /*placeholder hidden*/
 .custom-date .flatpickr-input:focus::-webkit-input-placeholder{ color: #ccc !important; }

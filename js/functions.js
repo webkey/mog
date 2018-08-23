@@ -2437,22 +2437,45 @@ function datePickerInit() {
 
 	var $customDate = $('.custom-date-js');
 	if ($customDate) {
-		$customDate.flatpickr({
-			'locale': _dataLocation,
-			mode: 'range',
-			altInput: true,
-			clickopens: false,
-			wrap: true,
-			altFormat: 'd.m.Y',
-			maxDate: 'today',
-			defaultDate: 'today',
-			disableMobile: false,
-			onClose: function (selectedDates, dateStr, instance) {
-				console.log("selectedDates: ", selectedDates);
-				console.log("dateStr: ", dateStr);
-				console.log("instance: ", instance);
-			}
+
+		$.each($customDate, function () {
+			var $curCustomDate = $(this);
+
+			var input = $('[data-input]', $curCustomDate),
+				defaultDate = input.attr('data-defaultDate');
+
+			$curCustomDate.flatpickr({
+				'locale': _dataLocation,
+				mode: 'range',
+				altInput: true,
+				clickopens: false,
+				wrap: true,
+				altFormat: 'd.m.Y',
+				maxDate: 'today',
+				defaultDate: defaultDate,
+				disableMobile: false,
+				onReady: function(selectedDates, dateStr, instance) {
+					input = $(instance.input);
+
+					if (input.val() !== undefined) {
+						input.siblings('.input-clear').show();
+					}
+
+					if ( input.attr('data-minDate') ){
+						instance.set("minDate", input.attr('data-minDate'));
+					}
+
+					if ( input.attr('data-maxDate') ){
+						instance.set("maxDate", input.attr('data-maxDate'));
+					}
+
+					// if ( input.attr('data-defaultDate') ){
+					// 	instance.set("defaultDate", input.attr('data-defaultDate'));
+					// }
+				}
+			});
 		});
+
 	}
 }
 
