@@ -126,13 +126,14 @@ gulp.task('buildDist', ['cleanDist', 'htmlCompilation', 'copyImgToDist', 'sassCo
 
 	gulp.src(['src/video/**/*']) // Переносим видеофайлы в продакшен
 		.pipe(gulp.dest(path.dist + '/video'));
+
 	// Переносим стили в продакшен с форматированием
-	gulp.src(['src/css/base.css', 'src/css/special.css'])
+	gulp.src(['src/css/special-version-base.css', 'src/css/special-version.css'])
 		.pipe(removeEmptyLines()) // Удаляем пустые строки
 		.pipe(gulp.dest(path.dist + '/css'));
 
 	// Переносим остальные стили в продакшен без изменений
-	gulp.src(['!src/css/_temp_*.css', '!src/css/base.css', '!src/css/special.css', 'src/css/*.css'])
+	gulp.src(['!src/css/_temp_*.css', '!src/css/special-version-base.css', '!src/css/special-version.css', 'src/css/*.css'])
 		.pipe(gulp.dest(path.dist + '/css'));
 
 	gulp.src('src/fonts/**/*') // Переносим шрифты в продакшен

@@ -1,0 +1,416 @@
+@import ../libs/include-media/dist/include-media
+@import utils/variables
+@import utils/functions
+@import utils/mixins
+@import utils/placeholders
+
+// variables
+$displace: 1px
+// variables end
+
+// только для текуще проекта
+.footer-nav
+	position: relative
+
+.spec-panel
+	display: none
+	position: fixed
+	left: 0
+	top: 0
+	height: 100%
+	width: 70px
+	z-index: 999
+	font-size: 16px
+	line-height: 1
+	overflow: hidden
+	box-shadow: 0 0 0 1px currentColor
+	//background-color: var(--main-bg-color);
+	background-color: inherit
+	will-change: transform
+	-webkit-transform: translate(0, 0)
+	-ms-transform: translate(0, 0)
+	transform: translate(0, 0)
+	-webkit-transition: transform 0.3s linear
+	transition: transform 0.3s linear
+
+	+media('<mob-md')
+		height: 70px
+		width: 100%
+		border-width: 0 0 2px 0
+		$sh1: 0 0 0 2px
+		$sh2: 0 4px 4px
+		box-shadow: $sh1 currentColor, $sh2 rgba($spec-text-color, 0.3)
+
+		.schemecolor-white &
+			box-shadow: $sh1 currentColor, $sh2 rgba($spec-text-color--scheme-white, 0.3)
+
+		.schemecolor-blue &
+			box-shadow: $sh1 currentColor, $sh2 rgba($spec-text-color--scheme-blue, 0.3)
+
+	.vspec &
+		display: block
+
+	&:hover,
+	.touchevents &
+		overflow-y: auto
+
+		+media('<mob-md')
+			overflow-y: hidden
+			overflow-x: auto
+
+	.nav-opened .inner-page &
+		+media('<tab-lg')
+			transform: translate(-100%, 0)
+
+		+media('<mob-md')
+			transform: translate(0, calc(-100% - 2px))
+			box-shadow: none
+
+	.nav-opened .main-page &
+		+media('<tab-sm')
+			transform: translate(-100%, 0)
+
+	.sv-btn-group
+		+media('<mob-md')
+			display: inline-block
+			vertical-align: top
+
+		//a:last-child
+			margin-bottom: 0
+
+			+media('<mob-md')
+				margin-right: 0
+
+	hr
+		border-color: currentColor
+		border-bottom-width: 1px
+		margin: 20px 0
+
+		+media('<mob-md')
+			display: inline-block
+			vertical-align: top
+			border-left: 1px solid currentColor
+			border: none
+			width: 0
+			height: 36px
+			margin: 0 10px 0 0
+
+	a
+		display: block
+		margin-bottom: 18px
+		margin-left: auto
+		margin-right: auto
+
+		+media('<mob-md')
+			display: inline-block
+			vertical-align: top
+			margin-bottom: 0
+			margin-right: 10px
+
+.spec-panel_h
+	padding: 20px 0
+	text-align: center
+	letter-spacing: -4px
+	font-size: 0
+	line-height: 1
+
+	+media('<mob-md')
+		white-space: nowrap
+		padding: 10px
+
+.spec-panel,
+.spec-panel_h
+	width: 70px
+	box-sizing: border-box
+
+	+media('<mob-md')
+		height: 56px
+		width: 100%
+
+// button enable special version
+.sv-btn-on
+	$size: 42px
+
+	position: fixed
+	left: 10px
+	top: 10px
+	padding-left: 33px
+	font-size: 14px
+	line-height: 16px
+	letter-spacing: normal
+	color: inherit
+	box-sizing: border-box
+	z-index: 9999
+
+	//span
+		font-size: 0
+		line-height: 0
+
+	svg
+		position: absolute
+		left: 0
+		top: 50%
+		transform: translate(0, -50%)
+		box-sizing: border-box
+
+		&.icon-spec-on
+			display: block
+
+			.vspec &
+				display: none
+
+		&.icon-spec-off
+			display: none
+
+			.vspec &
+				display: block
+
+	path
+		fill: currentColor
+
+	// in header
+	.header &
+		position: absolute
+		left: auto
+		right: 15px
+		top: 20px
+
+		.home-page &
+			color: white
+
+	// in footer
+	.footer-nav &
+		position: absolute
+		left: auto
+		right: 15px
+		top: auto
+		bottom: 10px
+		color: rgba(white, 0.8)
+
+.spec-panel .sv-btn
+	$size: 42px
+	$arr: 24px
+
+	width: $size
+	height: $size
+	position: relative
+	font-size: 16px
+	line-height: 1
+	letter-spacing: normal
+	text-decoration: none
+	border-radius: 1px
+	//border: 3px solid
+	//border-color: rgba($spec-text-color, 0.2) rgba($spec-text-color, 0.6) $spec-text-color rgba($spec-text-color, 0.4)
+	border: 1px solid $spec-text-color
+	box-sizing: border-box
+	-webkit-tap-highlight-color: rgba(0,0,0,0) !important
+	user-select: none !important
+
+	+media('<mob-md')
+		$size: 36px
+		width: $size
+		height: $size
+
+	.schemecolor-white &
+		border-color: $spec-text-color--scheme-white
+
+	.schemecolor-blue &
+		border-color: $spec-text-color--scheme-blue
+
+	&::after
+		content: ""
+		display: none
+		position: absolute
+		top: 50%
+		right: -22px
+		height: $arr
+		width: $arr
+		margin-top: -#{round($arr/2)}
+		+triangle("left", currentColor, round($arr/2), 1.2)
+
+		+media('<mob-md')
+			border: none
+			+triangle("top", currentColor, round($arr/2), 1.2)
+			top: auto
+			right: auto
+			left: 50%
+			bottom: -20px
+			margin: 0 0 0 -#{round($arr/2)}
+
+.spec-panel
+	.sv-btn,
+	.sv-btn[data-toggle],
+	.sv-btn.active[data-toggle]
+		$w1: 0 0 0 2px
+		$w2: 0 0 0 5px
+		$w1--sm: 0 0 0 2px
+		$w2--sm: 0 0 0 4px
+
+		&:hover, &:focus
+			//transform: translate(-$displace, -$displace)
+			box-shadow: $w1 $spec-bg-color, $w2 $spec-text-color
+
+			.schemecolor-white &
+				box-shadow: $w1 $spec-bg-color--scheme-white, $w2 $spec-text-color--scheme-white
+
+			.schemecolor-blue &
+				box-shadow: $w1 $spec-bg-color--scheme-blue, $w2 $spec-text-color--scheme-blue
+
+	.sv-btn.active
+		&, &:hover, &:focus
+			cursor: default
+			box-shadow: none
+			border-width: 4px
+
+			//transform: translate(0, 0)
+			//$w1: 0 0 0 4px
+			//$w2: 0 0 0 10px
+			//$w1--sm: 0 0 0 2px
+			//$w2--sm: 0 0 0 4px
+
+			//cursor: default
+			//transform: translate(0, 0)
+			//border-color: currentColor
+			//border-width: 1px
+			//box-shadow: $w1 $spec-bg-color, $w2 $spec-text-color
+			//
+			//+media('<mob-md')
+			//	box-shadow: $w1--sm $spec-bg-color, $w2--sm $spec-text-color
+			//
+			//.schemecolor-white &
+			//	box-shadow: $w1 $spec-bg-color--scheme-white, $w2 $spec-text-color--scheme-white
+			//
+			//	+media('<mob-md')
+			//		box-shadow: $w1--sm $spec-bg-color--scheme-white, $w2--sm $spec-text-color--scheme-white
+			//
+			//.schemecolor-blue &
+			//	box-shadow: $w1 $spec-bg-color--scheme-blue, $w2 $spec-text-color--scheme-blue
+			//
+			//	+media('<mob-md')
+			//		box-shadow: $w1--sm $spec-bg-color--scheme-blue, $w2--sm $spec-text-color--scheme-blue
+
+		&::after
+			display: block
+
+	.sv-btn.active[data-toggle]
+		&, &:hover, &:focus
+			cursor: pointer
+
+	.sv-btn
+		span
+			font-size: 0
+			line-height: 0
+
+		svg
+			display: block
+			position: absolute
+			left: 50%
+			top: 50%
+			transform: translate(-50%, -50%)
+			box-sizing: border-box
+
+			+media('<mob-md')
+				transform: translate(-50%, -50%) scale(0.85)
+
+		path
+			fill: currentColor
+
+.spec-panel .sv-btn-off
+	display: none
+
+.vspec .spec-panel .sv-btn-off
+	display: block
+
+	&::before
+		content: ""
+		display: block
+		position: absolute
+		left: 50%
+		top: 50%
+		width: 40px
+		height: 3px
+		margin: -1px 0 0 -20px
+		border: none
+		background-color: currentColor
+		transform: rotate(-0.1turn)
+
+		+media('<mob-md')
+			width: 34px
+			margin: -1px 0 0 -17px
+
+	&::after
+		content: none
+
+	+media('<mob-md')
+		display: inline-block
+
+/* special version color
+.spec-panel .vcolor-btn-black
+	color: $spec-text-color
+	background-color: $spec-bg-color
+
+.spec-panel .vcolor-btn-white
+	color: $spec-text-color--scheme-white
+	background-color: $spec-bg-color--scheme-white
+
+.spec-panel .vcolor-btn-blue
+	color: $spec-text-color--scheme-blue
+	background-color: $spec-bg-color--scheme-blue
+
+// letter spacing
+$icon-spacing--size: 16px 2px // h w
+$icon-spacing--space: 3px // h
+.sv-spacing-btn--small, .sv-spacing-btn--medium, .sv-spacing-btn--large
+	.spec-panel &
+		.icon
+			&, &::before, &::after
+				display: block
+				position: absolute
+				left: 50%
+				top: 50%
+				height: nth($icon-spacing--size, 1)
+				width: nth($icon-spacing--size, 2)
+				background-color: currentColor
+
+			&
+				margin: -#{round(nth($icon-spacing--size, 1)/2)} 0 0 -#{round(nth($icon-spacing--size, 2)/2)}
+
+				+media('<mob-md')
+					transform: scale(0.85)
+
+			&::before, &::after
+				content: ""
+				margin-top: -#{round(nth($icon-spacing--size, 1)/2)}
+
+			&::before
+				margin-left: -#{$icon-spacing--space + round(nth($icon-spacing--size, 2)*1.5)}
+
+			&::after
+				margin-left: #{$icon-spacing--space + round(nth($icon-spacing--size, 2)*0.5)}
+
+.sv-spacing-btn--medium
+	.spec-panel &
+		.icon
+			$icon-spacing--space: 6px // h
+
+			&::before
+				margin-left: -#{$icon-spacing--space + round(nth($icon-spacing--size, 2)*1.5)}
+
+			&::after
+				margin-left: #{$icon-spacing--space + round(nth($icon-spacing--size, 2)*0.5)}
+
+.sv-spacing-btn--large
+	.spec-panel &
+		.icon
+			$icon-spacing--space: 9px // h
+
+			&::before
+				margin-left: -#{$icon-spacing--space + round(nth($icon-spacing--size, 2)*1.5)}
+
+			&::after
+				margin-left: #{$icon-spacing--space + round(nth($icon-spacing--size, 2)*0.5)}
+
+// добавить в all.css
+.main-contacts,
+.local-map
+	height: 595px

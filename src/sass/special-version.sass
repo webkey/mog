@@ -1,0 +1,3020 @@
+@import ../libs/include-media/dist/include-media
+@import utils/variables
+@import utils/functions
+@import utils/mixins
+@import utils/placeholders
+
+@import "special-version-reset"
+/*=========== SPECIAL ===========
+.hide-page
+	display: none !important
+
+body.vspec
+	font-size: $font-size
+	line-height: $line-height
+	//font-family: Tahoma, Geneva, sans-serif
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+	//font-family: "Times New Roman", Serif
+	color: $spec-text-color
+	background-color: $spec-bg-color
+
+body.vspec.fontsize-small
+	font-size: $font-size--sm
+
+body.vspec.fontsize-large
+	font-size: $font-size--lg
+
+body.vspec.spacing-medium
+	letter-spacing: $letter-spacing--medium
+
+body.vspec.spacing-large
+	letter-spacing: $letter-spacing--large
+
+body.vspec.schemecolor-white
+	color: $spec-text-color--scheme-white
+	background-color: $spec-bg-color--scheme-white
+
+body.vspec.schemecolor-blue
+	color: $spec-text-color--scheme-blue
+	background-color: $spec-bg-color--scheme-blue
+
+body.vspec::before
+	content: none
+
+.vspec .wrapper,
+.vspec .footer
+	padding-left: 70px
+	padding-right: 70px
+	padding-top: 0
+
+.inner-page .main > .max-wrap:before
+	display: none
+
+@media (max-width: 1439px)
+	.vspec .wrapper,
+	.vspec .footer
+		padding-right: 0
+
++media('<mob-md')
+	.vspec .wrapper,
+	.vspec .footer
+		padding-left: 0
+	.vspec .wrapper
+		padding-top: 56px
+
+.vspec
+	//.max-wrap
+		margin: 0
+
+	.content
+		padding-top: 30px
+		padding-bottom: 30px
+
+	.article-press
+		padding: 30px 0 0
+		color: inherit
+
+	.press-archive + .press-adt .article-press
+		padding-top: 0
+
+	.press
+		margin-top: 0
+
+	.full-width
+		margin: 0
+
+	.spacer
+		display: none
+
+	.footer
+		margin-top: 0 !important
+
+	//.header-options__aside
+		width: 60px
+		margin-left: -60px
+
+	//.phs__container
+		margin-right: 60px
+
+.vspec path,
+.vspec polygon
+	fill: currentColor !important
+
+/* font
+.vspec .btn-default,
+.vspec .btn-default-alt
+	font-family: inherit
+
+.vspec
+	h1, h2, h3, h4, h5, h6
+		color: inherit
+
+.vspec h1
+	font-size: $title-font-size
+	line-height: $title-line-height
+	letter-spacing: inherit
+	padding: 0
+	margin-bottom: $bottom-space-item
+
+.vspec h2
+	font-size: $sub-title-font-size
+	line-height: $sub-title-line-height
+	padding: 0
+	margin: 0 0 $bottom-space
+
+.vspec h3
+	font-size: $item-font-size
+	line-height: $item-line-height
+	font-weight: 700
+	padding: 0
+	margin: 0 0 $bottom-space
+
+.vspec h4
+	font-size: inherit
+	line-height: inherit
+	font-weight: 700
+	padding: 0
+	margin: 0 0 $bottom-space
+
+.vspec h5
+	font-size: inherit
+	line-height: inherit
+	text-transform: uppercase
+	font-weight: normal
+	padding: 0
+	margin: 0 0 $bottom-space
+
+.vspec h6
+	font-size: inherit
+	line-height: inherit
+	font-weight: 500
+	padding: 0
+	margin: 0 0 $bottom-space
+
+.vspec p
+	letter-spacing: inherit
+	margin-bottom: $bottom-space
+	padding: 0
+
+.vspec .to-print
+	display: none
+
+.vspec
+	.img-group
+		display: none
+
+	.img-group__holder
+		margin: 0 -6px
+
+	&.imageson .img-group
+		display: block
+
+.vspec
+	img
+		display: none
+
+	&.imageson
+		img
+			display: block
+
+.vspec
+	table
+		td, th
+			color: currentColor
+			border-color: currentColor
+			font-size: inherit
+			line-height: inherit
+
+			span, p, ul
+				background: none !important
+				color: inherit !important
+
+		caption
+			font-size: $font-size--small
+			line-height: $line-height--small
+			color: inherit
+			font-style: italic
+
+.vspec hr
+	border-bottom-color: currentColor
+
+.vspec .mark
+	color: $spec-bg-color
+	background-color: currentColor
+
+.vspec a,
+.vspec .dark-text,
+.vspec .dark-text-light,
+.vspec .text-color-alt
+	color: currentColor
+	-webkit-transition: none
+	transition: none
+
+.user-content ul > li
+	&::before
+		.vspec &
+			background-color: currentColor
+			top: 1.9em
+
+		.vspec.fontsize-large &
+			top: 1.5em
+
+	&:first-child::before
+		.vspec &
+			top: 0.8em
+
+.user-content ul ul li
+	&::before
+		.vspec &
+			top: 2em
+
+		.vspec.fontsize-large &
+			top: 1.5em
+
+.vspec .user-content ol > li::before
+	color: currentColor
+
+.vspec
+	.user-content
+		.tbl
+			td,
+			th,
+			th,
+			thead td,
+			tfoot td
+				color: currentColor
+				background-color: transparent
+				border: 1px solid currentColor
+				font-size: inherit
+				line-height: inherit
+
+			tbody tr:nth-child(even)
+				td
+					background-color: transparent
+
+.vspec .user-content blockquote
+	border: 2px solid currentColor
+	background-color: transparent
+
+.vspec .user-content blockquote q,
+.vspec .user-content blockquote cite
+	font-size: inherit
+	line-height: inherit
+	font-family: inherit
+	color: currentColor
+
+.vspec .user-content blockquote q::before,
+.vspec .user-content blockquote q::after
+	background-image: none
+
+.vspec .user-content .pref
+	font-size: inherit
+	line-height: inherit
+	font-family: inherit
+	color: currentColor
+
+.vspec .input-wrap
+	font-size: $font-size
+	line-height: $line-height
+	letter-spacing: $letter-spacing
+
+.vspec
+	.breadcrumbs
+		letter-spacing: inherit
+		font-size: $font-size--small
+		line-height: $line-height--small
+		color: currentColor
+		padding: 0
+		margin-bottom: $bottom-space-item
+
+	.breadcrumbs, .user-content .breadcrumbs
+		li
+			float: none
+			display: inline
+			padding: 0
+			margin: 0 0.3em 0 0
+
+			&:before
+				position: relative
+				left: auto
+				top: auto
+				background: none
+				margin-right: 0.5em
+
+	&.fontsize-large
+		.breadcrumbs, .user-content .breadcrumbs
+			li
+				&:before
+					top: auto
+
+.vspec
+	.file
+		display: block
+		color: inherit
+
+		.file__info
+			border-color: currentColor
+			letter-spacing: normal
+			text-align: left
+
+			& > div > b
+				color: inherit
+
+		&:hover
+			.file__info
+				border-color: $spec-text-color
+
+				&::before
+					background-color: $spec-text-color
+
+				& > div,
+				& > div > b
+					color: $spec-bg-color
+
+	.file__icon
+		display: none
+
+	&.imageson
+		.file__icon
+			display: block
+
+	&.schemecolor-white
+		.file
+			&:hover
+				.file__info
+					border-color: $spec-text-color--scheme-white
+
+					&::before
+						background-color: $spec-text-color--scheme-white
+
+					& > div,
+					& > div > b
+						color: $spec-bg-color--scheme-white
+
+	&.schemecolor-blue
+		.file
+			&:hover
+				.file__info
+					border-color: $spec-text-color--scheme-blue
+
+					&::before
+						background-color: $spec-text-color--scheme-blue
+
+					& > div,
+					& > div > b
+						color: $spec-bg-color--scheme-blue
+
+.vspec
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	input[type="search"],
+	textarea
+		font-family: inherit
+		box-shadow: none
+		height: 50px
+		font-size: $font-size
+		line-height: 30px
+		color: inherit
+		padding: 8px 15px
+		border: 2px solid currentColor
+		transition: none
+
+		&.error
+			border-color: currentColor
+			box-shadow: none
+			color: inherit
+
+		&:focus
+			box-shadow: none
+
+		+placeholder
+			color: currentColor
+
+.btn-default, input[type="submit"], input[type="button"], input[type="reset"], button
+	.vspec &
+		font-family: inherit
+		color: $spec-text-color
+		border-color: $spec-text-color
+		background-color: $spec-bg-color
+		transition: none
+
+		&:hover
+			border-color: $spec-text-color
+			background-color: $spec-text-color
+			color: $spec-bg-color
+
+	.vspec.schemecolor-white &
+		color: $spec-text-color--scheme-white
+		border-color: $spec-text-color--scheme-white
+		background-color: $spec-bg-color--scheme-white
+
+		&:hover
+			color: $spec-bg-color--scheme-white
+			border-color: $spec-text-color--scheme-white
+			background-color: $spec-text-color--scheme-white
+
+	.vspec.schemecolor-blue &
+		color: $spec-text-color--scheme-blue
+		border-color: $spec-text-color--scheme-blue
+		background-color: $spec-bg-color--scheme-blue
+
+		&:hover
+			color: $spec-bg-color--scheme-blue
+			border-color: $spec-text-color--scheme-blue
+			background-color: $spec-text-color--scheme-blue
+
+.vspec
+	.label-holder, label
+		color: inherit
+		font-size: inherit
+		line-height: inherit
+		letter-spacing: inherit
+
+/* bg
+.vspec .content-wrap,
+.vspec input[type="text"],
+.vspec input[type="password"],
+.vspec input[type="email"],
+.vspec input[type="search"],
+.vspec textarea,
+.vspec .phones,
+.vspec .phones-clone,
+.vspec .phones-drop,
+.vspec .login a,
+.vspec .btn-search-open,
+.vspec .questions__item > a,
+.vspec .nav-main-page .nav-drop,
+.vspec .nav-main-page .nav-sub-drop,
+.vspec .promo-slider__content,
+.vspec .category-links li a,
+.vspec .footer-contacts,
+.vspec .social-networks,
+.vspec .footer-holder,
+.vspec .page-heading,
+.vspec .nav-main-page,
+.vspec .logo,
+.vspec .footer-site-map,
+.vspec .site-map,
+.vspec .press-adt__item,
+.vspec .press-archive,
+.vspec .show-drop .phs__btn,
+.no-js .vspec .phs__item:hover .phs__btn,
+.vspec .show-drop .phs-clone__btn,
+.vspec .search-form,
+.vspec .nav__list li > a,
+.vspec .nav__list li.hover > a,
+.vspec .nav__list li > a:hover,
+.vspec .nav__list li.active > a,
+.vspec .btn-transparent,
+.vspec .someclass,
+.vspec .someclass
+	background-color: $spec-bg-color
+
+.vspec.schemecolor-white .content-wrap,
+.vspec.schemecolor-white input[type="text"],
+.vspec.schemecolor-white input[type="password"],
+.vspec.schemecolor-white input[type="email"],
+.vspec.schemecolor-white input[type="search"],
+.vspec.schemecolor-white textarea,
+.vspec.schemecolor-white .phones,
+.vspec.schemecolor-white .phones-clone,
+.vspec.schemecolor-white .phones-drop,
+.vspec.schemecolor-white .login a,
+.vspec.schemecolor-white .btn-search-open,
+.vspec.schemecolor-white .questions__item > a,
+.vspec.schemecolor-white .nav-main-page .nav-drop,
+.vspec.schemecolor-white .nav-main-page .nav-sub-drop,
+.vspec.schemecolor-white .promo-slider__content,
+.vspec.schemecolor-white .category-links li a,
+.vspec.schemecolor-white .footer-contacts,
+.vspec.schemecolor-white .social-networks,
+.vspec.schemecolor-white .footer-holder,
+.vspec.schemecolor-white .page-heading,
+.vspec.schemecolor-white .nav-main-page,
+.vspec.schemecolor-white .logo,
+.vspec.schemecolor-white .footer-site-map,
+.vspec.schemecolor-white .site-map,
+.vspec.schemecolor-white .press-adt__item,
+.vspec.schemecolor-white .press-archive,
+.vspec.schemecolor-blue .show-drop .phs__btn,
+.no-js .vspec.schemecolor-blue .phs__item:hover .phs__btn,
+.vspec.schemecolor-blue .show-drop .phs-clone__btn,
+.vspec.schemecolor-white .search-form,
+.vspec.schemecolor-white .nav__list li > a,
+.vspec.schemecolor-white .nav__list li.hover > a,
+.vspec.schemecolor-white .nav__list li > a:hover,
+.vspec.schemecolor-white .nav__list li.active > a,
+.vspec.schemecolor-white .btn-transparent,
+.vspec.schemecolor-white .someclass,
+.vspec.schemecolor-white .someclass
+	background-color: $spec-bg-color--scheme-white
+
+.vspec.schemecolor-blue .content-wrap,
+.vspec.schemecolor-blue input[type="text"],
+.vspec.schemecolor-blue input[type="password"],
+.vspec.schemecolor-blue input[type="email"],
+.vspec.schemecolor-blue input[type="search"],
+.vspec.schemecolor-blue textarea,
+.vspec.schemecolor-blue .phones,
+.vspec.schemecolor-blue .phones-clone,
+.vspec.schemecolor-blue .phones-drop,
+.vspec.schemecolor-blue .login a,
+.vspec.schemecolor-blue .btn-search-open,
+.vspec.schemecolor-blue .questions__item > a,
+.vspec.schemecolor-blue .nav-main-page .nav-drop,
+.vspec.schemecolor-blue .nav-main-page .nav-sub-drop,
+.vspec.schemecolor-blue .promo-slider__content,
+.vspec.schemecolor-blue .category-links li a,
+.vspec.schemecolor-blue .footer-contacts,
+.vspec.schemecolor-blue .social-networks,
+.vspec.schemecolor-blue .footer-holder,
+.vspec.schemecolor-blue .page-heading,
+.vspec.schemecolor-blue .nav-main-page,
+.vspec.schemecolor-blue .logo,
+.vspec.schemecolor-blue .footer-site-map,
+.vspec.schemecolor-blue .site-map,
+.vspec.schemecolor-blue .press-adt__item,
+.vspec.schemecolor-blue .press-archive,
+.vspec.schemecolor-blue .show-drop .phs__btn,
+.no-js .vspec.schemecolor-blue .phs__item:hover .phs__btn,
+.vspec.schemecolor-blue .show-drop .phs-clone__btn,
+.vspec.schemecolor-blue .search-form,
+.vspec.schemecolor-blue .nav__list li > a,
+.vspec.schemecolor-blue .nav__list li.hover > a,
+.vspec.schemecolor-blue .nav__list li > a:hover,
+.vspec.schemecolor-blue .nav__list li.active > a .vspec.schemecolor-blue .btn-transparent,
+.vspec.schemecolor-blue .btn-transparent,
+.vspec.schemecolor-blue .someclass,
+.vspec.schemecolor-blue .someclass
+	background-color: $spec-bg-color--scheme-blue
+
+/* bg end
+
+/* slider reset
+.vspec
+	.uncos-slider,
+	.questions-slider,
+	.promo-slider,
+	.case__list,
+	.glance__slider
+		.slick-track
+			opacity: 1 !important
+			left: auto !important
+			width: auto !important
+			-webkit-transform: none !important
+			-ms-transform: none !important
+			transform: none !important
+
+			&::before, &::after
+				content: none
+
+		.slick-slide
+			position: relative !important
+			width: auto !important
+			height: auto !important
+			opacity: 1 !important
+			left: auto !important
+			top: auto !important
+			float: none !important
+			z-index: auto !important
+
+		.slick-arrow
+			display: none !important
+
+		.slick-dots
+			display: none !important
+
+/* slider reset end
+
+@media (min-width: 980px)
+	.nav-opened .vspec .nav-overlay-page
+		display: none
+
+@media (min-width: 768px)
+	.nav-opened .vspec.main-page .nav-overlay-page
+		display: none
+
+@media (max-width: 479px)
+	.vspec .header .nav-overlay-page
+		height: calc(100% + 70px)
+		top: -70px
+
+.vspec.inner-page .header
+	position: relative
+	left: auto
+	top: auto
+
+.vspec
+	.header-holder
+		height: auto
+		border: 2px solid currentColor
+		border-width: 0 2px 2px 0
+		padding: 0
+
+	&.main-page .header-holder
+		+media('<tab-sm')
+			border-width: 0 0 2px 0
+
+	&.inner-page .header-holder
+		+media('<tab-lg')
+			min-height: 142px
+			border-width: 0 0 2px 0
+
+.vspec .header-options__holder
+	border-bottom: 2px solid currentColor
+
+// logo
+.vspec
+	.logo
+		box-shadow: none
+		border: 0 solid currentColor
+		border-width: 0 2px 2px 2px
+		box-sizing: border-box
+		height: 202px
+
+		//.schemecolor-white .logo > a::before,
+		//.schemecolor-white .logo > span::before
+			-webkit-filter: grayscale(1) contrast(3) invert(0)
+			filter: grayscale(1) contrast(3) invert(0)
+
+		//.schemecolor-blue .logo > a::before,
+		//.schemecolor-blue .logo > span::before
+			-webkit-filter: grayscale(1) contrast(1) invert(1)
+			filter: grayscale(1) contrast(1) invert(1)
+
+		+media('<tab-sm')
+			height: 80px
+			border: none
+
+		+media('<359px')
+			width: 180px
+
+		& > a, & > span
+			font-size: 7px // нужно для свг-спрайта
+
+			&::before
+				display: block
+				opacity: 1
+				left: 50%
+				top: 50%
+				transform: translate(-50%, -50%)
+
+				width: 22.694375em
+				height: 18.430125em
+				background:
+					color: transparent
+					image: url(../img/logo.svg)
+					size: 36.7361875em 150em
+					repeat: no-repeat
+					position: -1.25em -1.25em
+
+				//+media('<tab-lg')
+					background-size: 130px auto
+
+				//+media('<mob-lg')
+					background-position: $space-mob 50%
+
+			&::after
+				display: none
+
+	// for home page
+	&.main-page .logo
+		height: 174px
+
+		+media('<tab-sm')
+			height: 80px
+
+			& > a, & > span
+				font-size: 5px
+
+				&::before
+					background-size: 36.036188em 151.8em
+					background-position: -1.25em -105.9375em
+					width: 34.2361875em
+					height: 6.5186875em
+
+	// for inner page
+	&.inner-page .logo
+		+media('<tab-lg')
+			height: 80px
+			border: none
+
+			& > a, & > span
+				font-size: 5px
+
+				&::before
+					background-size: 36.036188em 151.8em
+					background-position: -1.25em -105.9375em
+					width: 34.2361875em
+					height: 6.5186875em
+
+	&.schemecolor-white
+		.logo
+			& > a, & > span
+				&::before
+					background-position: -1.25em -85em
+
+		&.main-page .logo
+			+media('<tab-sm')
+				& > a, & > span
+					&::before
+						background-position: -1.25em -141.7875em
+						width: 34.2361875em
+						height: 6.5186875em
+
+		&.inner-page .logo
+			+media('<tab-lg')
+				& > a, & > span
+					&::before
+						background-position: -1.25em -141.7875em
+						width: 34.2361875em
+						height: 6.5186875em
+
+	&.schemecolor-blue
+		.logo
+			& > a, & > span
+				&::before
+					background-position: -1.25em -22.1875em
+
+		&.main-page .logo
+			+media('<tab-sm')
+				& > a, & > span
+					&::before
+						background-position: -1.25em -115em
+						width: 34.2361875em
+						height: 6.5186875em
+
+		&.inner-page .logo
+			+media('<tab-lg')
+				& > a, & > span
+					&::before
+						background-position: -1.25em -115em
+						width: 34.2361875em
+						height: 6.5186875em
+
+// questions-slider
+.vspec .questions-slider
+	height: auto
+
+.vspec .questions-slider .slick-track
+	column-count: 2
+	column-gap: 2em
+
+.vspec.fontsize-small .questions-slider .slick-track
+	column-count: 3
+
+.vspec.fontsize-large .questions-slider .slick-track
+	column-count: 1
+
+@media (max-width: 979px)
+	.vspec .questions-slider .slick-track
+		column-count: 1
+		column-gap: 1.5em
+
+	.vspec.fontsize-small .questions-slider .slick-track
+		column-count: 2
+
+@media (max-width: 767px)
+	.vspec.fontsize-small .questions-slider .slick-track
+		column-count: 1
+
+.vspec .questions-slider .questions__item
+	margin-bottom: $bottom-space
+	display: inline-block
+	width: 100% !important
+
+.vspec .questions__item:last-child
+	margin-bottom: 0
+
+.vspec .questions__item > a
+	display: inline
+	font-size: $item-font-size
+	line-height: $item-line-height
+	letter-spacing: inherit
+	padding: 0
+	min-height: 0
+	text-decoration: underline
+	-webkit-transition: none
+	transition: none
+
+.vspec .questions__item > a:hover
+	text-decoration: none
+
+.vspec .questions__item .questions__icon
+	display: none
+
+.vspec .questions__item .questions__text
+	display: inline
+	letter-spacing: inherit
+	width: auto
+	padding: 0
+	margin-bottom: $bottom-space
+	text-align: left
+
+.vspec .phones
+	box-sizing: border-box
+	box-shadow: none
+
+.vspec .phs__list > .phs__item:before
+	border-color: #000
+	display: none
+
+.vspec .phs__list > .phs__item > .phs__btn,
+.vspec .phones-clone > .phs-clone__btn
+	border: 2px solid transparent
+
+.vspec
+	.phs__btn, .phs-clone__btn
+		+media('<mob-lg')
+			padding-left: $space-sm
+
+		+media('<mob-md')
+			padding-left: $space-mob
+
+	.phones-drop .phs__btn
+		+media('<mob-lg')
+			padding-left: $space-sm
+			padding-right: $space-sm
+
+		+media('<mob-md')
+			padding-left: $space-mob
+			padding-right: $space-mob
+
+.vspec .phs__container > .phs__list > .phs__item:hover > .phs__btn,
+.vspec .phs__container > .phs__list > .phs__item.show-drop > .phs__btn,
+.vspec .phones-clone:hover > .phs-clone__btn,
+.vspec .phones-clone.show-drop > .phs-clone__btn
+	border-color: currentColor
+
+.vspec
+	.phs__btn.phs__item_opener .phs__number:after,
+	.phs-clone__btn.phs__item_opener .phs__number:after
+		border-top-color: $spec-text-color
+
+	//color scheme
+	&.schemecolor-white
+		.phs__btn.phs__item_opener .phs__number:after,
+		.phs-clone__btn.phs__item_opener .phs__number:after
+			border-top-color: $spec-text-color--scheme-white
+
+	&.schemecolor-blue
+		.phs__btn.phs__item_opener .phs__number:after,
+		.phs-clone__btn.phs__item_opener .phs__number:after
+			border-top-color: $spec-text-color--scheme-blue
+
+.vspec .header-options
+	position: relative
+	left: auto
+	top: auto
+
+.vspec.inner-page .header-options
+	-webkit-transform: translateZ(0) translateY(0)
+	-ms-transform: translateZ(0) translateY(0)
+	transform: translateZ(0) translateY(0)
+
+.vspec .page-heading
+	box-sizing: border-box
+	height: auto
+	min-height: 0
+	padding: 0
+	margin-left: 0
+	margin-right: 0
+	margin-bottom: $bottom-space-item
+
+	h1
+		padding: 0
+		margin: 0
+
+@media (max-width: 979px)
+	.vspec .page-heading
+		min-height: 0
+		border: none
+
+.vspec .phs__container > .phs__list > .phs__item > .phones-drop,
+.vspec .phones-clone > .phones-drop
+	border: 2px solid currentColor
+
+.vspec .phs__btn,
+.vspec .phs-clone__btn
+	color: inherit
+	cursor: pointer
+	-webkit-transition: none
+	transition: none
+
+.vspec .phs__item_opener .phs__number .txt-inner
+	border-color: currentColor
+	border: none
+
+.vspec .phones-drop .phs__item
+	color: inherit
+
+.vspec .login a:after
+	border-color: currentColor
+
+.vspec .login a .login__inner
+	border: none
+	text-decoration: underline
+
+.vspec .login a:hover .login__inner
+	text-decoration: none
+
+// search form
+.search-form
+	.vspec &
+		border-color: currentColor
+		height: 62px
+		width: calc(100% + 2px)
+		left: -2px
+
+		+media('<mob-md')
+			width: 100%
+			left: 0
+
+		input[type="search"], input[type="text"]
+			font-size: 20px
+			line-height: 26px
+			padding: 14px 0 18px
+			height: 60px
+			color: inherit
+			border: none
+			background: transparent
+			font-family: inherit
+
+		.btn-search-close
+			&::before, &::after
+				background-color: currentColor
+
+		.btn-search
+			&::before, &::after
+				border-color: currentColor
+
+		.btn-search-close, .btn-search
+			input,
+				&, &:hover
+					background: transparent
+
+.btn-search-open
+	color: inherit
+
+	.vspec &
+		& > i
+			width: 24px
+			height: 24px
+			margin: -12px 0 0 -12px
+			background: none
+
+			&::before, &::after
+				content: ''
+				position: absolute
+				left: 0
+				top: 0
+				border: 1px solid currentColor
+				border-radius: 1px
+
+			&::before
+				width: 14px
+				height: 14px
+				border-width: 2px
+				border-radius: 50%
+
+			&::after
+				left: 17px
+				top: 13px
+				width: 0
+				height: 8px
+				transform: rotate(-45deg)
+
+	&:hover
+		& > i
+			transform: scale(1.2, 1.2)
+
+
+// nav
+.nav
+	.vspec.logo-reduce &
+		margin-top: 140px
+
+.vspec
+	.nav__list
+		border-color: currentColor
+
+		li
+			&,
+			& > a
+				border-color: currentColor
+				letter-spacing: normal
+
+			& > a,
+			&.hover > a,
+			& > a:hover,
+			&.active > a
+				color: inherit
+
+			&.hover > a,
+			& > a:hover
+				text-decoration: underline
+
+			// current
+			&.current > a::before
+				content: ""
+				width: 6px
+				height: 6px
+				border-radius: 3px
+				display: block
+				position: absolute
+				letter-spacing: 5px
+				background-color: $spec-text-color
+				left: 8px
+				top: 50%
+				margin-top: -2px
+
+	.nav .nav__list li > a > [class*="depict-icons-angle-"]
+		background: none
+		width: 14px
+		height: 12px
+		margin-left: -7px
+		bottom: 4px
+		z-index: 1
+
+		&::before
+			content: ""
+			display: block
+			position: absolute
+			+triangle('bottom', currentColor !important, 7px, 1.7)
+			border-bottom-color: transparent
+
+	.nav-main-page .nav__list li > a > [class*="depict-icons-angle-"]
+		+media('>=tab-sm')
+			transform: none
+
+	.nav-main-page .nav__list .nav-drop li > a > [class*="depict-icons-angle-"]
+		+media('>=tab-sm')
+			transform: rotate(-90deg)
+
+// scheme color
+.schemecolor-white
+	.nav__list
+		li.current > a::before
+			background-color: $spec-text-color--scheme-white
+
+.schemecolor-blue
+	.nav__list
+		li.current > a::before
+			background-color: $spec-text-color--scheme-blue
+
+@media (min-width: 768px)
+	.vspec
+		.nav-main-page .nav__list > li > a
+			color: inherit
+			border: 2px solid transparent
+			padding-top: 20px
+
+		.nav-main-page .nav__list > li.hover > a
+			color: inherit
+			border-color: inherit
+
+		.nav-main-page
+			.nav-drop,
+			.nav-sub-drop
+				border: 2px solid $spec-text-color
+
+		.nav-main-page .nav__list [class*="depict-icons-angle-"],
+		.nav-cloned [class*="depict-icons-angle-"]
+			&::before
+				border-top-color: currentColor
+
+		.nav-main-page .nav__list>li.active>a>[class*="depict-icons-angle-"]
+			transform: rotate(0deg)
+
+			&::before
+				border-top-width: 5px
+				border-top-color: currentColor
+				border-bottom-color: transparent
+
+		.nav-main-page .nav__list>li.hover>a,
+		.no-js & .nav-main-page .nav__list>li:hover>a
+			& > [class*="depict-icons-angle-"]:before
+				border-top-color: inherit
+
+	// scheme color
+	.schemecolor-white
+		.nav-main-page
+			.nav-drop,
+			.nav-sub-drop
+				border: 2px solid $spec-text-color--scheme-white
+
+	.schemecolor-blue
+		.nav-main-page
+			.nav-drop,
+			.nav-sub-drop
+				border: 2px solid $spec-text-color--scheme-blue
+
+
+@media (max-width: 767px)
+	.vspec .nav-main-page .nav__list
+		border-bottom: 1px solid #000
+
+	.vspec .nav-main-page .nav__list > li
+		border-top: 1px solid #000
+
+
+.nav-main-page .nav-drop__list > li > a
+	.vspec &
+		background-color: $spec-bg-color
+		color: inherit
+
+	.schemecolor-white &
+		background-color: $spec-bg-color--scheme-white
+
+	.schemecolor-blue &
+		background-color: $spec-bg-color--scheme-blue
+
+.vspec .nav-main-page .nav-drop__list > li > a:hover
+	text-decoration: underline
+
+.vspec .nav-main-page .nav-drop__list > li.hover > a,
+.no-js .vspec .nav-main-page .nav-drop__list > li:hover > a,
+.vspec .nav-main-page .nav-drop__list > li.active > a,
+.vspec .nav-main-page .nav-drop__list > li.current > a
+	//background-color: $spec-bg-color
+	color: inherit
+
+.vspec .btn-menu,
+.vspec .nav-cloned__btn-inner
+	color: inherit
+	-webkit-transition: none
+	transition: none
+	user-select: none
+	-webkit-tap-highlight-color: transparent
+
+.vspec .btn-menu.active
+	color: white
+
+.vspec .btn-lines > span
+	background-color: currentColor
+
+.vspec .btn-lines,
+.vspec .btn-lines > span
+	transition: none
+	color: inherit
+	transition: none
+
+@media (min-width: 768px)
+	.vspec .nav-cloned
+		color: inherit
+
+		& > .nav-cloned__btn
+			background: none
+			color: inherit
+			transition: none
+
+	.vspec
+		.nav-cloned__drop
+			border: 2px solid $spec-text-color
+			box-sizing: border-box
+
+		&.schemecolor-white .nav-cloned__drop
+			border-color: $spec-text-color--scheme-white
+
+		&.schemecolor-blue .nav-cloned__drop
+			border-color: $spec-text-color--scheme-blue
+
+@media (min-width: 980px)
+	.vspec.inner-page .nav__holder
+		position: relative !important
+		top: auto !important
+		bottom: auto !important
+		border: 0 solid #000
+		box-sizing: border-box
+		-webkit-transition: none
+		transition: none
+
+//.vspec.main-page .nav__holder
+	border-width: 2px 0 0 2px
+
+.vspec .nav-drop:after,
+.vspec .nav-sub-drop:after,
+.vspec .nav__list li:before
+	content: none
+
+@media (max-width: 767px)
+	.vspec.main-page .nav__holder
+		background-color: $spec-bg-color
+
+	.schemecolor-white
+		&.main-page .nav__holder
+			background-color: $spec-bg-color--scheme-white
+
+	.schemecolor-blue
+		&.main-page .nav__holder
+			background-color: $spec-bg-color--scheme-blue
+
+	.vspec .nav-drop__list > li,
+	.vspec .nav-sub-drop__list > li
+		border-top-color: #000
+
+@media (max-width: 979px)
+	.vspec.inner-page .nav__holder
+		background-color: $spec-bg-color
+
+.vspec .nav-inner-page .nav__list
+	border: 0 solid currentColor
+	border-bottom-width: 2px
+
+@media (min-width: 979px)
+	.vspec .nav-inner-page .nav__list
+		border-right-width: 2px
+		border-left-width: 2px
+		box-sizing: border-box
+
+.vspec .nav__list > li > a
+	border: none
+	-webkit-transition: none
+	transition: none
+
+//.vspec .nav-inner-page .nav__list > li > a
+	border-bottom: none
+
+.vspec .nav-inner-page .nav__list > li
+	border-top: 1px solid currentColor
+
+.vspec .nav__list > li:first-child
+	border-top: none
+
+.vspec .promo-slider
+	height: auto
+
+.vspec .promo-slider::before
+	content: none
+
+.vspec .promo-slider__item
+	margin-bottom: $bottom-space-item
+
+.vspec .promo-slider__bg
+	display: none
+
+.vspec .promo-slider__content
+	position: relative
+	left: auto
+	top: auto
+	bottom: auto
+	right: auto
+	padding: 0
+	max-width: none
+	width: auto
+
+.vspec .promo-slider__content::after
+	content: none
+
+.vspec .promo-slider__title
+	font-size: $item-font-size
+	line-height: $item-line-height
+	letter-spacing: inherit
+	font-weight: normal
+	text-transform: none
+	padding: 0
+	max-height: none
+	margin-bottom: $bottom-space
+
+.vspec .promo-slider__title a
+	border: none
+	text-decoration: underline
+	padding: 0
+
+.vspec .promo-slider__title a:hover
+	text-decoration: none
+
+.vspec .promo-slider__text
+	font-size: inherit
+	line-height: inherit
+	letter-spacing: inherit
+	color: inherit
+	max-height: none
+
+.vspec .promo-btn
+	position: relative
+	right: auto
+	left: auto
+	bottom: auto
+	text-align: left
+
+.vspec .promo-btn a
+	padding: 0
+	background: none
+	color: inherit
+	font-size: $item-font-size
+	line-height: $item-line-height
+	text-decoration: underline
+	border: none
+	transition: none
+
+.vspec .promo-btn a:hover
+	text-decoration: none
+	background: none
+	color: inherit
+
+.vspec .category-links
+	border: 1px solid #000
+	border: none
+
+.vspec .category-links li
+	float: none
+	height: auto
+	width: auto
+	margin-bottom: $bottom-space
+
+.vspec .category-links li a
+	display: inline
+	font-size: $item-font-size
+	line-height: $item-line-height
+	letter-spacing: inherit
+	color: inherit
+	text-decoration: underline
+	text-align: left
+	//border: 1px solid currentColor
+	box-sizing: border-box
+
+.vspec .category-links li a:hover
+	text-decoration: none
+
+.vspec .category-links li a::before
+	content: none
+
+.vspec .category-links__icon
+	display: none
+
+.vspec .category-links__test
+	display: inline
+	vertical-align: baseline
+	font-size: inherit
+	line-height: inherit
+	letter-spacing: inherit
+
+.vspec .window,
+.vspec .wit-holder,
+.vspec .promo-holder,
+.vspec .questions
+	position: relative
+	right: auto
+	top: auto
+	background: none
+	margin: 0
+	padding-top: 10px
+	padding-bottom: 30px
+	width: auto
+	text-align: left
+	height: auto
+
+.vspec .window,
+.vspec .questions
+	padding-top: 30px
+
+.vspec .window:before
+	content: none
+
+.vspec .window__title,
+.vspec .uncos-title
+	height: auto
+	margin: 0 0 $bottom-space
+	font-size: $sub-title-font-size
+	line-height: $sub-title-line-height
+	letter-spacing: inherit
+	padding: 0
+	font-weight: bold
+	text-transform: none
+
+.vspec .window__btns
+	padding: 0
+	margin: 0 0 $bottom-space-item
+	font-size: $item-font-size
+	line-height: $item-line-height
+	letter-spacing: inherit
+
+.vspec .window__btns > div
+	padding: 0
+	margin-bottom: $bottom-space
+
+.vspec .window__btns > div > a
+	padding: 0
+
+.vspec .btn-transparent
+	min-width: 0
+	text-decoration: underline
+	font-size: inherit
+	line-height: inherit
+
+.vspec .btn-transparent:hover
+	box-shadow: none
+	top: auto
+	text-decoration: none
+
+.vspec .window__works
+	position: relative
+	bottom: auto
+	left: auto
+	width: auto
+	font-size: $font-size--small
+	line-height: $line-height--small
+	letter-spacing: inherit
+
+.vspec .window__works > a
+	text-decoration: underline
+	border: none
+
+.vspec .window__works > a:hover
+	text-decoration: none
+
+.vspec .meter
+	display: none
+
+.vspec .uncos
+	padding: 0
+
+.vspec .uncos-slider
+	margin: 0
+	height: auto
+	padding: 0
+
+.vspec .uncos-slider .slick-list:before,
+.vspec .uncos-slider .slick-list:after
+	display: none
+
+.vspec .uncos-item
+	padding: 0
+	margin-bottom: $bottom-space-item
+
+.vspec .uncos-item:after
+	display: none
+
+.vspec .uncos-item__title
+	padding: 0
+	margin-bottom: $bottom-space
+	font-size: $item-font-size
+	line-height: $item-line-height
+	letter-spacing: inherit
+
+.vspec .uncos-item__title a
+	border: none
+	text-decoration: underline
+
+.vspec .uncos-item__title a:hover
+	text-decoration: none
+
+.vspec .uncos-item__time
+	color: inherit
+	padding: 0
+	font-size: $font-size--small
+	line-height: $line-height--small
+	font-style: italic
+	margin-bottom: $bottom-space
+
+.vspec .uncos-item__text
+	font-size: inherit
+	line-height: inherit
+	letter-spacing: inherit
+
+.vspec .uncos-footer
+	border: none
+	padding: 0
+	text-align: left
+
+.vspec .all-link
+	font-size: $item-font-size
+	line-height: $item-line-height
+	letter-spacing: inherit
+	border: none
+	text-decoration: underline
+
+.vspec .all-link:hover
+	text-decoration: none
+
+.vspec .footer .max-wrap
+	border-top: 2px solid currentColor
+
+.vspec .footer-contacts
+	padding-top: 30px
+	padding-bottom: 30px
+	box-sizing: border-box
+	font-size: 16px
+	line-height: 24px
+	text-align: left
+
+.vspec .footer-contacts > div:after
+	content: none
+
+.footer-contacts .grid-col-3
+	letter-spacing: $letter-spacing
+	text-align: left
+
+@media (max-width: 979px)
+	.footer-contacts .grid-col-3
+		display: block
+		width: auto
+		font-size: inherit
+		line-height: inherit
+		padding: 0
+		margin-bottom: $bottom-space-item
+	.footer-contacts .grid-col-3:last-child
+		margin-bottom: 0
+
+.vspec .footer-contacts__title
+	padding: 0
+	font-size: 18px
+	line-height: 32px
+	letter-spacing: inherit
+	color: inherit
+	margin-bottom: $bottom-space
+	width: auto
+
+.vspec .useful-links
+	font-size: inherit
+	line-height: inherit
+	letter-spacing: inherit
+
+.vspec .useful-links li
+	font-size: inherit
+	line-height: inherit
+	letter-spacing: inherit
+	padding: 0
+	margin-bottom: 0
+
+.vspec .useful-links li::before
+	content: none
+
+.vspec .useful-links a
+	text-decoration: underline
+	letter-spacing: inherit
+
+.vspec .useful-links a:hover
+	text-decoration: none
+
+.vspec .useful-links__icon
+	display: none
+
+.vspec .useful-links__text
+	display: inline
+	vertical-align: baseline
+	font-size: inherit
+	line-height: inherit
+	text-transform: none
+
+.vspec .useful-links__text > span
+	border: none
+
+.vspec .work-list
+	color: inherit
+
+.vspec .address
+	color: inherit
+	font-size: inherit
+	line-height: inherit
+
+.vspec .tel__services a
+	margin-right: 0
+
+	&:after
+		display: none
+
+.vspec .useful-links,
+.vspec .work-list,
+.vspec .address
+	width: auto
+	float: none
+	left: auto
+	-webkit-transform: none
+	-ms-transform: none
+	transform: none
+
+.vspec .road
+	display: none
+
+.vspec .footer-map-row
+	display: none
+
+.vspec .map-site-switcher
+	color: inherit
+
+.vspec .map-site-btn:before,
+.vspec .map-site-btn:after,
+.vspec .map-site-btn > i
+	color: inherit
+	background-color: currentColor
+
+.vspec .map-site-btn
+	width: 14px
+	height: 14px
+
+.vspec .map-site-btn > i
+	top: 6px
+
+.vspec .map-site-text
+	border: none
+	text-decoration: underline
+
+.vspec .map-site-switcher:hover .map-site-text
+	border: none
+	text-decoration: none
+
+.vspec .site-map
+	color: inherit
+	padding-top: 30px
+	padding-bottom: 30px
+	border-top: 2px solid currentColor
+	border-bottom: none
+
+.vspec .site-map__title
+	color: inherit
+
+.vspec .site-map__menu ul li:before
+	border-top: 1px solid currentColor
+
+.vspec .site-map__menu ul li:after
+	border-right: 1px solid currentColor
+
+.vspec .site-map__menu a
+	text-decoration: underline
+	color: inherit
+
+.vspec .site-map__menu a:hover
+	text-decoration: none
+
+.vspec .site-map__menu a > span
+	border: none
+
+.vspec .site-map-close
+	color: inherit
+	text-decoration: underline
+	font-size: 18px
+	line-height: 20px
+
+.vspec .site-map-close:hover
+	text-decoration: none
+
+.vspec .site-map-close:before,
+.vspec .site-map-close:after
+	color: inherit
+	background-color: currentColor
+	top: 10px
+
+.vspec .site-map-close > span
+	border: none
+
+.vspec .footer-holder
+	border-top: 2px solid currentColor
+	padding-top: 0
+	padding-bottom: 0
+	color: inherit
+
+@media (max-width: 979px)
+	.vspec .footer-holder
+		padding-top: 30px
+		padding-bottom: 30px
+
+.vspec .footer-col
+	font-size: 16px
+	line-height: 28px
+	letter-spacing: normal
+
+@media (max-width: 979px)
+	.vspec .footer-col
+		display: block
+		width: auto
+		padding: 0
+		border: none
+		margin: 0 0 $bottom-space
+		text-align: left
+	.vspec .footer-col:last-child
+		margin-bottom: 0
+
+.vspec .social-networks
+	border-top: 2px solid currentColor
+	padding-top: 10px
+	padding-bottom: 10px
+	font-size: 20px
+	line-height: 28px
+	letter-spacing: inherit
+
+@media (max-width: 979px)
+	.vspec .social-networks
+		text-align: left
+
+.vspec .social-networks li
+	font-size: inherit
+	line-height: inherit
+	letter-spacing: inherit
+
+@media (max-width: 979px)
+	.vspec .social-networks li
+		padding-left: 0
+
+.vspec .social-networks a
+	background: none
+	width: auto
+	height: auto
+	border-radius: 0
+	line-height: inherit
+	letter-spacing: normal
+	text-decoration: underline
+
+.vspec .social-networks a:hover
+	text-decoration: none
+
+.vspec .social-networks a::before
+	content: none
+
+.vspec .social-networks a > span
+	left: auto
+	top: auto
+	position: relative
+
+.vspec .social-networks a > i
+	display: none
+
+.vspec .footer-bottom
+	padding: 0
+
+.vspec .footer-bottom a
+	border: none
+	text-decoration: underline
+
+.vspec .footer-bottom a:hover
+	text-decoration: none
+
+.vspec .site-developer_logo
+	background: none
+	color: inherit
+	text-indent: 0
+	font-size: inherit
+	line-height: inherit
+	width: auto
+	height: auto
+	display: inline
+	vertical-align: baseline
+
+.vspec .site-developer a
+	text-decoration: underline
+
+.vspec .site-developer a:hover
+	text-decoration: none
+
+.vspec .site-developer .text-inner
+	border: none
+
+/* to top
+.vspec
+	.back-to-top
+		box-sizing: border-box
+		color: inherit
+		background: none !important
+		box-shadow: 0 0 0 2px currentColor
+
+		& > i
+			position: relative
+			width: 4px
+			margin-right: 14px
+			background: none
+			background-color: currentColor
+
+			&::before
+				content: ""
+				display: block
+				position: absolute
+				top: 0
+				left: 50%
+				width: 14px
+				height: 14px
+				border: 0 solid currentColor
+				border-width: 4px 0 0 4px
+				transform: rotate(45deg)
+				margin: 0 0 0 -9px
+
+		& > span
+			transition: none
+
+		// hover
+		&:hover
+			& > i
+				margin-right: 20px
+
+	.back-to-top:hover
+		background-color: $spec-bg-color !important
+
+	&.schemecolor-white
+		.back-to-top:hover
+			background-color: $spec-bg-color--scheme-white !important
+
+	&.schemecolor-blue
+		.back-to-top:hover
+			background-color: $spec-bg-color--scheme-blue !important
+
+/* to top end
+
+/* about
+.vspec
+	.content-box
+		padding: 0
+		margin-bottom: $bottom-space-section
+
+	.content-box__head
+		padding: 0
+		margin-bottom: $bottom-space
+
+	.content-box__caption
+		border: none
+		padding: 0
+		margin: 0 0 $bottom-space
+		width: auto
+
+		h2
+			letter-spacing: inherit
+
+	.content-box__description
+		width: auto
+		margin: 0 0 $bottom-space-item
+		padding: 0
+
+	.columns-box-wrap
+		overflow: visible
+
+	.columns-box
+		font-size: inherit
+		line-height: inherit
+		letter-spacing: inherit
+		margin: 0 0 $bottom-space
+		padding: 0
+
+	.columns-box__column
+		display: block
+		width: auto
+		height: auto !important
+		font-size: inherit
+		line-height: inherit
+		letter-spacing: inherit
+		border: none
+		padding: 0
+		margin: 0 0 $bottom-space
+
+		&::before
+			content: none
+
+	// history
+	.years-slider
+		display: none
+
+	.history-slider
+		padding: 0
+		margin-bottom: $bottom-space-item
+		overflow: visible
+
+		.slider-track
+			width: auto !important
+
+			&::before, &::after
+				content: none
+
+	.history-sldr__holder
+		font-size: inherit
+		line-height: inherit
+		letter-spacing: inherit
+		transition: none
+
+	.left-stop .history-sldr__prev-btn,
+	.left-stop .history-sldr__next-btn,
+	.right-stop .history-sldr__prev-btn,
+	.right-stop .history-sldr__next-btn
+		display: none
+
+	.history-sldr__holder.slider-track .history-sldr__item
+		float: none
+		transition: none
+
+	.history-sldr__item
+		display: block
+		overflow: visible
+		width: auto !important
+		height: auto
+		opacity: 1 !important
+		z-index: auto !important
+		font-size: inherit
+		line-height: inherit
+		letter-spacing: inherit
+		box-shadow: none
+		transition: none
+		margin: 0 0 $bottom-space-item
+
+	.history-sldr__item img
+		display: none
+		position: relative
+		left: auto
+		top: auto
+		bottom: auto
+		right: auto
+		transform: none
+		max-width: 100%
+		margin-bottom: $bottom-space
+
+	&.imageson
+		.history-sldr__item img
+			display: block
+
+	.history-sldr__year
+		display: block
+		margin-bottom: $bottom-space
+		font-size: $item-font-size
+		line-height: $item-line-height
+		font-weight: bold
+
+	.history-sldr__info
+		display: block
+		margin-bottom: $bottom-space
+
+	.history-info
+		display: none
+
+	// case
+	.case
+		padding: 0
+		margin: 0
+		max-width: none
+
+	.case__list
+		padding: 0
+
+		&::before, &::after
+			content: none
+
+		.slick-list
+			border: none
+			box-shadow: none
+			transition: none
+
+	.case__item
+		width: auto
+		float: none
+		margin: 0 0 $bottom-space-item
+
+	.case__photo-card
+		display: block
+		display: flex
+		height: auto !important
+		flex-direction: column
+		padding: 0
+		border: none
+		box-shadow: none
+		transition: none
+		background: none
+		opacity: 1
+		transform: none
+
+	.case__contacts-card
+		position: relative
+		left: auto
+		top: auto
+		width: auto
+		height: auto !important
+		border: none
+		padding: 0
+		box-shadow: none
+		opacity: 1
+		z-index: auto
+		background: none
+		transform: none
+		transition: none
+
+	.contacts-card__caption
+		height: auto !important
+		margin-bottom: $bottom-space
+
+	.photo-card__name, .photo-card__post,
+	.contacts-card__name, .contacts-card__post
+		height: auto !important
+		min-height: 0
+		padding: 0
+		margin-bottom: $bottom-space
+		font-size: inherit
+		line-height: inherit
+		color: inherit
+		letter-spacing: inherit
+
+		a
+			color: inherit
+			text-decoration: underline
+
+			&:hover
+				text-decoration: none
+
+	.photo-card__img
+		display: none
+		order: 2
+		text-align: inherit
+		height: auto !important
+		margin-bottom: $bottom-space
+
+	&.imageson .photo-card__img
+		display: block
+
+	.photo-card__name
+		order: 1
+		font-size: $item-font-size
+		line-height: $item-line-height
+
+	.photo-card__post
+		order: 3
+		font-weight: 500
+
+	.contacts-card__caption
+		display: none
+
+	.contacts-card__share,
+	.user-content .contacts-card__share,
+	.contacts-card__works,
+	.user-content .contacts-card__works
+		margin: 0 0 $bottom-space
+		min-height: 0
+		height: auto !important
+		font-size: inherit
+		line-height: inherit
+		letter-spacing: inherit
+
+		li
+			overflow: visible
+			margin-bottom: round-float($bottom-space/2, 1)
+
+	.contacts-card__share, .contacts-card__works
+		li
+			font-size: inherit
+			line-height: inherit
+			letter-spacing: inherit
+
+			& > span, & > div
+				display: block
+				display: inline
+				float: none
+				width: auto
+				color: inherit
+				font-size: inherit
+				line-height: inherit
+				letter-spacing: inherit
+
+	.photo-card__switcher, .contacts-card__switcher
+		display: none
+
+	// glance
+	.glance__slider
+		padding: 0
+
+	.glance__slide
+		margin-bottom: $bottom-space
+
+	.glance__box
+		visibility: visible
+		font-size: inherit
+		line-height: inherit
+		letter-spacing: inherit
+		color: inherit
+		background: none !important
+		margin-bottom: $bottom-space
+
+		&::before, &::after
+			content: none
+
+	.glance__spacer
+		display: none
+
+	.glance__box-center
+		width: auto
+		height: auto
+		position: relative
+		left: auto
+		top: auto
+		margin: 0
+		padding: 0
+
+	.glance__caption
+		float: none
+		width: auto !important
+		min-width: 0
+		padding: 0
+
+	.glance__count, .glance__unit, .glance__text
+		visibility: visible
+		font-family: inherit
+		font-size: inherit
+		line-height: inherit
+		letter-spacing: inherit
+		color: inherit !important
+		white-space: normal
+		text-align: inherit
+		text-transform: none
+		max-height: none
+		margin: 0
+		padding: 0
+
+		&::before, &::after
+			content: none
+
+	.glance__count, .glance__unit
+		display: inline
+		font-size: $item-font-size
+		line-height: $item-line-height
+
+	.glance__unit
+		font-style: italic
+
+	.main-contacts
+		height: auto
+		padding-top: 30px
+		padding-bottom: 30px
+		border-bottom: 2px solid currentColor
+
+	.main-map-holder
+		display: none
+		height: auto
+		margin-bottom: $bottom-space-item
+
+	&.imageson .main-map-holder
+		display: block
+
+	.main-map-frame
+		position: relative
+		left: auto
+		top: auto
+		width: auto
+		height: 460px
+		transform: none
+		transition: none
+
+	.contacts-panel
+		overflow: visible
+		position: relative
+		left: auto
+		right: auto
+		top: auto
+		width: auto
+		height: auto
+		padding: 0
+		background: none
+		transform: none
+		transition: none
+		box-shadow: none
+
+	.contacts-panel__holder
+		display: block
+		padding: 0
+
+	.contacts-panel__switcher,
+	.contact-panel__opener
+		display: none
+
+	.contacts-panel__box
+		&, &:first-child, &:first-child + .contacts-panel__box
+			float: none
+			width: auto
+			max-width: none
+			margin: 0 0 $bottom-space-item
+			padding: 0
+
+		&:last-child
+			margin-bottom: 0
+
+		h4
+			letter-spacing: inherit
+			font-size: $item-font-size
+			line-height: $item-line-height
+
+	.contacts-panel__list, .user-content .contacts-panel__list,
+	.contacts-panel__phones, .user-content .contacts-panel__phones
+		padding: 0
+		margin-bottom: $bottom-space
+		max-width: none
+		color: inherit
+
+		li
+			padding: 0
+			margin-bottom: round-float($bottom-space/2, 1)
+			font-size: inherit
+			line-height: inherit
+			letter-spacing: inherit
+
+			& > i
+				display: none
+
+	.cont-dt, .cont-dd
+		display: block
+		margin: 0
+		padding: 0
+		font-size: inherit
+		line-height: inherit
+		letter-spacing: inherit
+		color: inherit
+		height: auto
+		text-align: left
+		width: auto
+
+	.cont-dd
+		padding-left: 1.5em
+
+	.cont-numbers
+		position: relative
+		right: auto
+		left: auto
+		top: auto
+		bottom: auto
+		max-height: none
+		overflow: visible
+
+		&::before
+			content: none
+
+		& > div
+			& > span
+				transition: none
+				cursor: default
+				border: none
+
+			& ~ div
+				padding-top: 0
+				opacity: 1
+/* about end
+
+.vspec .press-archive
+	border-color: currentColor
+	border-top: none
+	margin-bottom: $bottom-space-item
+	padding: 0
+
+.press-archive > strong
+	font-size: $sub-title-font-size
+	float: none
+	display: block
+	margin: 0 0 $bottom-space
+	padding: 0
+
+.vspec .years__list
+	float: none
+	text-align: left
+
+.vspec .years__list a
+	color: inherit
+	text-decoration: underline
+	padding: 0
+	margin: 0 $bottom-space $bottom-space 0
+
+.vspec .years__list a:hover
+	text-decoration: none
+
+.vspec .years__list a > span
+	border: none
+
+.vspec
+	.press-adt
+		overflow: visible
+
+	.press-adt__list
+		padding: 0
+		overflow: visible
+		font-size: inherit
+		line-height: inherit
+		letter-spacing: inherit
+
+	.press-adt__item
+		display: block
+		width: auto
+		min-height: 0
+		padding: 0
+		border: none
+		box-shadow: none
+		font-size: inherit
+		line-height: inherit
+		letter-spacing: inherit
+		color: currentColor
+		margin-bottom: $bottom-space-item
+		transition: none
+
+body.vspec .press-adt__list .press-adt__item:hover
+	border-color: currentColor
+	box-shadow: none
+
+.vspec .press-adt__visual
+	display: none
+	position: relative
+	left: auto
+	top: auto
+	right: auto
+	height: auto
+	background: none
+	opacity: 1
+	-webkit-transform: none
+	-ms-transform: none
+	transform: none
+	-webkit-transition: none
+	transition: none
+	margin-bottom: $bottom-space
+
+.vspec.imageson .press-adt__visual
+	display: block
+
+.vspec .press-adt__visual img
+	min-width: 0
+	max-width: 100%
+	left: auto
+	top: auto
+	-webkit-transform: none
+	-ms-transform: none
+	transform: none
+
+.vspec .press-adt__content
+	padding: 0
+	-webkit-transform: none !important
+	-ms-transform: none !important
+	transform: none !important
+	opacity: 1 !important
+	-webkit-transition: none
+	transition: none
+
+.vspec .press-adt__time,
+.vspec .press-adt__title,
+.vspec .press-adt__text
+	color: currentColor
+	-webkit-transition: none
+	transition: none
+
+.vspec .press-adt__time
+	color: inherit
+	padding: 0
+	font-size: $font-size--small
+	line-height: $line-height--small
+	margin-bottom: $bottom-space
+
+.vspec .press-adt__title
+	font-size: $sub-title-font-size
+	line-height: $sub-title-line-height
+	margin-bottom: $bottom-space
+	max-height: none
+	height: auto !important
+
+.vspec .press-adt__item:hover .press-adt__title
+	text-decoration: underline
+
+.vspec .press-adt__text
+	opacity: 1 !important
+	height: auto !important
+	max-height: none
+	letter-spacing: inherit
+
+.vspec .press-adt__icon
+	display: none
+
+.vspec
+	.article-date
+		color: inherit
+		font-size: $font-size--small
+		line-height: $line-height--small
+		font-style: italic
+
+.vspec .arrow,
+.vspec .slider-typography .slick-prev,
+.vspec .slider-typography .slick-next
+	-webkit-filter: grayscale(1) contrast(1) invert(1)
+	filter: grayscale(1) contrast(1) invert(1)
+
+.vspec .arrow,
+.vspec .arrow > i,
+.vspec .slider-typography .slick-prev,
+.vspec .slider-typography .slick-next,
+.vspec .slider-typography .slick-prev:before,
+.vspec .slider-typography .slick-next:before,
+.vspec .slider-typography .slick-prev:after,
+.vspec .slider-typography .slick-next:after
+	-webkit-transition: none
+	transition: none
+
+.vspec .img-group__item.video-preview a.img:before
+	background-color: #000
+
+.vspec
+	.img,
+	.img-group__item.video-preview .img
+		display: none
+		box-shadow: 0 0 0 2px #000
+		transition: none
+		margin-bottom: $bottom-space-item
+
+	&.imageson
+		.img,
+		.img-group__item.video-preview .img
+			display: block
+
+.vspec a.img:hover,
+.vspec .img-group__item.video-preview a.img:hover
+	box-shadow: 0 0 0 4px #000
+
+/* faq
+.vspec
+	.faq
+		margin: 0
+
+	.faq-list
+		h3
+			font-size: $item-font-size
+			line-height: $item-line-height
+			font-weight: normal
+			border: none
+
+			& > span
+				border: none
+				text-decoration: underline
+				color: inherit
+
+			& > i
+				display: none
+
+			& + div
+				color: inherit
+
+			// hover
+			&:hover
+				&>span
+					text-decoration: none
+
+/* faq end
+
+/* gallery
+.vspec
+	.gallery-section
+		margin: 0
+
+	.gallery
+		padding: 0
+		margin-bottom: $bottom-space-item
+
+	.gallery__holder
+		box-shadow: none
+		padding: 0
+		color: inherit
+		background: none
+
+	.gallery__title
+		font-size: inherit
+		line-height: inherit
+		padding: 0
+		margin-bottom: $bottom-space
+
+	.gallery__title-text
+		color: inherit
+		border: none
+		font-size: $item-font-size
+		line-height: $item-line-height
+		text-decoration: underline
+		transition: none
+
+	.gallery__title-count
+		font-size: inherit
+		line-height: inherit
+		color: inherit
+
+	.gallery__title a:hover
+		.gallery__title-text, .gallery__title-count
+			text-decoration: none
+			color: inherit
+
+	.gallery__previews .gallery__img img
+		display: block
+
+	.gallery__previews .slick-arrow,
+	.fancybox-custom-btn span
+		color: inherit
+		border-color: currentColor
+		transition: none
+		background-color: $spec-bg-color
+
+		&::before, &::after
+			content: ""
+			display: block
+			color: inherit
+			width: 20px
+			height: 4px
+			margin: 0
+			left: 50%
+			top: 50%
+			background: none
+			background-color: currentColor
+			opacity: 1 !important
+
+		&::before
+			transform: rotate(45deg)
+			margin: -7px 0 0 -8px
+
+		&::after
+			transform: rotate(-45deg)
+			margin: 4px 0 0 -8px
+
+	.gallery__previews .slick-prev
+		&::before
+			transform: rotate(-45deg)
+			margin: -7px 0 0 -10px
+
+		&::after
+			transform: rotate(45deg)
+			margin: 4px 0 0 -10px
+
+	&.schemecolor-white
+		.gallery__previews .slick-arrow,
+		.fancybox-custom-btn span
+			background-color: $spec-bg-color--scheme-white
+
+	&.schemecolor-blue
+		.gallery__previews .slick-arrow,
+		.fancybox-custom-btn span
+			background-color: $spec-bg-color--scheme-blue
+
+	&:not(.mobile-device)
+		.gallery__previews .slick-arrow,
+		.fancybox-custom-btn span
+			&:hover
+				background-color: $spec-text-color
+				color: $spec-bg-color
+
+	&.schemecolor-white:not(.mobile-device)
+		.gallery__previews .slick-arrow,
+		.fancybox-custom-btn span
+			&:hover
+				background-color: $spec-text-color--scheme-white
+				color: $spec-bg-color--scheme-white
+
+	&.schemecolor-blue:not(.mobile-device)
+		.gallery__previews .slick-arrow,
+		.fancybox-custom-btn span
+			&:hover
+				background-color: $spec-text-color--scheme-blue
+				color: $spec-bg-color--scheme-blue
+
+	&.schemecolor-blue
+		.fancybox-overlay
+			background-color: rgba($spec-text-color--scheme-blue, 0.9)
+
+/* gallery end
+
+/* works
+.vspec
+	.works__list
+		font-size: inherit
+		line-height: inherit
+		letter-spacing: inherit
+		margin: 0
+
+		.works__item
+			width: 100%
+			max-width: none
+			font-size: inherit
+			line-height: inherit
+			letter-spacing: inherit
+			padding: 0
+			margin-bottom: $bottom-space-item
+
+	.works__img
+		float: none
+		margin: 0 0 $bottom-space
+		display: none
+		width: 320px
+		max-width: 100%
+
+	&.imageson .works__img
+		display: block
+
+	.works__item-holder
+		border: none
+
+	.works__container
+		padding: 0
+
+	.works__title
+		font-size: $item-font-size
+		line-height: $item-line-height
+		font-weight: normal
+
+	.works__tabs-control, .user-content .works__tabs-control
+		padding: 0
+		margin-bottom: 0.5em
+		font-size: $font-size--small
+		line-height: $line-height--small
+		letter-spacing: inherit
+
+	.works__tabs-control
+		a
+			border: none
+			color: inherit
+			text-decoration: underline
+
+			&:hover
+				text-decoration: none
+				color: inherit
+
+		.active a
+			color: inherit
+
+		li
+			padding: 0
+			margin: 0 1.5em 0.5em 0
+
+	.works__text
+		font-size: inherit
+		line-height: inherit
+		letter-spacing: inherit
+		height: auto
+		margin-bottom: $bottom-space
+
+		span, ul, p
+			background-color: transparent !important
+			color: inherit !important
+
+	.btn-more
+		font-size: inherit
+		line-height: inherit
+		letter-spacing: inherit
+		border-color: currentColor
+		color: inherit
+
+		&:hover
+			color: $spec-bg-color
+			background-color: $spec-text-color
+			border-color: $spec-text-color
+
+		& > i
+			display: none
+
+	&.schemecolor-white
+		.btn-more:hover
+			color: $spec-bg-color--scheme-white
+			background-color: $spec-text-color--scheme-white
+			border-color: $spec-text-color--scheme-white
+
+	&.schemecolor-blue
+		.btn-more:hover
+			color: $spec-bg-color--scheme-blue
+			background-color: $spec-text-color--scheme-blue
+			border-color: $spec-text-color--scheme-blue
+
+
+/* works end
+
+/* contacts
+.vspec
+	.contacts__biz
+		display: none
+
+	.contacts__address
+		padding: 0
+		margin: 0
+
+	.tab-item-wrap
+		height: auto !important
+
+	.tab-item
+		position: relative !important
+		width: auto !important
+		left: auto !important
+		top: auto !important
+		opacity: 1 !important
+		margin-bottom: $bottom-space-item
+
+	.contacts-adr
+		background: none
+		font-size: inherit
+		line-height: inherit
+		letter-spacing: inherit
+		padding: 0
+
+	.contacts-adr__title
+		display: block
+		font-size: $item-font-size
+		line-height: $item-line-height
+		letter-spacing: inherit
+		color: inherit
+		padding: 0
+		margin-bottom: $bottom-space
+		font-weight: normal
+
+	.contacts-adr__item
+		overflow: visible
+		width: auto
+		font-size: inherit
+		line-height: inherit
+		letter-spacing: inherit
+		display: block
+		padding: 0
+		margin-bottom: $bottom-space
+		opacity: 1
+		transition: none
+
+		&::before
+			display: none
+
+	.contacts-adr__icon
+		display: none
+
+	.contacts-adr__content
+		max-width: none
+		overflow: visible
+
+	.contacts-adr__dd, .user-content .contacts-adr__dd
+		line-height: inherit
+		padding: 0
+		margin-bottom: $bottom-space
+
+		li
+			padding: 0
+			margin-bottom: round-float($bottom-space/2, 1)
+
+		.dt
+			float: none
+			width: auto
+			max-width: none
+
+	.contacts-adr__row_mark
+		color: inherit
+
+	.contacts-map
+		display: none
+
+	&.imageson .contacts-map
+		display: block
+		margin-bottom: $bottom-space-item
+
+	.contacts-share-container
+		display: none
+
+	.contacts-phones-container
+		background: none
+		padding: 0
+		margin-bottom: $bottom-space-section
+
+	.contacts-phones
+		padding: 0
+		margin-bottom: $bottom-space-item
+		max-width: none
+
+	.cph__row
+		display: block
+		display: flex
+		flex-direction: column
+		margin-bottom: $bottom-space-item
+
+	.cph__dt
+		display: block
+		order: 2
+		width: auto
+		height: auto
+		font-size: inherit
+		line-height: inherit
+		font-weight: normal
+		letter-spacing: inherit
+		color: inherit
+		padding: 0
+
+	.cph__dd
+		order: 1
+		padding: 0
+		font-size: $item-font-size
+		line-height: $item-line-height
+		font-weight: normal
+		margin-bottom: $bottom-space
+
+	.cph__numbers
+		position: relative
+		visibility: visible
+		max-height: none
+		top: auto
+		left: auto
+
+		&::before
+			content: none
+
+	.cph__number
+		&, &:first-child ~ .cph__number
+			padding: 0
+			opacity: 1
+
+		& > span > em
+			color: inherit
+			font-weight: 500
+
+	.cph__number_opener
+		&::after
+			content: none
+
+		& > span
+			border: none
+			cursor: default
+
+	.callback-container
+		padding: 0
+		margin-bottom: $bottom-space-item
+
+		h2
+			letter-spacing: inherit
+			font-weight: bold
+			text-transform: uppercase
+
+	.note
+		font-size: $font-size--small
+		line-height: $line-height--small
+		color: inherit
+		letter-spacing: inherit
+		padding: 0
+		margin-bottom: $bottom-space
+
+	.parents-container
+		h2
+			letter-spacing: inherit
+			font-weight: bold
+			text-transform: uppercase
+
+	.parents
+		border: none
+		display: block
+		width: auto
+
+	.parents__item
+		border: none
+		display: block
+		text-align: left
+		margin-bottom: $bottom-space
+
+		& > a
+			display: inline
+			padding: 0
+			border: none
+			box-shadow: none
+			text-decoration: underline
+
+			&::before
+				content: none
+
+			&:hover
+				text-decoration: none
+
+	.parents__icon
+		position: relative
+		left: auto
+		top: auto
+		height: 80px
+		width: auto
+		text-align: left
+		display: none
+		margin: 0 0 $bottom-space
+
+	&.imageson .parents__icon
+		display: block
+
+	.parents__title
+		max-width: none
+		font-size: $item-font-size
+		line-height: $item-line-height
+		letter-spacing: normal
+		color: inherit
+
+		br
+			display: none
+
+/* contacts end
+
+/* page 404
+.vspec
+	&.page-404
+		.wrapper
+			background: none
+
+	.error-404
+		padding: 0
+		text-align: left
+
+		& > h1
+			text-transform: uppercase
+
+	.error-404__note
+		font-size: inherit
+		line-height: inherit
+		color: inherit
+		letter-spacing: inherit
+		padding: 0
+		margin-bottom: $bottom-space
+
+	.error-404__img
+		overflow: visible
+		max-width: none
+		text-indent: 0
+		font-size: $title-font-size
+		line-height: $title-line-height
+		text-transform: uppercase
+		text-align: inherit
+		background: none
+		margin: 0 0 $bottom-space
+
+		&::before
+			content: none
+
+	.error-404__list,
+	.user-content .error-404__list
+		font-size: $item-font-size
+		line-height: $item-line-height
+		padding: 0
+		margin-bottom: $bottom-space
+
+		li
+			display: block
+			padding: 0
+			margin-bottom: round-float($bottom-space/2, 1)
+
+			&::before
+				content: none
+
+		a
+			color: inherit
+
+/* page 404 end
+
+/* layout spaces
+.vspec
+	.content,
+	.window,
+	.wit-holder,
+	.promo-holder,
+	.footer-contacts,
+	.social-networks,
+	.footer-holder,
+	.site-map,
+	//.press-archive,
+	//.press-adt__item,
+	.category-links,
+	.questions,
+	//.article-press
+	.main-contacts
+		padding-left: $space
+		padding-right: $space
+
+		+media('<mob-lg')
+			padding-left: $space-sm
+			padding-right: $space-sm
+
+		+media('<mob-md')
+			padding-left: $space-mob
+			padding-right: $space-mob
+
+	.class
+		margin-left: -$space
+		margin-right: -$space
+
+		+media('<mob-lg')
+			margin-left: -$space-sm
+			margin-right: -$space-sm
+
+		+media('<mob-md')
+			margin-left: -$space-mob
+			margin-right: -$space-mob
+
+/* layout spaces end
+
+/*=========== BLACK AND WHITE images ===========
+.vspec
+	.questions__icon img,
+	.questions-slider .slick-arrow:before,
+	.depict-icons-user,
+	.category-links__icon,
+	.depict-icons-pin-w,
+	.press-adt__icon > i
+		filter: grayscale(1) contrast(3) invert(1)
+
+.vspec.schemecolor-white
+	.phs__btn.phs__item_opener .phs__number:after,
+	.phs-clone__btn.phs__item_opener .phs__number:after,
+	.questions__icon img,
+	.questions-slider .slick-arrow:before,
+	.depict-icons-user,
+	.depict-icons-pin-w,
+	.press-adt__icon > i
+		filter: grayscale(1) contrast(3) invert(0)
+
+.vspec
+	.contacts-panel__list li [class*="depict-"]
+		filter: grayscale(1) contrast(5)
+
+.vspec
+	img,
+	.history-sldr__item.slide-current img,
+	//#preloader
+	.file__icon
+		filter: grayscale(1) contrast(1) invert(0)
+
+.vspec.schemecolor-white
+	.history-sldr__item.slide-current img
+		filter: grayscale(1) contrast(1) invert(1)
+
+.vspec
+	.depict-icons-arrow-prev-n,
+	.depict-icons-arrow-next-n
+		filter: grayscale(1) contrast(10) invert(1)
+
+/*=========== BLACK AND WHITE images end ===========
+/*=========== SPECIAL end ===========

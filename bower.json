@@ -17,9 +17,6 @@
     "tests"
   ],
   "dependencies": {
-    "slick-carousel": "^1.6.0",
-    "device.js": "devicejs#^0.2.7",
-    "jquery-placeholder": "^2.3.1",
     "jquery-smartresize": "*",
     "include-media": "^1.4.9",
     "normalize-scss": "normalize.scss#^7.0.1"
