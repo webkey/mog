@@ -50,31 +50,21 @@ body.vspec {
 	color: inherit;
 }
 
-.vspec h1, .vspec h2, .vspec h3, .vspec h4, .vspec h5, .vspec h6, .vspec p {
-	letter-spacing: inherit;
-}
-
 .vspec .no-transition {
 	transition: none;
 }
 
-.vspec .header,
-.vspec .content,
 .vspec .someclass,
 .vspec .someclass {
 	background-color: #fff;
 }
 
-.vspec--schemecolor-white .vspec .header, .vspec--schemecolor-white
-.vspec .content, .vspec--schemecolor-white
-.vspec .someclass, .vspec--schemecolor-white
+.vspec--schemecolor-white .vspec .someclass, .vspec--schemecolor-white
 .vspec .someclass {
 	background-color: #000;
 }
 
-.vspec--schemecolor-blue .vspec .header, .vspec--schemecolor-blue
-.vspec .content, .vspec--schemecolor-blue
-.vspec .someclass, .vspec--schemecolor-blue
+.vspec--schemecolor-blue .vspec .someclass, .vspec--schemecolor-blue
 .vspec .someclass {
 	background-color: #c8e5ff;
 }
@@ -145,51 +135,71 @@ body.vspec {
 	}
 }
 
-.vspec h1, .vspec h2, .vspec h3, .vspec h4, .vspec h5, .vspec h6 {
-	font-weight: bold;
-	margin: 0 0 1em;
-	padding: 0;
-}
-
 .vspec h1 {
-	margin-bottom: 2em;
 	font-size: 36px;
 	line-height: 1.33;
-	text-align: left;
+	font-weight: 500;
+	letter-spacing: inherit;
+	padding: 0;
+	margin-bottom: 2em;
 }
 
 .vspec h2 {
 	font-size: 1.44em;
 	line-height: 1.46;
-	text-align: left;
+	padding: 0;
+	margin: 0 0 1em;
 }
 
 .vspec h3 {
 	font-size: 1.22em;
 	line-height: 1.55;
+	font-weight: 700;
+	padding: 0;
+	margin: 0 0 1em;
 }
 
-.vspec h4, .vspec h5, .vspec h6 {
+.vspec h4 {
+	font-size: inherit;
+	line-height: inherit;
+	font-weight: 700;
+	padding: 0;
+	margin: 0 0 1em;
+}
+
+.vspec h5 {
+	font-size: inherit;
+	line-height: inherit;
+	text-transform: uppercase;
+	font-weight: normal;
+	padding: 0;
+	margin: 0 0 1em;
+}
+
+.vspec h6 {
+	font-size: inherit;
+	line-height: inherit;
+	font-weight: 500;
+	padding: 0;
+	margin: 0 0 1em;
+}
+
+.vspec p {
+	letter-spacing: inherit;
+	margin-bottom: 1em;
+	padding: 0;
+}
+
+.vspec table td, .vspec table th {
+	color: currentColor;
+	border-color: currentColor;
 	font-size: inherit;
 	line-height: inherit;
 }
 
-.vspec h5, .vspec h6 {
-	font-weight: normal;
-	text-transform: uppercase;
-}
-
-.vspec table td, .vspec table th {
-	font-family: inherit !important;
-	font-size: inherit !important;
-	line-height: inherit !important;
-	color: currentColor !important;
-	border: 1px solid currentColor !important;
+.vspec table td span, .vspec table td p, .vspec table td ul, .vspec table th span, .vspec table th p, .vspec table th ul {
 	background: none !important;
-}
-
-.vspec table th {
-	font-weight: bold !important;
+	color: inherit !important;
 }
 
 .vspec table caption {
@@ -206,16 +216,6 @@ body.vspec {
 .vspec .mark {
 	color: #fff;
 	background-color: #000;
-}
-
-.vspec--schemecolor-white .vspec .mark {
-	color: #000;
-	background-color: #fff;
-}
-
-.vspec--schemecolor-blue .vspec .mark {
-	color: #c8e5ff;
-	background-color: #004c92;
 }
 
 .vspec a {
@@ -324,11 +324,6 @@ body.vspec {
 	background-color: #004c92;
 }
 
-.vspec .user-content ul li::before, .vspec .user-content ul li:first-child::before, .vspec .user-content ol li::before, .vspec .user-content ol li:first-child::before {
-	color: currentColor;
-	border-color: currentColor;
-}
-
 /* to top */
 .vspec .back-to-top {
 	box-sizing: border-box;
@@ -381,10 +376,6 @@ body.vspec {
 }
 
 /* to top end */
-.content {
-	border: 2px solid #000;
-}
-
 /*=========== SPECIAL VERSION end =========== */
 
-/*# sourceMappingURL=special-version.css.map */
+/*# sourceMappingURL=--special-version-start.css.map */

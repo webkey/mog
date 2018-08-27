@@ -4,7 +4,8 @@ $(document).on('ready', function () {
 		return false;
 	}
 
-	var $body = $('body'),
+	var $html = $('html'),
+		$body = $('body'),
 		cssId = '#special-version',
 		path = cssPath || 'css/',
 		cookies = {
@@ -16,16 +17,9 @@ $(document).on('ready', function () {
 			'btnGroup': '.vbtn-group-js'
 		},
 		mod = {
-			'hidePage': 'hide-page',
 			'specOn': 'vspec',
-			'btnActive': 'active', // active class of the buttons
-			'imagesOn': 'imageson', // show images on page
-			'sizeSm': 'fontsize-small',
-			'sizeNorm': 'fontsize-normal',
-			'sizeLg': 'fontsize-large',
-			'colorBlack': 'schemecolor-black',
-			'colorWhite': 'schemecolor-white',
-			'colorBlue': 'schemecolor-blue'
+			'hidePage': 'vspec--hide-page',
+			'btnActive': 'active' // active class of the buttons
 		};
 
 	/**
@@ -97,7 +91,7 @@ $(document).on('ready', function () {
 	var cookieMods = getCookie(cookies.specVersionMods);
 	// console.log("cookieMods (after document ready): ", cookieMods);
 	if (cookieMods) {
-		$body.addClass(cookieMods.replace(/, /g, ' '));
+		$html.addClass(cookieMods.replace(/, /g, ' '));
 		$(elem.btnRadio).removeClass(mod.btnActive);
 
 		var cookieModsArr = cookieMods.split(', ');
@@ -195,15 +189,15 @@ $(document).on('ready', function () {
 					$curBtn.attr('tabindex', '-1');
 				}
 
-				// remove modifier classes from a body
-				$body.removeClass(modsArr.join(' '));
-				// add active class on a body
-				$body.addClass(_curMod);
+				// remove modifier classes
+				$html.removeClass(modsArr.join(' '));
+				// add active class
+				$html.addClass(_curMod);
 			} else if ($curBtn.attr('data-toggle') !== undefined) {
 				// remove active class from current button
 				$curBtn.removeClass(mod.btnActive).attr('tabindex', '');
 				// remove active class from a body
-				$body.removeClass(_curMod);
+				$html.removeClass(_curMod);
 			}
 
 			// console.log("newCookieModsArr (after change): ", newCookieModsArr);

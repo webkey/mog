@@ -1,0 +1,117 @@
+@import functions
+@import placeholders
+
+
+// Media query
+// ==========================================================================
+$breakpoints: ('desk-qhd': 2560px, 'desk-hd': 1920px, 'desk-lg': 1600px, 'desk-ml': 1440px, 'desk-md': 1366px, 'desk-sm': 1200px, 'tab-lg': 980px, 'tab-sm': 768px, 'mob-lg': 640px, 'mob-md': 480px, 'mob-sm': 320px)
+$user-content: 'user-content' !default
+
+// ##########################################################################
+
+
+// Special Classes
+// ==========================================================================
+$spec-mod: 'vspec' !default
+$spec-mod--imageon: 'vspec--imageson' !default
+$spec-mod--imageoff: 'vspec--imageoff' !default
+$spec-mod--font-small: 'vspec--fontsize-small' !default
+$spec-mod--font-normal: 'vspec--fontsize-normal' !default
+$spec-mod--font-large: 'vspec--fontsize-large' !default
+$spec-mod--spacing-normal: 'vspec--spacing-normal' !default
+$spec-mod--spacing-medium: 'vspec--spacing-medium' !default
+$spec-mod--spacing-large: 'vspec--spacing-large' !default
+$spec-mod--schemecolor-def: 'vspec--schemecolor-def' !default
+$spec-mod--schemecolor-wb: 'vspec--schemecolor-white' !default
+$spec-mod--schemecolor-blue: 'vspec--schemecolor-blue' !default
+
+
+// СПЕЦИАЛЬНАЯ ВЕРСИЯ: НАСТРОЙКИ
+// ==========================================================================
+
+// Специальная версия: Цветовая схема - Черным по белому (стандартная)
+// ---------------------------------------------------------------------------
+$spec-text-color: #000 !default
+$spec-bg-color: #fff !default
+
+// Специальная версия: Цветовая схема - Белым по черному
+// ---------------------------------------------------------------------------
+$spec-text-color--scheme-wb: #fff !default
+$spec-bg-color--scheme-wb: #000 !default
+
+// Специальная версия: Цветовая схема - Синим по голубому
+// ---------------------------------------------------------------------------
+$spec-text-color--scheme-blue: #004c92 !default
+$spec-bg-color--scheme-blue: #c8e5ff !default
+
+
+// Fonts
+// ==========================================================================
+
+// Стандартный базовый шрифт
+// ---------------------------------------------------------------------------
+$spec-font-size: 18px !default // 18px (1em)
+$spec-line-height: round-float(32px / 18px, 2) !default // 32px --> 1.78
+
+// Settings: Размер шрифта - Уменьшенный базовый шрифт
+// ---------------------------------------------------------------------------
+$spec-font-size--small: 14px !default
+
+// Settings: Размер шрифта - Увеличенный базовый шрифт
+// ---------------------------------------------------------------------------
+$spec-font-size--large: 30px !default
+
+// H1, Заголовок страницы
+// ---------------------------------------------------------------------------
+$spec-title-font-size: 36px !default // В px. Менять размер через панель настроект нет необходимости
+$spec-title-line-height: round-float(48px / 36px, 2) !default // 48px --> 1.33
+
+// H2, Заголовки секций
+// ---------------------------------------------------------------------------
+$spec-section-font-size: round-float(26px / $spec-font-size, 2) * 1em !default // 26px --> 1.44em
+$spec-section-line-height: round-float(38px / 26px, 2) !default // 38px --> 1.44
+
+// H3, Заголовки пунктов
+// ---------------------------------------------------------------------------
+$spec-item-font-size: round-float(22px / $spec-font-size, 2) * 1em !default // 22px --> 1.22em
+$spec-item-line-height: round-float(34px / 22px, 2) !default // 34px --> 1.55
+
+// Мелкий текст: сноски, даты и т.д.
+// ---------------------------------------------------------------------------
+$spec-small-text-font-size: round-float(16px / $spec-font-size, 2) * 1em !default // 16px --> 0.89em
+$spec-small-text-line-height: round-float(28px / 16px, 2) !default // 28px --> 1.75
+
+
+// Базовый межбуквенный интервал
+// ---------------------------------------------------------------------------
+$spec-letter-spacing: normal !default
+
+// Settings: Средний межбуквенный интервал
+// ---------------------------------------------------------------------------
+$spec-letter-spacing--medium: 0.2em !default
+
+// Settings: Бальшой межбуквенный интервал
+// ---------------------------------------------------------------------------
+$spec-letter-spacing--large: 0.5em !default
+
+
+// Отступы
+// ==========================================================================
+
+// Отступы вертикальные
+// ---------------------------------------------------------------------------
+$spec-bottom-space: 1em !default
+$spec-bottom-space-section: 2.5em !default
+$spec-bottom-space-item: 2em !default
+$spec-bottom-space-element: 0.5em !default
+
+// Отступы горизонтальные
+// ---------------------------------------------------------------------------
+$spec-space: 1.5em !default
+$spec-space--sm: 1.25em !default
+$spec-space--mob: 1em !default
+
+
+// Borders
+// ==========================================================================
+$spec-border-width: 2px

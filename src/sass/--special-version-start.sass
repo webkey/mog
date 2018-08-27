@@ -22,6 +22,7 @@ body.#{$spec-mod}
 	.#{$spec-mod--font-small} &
 		font-size: $spec-font-size--small
 
+
 	// Специальная версия: Увеличенный базовый шрифт
 	// ================================================================
 	.#{$spec-mod--font-large} &
@@ -56,7 +57,7 @@ body.#{$spec-mod}
 	polygon
 		fill: currentColor !important
 
-	// reset font-family
+	// reset font family
 	// ------------------------------------------------------------
 	h1, h2, h3, h4, h5, h6
 		font-family: inherit
@@ -66,11 +67,6 @@ body.#{$spec-mod}
 	h1, h2, h3, h4, h5, h6
 		color: inherit
 
-	// reset letter-spacing
-	// ------------------------------------------------------------
-	h1, h2, h3, h4, h5, h6, p
-		letter-spacing: inherit
-
 	// reset transition
 	// ------------------------------------------------------------
 	.no-transition
@@ -78,8 +74,6 @@ body.#{$spec-mod}
 
 	// special version background color
 	// ------------------------------------------------------------
-	.header,
-	.content,
 	.someclass,
 	.someclass
 		background-color: $spec-bg-color
@@ -154,45 +148,64 @@ body.#{$spec-mod}
 				right: $spec-space--mob
 
 	// typography
-	h1, h2, h3, h4, h5, h6
-		font-weight: bold
-		margin: 0 0 $spec-bottom-space
-		padding: 0
-
 	h1
-		margin-bottom: $spec-bottom-space-item
 		font-size: $spec-title-font-size
 		line-height: $spec-title-line-height
-		text-align: left
+		font-weight: 500
+		letter-spacing: inherit
+		padding: 0
+		margin-bottom: $spec-bottom-space-item
 
 	h2
 		font-size: $spec-section-font-size
 		line-height: $spec-section-line-height
-		text-align: left
+		padding: 0
+		margin: 0 0 $spec-bottom-space
 
 	h3
 		font-size: $spec-item-font-size
 		line-height: $spec-item-line-height
+		font-weight: 700
+		padding: 0
+		margin: 0 0 $spec-bottom-space
 
-	h4, h5, h6
+	h4
 		font-size: inherit
 		line-height: inherit
+		font-weight: 700
+		padding: 0
+		margin: 0 0 $spec-bottom-space
 
-	h5, h6
-		font-weight: normal
+	h5
+		font-size: inherit
+		line-height: inherit
 		text-transform: uppercase
+		font-weight: normal
+		padding: 0
+		margin: 0 0 $spec-bottom-space
+
+	h6
+		font-size: inherit
+		line-height: inherit
+		font-weight: 500
+		padding: 0
+		margin: 0 0 $spec-bottom-space
+
+	p
+		letter-spacing: inherit
+		margin-bottom: $spec-bottom-space
+		padding: 0
 
 	table
 		td, th
-			font-family: inherit !important
-			font-size: inherit !important
-			line-height: inherit !important
-			color: currentColor !important
-			border: 1px solid currentColor !important
-			background: none !important
+			color: currentColor
+			border-color: currentColor
+			font-size: inherit
+			line-height: inherit
 
-		th
-			font-weight: bold !important
+			span, p, ul
+				background: none !important
+				color: inherit !important
 
 		caption
 			font-size: $spec-small-text-font-size
@@ -205,16 +218,6 @@ body.#{$spec-mod}
 	.mark
 		color: $spec-bg-color
 		background-color: $spec-text-color
-
-		$class: '.blah'
-
-		.#{$spec-mod--schemecolor-wb} &
-			color: $spec-bg-color--scheme-wb
-			background-color: $spec-text-color--scheme-wb
-
-		.#{$spec-mod--schemecolor-blue} &
-			color: $spec-bg-color--scheme-blue
-			background-color: $spec-text-color--scheme-blue
 
 	a
 		color: currentColor
@@ -285,13 +288,8 @@ body.#{$spec-mod}
 				border-color: $spec-text-color--scheme-blue
 				background-color: $spec-text-color--scheme-blue
 
-	// list
-	.#{$user-content}
-		ul, ol
-			li
-				&::before, &:first-child::before
-					color: currentColor
-					border-color: currentColor
+
+
 
 
 
@@ -475,8 +473,4 @@ body.#{$spec-mod}
 			background-color: $spec-bg-color--scheme-blue !important
 
 /* to top end
-
-.content
-	border: $spec-border-width solid $spec-text-color
-
 /*=========== SPECIAL VERSION end ===========

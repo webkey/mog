@@ -1,5 +1,5 @@
 @import ../libs/include-media/dist/include-media
-@import utils/variables
+@import utils/special-version-variables
 @import utils/functions
 @import utils/mixins
 @import utils/placeholders
@@ -41,10 +41,10 @@ $displace: 1px
 		$sh2: 0 4px 4px
 		box-shadow: $sh1 currentColor, $sh2 rgba($spec-text-color, 0.3)
 
-		.schemecolor-white &
-			box-shadow: $sh1 currentColor, $sh2 rgba($spec-text-color--scheme-white, 0.3)
+		.#{$spec-mod--schemecolor-wb} &
+			box-shadow: $sh1 currentColor, $sh2 rgba($spec-text-color--scheme-wb, 0.3)
 
-		.schemecolor-blue &
+		.#{$spec-mod--schemecolor-blue} &
 			box-shadow: $sh1 currentColor, $sh2 rgba($spec-text-color--scheme-blue, 0.3)
 
 	.vspec &
@@ -211,10 +211,10 @@ $displace: 1px
 		width: $size
 		height: $size
 
-	.schemecolor-white &
-		border-color: $spec-text-color--scheme-white
+	.#{$spec-mod--schemecolor-wb} &
+		border-color: $spec-text-color--scheme-wb
 
-	.schemecolor-blue &
+	.#{$spec-mod--schemecolor-blue} &
 		border-color: $spec-text-color--scheme-blue
 
 	&::after
@@ -250,10 +250,10 @@ $displace: 1px
 			//transform: translate(-$displace, -$displace)
 			box-shadow: $w1 $spec-bg-color, $w2 $spec-text-color
 
-			.schemecolor-white &
-				box-shadow: $w1 $spec-bg-color--scheme-white, $w2 $spec-text-color--scheme-white
+			.#{$spec-mod--schemecolor-wb} &
+				box-shadow: $w1 $spec-bg-color--scheme-wb, $w2 $spec-text-color--scheme-wb
 
-			.schemecolor-blue &
+			.#{$spec-mod--schemecolor-blue} &
 				box-shadow: $w1 $spec-bg-color--scheme-blue, $w2 $spec-text-color--scheme-blue
 
 	.sv-btn.active
@@ -350,8 +350,8 @@ $displace: 1px
 	background-color: $spec-bg-color
 
 .spec-panel .vcolor-btn-white
-	color: $spec-text-color--scheme-white
-	background-color: $spec-bg-color--scheme-white
+	color: $spec-text-color--scheme-wb
+	background-color: $spec-bg-color--scheme-wb
 
 .spec-panel .vcolor-btn-blue
 	color: $spec-text-color--scheme-blue

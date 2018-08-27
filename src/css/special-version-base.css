@@ -28,10 +28,10 @@
 		border-width: 0 0 2px 0;
 		box-shadow: 0 0 0 2px currentColor, 0 4px 4px rgba(0, 0, 0, 0.3);
 	}
-	.schemecolor-white .spec-panel {
+	.vspec--schemecolor-white .spec-panel {
 		box-shadow: 0 0 0 2px currentColor, 0 4px 4px rgba(255, 255, 255, 0.3);
 	}
-	.schemecolor-blue .spec-panel {
+	.vspec--schemecolor-blue .spec-panel {
 		box-shadow: 0 0 0 2px currentColor, 0 4px 4px rgba(0, 76, 146, 0.3);
 	}
 }
@@ -232,11 +232,11 @@
 	}
 }
 
-.schemecolor-white .spec-panel .sv-btn {
+.vspec--schemecolor-white .spec-panel .sv-btn {
 	border-color: #fff;
 }
 
-.schemecolor-blue .spec-panel .sv-btn {
+.vspec--schemecolor-blue .spec-panel .sv-btn {
 	border-color: #004c92;
 }
 
@@ -282,18 +282,18 @@
 	box-shadow: 0 0 0 2px #fff, 0 0 0 5px #000;
 }
 
-.schemecolor-white .spec-panel .sv-btn:hover, .schemecolor-white .spec-panel .sv-btn:focus, .schemecolor-white
-.spec-panel .sv-btn[data-toggle]:hover, .schemecolor-white
-.spec-panel .sv-btn[data-toggle]:focus, .schemecolor-white
-.spec-panel .sv-btn.active[data-toggle]:hover, .schemecolor-white
+.vspec--schemecolor-white .spec-panel .sv-btn:hover, .vspec--schemecolor-white .spec-panel .sv-btn:focus, .vspec--schemecolor-white
+.spec-panel .sv-btn[data-toggle]:hover, .vspec--schemecolor-white
+.spec-panel .sv-btn[data-toggle]:focus, .vspec--schemecolor-white
+.spec-panel .sv-btn.active[data-toggle]:hover, .vspec--schemecolor-white
 .spec-panel .sv-btn.active[data-toggle]:focus {
 	box-shadow: 0 0 0 2px #000, 0 0 0 5px #fff;
 }
 
-.schemecolor-blue .spec-panel .sv-btn:hover, .schemecolor-blue .spec-panel .sv-btn:focus, .schemecolor-blue
-.spec-panel .sv-btn[data-toggle]:hover, .schemecolor-blue
-.spec-panel .sv-btn[data-toggle]:focus, .schemecolor-blue
-.spec-panel .sv-btn.active[data-toggle]:hover, .schemecolor-blue
+.vspec--schemecolor-blue .spec-panel .sv-btn:hover, .vspec--schemecolor-blue .spec-panel .sv-btn:focus, .vspec--schemecolor-blue
+.spec-panel .sv-btn[data-toggle]:hover, .vspec--schemecolor-blue
+.spec-panel .sv-btn[data-toggle]:focus, .vspec--schemecolor-blue
+.spec-panel .sv-btn.active[data-toggle]:hover, .vspec--schemecolor-blue
 .spec-panel .sv-btn.active[data-toggle]:focus {
 	box-shadow: 0 0 0 2px #c8e5ff, 0 0 0 5px #004c92;
 }
