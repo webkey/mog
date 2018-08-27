@@ -1,4 +1,4 @@
-@@include('_tpl_layout_head.html', { "title": "Калькулятор расчета суммы к оплате за потребленный газ", "currentItem": "Услуги" })
+@@include('_tpl_layout_head.html', { "title": "Новости", "currentItem": "Обратная связь" })
 
 <!--MAIN-->
 <div class="main">
@@ -6,118 +6,113 @@
 		<div class="main-holder">
 			<!--CONTENT-->
 			<div class="content-wrap">
-				<div class="content user-content sheet">
+				<div class="content user-content">
 					<div class="content-head">
 						<!--breadcrumbs-->
 						<ul class="breadcrumbs-list">
 							<li><a href="index.html"><span>Главная</span></a></li>
-							<li><a href="temp_services.html"><span>Услуги</span></a></li>
-							<li><a href="temp_el-services.html"><span>Электронные услуги</span></a></li>
-							<li><span>Калькулятор расчета суммы к оплате за потребленный газ</span></li>
+							<li><a href="#"><span>Пресс-центр</span></a></li>
+							<li><span>Новости</span></li>
 						</ul>
 						<!--breadcrumbs end-->
 					</div>
 
 					<div class="text-layout">
-						<h1>Калькулятор расчета суммы к оплате за потребленный газ</h1>
-
-						<!--calculation form-->
-						<div class="calc-form full-width">
-							<form action="#" method="post">
-								<div class="calc__box">
-									<div class="calc__title">Вид газа:</div>
-									<div class="calc__row">
-										<label class="radio-label">
-											<input type="radio" name="gasTypes" checked="">
-											<span><i></i>Природный</span>
-										</label>
-									</div>
-									<div class="calc__row">
-										<label class="radio-label">
-											<input type="radio" name="gasTypes">
-											<span><i></i>Сжиженный</span>
-										</label>
-									</div>
-								</div>
-								<div class="calc__box">
-									<div class="calc__title">Оплата по:</div>
-									<div class="calc__row">
-										<label class="radio-label">
-											<input value="tar" type="radio" name="opl" checked="">
-											<span><i></i>Тарифу</span>
-										</label>
-									</div>
-									<div class="calc__row">
-										<label class="radio-label">
-											<input value="sh" type="radio" name="opl">
-											<span><i></i>Счетчику</span>
-										</label>
-									</div>
-								</div>
-								<div class="calc__box opl tar">
-									<div class="calc__row">
-										<label class="radio-label">
-											<input type="radio" name="gradeEquipment" checked="">
-											<span><i></i>Наличие газовой плиты и централизованного горячего водоснабжения</span>
-										</label>
-									</div>
-									<div class="calc__row">
-										<label class="radio-label">
-											<input type="radio" name="gradeEquipment">
-											<span><i></i>Наличие газовой плиты и отсутствие централизованного горячего водоснабжения</span>
-										</label>
-									</div>
-									<div class="calc__row">
-										<label class="radio-label">
-											<input type="radio" name="gradeEquipment">
-											<span><i></i>Наличие газовой плиты и газового водонагревателя</span>
-										</label>
-									</div>
-								</div>
-								<div class="calc__box opl sh" style="display: none;">
-									<div class="calc__row">
-										<label class="radio-label">
-											<input type="radio" name="p2" checked="" value="t1">
-											<span><i></i>При наличии индивидуальных газовых отопительных приборов и (или) газовых водонагревателей (газовых отопительных приборов для нагрева воды)</span>
-										</label>
-									</div>
-									<div class="calc__row">
-										<label class="radio-label">
-											<input type="radio" name="p2" value="t2">
-											<span><i></i>При отсутствии индивидуальных газовых отопительных приборов</span>
-										</label>
-									</div>
-									<div class="calc__row">
-										<label for="kg0" class="label-alt">Объем газа(куб.метров):</label>
-										<input type="text" id="kg0" size="5" value="1">
-									</div>
-								</div>
-								<div class="calc__box">
-									<div class="calc__col">
-										<label for="residents" class="label-alt">Количество жильцов:</label>
-										<input value="1" class="spinner" id="residents" name="residentsLength">
-									</div>
-									<div class="calc__col">
-										<label for="beneficiaries" class="label-alt">Количество льготников:</label>
-										<input  value="0" class="spinner" id="beneficiaries" name="beneficiariesLength">
-									</div>
-								</div>
-								<div class="calc__box">
-									<div class="calc__btn">
-										<button class="btn-default btn-submit" data-label="Рассчитать">Рассчитать</button>
-									</div>
-									<div class="calc__result">
-										<div class="product__price" >
-											<div class="byn">412 <span class="price-unit">руб.</span> 77 <span class="price-unit">коп.</span></div>
-											<div class="byr">(4 127 700)</div>
-										</div>
-										<span style="display: none;">Неверный ввод данных</span>
-									</div>
-								</div>
-							</form>
+						<div class="heading">
+							<h1>Новости</h1>
+							<!--years-->
+							<div class="years js-choice-wrap">
+								<a href="#" class="js-choice-open">
+									<span>2016</span>
+								</a>
+								<ul class="years-drop js-choice-drop">
+									<li><a class="active" href="#"><span>2016</span></a></li>
+									<li><a href="#"><span>2015</span></a></li>
+									<li><a href="#"><span>2014</span></a></li>
+									<li><a href="#"><span>2013</span></a></li>
+									<li><a href="#"><span>2012</span></a></li>
+								</ul>
+							</div>
+							<!--years end-->
 						</div>
-						<!--calculation form end-->
+
+						<!--news-->
+						<div class="news full-width">
+							<div class="news__list">
+								<div class="news__item">
+									<a href="inner.html" class="news__inner">
+										<div class="news__img" style="background-image: url(img/img-news-01.jpg)"></div>
+										<time class="news__data" datetime="2016-11-20">20 Ноября 2016</time>
+										<div class="news__content">
+											<div class="news__title">Cеминар-учеба для работников службы эксплуатации подземных газопроводов</div>
+											<div class="news__text">15.11.2016г. в ПУ «Могилевгаз» прошел семинар-учеба для работников службы эксплуатации подземных газопроводов предприятия. На нем присутствовали главные инженера производственных управлений и районов газоснабжения, начальники и мастера эксплуатационных служб.</div>
+										</div>
+									</a>
+								</div>
+								<div class="news__item">
+									<a href="inner.html" class="news__inner">
+										<div class="news__img" style="background-image: url(img/img-news-02.jpg)"></div>
+										<time class="news__data" datetime="2016-11-20">01 Июня 2016</time>
+										<div class="news__content">
+											<div class="news__title">Экскурсия, посвящённая Международному дню пожилых людей, в город Кричев</div>
+											<div class="news__text">6 октября 2016 года объединенным профсоюзным комитетом РУП «Могилевоблгаз» была организована экскурсия для неработающих пенсионеров, посвящённая Международному дню пожилых людей, в город Кричев с посещением Дворца Потёмкина. Во Дворце встречали экскурсантов Екатерина II и князь Потёмкин.</div>
+										</div>
+									</a>
+								</div>
+								<div class="news__item">
+									<a href="inner.html" class="news__inner">
+										<div class="news__img" style="background-image: url(img/img-news-03.jpg)"></div>
+										<time class="news__data" datetime="2016-11-20">12 Февраля 2016</time>
+										<div class="news__content">
+											<div class="news__title">Смотр-конкурс на лучшую организацию работы по охране труда и пожарной безопасности</div>
+											<div class="news__text">27 октября 2016 года на расширенном производственном совещании по итогам производственно-хозяйственной деятельности за 9 месяцев был подведен итог смотра-конкурса на лучшую организацию работы по охране труда и пожарной безопасности среди филиалов РУП «Могилевоблгаз».</div>
+										</div>
+									</a>
+								</div>
+								<div class="news__item">
+									<a href="inner.html" class="news__inner">
+										<div class="news__img" style="background-image: url(img/img-news-01.jpg)"></div>
+										<time class="news__data" datetime="2016-11-20">2 Марта 2016</time>
+										<div class="news__content">
+											<div class="news__title">Cеминар-учеба для работников службы</div>
+											<div class="news__text"></div>
+										</div>
+									</a>
+								</div>
+								<div class="news__item">
+									<a href="inner.html" class="news__inner">
+										<div class="news__img" style="background-image: url(img/img-news-02.jpg)"></div>
+										<time class="news__data" datetime="2016-11-20">31 Августа 2016</time>
+										<div class="news__content">
+											<div class="news__title">Экскурсия, посвящённая Международному дню пожилых людей, в город экскурсия, посвящённая Международному дню пожилых людей, в город экскурсия, посвящённая Международному дню пожилых людей, в город Кричев</div>
+											<div class="news__text">6 октября 2016 года объединенным профсоюзным комитетом РУП «Могилевоблгаз» была организована экскурсия для неработающих пенсионеров, посвящённая Международному дню пожилых людей.</div>
+										</div>
+									</a>
+								</div>
+								<div class="news__item">
+									<a href="inner.html" class="news__inner">
+										<div class="news__img" style="background-image: url(img/img-news-03.jpg)"></div>
+										<time class="news__data" datetime="2016-11-20">3 Мая 2016</time>
+										<div class="news__content">
+											<div class="news__title">Смотр-конкурс на лучшую организацию работы по охране труда и пожарной безопасности</div>
+											<div class="news__text">27 октября 2016 года на расширенном производственном совещании по итогам производственно-хозяйственной деятельности за 9 месяцев был подведен итог смотра-конкурса на лучшую организацию работы по охране труда и пожарной безопасности среди филиалов РУП «Могилевоблгаз». 27 октября 2016 года на расширенном производственном совещании по итогам производственно-хозяйственной деятельности за 9 месяцев был подведен итог смотра-конкурса на лучшую организацию работы по охране труда и пожарной безопасности среди филиалов РУП «Могилевоблгаз».</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<!--news end-->
 					</div>
+
+					<!--content foot-->
+					<div class="content-foot">
+						<div class="nav-page">
+							<div class="nav-page__item">
+								<a href="#"><span>загрузить еще<i></i></span></a>
+							</div>
+						</div>
+					</div>
+					<!--content foot end-->
 				</div>
 			</div>
 			<!--CONTENT end-->
@@ -127,19 +122,17 @@
 				<div class="sidebar-holder">
 					<!--menu-->
 					<ul class="menu">
+						<li class="current"><a href="news.html"><span>Новости</span></a><i></i></li>
 						<li class="has-list">
-							<a href="temp_el-services.html"><span>Электронные услуги</span><i></i></a>
-							<ul>
-								<li class="current"><a href="calc.html"><span>Калькулятор расчета суммы к оплате за потребленный газ</span></a></li>
-								<li><a href="calc-card.html"><span>Получение информации о состоянии оплаты за потребленный газ и наличии/отсутствии льгот для бытовых абонентов Могилевской области</span></a></li>
+							<a href="#"><span>Статьи</span><i></i></a>
+							<ul style="display: none;">
+								<li><a href="#"><span>Управление качеством</span><i></i></a></li>
+								<li><a href="#"><span>Энергоэффективность</span><i></i></a></li>
+								<li><a href="#"><span>Правила безопасности</span><i></i></a></li>
+								<li><a href="#"><span>Учет природного и сжиженного газа</span><i></i></a></li>
+								<li><a href="#"><span>Льготы по реализации газа</span><i></i></a></li>
 							</ul>
 						</li>
-						<li><a href="shop.html"><span>Магазин</span></a></li>
-						<li><a href="#"><span>Перевод автомобилей на СУГ, ремонт, освидетельствование</span></a></li>
-						<li><a href="#"><span>Ремонт и поверка средств измерений</span></a></li>
-						<li><a href="#"><span>Транспортные услуги</span></a></li>
-						<li><a href="#"><span>Электрофизические измерения</span></a></li>
-						<li><a href="#"><span>Центральная лаборатория контроля качества сварочных работ</span></a></li>
 					</ul>
 					<!--menu end-->
 

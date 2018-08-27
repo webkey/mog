@@ -1,4 +1,4 @@
-@@include('_tpl_layout_head.html', { "title": "Калькулятор расчета суммы к оплате за потребленный газ", "currentItem": "Услуги" })
+@@include('_tpl_layout_head.html', { "title": "Карточка абонента", "currentItem": "Услуги" })
 
 <!--MAIN-->
 <div class="main">
@@ -13,106 +13,76 @@
 							<li><a href="index.html"><span>Главная</span></a></li>
 							<li><a href="temp_services.html"><span>Услуги</span></a></li>
 							<li><a href="temp_el-services.html"><span>Электронные услуги</span></a></li>
-							<li><span>Калькулятор расчета суммы к оплате за потребленный газ</span></li>
+							<li><span>Карточка абонента</span></li>
 						</ul>
 						<!--breadcrumbs end-->
 					</div>
 
 					<div class="text-layout">
-						<h1>Калькулятор расчета суммы к оплате за потребленный газ</h1>
+						<h1>Карточка абонента</h1>
 
 						<!--calculation form-->
 						<div class="calc-form full-width">
 							<form action="#" method="post">
 								<div class="calc__box">
+									<label class="calc__title" for="reg">Район:</label>
+									<select id="reg" class="req" name="unit">
+										<option value="">-- Район--</option>
+										<option value="Belinichi">Белыничский район</option>
+										<option value="Bobruisk">Бобруйский район</option>
+										<option value="Bihov">Быховский район</option>
+										<option value="Glusk">Глусский район</option>
+										<option value="Gorki">Горецкий район</option>
+										<option value="Dribin">Дрибинский район</option>
+										<option value="Kirovsk">Кировский район</option>
+										<option value="Klimovichi">Климовичский район</option>
+										<option value="Klichev">Кличевский район</option>
+										<option value="Kostyukovichi">Костюковичский район</option>
+										<option value="Krasnopolie">Краснопольский район</option>
+										<option value="Krichev">Кричевский район</option>
+										<option value="Krugloe">Круглянский район</option>
+										<option value="Mogilev">Могилевский район</option>
+										<option value="Mstislavl">Мстиславский район</option>
+										<option value="Osipovichi">Осиповичский район</option>
+										<option value="Slavgorod">Славгородский район</option>
+										<option value="Hotimsk">Хотимский район</option>
+										<option value="Chausi">Чаусский район</option>
+										<option value="Cherikov">Чериковский район</option>
+										<option value="Shklov">Шкловский район</option>
+									</select>
+								</div>
+								<div class="calc__box">
 									<div class="calc__title">Вид газа:</div>
 									<div class="calc__row">
 										<label class="radio-label">
-											<input type="radio" name="gasTypes" checked="">
-											<span><i></i>Природный</span>
+											<input value="p" type="radio" name="gas" checked="">
+											<span><i></i>Природный / сжиженный</span>
 										</label>
 									</div>
 									<div class="calc__row">
 										<label class="radio-label">
-											<input type="radio" name="gasTypes">
-											<span><i></i>Сжиженный</span>
+											<input value="b" type="radio" name="gas">
+											<span><i></i>Балонный</span>
 										</label>
 									</div>
 								</div>
 								<div class="calc__box">
-									<div class="calc__title">Оплата по:</div>
-									<div class="calc__row">
-										<label class="radio-label">
-											<input value="tar" type="radio" name="opl" checked="">
-											<span><i></i>Тарифу</span>
-										</label>
-									</div>
-									<div class="calc__row">
-										<label class="radio-label">
-											<input value="sh" type="radio" name="opl">
-											<span><i></i>Счетчику</span>
-										</label>
-									</div>
-								</div>
-								<div class="calc__box opl tar">
-									<div class="calc__row">
-										<label class="radio-label">
-											<input type="radio" name="gradeEquipment" checked="">
-											<span><i></i>Наличие газовой плиты и централизованного горячего водоснабжения</span>
-										</label>
-									</div>
-									<div class="calc__row">
-										<label class="radio-label">
-											<input type="radio" name="gradeEquipment">
-											<span><i></i>Наличие газовой плиты и отсутствие централизованного горячего водоснабжения</span>
-										</label>
-									</div>
-									<div class="calc__row">
-										<label class="radio-label">
-											<input type="radio" name="gradeEquipment">
-											<span><i></i>Наличие газовой плиты и газового водонагревателя</span>
-										</label>
-									</div>
-								</div>
-								<div class="calc__box opl sh" style="display: none;">
-									<div class="calc__row">
-										<label class="radio-label">
-											<input type="radio" name="p2" checked="" value="t1">
-											<span><i></i>При наличии индивидуальных газовых отопительных приборов и (или) газовых водонагревателей (газовых отопительных приборов для нагрева воды)</span>
-										</label>
-									</div>
-									<div class="calc__row">
-										<label class="radio-label">
-											<input type="radio" name="p2" value="t2">
-											<span><i></i>При отсутствии индивидуальных газовых отопительных приборов</span>
-										</label>
-									</div>
-									<div class="calc__row">
-										<label for="kg0" class="label-alt">Объем газа(куб.метров):</label>
-										<input type="text" id="kg0" size="5" value="1">
-									</div>
+									<label class="calc__title" for="nlch">Номер лицевого счета:</label>
+									<input type="text" id="nlch" value="" name="account" class="error">
 								</div>
 								<div class="calc__box">
-									<div class="calc__col">
-										<label for="residents" class="label-alt">Количество жильцов:</label>
-										<input value="1" class="spinner" id="residents" name="residentsLength">
+									<div class="captcha">
+										Здесь будет CAPTCHA
 									</div>
-									<div class="calc__col">
-										<label for="beneficiaries" class="label-alt">Количество льготников:</label>
-										<input  value="0" class="spinner" id="beneficiaries" name="beneficiariesLength">
-									</div>
+									<label class="calc__title" for="enter-captcha">Введите символы с картинки:</label>
+									<input type="text" id="enter-captcha" name="captcha">
 								</div>
+
 								<div class="calc__box">
 									<div class="calc__btn">
-										<button class="btn-default btn-submit" data-label="Рассчитать">Рассчитать</button>
+										<button class="btn-default btn-submit" data-label="Найти">Найти</button>
 									</div>
-									<div class="calc__result">
-										<div class="product__price" >
-											<div class="byn">412 <span class="price-unit">руб.</span> 77 <span class="price-unit">коп.</span></div>
-											<div class="byr">(4 127 700)</div>
-										</div>
-										<span style="display: none;">Неверный ввод данных</span>
-									</div>
+									<div class="calc__result"></div>
 								</div>
 							</form>
 						</div>
@@ -130,8 +100,8 @@
 						<li class="has-list">
 							<a href="temp_el-services.html"><span>Электронные услуги</span><i></i></a>
 							<ul>
-								<li class="current"><a href="calc.html"><span>Калькулятор расчета суммы к оплате за потребленный газ</span></a></li>
-								<li><a href="calc-card.html"><span>Получение информации о состоянии оплаты за потребленный газ и наличии/отсутствии льгот для бытовых абонентов Могилевской области</span></a></li>
+								<li><a href="calc.html"><span>Калькулятор расчета суммы к оплате за потребленный газ</span></a></li>
+								<li class="current"><a href="calc-card.html"><span>Получение информации о состоянии оплаты за потребленный газ и наличии/отсутствии льгот для бытовых абонентов Могилевской области</span></a></li>
 							</ul>
 						</li>
 						<li><a href="shop.html"><span>Магазин</span></a></li>

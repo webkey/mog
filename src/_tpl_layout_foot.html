@@ -1,3 +1,7 @@
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "END" })
+
+@@include("_tpl_layout_footer.html", {"branchesPopup": "@@branchesPopup"})
+
 <!--btn to top-->
 <a href="#" class="btn-to-top"><i></i>Вверх</a>
 <!--btn to top end-->
@@ -18,6 +22,7 @@
 <script src="js/vendor/jquery-ui.min.js"></script>
 <!--Widgets-->
 <script src="js/widgets.js"></script>
+@@if(context.hasMap){<!--Map--><script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>}
 <!--Main functions-->
 <script src="js/functions.js"></script>
 </body>

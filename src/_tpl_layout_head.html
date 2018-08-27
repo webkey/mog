@@ -4,7 +4,7 @@
 <!--[if gt IE 9]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 <head>
 	<meta charset="UTF-8">
-	<title>Главная</title>
+	<title>@@title</title>
 	<!--Mobile optimized-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -112,3 +112,7 @@
 	</div>
 </div>
 <!--tools panel for special version end-->
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
+@@include('_tpl_layout_header.html', {"currentItem": "@@currentItem" })
