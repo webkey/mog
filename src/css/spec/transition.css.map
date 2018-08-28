@@ -1,0 +1,1 @@
+{"version":3,"sources":["transition.css"],"names":[],"mappings":"AAAA;;CAEC,iBAAiB;CACjB","file":"transition.css","sourcesContent":[".no-transition,\n.no-transition {\n\ttransition: none;\n}\n"]}

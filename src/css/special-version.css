@@ -11,30 +11,85 @@ body.vspec {
 	background-color: #fff;
 }
 
-.vspec--fontsize-small body.vspec {
+/* special version settings */
+/* ============================================================ */
+.vspec--fontsize-small .vspec {
 	font-size: 14px;
 }
 
-.vspec--fontsize-large body.vspec {
+.vspec--fontsize-large .vspec {
 	font-size: 30px;
 }
 
-.vspec--spacing-medium body.vspec {
+.vspec--spacing-medium .vspec {
 	letter-spacing: 0.2em;
 }
 
-.vspec--spacing-large body.vspec {
+.vspec--spacing-large .vspec {
 	letter-spacing: 0.5em;
 }
 
-.vspec--schemecolor-white body.vspec {
+.vspec--schemecolor-white .vspec {
 	color: #fff;
 	background-color: #000;
 }
 
-.vspec--schemecolor-blue body.vspec {
+.vspec--schemecolor-blue .vspec {
 	color: #004c92;
 	background-color: #c8e5ff;
+}
+
+.vspec img, .vspec [class*="depict-files-"] {
+	display: none;
+}
+
+.vspec--imageson .vspec img, .vspec--imageson .vspec [class*="depict-files-"] {
+	display: block;
+}
+
+/* special version reset */
+/* ============================================================ */
+.vspec .sv-btn-on,
+.vspec h1, .vspec h2, .vspec h3, .vspec h4, .vspec h5, .vspec h6, .vspec p,
+.vspec .breadcrumbs-list,
+.vspec .datetime time,
+.vspec blockquote q,
+.vspec blockquote > p,
+.vspec blockquote cite,
+.vspec .files,
+.vspec .files .files-item,
+.vspec .file,
+.vspec .footer-bottom,
+.vspec .footer-bottom-holder,
+.vspec .footer-col,
+.vspec .font-reset,
+.vspec .font-reset {
+	font-family: inherit;
+	font-weight: normal;
+	font-style: normal;
+	font-size: inherit;
+	line-height: inherit;
+	letter-spacing: inherit;
+	color: inherit;
+}
+
+.vspec .no-transition,
+.vspec .no-transition {
+	transition: none;
+}
+
+.vspec .sidebar,
+.vspec .btn-back,
+.vspec .print-hidden,
+.vspec .images-slider,
+.vspec .print,
+.vspec .footer-figure-left,
+.vspec .footer-figure-right,
+.vspec .footer-nav,
+.vspec .footer-gov,
+.vspec .spec-hide,
+.vspec .spec-hide {
+	display: none !important;
 }
 
 .vspec path,
@@ -42,49 +97,82 @@ body.vspec {
 	fill: currentColor !important;
 }
 
-.vspec h1, .vspec h2, .vspec h3, .vspec h4, .vspec h5, .vspec h6 {
-	font-family: inherit;
-}
-
-.vspec h1, .vspec h2, .vspec h3, .vspec h4, .vspec h5, .vspec h6 {
-	color: inherit;
-}
-
-.vspec h1, .vspec h2, .vspec h3, .vspec h4, .vspec h5, .vspec h6, .vspec p {
-	letter-spacing: inherit;
-}
-
-.vspec .no-transition {
-	transition: none;
-}
-
-.vspec .header,
-.vspec .content,
-.vspec .someclass,
-.vspec .someclass {
+.vspec .header, .vspec .content, .vspec .spec-bg {
 	background-color: #fff;
 }
 
-.vspec--schemecolor-white .vspec .header, .vspec--schemecolor-white
-.vspec .content, .vspec--schemecolor-white
-.vspec .someclass, .vspec--schemecolor-white
-.vspec .someclass {
+.vspec--schemecolor-white .vspec .header, .vspec--schemecolor-white .vspec .content, .vspec--schemecolor-white .vspec .spec-bg {
 	background-color: #000;
 }
 
-.vspec--schemecolor-blue .vspec .header, .vspec--schemecolor-blue
-.vspec .content, .vspec--schemecolor-blue
-.vspec .someclass, .vspec--schemecolor-blue
-.vspec .someclass {
+.vspec--schemecolor-blue .vspec .header, .vspec--schemecolor-blue .vspec .content, .vspec--schemecolor-blue .vspec .spec-bg {
 	background-color: #c8e5ff;
 }
 
+.vspec .datetime time, .vspec .spec-bg-invert {
+	color: #fff;
+	background-color: #000;
+}
+
+.vspec--schemecolor-white .vspec .datetime time, .vspec--schemecolor-white .vspec .spec-bg-invert {
+	color: #000;
+	background-color: #fff;
+}
+
+.vspec--schemecolor-blue .vspec .datetime time, .vspec--schemecolor-blue .vspec .spec-bg-invert {
+	color: #c8e5ff;
+	background-color: #004c92;
+}
+
+.vspec h1, .vspec h2, .vspec h3, .vspec h4, .vspec h5, .vspec h6, .vspec p,
+.vspec .content,
+.vspec .datetime,
+.vspec blockquote,
+.vspec .file,
+.vspec .file__title,
+.vspec .reset-padding,
+.vspec .reset-padding {
+	padding: 0;
+}
+
+.vspec h1, .vspec h2, .vspec h3, .vspec h4, .vspec h5, .vspec h6,
+.vspec p, .vspec hr, .vspec blockquote,
+.vspec blockquote q,
+.vspec blockquote > p,
+.vspec .files,
+.vspec .files .files-item,
+.vspec .spec-bottom-space,
+.vspec .spec-bottom-space {
+	margin-bottom: 1.2em;
+}
+
+.vspec .content-head,
+.vspec .spec-bottom-space-section,
+.vspec .spec-bottom-space-section {
+	margin-bottom: 2.5em;
+}
+
+.vspec .datetime,
+.vspec .spec-bottom-space-item,
+.vspec .spec-bottom-space-item {
+	margin-bottom: 2em;
+}
+
+.vspec .spec-bottom-space-element,
+.vspec .spec-bottom-space-element {
+	margin-bottom: 0.5em;
+}
+
 .vspec img,
-.vspec .promo-slider__bg {
+.vspec [class*="depict-files-"],
+.vspec .logo-img,
+.vspec .promo-slider__bg,
+.vspec .grayscale {
 	filter: grayscale(1) contrast(1) invert(0);
 }
 
-.vspec .promo-slider .slick-track {
+.vspec .promo-slider .slick-track,
+.vspec .spec-slider-reset .slick-track {
 	opacity: 1 !important;
 	left: auto !important;
 	width: auto !important;
@@ -92,11 +180,14 @@ body.vspec {
 	transform: none !important;
 }
 
-.vspec .promo-slider .slick-track::before, .vspec .promo-slider .slick-track::after {
+.vspec .promo-slider .slick-track::before, .vspec .promo-slider .slick-track::after,
+.vspec .spec-slider-reset .slick-track::before,
+.vspec .spec-slider-reset .slick-track::after {
 	content: none;
 }
 
-.vspec .promo-slider .slick-slide {
+.vspec .promo-slider .slick-slide,
+.vspec .spec-slider-reset .slick-slide {
 	position: relative !important;
 	width: auto !important;
 	height: auto !important;
@@ -107,20 +198,14 @@ body.vspec {
 	z-index: auto !important;
 }
 
-.vspec .promo-slider .slick-arrow {
+.vspec .promo-slider .slick-arrow,
+.vspec .spec-slider-reset .slick-arrow {
 	display: none !important;
 }
 
-.vspec .promo-slider .slick-dots {
+.vspec .promo-slider .slick-dots,
+.vspec .spec-slider-reset .slick-dots {
 	display: none !important;
-}
-
-.vspec img {
-	display: none;
-}
-
-.vspec--imageson .vspec img {
-	display: block;
 }
 
 .vspec .someclass,
@@ -145,23 +230,25 @@ body.vspec {
 	}
 }
 
+/* special version typography */
+/* ============================================================ */
 .vspec h1, .vspec h2, .vspec h3, .vspec h4, .vspec h5, .vspec h6 {
 	font-weight: bold;
-	margin: 0 0 1em;
+	text-align: left;
+}
+
+.vspec p + h2, .vspec p + h3, .vspec p + h4, .vspec p + h5, .vspec p + h6, .vspec ul + h2, .vspec ul + h3, .vspec ul + h4, .vspec ul + h5, .vspec ul + h6, .vspec ol + h2, .vspec ol + h3, .vspec ol + h4, .vspec ol + h5, .vspec ol + h6 {
 	padding: 0;
 }
 
 .vspec h1 {
-	margin-bottom: 2em;
-	font-size: 36px;
+	font-size: 2em;
 	line-height: 1.33;
-	text-align: left;
 }
 
 .vspec h2 {
 	font-size: 1.44em;
 	line-height: 1.46;
-	text-align: left;
 }
 
 .vspec h3 {
@@ -177,6 +264,22 @@ body.vspec {
 .vspec h5, .vspec h6 {
 	font-weight: normal;
 	text-transform: uppercase;
+}
+
+.vspec a {
+	color: currentColor;
+	text-decoration: underline;
+	transition: none;
+}
+
+.vspec a:hover {
+	text-decoration: underline;
+}
+
+.vspec hr {
+	margin-top: 2em;
+	border-color: currentColor;
+	border-width: 2px;
 }
 
 .vspec table td, .vspec table th {
@@ -218,32 +321,30 @@ body.vspec {
 	background-color: #004c92;
 }
 
-.vspec a {
-	color: currentColor;
-	transition: none;
-}
-
 .vspec input[type="text"],
 .vspec input[type="password"],
 .vspec input[type="email"],
 .vspec input[type="search"],
-.vspec textarea {
+.vspec textarea,
+.vspec .select select {
 	font-family: inherit;
-	box-shadow: none;
-	height: 50px;
+	font-weight: normal;
+	font-style: normal;
 	font-size: 18px;
-	line-height: 30px;
+	letter-spacing: inherit;
+	box-shadow: none;
 	color: inherit;
-	padding: 8px 15px;
-	border: 2px solid currentColor;
 	transition: none;
+	background: none;
+	border-color: currentColor;
 }
 
 .vspec input[type="text"].error,
 .vspec input[type="password"].error,
 .vspec input[type="email"].error,
 .vspec input[type="search"].error,
-.vspec textarea.error {
+.vspec textarea.error,
+.vspec .select select.error {
 	border-color: currentColor;
 	box-shadow: none;
 	color: inherit;
@@ -253,30 +354,36 @@ body.vspec {
 .vspec input[type="password"]:focus,
 .vspec input[type="email"]:focus,
 .vspec input[type="search"]:focus,
-.vspec textarea:focus {
+.vspec textarea:focus,
+.vspec .select select:focus {
 	box-shadow: none;
 }
 
-.vspec input[type="text"]::-webkit-input-placeholder, .vspec input[type="password"]::-webkit-input-placeholder, .vspec input[type="email"]::-webkit-input-placeholder, .vspec input[type="search"]::-webkit-input-placeholder, .vspec textarea::-webkit-input-placeholder {
+.vspec input[type="text"]::-webkit-input-placeholder, .vspec input[type="password"]::-webkit-input-placeholder, .vspec input[type="email"]::-webkit-input-placeholder, .vspec input[type="search"]::-webkit-input-placeholder, .vspec textarea::-webkit-input-placeholder, .vspec .select select::-webkit-input-placeholder {
 	color: currentColor;
+	transition: none;
 }
 
-.vspec input[type="text"]:-moz-placeholder, .vspec input[type="password"]:-moz-placeholder, .vspec input[type="email"]:-moz-placeholder, .vspec input[type="search"]:-moz-placeholder, .vspec textarea:-moz-placeholder {
+.vspec input[type="text"]:-moz-placeholder, .vspec input[type="password"]:-moz-placeholder, .vspec input[type="email"]:-moz-placeholder, .vspec input[type="search"]:-moz-placeholder, .vspec textarea:-moz-placeholder, .vspec .select select:-moz-placeholder {
 	color: currentColor;
+	transition: none;
 }
 
-.vspec input[type="text"]::-moz-placeholder, .vspec input[type="password"]::-moz-placeholder, .vspec input[type="email"]::-moz-placeholder, .vspec input[type="search"]::-moz-placeholder, .vspec textarea::-moz-placeholder {
+.vspec input[type="text"]::-moz-placeholder, .vspec input[type="password"]::-moz-placeholder, .vspec input[type="email"]::-moz-placeholder, .vspec input[type="search"]::-moz-placeholder, .vspec textarea::-moz-placeholder, .vspec .select select::-moz-placeholder {
 	opacity: 1;
 	color: currentColor;
+	transition: none;
 }
 
-.vspec input[type="text"]:-ms-input-placeholder, .vspec input[type="password"]:-ms-input-placeholder, .vspec input[type="email"]:-ms-input-placeholder, .vspec input[type="search"]:-ms-input-placeholder, .vspec textarea:-ms-input-placeholder {
+.vspec input[type="text"]:-ms-input-placeholder, .vspec input[type="password"]:-ms-input-placeholder, .vspec input[type="email"]:-ms-input-placeholder, .vspec input[type="search"]:-ms-input-placeholder, .vspec textarea:-ms-input-placeholder, .vspec .select select:-ms-input-placeholder {
 	opacity: 1;
 	color: currentColor;
+	transition: none;
 }
 
-.vspec input[type="text"].placeholder, .vspec input[type="password"].placeholder, .vspec input[type="email"].placeholder, .vspec input[type="search"].placeholder, .vspec textarea.placeholder {
+.vspec input[type="text"].placeholder, .vspec input[type="password"].placeholder, .vspec input[type="email"].placeholder, .vspec input[type="search"].placeholder, .vspec textarea.placeholder, .vspec .select select.placeholder {
 	color: currentColor;
+	transition: none;
 }
 
 .vspec .label-holder, .vspec label {
@@ -286,42 +393,111 @@ body.vspec {
 	letter-spacing: inherit;
 }
 
-.vspec .btn-default, .vspec input[type="submit"], .vspec input[type="button"], .vspec input[type="reset"], .vspec button {
-	font-family: inherit;
-	color: #000;
-	border-color: #000;
-	background-color: #fff;
-	transition: none;
+.vspec .select:before, .vspec .select:after {
+	color: #fff;
+	background-color: #000;
 }
 
-.vspec .btn-default:hover, .vspec input[type="submit"]:hover, .vspec input[type="button"]:hover, .vspec input[type="reset"]:hover, .vspec button:hover {
-	border-color: #000;
-	background-color: #000;
+.vspec--schemecolor-white .vspec .select:before, .vspec--schemecolor-white .vspec .select:after {
+	color: #000;
+	background-color: #fff;
+}
+
+.vspec--schemecolor-blue .vspec .select:before, .vspec--schemecolor-blue .vspec .select:after {
+	color: #c8e5ff;
+	background-color: #004c92;
+}
+
+.vspec input[type="checkbox"] + label,
+.vspec input[type="radio"] + label,
+.vspec .check-label, .vspec .radio-label {
+	color: inherit;
+}
+
+.vspec input[type="checkbox"]:not(:disabled):checked + span,
+.vspec input[type="checkbox"]:not(:disabled):checked + label > span,
+.vspec input[type="radio"]:not(:disabled):checked + span,
+.vspec input[type="radio"]:not(:disabled):checked + label > span {
+	color: inherit;
+}
+
+.vspec input[type="checkbox"]:not(:disabled) + label:before,
+.vspec .check-label > span > i:before {
+	border-color: currentColor;
+}
+
+.vspec input[type="checkbox"]:not(:disabled) + span:before, .vspec input[type="checkbox"]:not(:disabled) + span:after,
+.vspec input[type="checkbox"]:not(:disabled) + label > span:before,
+.vspec input[type="checkbox"]:not(:disabled) + label > span:after {
+	background-color: currentColor;
+}
+
+.vspec input[type="radio"]:not(:disabled) + label:before,
+.vspec input[type="radio"]:not(:disabled) + span:before {
+	border-color: currentColor;
+}
+
+.vspec input[type="radio"]:not(:disabled) + label > span:after,
+.vspec input[type="radio"]:not(:disabled) + span > i:after {
+	background-color: currentColor;
+}
+
+.vspec .btn-default, .vspec input[type="submit"], .vspec input[type="button"], .vspec input[type="reset"], .vspec button {
+	font-family: inherit;
+	font-weight: bold;
+	font-style: normal;
+	font-size: inherit;
+	letter-spacing: inherit;
+	text-transform: none;
+	transition: none;
+	text-decoration: none;
 	color: #fff;
+	background-color: #000;
 }
 
 .vspec--schemecolor-white .vspec .btn-default, .vspec--schemecolor-white .vspec input[type="submit"], .vspec--schemecolor-white .vspec input[type="button"], .vspec--schemecolor-white .vspec input[type="reset"], .vspec--schemecolor-white .vspec button {
-	color: #fff;
-	border-color: #fff;
-	background-color: #000;
-}
-
-.vspec--schemecolor-white .vspec .btn-default:hover, .vspec--schemecolor-white .vspec input[type="submit"]:hover, .vspec--schemecolor-white .vspec input[type="button"]:hover, .vspec--schemecolor-white .vspec input[type="reset"]:hover, .vspec--schemecolor-white .vspec button:hover {
 	color: #000;
-	border-color: #fff;
 	background-color: #fff;
 }
 
 .vspec--schemecolor-blue .vspec .btn-default, .vspec--schemecolor-blue .vspec input[type="submit"], .vspec--schemecolor-blue .vspec input[type="button"], .vspec--schemecolor-blue .vspec input[type="reset"], .vspec--schemecolor-blue .vspec button {
+	color: #c8e5ff;
+	background-color: #004c92;
+}
+
+.vspec .btn-default::before, .vspec .btn-default::after, .vspec input[type="submit"]::before, .vspec input[type="submit"]::after, .vspec input[type="button"]::before, .vspec input[type="button"]::after, .vspec input[type="reset"]::before, .vspec input[type="reset"]::after, .vspec button::before, .vspec button::after {
+	display: none !important;
+}
+
+.vspec .btn-default:hover, .vspec input[type="submit"]:hover, .vspec input[type="button"]:hover, .vspec input[type="reset"]:hover, .vspec button:hover {
+	text-decoration: underline;
+}
+
+.vspec .btn-default-alt, .vspec input.btn-default-alt[type="submit"], .vspec input.btn-default-alt[type="button"], .vspec input.btn-default-alt[type="reset"], .vspec button.btn-default-alt {
+	font-family: inherit;
+	font-weight: bold;
+	font-style: normal;
+	font-size: inherit;
+	letter-spacing: inherit;
+	text-transform: none;
+	text-decoration: none;
+	color: #000;
+	border-color: currentColor;
+	background-color: #fff;
+}
+
+.vspec--schemecolor-white .vspec .btn-default-alt, .vspec--schemecolor-white .vspec input.btn-default-alt[type="submit"], .vspec--schemecolor-white .vspec input.btn-default-alt[type="button"], .vspec--schemecolor-white .vspec input.btn-default-alt[type="reset"] {
+	color: #fff;
+	background-color: #000;
+}
+
+.vspec--schemecolor-blue .vspec .btn-default-alt, .vspec--schemecolor-blue .vspec input.btn-default-alt[type="submit"], .vspec--schemecolor-blue .vspec input.btn-default-alt[type="button"], .vspec--schemecolor-blue .vspec input.btn-default-alt[type="reset"] {
 	color: #004c92;
-	border-color: #004c92;
 	background-color: #c8e5ff;
 }
 
-.vspec--schemecolor-blue .vspec .btn-default:hover, .vspec--schemecolor-blue .vspec input[type="submit"]:hover, .vspec--schemecolor-blue .vspec input[type="button"]:hover, .vspec--schemecolor-blue .vspec input[type="reset"]:hover, .vspec--schemecolor-blue .vspec button:hover {
-	color: #c8e5ff;
-	border-color: #004c92;
-	background-color: #004c92;
+.vspec .btn-default-alt:hover, .vspec input.btn-default-alt:hover[type="submit"], .vspec input.btn-default-alt:hover[type="button"], .vspec input.btn-default-alt:hover[type="reset"] {
+	text-decoration: underline;
 }
 
 .vspec .user-content ul li::before, .vspec .user-content ul li:first-child::before, .vspec .user-content ol li::before, .vspec .user-content ol li:first-child::before {
@@ -329,6 +505,22 @@ body.vspec {
 	border-color: currentColor;
 }
 
+.vspec blockquote q {
+	font-size: 1.22em;
+	line-height: 1.55;
+	border-color: currentColor;
+}
+
+.vspec blockquote cite {
+	font-style: italic;
+}
+
+.vspec .files {
+	margin-left: 0;
+}
+
+/* special version components */
+/* ============================================================ */
 /* to top */
 .vspec .back-to-top {
 	box-sizing: border-box;
@@ -381,8 +573,235 @@ body.vspec {
 }
 
 /* to top end */
-.content {
-	border: 2px solid #000;
+.vspec .text-layout, .vspec .breadcrumbs-list, .vspec .user-content .breadcrumbs-list, .vspec .expander__header, .vspec .calc__box {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.vspec .content {
+	border: none;
+	margin-left: 0;
+}
+
+.vspec .footer {
+	border-top: 2px solid currentColor;
+}
+
+.vspec .footer,
+.vspec .footer-gov,
+.vspec .footer-bottom {
+	background: none;
+}
+
+.vspec .footer-common {
+	padding-top: 1em;
+}
+
+.vspec .footer-bottom-holder {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.vspec .footer-bottom-holder::after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.vspec .footer-col {
+	float: left;
+}
+
+.vspec .footer-col:last-child {
+	float: right;
+}
+
+.vspec .developer_logo {
+	display: inline;
+	text-indent: 0;
+	padding: 0;
+	width: auto;
+	height: auto;
+	top: auto;
+}
+
+.vspec .developer_logo::before, .vspec .developer_logo::after {
+	display: none;
+}
+
+.vspec .logo-title > strong {
+	background-image: url(../img/logo-text--bw.svg);
+	background-size: contain;
+}
+
+.vspec--schemecolor-white .vspec .logo-title > strong {
+	background: url(../img/logo-text--wb.svg) no-repeat;
+}
+
+.vspec--schemecolor-blue .vspec .logo-title > strong {
+	background: url(../img/logo-text--blue.svg) no-repeat;
+}
+
+.vspec .main-nav-frame {
+	box-shadow: 0 2px 0 #000;
+	transition: none;
+}
+
+.vspec--schemecolor-white .vspec .main-nav-frame {
+	box-shadow: 0 2px 0 #fff;
+}
+
+.vspec--schemecolor-blue .vspec .main-nav-frame {
+	box-shadow: 0 2px 0 #004c92;
+}
+
+.nav-fixed .vspec .main-nav-frame:before {
+	display: none;
+}
+
+.vspec .main-nav-holder {
+	box-shadow: 0 0 0 2px #000;
+	transition: none;
+}
+
+.vspec--schemecolor-white .vspec .main-nav-holder {
+	box-shadow: 0 0 0 2px #fff;
+}
+
+.vspec--schemecolor-blue .vspec .main-nav-holder {
+	box-shadow: 0 0 0 2px #004c92;
+}
+
+.vspec .nav__list > li > a {
+	color: currentColor;
+	background-color: #fff;
+	border: 0 solid currentColor;
+	border-left-width: 2px;
+}
+
+.vspec--schemecolor-white .vspec .nav__list > li > a {
+	background-color: #000;
+}
+
+.vspec--schemecolor-blue .vspec .nav__list > li > a {
+	background-color: #c8e5ff;
+}
+
+.vspec .nav__list > li > a:before {
+	display: none;
+}
+
+.vspec .nav__list > li:first-child > a {
+	border-left-width: 0;
+}
+
+.vspec .nav__list > li.hover > a,
+.vspec .nav__list > li > a:hover,
+.vspec .nav__list > li > a:focus {
+	color: currentColor;
+	text-decoration: none;
+	border-color: currentColor;
+}
+
+.vspec .nav__list > li.has-drop.hover > a,
+.vspec .nav__list > li.current.hover_next > a,
+.vspec .nav__list > li.current.hover_prev > a {
+	border-color: currentColor;
+}
+
+.vspec .nav__list > li.current > a {
+	text-decoration: none;
+	color: #fff;
+	background-color: #000;
+}
+
+.vspec--schemecolor-white .vspec .nav__list > li.current > a {
+	color: #000;
+	background-color: #fff;
+}
+
+.vspec--schemecolor-blue .vspec .nav__list > li.current > a {
+	color: #c8e5ff;
+	background-color: #004c92;
+}
+
+.vspec .btn-menu {
+	background-color: #fff;
+	color: #000;
+	transition: none;
+	box-sizing: border-box;
+	border: 0 solid currentColor;
+	border-right-width: 2px;
+}
+
+.vspec--schemecolor-white .vspec .btn-menu {
+	background-color: #000;
+	color: #fff;
+}
+
+.vspec--schemecolor-blue .vspec .btn-menu {
+	background-color: #c8e5ff;
+	color: #004c92;
+}
+
+.vspec .btn-menu > i, .vspec .btn-menu > i::before, .vspec .btn-menu > i::after {
+	transition: none;
+	background: currentColor;
+}
+
+.vspec .breadcrumbs-list {
+	padding: 0;
+	height: auto;
+	min-height: 0;
+	overflow: visible;
+}
+
+.vspec .breadcrumbs-list li, .vspec .breadcrumbs-list a, .vspec .breadcrumbs-list span {
+	display: inline;
+	vertical-align: baseline;
+}
+
+.vspec .breadcrumbs-list li {
+	display: inline;
+}
+
+.vspec .breadcrumbs-list li span {
+	line-height: inherit;
+	border: none !important;
+	white-space: normal;
+}
+
+.vspec .breadcrumbs-list a:hover {
+	color: inherit;
+}
+
+.vspec .files .files-item {
+	display: block;
+	width: auto;
+	padding: 0;
+}
+
+.vspec .file {
+	min-height: 0;
+}
+
+.vspec .file [class*="depict-files-"] {
+	position: relative;
+	left: auto;
+	top: auto;
+}
+
+.vspec .file__title a {
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+
+.vspec .file__info {
+	color: inherit;
+	font-size: 0.89em;
+	line-height: 1.75;
+	font-style: italic;
 }
 
 /*=========== SPECIAL VERSION end =========== */

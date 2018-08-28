@@ -1,0 +1,36 @@
+@import ../../libs/include-media/dist/include-media
+@import ../utils/special-version-variables
+@import ../utils/mixins
+
+.#{$spec-mod}
+	// vertical space - default
+	// ---------------------------------------------------------------------------
+	h1, h2, h3, h4, h5, h6,
+	p, hr, blockquote,
+	blockquote q,
+	blockquote > p,
+	.files,
+	.files .files-item,
+	.spec-bottom-space,
+	.spec-bottom-space
+		margin-bottom: $spec-bottom-space
+
+	// vertical space - section
+	// ---------------------------------------------------------------------------
+	.content-head,
+	.spec-bottom-space-section,
+	.spec-bottom-space-section
+		margin-bottom: $spec-bottom-space-section
+
+	// vertical space - item
+	// ---------------------------------------------------------------------------
+	.datetime,
+	.spec-bottom-space-item,
+	.spec-bottom-space-item
+		margin-bottom: $spec-bottom-space-item
+
+	// vertical space - element
+	// ---------------------------------------------------------------------------
+	.spec-bottom-space-element,
+	.spec-bottom-space-element
+		margin-bottom: $spec-bottom-space-element

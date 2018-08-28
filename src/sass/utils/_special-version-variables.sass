@@ -63,23 +63,40 @@ $spec-font-size--large: 30px !default
 
 // H1, Заголовок страницы
 // ---------------------------------------------------------------------------
-$spec-title-font-size: 36px !default // В px. Менять размер через панель настроект нет необходимости
+//$spec-title-font-size: 36px !default // В px. Менять размер через панель настроект нет необходимости
+$spec-title-font-size: round-float(36px / $spec-font-size, 2) * 1em !default // 36px --> 12em
 $spec-title-line-height: round-float(48px / 36px, 2) !default // 48px --> 1.33
+
+=spec-font-title()
+	font-size: $spec-title-font-size
+	line-height: $spec-title-line-height
 
 // H2, Заголовки секций
 // ---------------------------------------------------------------------------
 $spec-section-font-size: round-float(26px / $spec-font-size, 2) * 1em !default // 26px --> 1.44em
 $spec-section-line-height: round-float(38px / 26px, 2) !default // 38px --> 1.44
 
+=spec-font-section()
+	font-size: $spec-section-font-size
+	line-height: $spec-section-line-height
+
 // H3, Заголовки пунктов
 // ---------------------------------------------------------------------------
 $spec-item-font-size: round-float(22px / $spec-font-size, 2) * 1em !default // 22px --> 1.22em
 $spec-item-line-height: round-float(34px / 22px, 2) !default // 34px --> 1.55
 
+=spec-font-item()
+	font-size: $spec-item-font-size
+	line-height: $spec-item-line-height
+
 // Мелкий текст: сноски, даты и т.д.
 // ---------------------------------------------------------------------------
 $spec-small-text-font-size: round-float(16px / $spec-font-size, 2) * 1em !default // 16px --> 0.89em
 $spec-small-text-line-height: round-float(28px / 16px, 2) !default // 28px --> 1.75
+
+=spec-font-small()
+	font-size: $spec-small-text-font-size
+	line-height: $spec-small-text-line-height
 
 
 // Базовый межбуквенный интервал
@@ -100,7 +117,7 @@ $spec-letter-spacing--large: 0.5em !default
 
 // Отступы вертикальные
 // ---------------------------------------------------------------------------
-$spec-bottom-space: 1em !default
+$spec-bottom-space: 1.2em !default
 $spec-bottom-space-section: 2.5em !default
 $spec-bottom-space-item: 2em !default
 $spec-bottom-space-element: 0.5em !default
@@ -115,3 +132,37 @@ $spec-space--mob: 1em !default
 // Borders
 // ==========================================================================
 $spec-border-width: 2px
+
+// Reset font style
+=spec-reset-font()
+	font:
+		family: inherit
+		weight: normal
+		style: normal
+		size: inherit
+	line-height: inherit
+	letter-spacing: inherit
+	color: inherit
+
+// Reset background
+=spec-reset-bg()
+	background-color: $spec-bg-color
+
+	.#{$spec-mod--schemecolor-wb} &
+		background-color: $spec-bg-color--scheme-wb
+
+	.#{$spec-mod--schemecolor-blue} &
+		background-color: $spec-bg-color--scheme-blue
+
+// Reset background + invert
+=spec-reset-bg-invert()
+	color: $spec-bg-color
+	background-color: $spec-text-color
+
+	.#{$spec-mod--schemecolor-wb} &
+		color: $spec-bg-color--scheme-wb
+		background-color: $spec-text-color--scheme-wb
+
+	.#{$spec-mod--schemecolor-blue} &
+		color: $spec-bg-color--scheme-blue
+		background-color: $spec-text-color--scheme-blue

@@ -1,0 +1,221 @@
+@import ../../libs/include-media/dist/include-media
+@import ../utils/special-version-variables
+@import ../utils/mixins
+
+.#{$spec-mod}
+	h1, h2, h3, h4, h5, h6
+		font-weight: bold
+		text-align: left
+
+	p, ul, ol
+		& + h2, & + h3, & + h4, & + h5, & + h6
+			padding: 0
+
+	h1
+		+spec-font-title
+
+	h2
+		+spec-font-section
+
+	h3
+		+spec-font-item
+
+	h4, h5, h6
+		font-size: inherit
+		line-height: inherit
+
+	h5, h6
+		font-weight: normal
+		text-transform: uppercase
+
+	a
+		color: currentColor
+		text-decoration: underline
+		transition: none
+
+		&:hover
+			text-decoration: underline
+
+	hr
+		margin-top: $spec-bottom-space-item
+		border-color: currentColor
+		border-width: $spec-border-width
+
+	table
+		td, th
+			font-family: inherit !important
+			font-size: inherit !important
+			line-height: inherit !important
+			color: currentColor !important
+			border: 1px solid currentColor !important
+			background: none !important
+
+		th
+			font-weight: bold !important
+
+		caption
+			font-size: $spec-small-text-font-size
+			line-height: $spec-small-text-line-height
+			color: inherit
+			font-style: italic
+	hr
+		border-bottom-color: currentColor
+
+	.mark
+		color: $spec-bg-color
+		background-color: $spec-text-color
+
+		$class: '.blah'
+
+		.#{$spec-mod--schemecolor-wb} &
+			color: $spec-bg-color--scheme-wb
+			background-color: $spec-text-color--scheme-wb
+
+		.#{$spec-mod--schemecolor-blue} &
+			color: $spec-bg-color--scheme-blue
+			background-color: $spec-text-color--scheme-blue
+
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	input[type="search"],
+	textarea,
+	.select select
+		font:
+			family: inherit
+			weight: normal
+			style: normal
+			size: $spec-font-size
+		letter-spacing: inherit
+		box-shadow: none
+		color: inherit
+		transition: none
+		background: none
+		border-color: currentColor
+
+		&.error
+			border-color: currentColor
+			box-shadow: none
+			color: inherit
+
+		&:focus
+			box-shadow: none
+
+		+placeholder
+			color: currentColor
+			transition: none
+
+	.label-holder, label
+		color: inherit
+		font-size: inherit
+		line-height: inherit
+		letter-spacing: inherit
+
+	.select:before, .select:after
+		+spec-reset-bg-invert
+
+	input[type="checkbox"] + label,
+	input[type="radio"] + label,
+	.check-label, .radio-label
+		color: inherit
+
+	input[type="checkbox"],
+	input[type="radio"]
+		&:not(:disabled)
+			&:checked
+				& + span,
+				& + label > span
+					color: inherit
+
+	input[type="checkbox"]:not(:disabled) + label:before,
+	.check-label > span > i:before
+		border-color: currentColor
+
+	input[type="checkbox"]
+		&:not(:disabled)
+			& + span,
+			& + label > span
+				&:before, &:after
+					background-color: currentColor
+
+	input[type="radio"]
+		&:not(:disabled)
+			& + label,
+			& + span
+				&:before
+					border-color: currentColor
+
+	//input[type="radio"]:not(:disabled) + label > span:after,
+	//input[type="radio"]:not(:disabled) + span > i:after
+	input[type="radio"]
+		&:not(:disabled)
+			& + label > span,
+			& + span > i
+				&:after
+					background-color: currentColor
+
+	// buttons
+	.btn-default, input[type="submit"], input[type="button"], input[type="reset"], button
+		font:
+			family: inherit
+			weight: bold
+			style: normal
+			size: inherit
+		letter-spacing: inherit
+		text-transform: none
+		transition: none
+		text-decoration: none
+		+spec-reset-bg-invert
+
+		&::before, &::after
+			display: none !important
+
+		&:hover
+			text-decoration: underline
+
+	.btn-default-alt
+		font:
+			family: inherit
+			weight: bold
+			style: normal
+			size: inherit
+		letter-spacing: inherit
+		text-transform: none
+		text-decoration: none
+		color: $spec-text-color
+		border-color: currentColor
+		background-color: $spec-bg-color
+
+		.#{$spec-mod--schemecolor-wb} &
+			color: $spec-text-color--scheme-wb
+			background-color: $spec-bg-color--scheme-wb
+
+		.#{$spec-mod--schemecolor-blue} &
+			color: $spec-text-color--scheme-blue
+			background-color: $spec-bg-color--scheme-blue
+
+		&:hover
+			text-decoration: underline
+
+	input[type="submit"], input[type="button"], input[type="reset"], button
+		&.btn-default-alt
+			@extend .btn-default-alt
+
+	// list
+	.#{$user-content}
+		ul, ol
+			li
+				&::before, &:first-child::before
+					color: currentColor
+					border-color: currentColor
+
+	blockquote
+		q
+			+spec-font-item
+			border-color: currentColor
+
+		cite
+			font-style: italic
+
+	.files
+		margin-left: 0

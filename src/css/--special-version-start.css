@@ -136,7 +136,7 @@ body.vspec {
 }
 
 .vspec h1 {
-	font-size: 36px;
+	font-size: 2em;
 	line-height: 1.33;
 	font-weight: 500;
 	letter-spacing: inherit;
@@ -148,7 +148,7 @@ body.vspec {
 	font-size: 1.44em;
 	line-height: 1.46;
 	padding: 0;
-	margin: 0 0 1em;
+	margin: 0 0 1.2em;
 }
 
 .vspec h3 {
@@ -156,7 +156,7 @@ body.vspec {
 	line-height: 1.55;
 	font-weight: 700;
 	padding: 0;
-	margin: 0 0 1em;
+	margin: 0 0 1.2em;
 }
 
 .vspec h4 {
@@ -164,7 +164,7 @@ body.vspec {
 	line-height: inherit;
 	font-weight: 700;
 	padding: 0;
-	margin: 0 0 1em;
+	margin: 0 0 1.2em;
 }
 
 .vspec h5 {
@@ -173,7 +173,7 @@ body.vspec {
 	text-transform: uppercase;
 	font-weight: normal;
 	padding: 0;
-	margin: 0 0 1em;
+	margin: 0 0 1.2em;
 }
 
 .vspec h6 {
@@ -181,12 +181,12 @@ body.vspec {
 	line-height: inherit;
 	font-weight: 500;
 	padding: 0;
-	margin: 0 0 1em;
+	margin: 0 0 1.2em;
 }
 
 .vspec p {
 	letter-spacing: inherit;
-	margin-bottom: 1em;
+	margin-bottom: 1.2em;
 	padding: 0;
 }
 

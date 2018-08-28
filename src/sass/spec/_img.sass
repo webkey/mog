@@ -1,0 +1,11 @@
+@import ../../libs/include-media/dist/include-media
+@import ../utils/special-version-variables
+@import ../utils/mixins
+
+.#{$spec-mod}
+	img,
+	[class*="depict-files-"],
+	.logo-img,
+	.promo-slider__bg,
+	.grayscale
+		filter: grayscale(1) contrast(1) invert(0)

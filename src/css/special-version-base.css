@@ -82,14 +82,16 @@
 	}
 }
 
-.spec-panel hr {
-	border-color: currentColor;
+.spec-panel .sv-btn-sep {
+	border: 0 solid currentColor;
 	border-bottom-width: 1px;
 	margin: 20px 0;
+	font-size: 0;
+	line-height: 0;
 }
 
 @media (max-width: 479px) {
-	.spec-panel hr {
+	.spec-panel .sv-btn-sep {
 		display: inline-block;
 		vertical-align: top;
 		border-left: 1px solid currentColor;
@@ -198,13 +200,18 @@
 	color: white;
 }
 
-.footer-nav .sv-btn-on {
+.footer .sv-btn-on {
 	position: absolute;
 	left: auto;
-	right: 15px;
 	top: auto;
-	bottom: 10px;
+	bottom: 20px;
 	color: rgba(255, 255, 255, 0.8);
+}
+
+.vspec .footer .sv-btn-on {
+	color: currentColor;
+	position: relative;
+	bottom: auto;
 }
 
 .spec-panel .sv-btn {

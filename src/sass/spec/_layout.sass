@@ -1,0 +1,20 @@
+@import ../../libs/include-media/dist/include-media
+@import ../utils/special-version-variables
+@import ../utils/mixins
+
+.#{$spec-mod}
+	.someclass,
+	.someclass
+		padding:
+			left: $spec-space
+			right: $spec-space
+
+		+media('<mob-lg')
+			padding:
+				left: $spec-space--sm
+				right: $spec-space--sm
+
+		+media('<mob-md')
+			padding:
+				left: $spec-space--mob
+				right: $spec-space--mob

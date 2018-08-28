@@ -81,10 +81,12 @@ $displace: 1px
 			+media('<mob-md')
 				margin-right: 0
 
-	hr
-		border-color: currentColor
+	.sv-btn-sep
+		border: 0 solid currentColor
 		border-bottom-width: 1px
 		margin: 20px 0
+		font-size: 0
+		line-height: 0
 
 		+media('<mob-md')
 			display: inline-block
@@ -179,13 +181,22 @@ $displace: 1px
 			color: white
 
 	// in footer
-	.footer-nav &
+	.footer &
 		position: absolute
 		left: auto
-		right: 15px
 		top: auto
-		bottom: 10px
+		bottom: 20px
+		//position: absolute
+		//left: auto
+		//right: 15px
+		//top: auto
+		//bottom: 10px
 		color: rgba(white, 0.8)
+
+		.#{$spec-mod} &
+			color: currentColor
+			position: relative
+			bottom: auto
 
 .spec-panel .sv-btn
 	$size: 42px

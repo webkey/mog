@@ -17,6 +17,10 @@ body.#{$spec-mod}
 	color: $spec-text-color
 	background-color: $spec-bg-color
 
+/* special version settings
+/* ============================================================
+
+.#{$spec-mod}
 	// Специальная версия: Уменьшенный базовый шрифт
 	// ================================================================
 	.#{$spec-mod--font-small} &
@@ -49,383 +53,68 @@ body.#{$spec-mod}
 		color: $spec-text-color--scheme-blue
 		background-color: $spec-bg-color--scheme-blue
 
-.#{$spec-mod}
-	// reset svg icon color
+	// Показать/скрыть image, icon, figure
 	// ------------------------------------------------------------
-	path,
-	polygon
-		fill: currentColor !important
-
-	// reset font-family
-	// ------------------------------------------------------------
-	h1, h2, h3, h4, h5, h6
-		font-family: inherit
-
-	// reset text color
-	// ------------------------------------------------------------
-	h1, h2, h3, h4, h5, h6
-		color: inherit
-
-	// reset letter-spacing
-	// ------------------------------------------------------------
-	h1, h2, h3, h4, h5, h6, p
-		letter-spacing: inherit
-
-	// reset transition
-	// ------------------------------------------------------------
-	.no-transition
-		transition: none
-
-	// special version background color
-	// ------------------------------------------------------------
-	.header,
-	.content,
-	.someclass,
-	.someclass
-		background-color: $spec-bg-color
-
-		.#{$spec-mod--schemecolor-wb} &
-			background-color: $spec-bg-color--scheme-wb
-
-		.#{$spec-mod--schemecolor-blue} &
-			background-color: $spec-bg-color--scheme-blue
-
-	// reset images
-	// ------------------------------------------------------------
-	img,
-	.promo-slider__bg
-		filter: grayscale(1) contrast(1) invert(0)
-
-	// reset slider
-	// ------------------------------------------------------------
-	.promo-slider
-		.slick-track
-			opacity: 1 !important
-			left: auto !important
-			width: auto !important
-			-webkit-transform: none !important
-			-ms-transform: none !important
-			transform: none !important
-
-			&::before, &::after
-				content: none
-
-		.slick-slide
-			position: relative !important
-			width: auto !important
-			height: auto !important
-			opacity: 1 !important
-			left: auto !important
-			top: auto !important
-			float: none !important
-			z-index: auto !important
-
-		.slick-arrow
-			display: none !important
-
-		.slick-dots
-			display: none !important
-
-	// switch image, icon, figure
-	// ------------------------------------------------------------
-	img
+	img, [class*="depict-files-"]
 		display: none
 
 		.#{$spec-mod--imageon} &
 			display: block
 
+/* special version reset
+/* ============================================================
 
-	// layout spaces
-	// ------------------------------------------------------------
-	.someclass,
-	.someclass
-		padding:
-			left: $spec-space
-			right: $spec-space
+// reset font
+// ------------------------------------------------------------
+@import spec/font
 
-		+media('<mob-lg')
-			padding:
-				left: $spec-space--sm
-				right: $spec-space--sm
+// reset transition
+// ------------------------------------------------------------
+@import spec/transition
 
-		+media('<mob-md')
-			padding:
-				left: $spec-space--mob
-				right: $spec-space--mob
+// hide elements
+// ------------------------------------------------------------
+@import spec/hide
 
-	// typography
-	h1, h2, h3, h4, h5, h6
-		font-weight: bold
-		margin: 0 0 $spec-bottom-space
-		padding: 0
+// reset svg icon color
+// ------------------------------------------------------------
+@import spec/svg
 
-	h1
-		margin-bottom: $spec-bottom-space-item
-		font-size: $spec-title-font-size
-		line-height: $spec-title-line-height
-		text-align: left
+// special version background color
+// ------------------------------------------------------------
+@import spec/bg
 
-	h2
-		font-size: $spec-section-font-size
-		line-height: $spec-section-line-height
-		text-align: left
+// special version background and text color invert
+// ------------------------------------------------------------
+@import spec/bg-invert
 
-	h3
-		font-size: $spec-item-font-size
-		line-height: $spec-item-line-height
+// special reset padding
+// ---------------------------------------------------------------------------
+@import spec/padding
 
-	h4, h5, h6
-		font-size: inherit
-		line-height: inherit
+// special vertical space
+// ---------------------------------------------------------------------------
+@import spec/spaces
 
-	h5, h6
-		font-weight: normal
-		text-transform: uppercase
+// reset images
+// ------------------------------------------------------------
+@import spec/img
 
-	table
-		td, th
-			font-family: inherit !important
-			font-size: inherit !important
-			line-height: inherit !important
-			color: currentColor !important
-			border: 1px solid currentColor !important
-			background: none !important
+// reset slider
+// ------------------------------------------------------------
+@import spec/slider
 
-		th
-			font-weight: bold !important
+// layout spaces
+// ------------------------------------------------------------
+@import spec/layout
 
-		caption
-			font-size: $spec-small-text-font-size
-			line-height: $spec-small-text-line-height
-			color: inherit
-			font-style: italic
-	hr
-		border-bottom-color: currentColor
+/* special version typography
+/* ============================================================
 
-	.mark
-		color: $spec-bg-color
-		background-color: $spec-text-color
+@import spec/typography
 
-		$class: '.blah'
-
-		.#{$spec-mod--schemecolor-wb} &
-			color: $spec-bg-color--scheme-wb
-			background-color: $spec-text-color--scheme-wb
-
-		.#{$spec-mod--schemecolor-blue} &
-			color: $spec-bg-color--scheme-blue
-			background-color: $spec-text-color--scheme-blue
-
-	a
-		color: currentColor
-		transition: none
-
-	input[type="text"],
-	input[type="password"],
-	input[type="email"],
-	input[type="search"],
-	textarea
-		font-family: inherit
-		box-shadow: none
-		height: 50px
-		font-size: $spec-font-size
-		line-height: 30px
-		color: inherit
-		padding: 8px 15px
-		border: 2px solid currentColor
-		transition: none
-
-		&.error
-			border-color: currentColor
-			box-shadow: none
-			color: inherit
-
-		&:focus
-			box-shadow: none
-
-		+placeholder
-			color: currentColor
-
-	.label-holder, label
-		color: inherit
-		font-size: inherit
-		line-height: inherit
-		letter-spacing: inherit
-
-	// buttons
-	.btn-default, input[type="submit"], input[type="button"], input[type="reset"], button
-		font-family: inherit
-		color: $spec-text-color
-		border-color: $spec-text-color
-		background-color: $spec-bg-color
-		transition: none
-
-		&:hover
-			border-color: $spec-text-color
-			background-color: $spec-text-color
-			color: $spec-bg-color
-
-		.#{$spec-mod--schemecolor-wb} &
-			color: $spec-text-color--scheme-wb
-			border-color: $spec-text-color--scheme-wb
-			background-color: $spec-bg-color--scheme-wb
-
-			&:hover
-				color: $spec-bg-color--scheme-wb
-				border-color: $spec-text-color--scheme-wb
-				background-color: $spec-text-color--scheme-wb
-
-		.#{$spec-mod--schemecolor-blue} &
-			color: $spec-text-color--scheme-blue
-			border-color: $spec-text-color--scheme-blue
-			background-color: $spec-bg-color--scheme-blue
-
-			&:hover
-				color: $spec-bg-color--scheme-blue
-				border-color: $spec-text-color--scheme-blue
-				background-color: $spec-text-color--scheme-blue
-
-	// list
-	.#{$user-content}
-		ul, ol
-			li
-				&::before, &:first-child::before
-					color: currentColor
-					border-color: currentColor
-
-
-
-
-
-//.#{$spec-mod}
-	.user-content
-		.tbl
-			td,
-			th,
-			th,
-			thead td,
-			tfoot td
-				color: currentColor
-				background-color: transparent
-				border: 1px solid currentColor
-				font-size: inherit
-				line-height: inherit
-
-			tbody tr:nth-child(even)
-				td
-					background-color: transparent
-
-//.#{$spec-mod} .user-content blockquote
-	border: 2px solid currentColor
-	background-color: transparent
-
-//.#{$spec-mod} .user-content blockquote q,
-//.#{$spec-mod} .user-content blockquote cite
-	font-size: inherit
-	line-height: inherit
-	font-family: inherit
-	color: currentColor
-
-//.#{$spec-mod} .user-content blockquote q::before,
-//.#{$spec-mod} .user-content blockquote q::after
-	background-image: none
-
-//.#{$spec-mod} .user-content .pref
-	font-size: inherit
-	line-height: inherit
-	font-family: inherit
-	color: currentColor
-
-//.#{$spec-mod} .input-wrap
-	font-size: $spec-font-size
-	line-height: $spec-line-height
-	letter-spacing: $spec-letter-spacing
-
-//.#{$spec-mod}
-	.breadcrumbs
-		letter-spacing: inherit
-		font-size: $spec-small-text-font-size
-		line-height: $spec-small-text-line-height
-		color: currentColor
-		padding: 0
-		margin-bottom: $spec-bottom-space-item
-
-	.breadcrumbs, .user-content .breadcrumbs
-		li
-			float: none
-			display: inline
-			padding: 0
-			margin: 0 0.3em 0 0
-
-			&:before
-				position: relative
-				left: auto
-				top: auto
-				background: none
-				margin-right: 0.5em
-
-	&.fontsize-large
-		.breadcrumbs, .user-content .breadcrumbs
-			li
-				&:before
-					top: auto
-
-//.#{$spec-mod}
-	.file
-		display: block
-		color: inherit
-
-		.file__info
-			border-color: currentColor
-			letter-spacing: normal
-			text-align: left
-
-			& > div > b
-				color: inherit
-
-		&:hover
-			.file__info
-				border-color: $spec-text-color
-
-				&::before
-					background-color: $spec-text-color
-
-				& > div,
-				& > div > b
-					color: $spec-bg-color
-
-	.file__icon
-		display: none
-
-	&.imageson
-		.file__icon
-			display: block
-
-	&.schemecolor-white
-		.file
-			&:hover
-				.file__info
-					border-color: $spec-text-color--scheme-wb
-
-					&::before
-						background-color: $spec-text-color--scheme-wb
-
-					& > div,
-					& > div > b
-						color: $spec-bg-color--scheme-wb
-
-	&.schemecolor-blue
-		.file
-			&:hover
-				.file__info
-					border-color: $spec-text-color--scheme-blue
-
-					&::before
-						background-color: $spec-text-color--scheme-blue
-
-					& > div,
-					& > div > b
-						color: $spec-bg-color--scheme-blue
+/* special version components
+/* ============================================================
 
 /* to top
 .#{$spec-mod}
@@ -476,7 +165,194 @@ body.#{$spec-mod}
 
 /* to top end
 
-.content
-	border: $spec-border-width solid $spec-text-color
+.#{$spec-mod}
+	.text-layout, .breadcrumbs-list, .user-content .breadcrumbs-list, .expander__header, .calc__box
+		padding-left: 0
+		padding-right: 0
+
+	.content
+		//border: $spec-border-width solid $spec-text-color
+		border: none
+		margin-left: 0
+		
+	.footer
+		border-top: $spec-border-width solid currentColor
+
+	.footer,
+	.footer-gov,
+	.footer-bottom
+		background: none
+
+	.footer-common
+		padding-top: 1em
+
+	.footer-bottom-holder
+		padding-top: 1em
+		padding-bottom: 1em
+		+clear
+
+	.footer-col
+		float: left
+
+		&:last-child
+			float: right
+
+	.developer_logo
+		display: inline
+		text-indent: 0
+		padding: 0
+		width: auto
+		height: auto
+		top: auto
+
+		&::before, &::after
+			display: none
+
+	// logo
+	.logo-title > strong
+		background-image: url(../img/logo-text--bw.svg)
+		background-size: contain
+
+		.#{$spec-mod--schemecolor-wb} &
+			background: url(../img/logo-text--wb.svg) no-repeat
+
+		.#{$spec-mod--schemecolor-blue} &
+			background: url(../img/logo-text--blue.svg) no-repeat
+
+	// main-nav
+	.main-nav-frame
+		$shadow: 0 $spec-border-width 0
+		box-shadow: $shadow $spec-text-color
+		transition: none
+
+		.#{$spec-mod--schemecolor-wb} &
+			box-shadow: $shadow $spec-text-color--scheme-wb
+
+		.#{$spec-mod--schemecolor-blue} &
+			box-shadow: $shadow $spec-text-color--scheme-blue
+
+	.nav-fixed & .main-nav-frame
+		&:before
+			display: none
+			//background-color: $spec-bg-color
+
+		//.#{$spec-mod--schemecolor-wb}.nav-fixed & .main-nav-frame:before
+			background-color: $spec-bg-color--scheme-wb
+
+		//.#{$spec-mod--schemecolor-blue}.nav-fixed & .main-nav-frame:before
+			background-color: $spec-bg-color--scheme-blue
+
+	.main-nav-holder
+		$shadow: 0 0 0 $spec-border-width
+		box-shadow: $shadow $spec-text-color
+		transition: none
+
+		.#{$spec-mod--schemecolor-wb} &
+			box-shadow: $shadow $spec-text-color--scheme-wb
+
+		.#{$spec-mod--schemecolor-blue} &
+			box-shadow: $shadow $spec-text-color--scheme-blue
+
+	// navigation list
+	.nav__list > li
+		& > a
+			color: currentColor
+			+spec-reset-bg
+			border: 0 solid currentColor
+			border-left-width: $spec-border-width
+
+			&:before
+				display: none
+
+		&:first-child > a
+			border-left-width: 0
+
+		// hover
+		&.hover > a,
+		& > a:hover,
+		& > a:focus
+			color: currentColor
+			text-decoration: none
+			border-color: currentColor
+
+		&.has-drop.hover,
+		&.current.hover_next,
+		&.current.hover_prev
+			& > a
+				border-color: currentColor
+
+		// current
+		&.current > a
+			text-decoration: none
+			+spec-reset-bg-invert
+
+	// button open menu
+	.btn-menu
+		background-color: $spec-bg-color
+		color: $spec-text-color
+		transition: none
+		box-sizing: border-box
+		border: 0 solid currentColor
+		border-right-width: $spec-border-width
+
+		.#{$spec-mod--schemecolor-wb} &
+			background-color: $spec-bg-color--scheme-wb
+			color: $spec-text-color--scheme-wb
+
+		.#{$spec-mod--schemecolor-blue} &
+			background-color: $spec-bg-color--scheme-blue
+			color: $spec-text-color--scheme-blue
+			
+		& > i
+			&, &::before, &::after
+				transition: none
+				background: currentColor
+
+	// breadcrumbs
+	.breadcrumbs-list
+		padding: 0
+		height: auto
+		min-height: 0
+		overflow: visible
+
+		li, a, span
+			display: inline
+			vertical-align: baseline
+
+		li
+			display: inline
+
+			span
+				line-height: inherit
+				border: none !important
+				white-space: normal
+
+		a
+			&:hover
+				color: inherit
+
+	.files
+		.files-item
+			display: block
+			width: auto
+			padding: 0
+
+	.file
+		min-height: 0
+
+		[class*="depict-files-"]
+			position: relative
+			left: auto
+			top: auto
+
+	.file__title a
+		margin: 0
+		padding: 0
+		display: inline
+
+	.file__info
+		color: inherit
+		+spec-font-small
+		font-style: italic
 
 /*=========== SPECIAL VERSION end ===========
