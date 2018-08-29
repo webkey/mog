@@ -7,5 +7,19 @@
 	[class*="depict-files-"],
 	.logo-img,
 	.promo-slider__bg,
+	.depict-regard-number,
 	.grayscale
 		filter: grayscale(1) contrast(1) invert(0)
+
+	// Показать/скрыть image, icon, figure
+	// ------------------------------------------------------------
+	html:not(.#{$spec-mod--imageon}) &
+
+		img,
+		[class*="depict-files-"],
+		.promo-slider__bg,
+		[class*="depict-regard"],
+		.links__icon,
+		.spec-no-img
+
+			display: none !important

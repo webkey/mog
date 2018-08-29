@@ -53,20 +53,12 @@ body.#{$spec-mod}
 		color: $spec-text-color--scheme-blue
 		background-color: $spec-bg-color--scheme-blue
 
-	// Показать/скрыть image, icon, figure
-	// ------------------------------------------------------------
-	img, [class*="depict-files-"]
-		display: none
-
-		.#{$spec-mod--imageon} &
-			display: block
-
 /* special version reset
 /* ============================================================
 
 // reset font
 // ------------------------------------------------------------
-@import spec/font
+@import spec/text
 
 // reset transition
 // ------------------------------------------------------------
@@ -170,11 +162,19 @@ body.#{$spec-mod}
 		padding-left: 0
 		padding-right: 0
 
+	.header
+		color: currentColor
+
+	.main
+		padding-top: $spec-bottom-space-section
+		padding-bottom: $spec-bottom-space-section
+
 	.content
 		//border: $spec-border-width solid $spec-text-color
-		border: none
 		margin-left: 0
-		
+		background: none
+		border: none
+
 	.footer
 		border-top: $spec-border-width solid currentColor
 
@@ -221,14 +221,15 @@ body.#{$spec-mod}
 
 	// main-nav
 	.main-nav-frame
-		$shadow: 0 $spec-border-width 0
-		box-shadow: $shadow $spec-text-color
+		//$shadow: 0 $spec-border-width 0
+		//box-shadow: $shadow $spec-text-color
+		box-shadow: none
 		transition: none
 
-		.#{$spec-mod--schemecolor-wb} &
+		//.#{$spec-mod--schemecolor-wb} &
 			box-shadow: $shadow $spec-text-color--scheme-wb
 
-		.#{$spec-mod--schemecolor-blue} &
+		//.#{$spec-mod--schemecolor-blue} &
 			box-shadow: $shadow $spec-text-color--scheme-blue
 
 	.nav-fixed & .main-nav-frame
@@ -254,46 +255,72 @@ body.#{$spec-mod}
 			box-shadow: $shadow $spec-text-color--scheme-blue
 
 	// navigation list
-	.nav__list > li
-		& > a
-			color: currentColor
-			+spec-reset-bg
-			border: 0 solid currentColor
-			border-left-width: $spec-border-width
-
-			&:before
-				display: none
-
-		&:first-child > a
-			border-left-width: 0
-
-		// hover
-		&.hover > a,
-		& > a:hover,
-		& > a:focus
-			color: currentColor
-			text-decoration: none
-			border-color: currentColor
-
-		&.has-drop.hover,
-		&.current.hover_next,
-		&.current.hover_prev
+	.nav__list
+		& > li
 			& > a
+				color: currentColor
+				+spec-reset-bg
+				border: 0 solid currentColor
+				border-left-width: $spec-border-width
+
+				&:before
+					display: none
+
+			&:first-child > a
+				border-left-width: 0
+
+			// hover
+			&.hover > a,
+			& > a:hover,
+			& > a:focus
+				color: currentColor
+				text-decoration: none
 				border-color: currentColor
 
-		// current
-		&.current > a
-			text-decoration: none
-			+spec-reset-bg-invert
+			&.has-drop.hover,
+			&.current.hover_next,
+			&.current.hover_prev
+				& > a
+					border-color: currentColor
 
-	// button open menu
-	.btn-menu
-		background-color: $spec-bg-color
+			// current
+			&.current > a
+				text-decoration: none
+				+spec-reset-bg-invert
+
+		[class*="nav-depict-icons-angle"]
+			&::before, &::after
+				background-color: currentColor
+
+	[class*="nav__drop"]
+		border: $spec-border-width solid currentColor
+		box-shadow: none
+
+		a
+			padding: 10px 40px
+			+font($spec-font-size, $spec-line-height)
+			background: none
+			border-top: $spec-border-width solid currentColor
+
+		li.hover > a
+			background: none
+
+	[class*="nav__list"] > li:first-child > [class*="nav__drop"]
+		border: $spec-border-width solid currentColor
+
+	// button open menu / close popups
+
+	.btn-menu, .btn-menu-close
+		display: block
+		display: flex
+		justify-content: center
+		align-items: center
 		color: $spec-text-color
 		transition: none
 		box-sizing: border-box
 		border: 0 solid currentColor
-		border-right-width: $spec-border-width
+		background-color: $spec-bg-color
+		text-decoration: underline
 
 		.#{$spec-mod--schemecolor-wb} &
 			background-color: $spec-bg-color--scheme-wb
@@ -302,11 +329,42 @@ body.#{$spec-mod}
 		.#{$spec-mod--schemecolor-blue} &
 			background-color: $spec-bg-color--scheme-blue
 			color: $spec-text-color--scheme-blue
-			
+
+		&::before
+			display: none
+
+		& > span
+			display: inline
+			vertical-align: middle
+			font-size: $spec-font-size
+			font-weight: bold
+			letter-spacing: $spec-letter-spacing
+			text-transform: uppercase
+
 		& > i
+			display: none
+
 			&, &::before, &::after
 				transition: none
 				background: currentColor
+
+	.btn-menu
+		border-right-width: $spec-border-width
+
+	.btn-menu-mobile
+		display: none
+
+	.btn-menu-close
+		width: 120px
+		border-width: $spec-border-width
+
+		& > i
+			background: none
+
+	.user-options
+		a
+			color: currentColor
+			text-decoration: none
 
 	// breadcrumbs
 	.breadcrumbs-list
@@ -354,5 +412,226 @@ body.#{$spec-mod}
 		color: inherit
 		+spec-font-small
 		font-style: italic
+
+	// .extra-popup
+	.extra-popup
+		+spec-reset-bg
+		//border: $spec-border-width solid currentColor
+		border: none
+
+	.extra-popup__head
+		border: 0 solid currentColor
+		border-width: $spec-border-width 0
+
+		.btn-menu-close
+			top: -$spec-border-width
+
+		.logo
+			background-image: url(../img/logo-text--bw.svg)
+
+			.#{$spec-mod--schemecolor-wb} &
+				background-image: url(../img/logo-text--wb.svg)
+
+			.#{$spec-mod--schemecolor-blue} &
+				background-image: url(../img/logo-text--blue.svg)
+
+	.main-menu__box, .main-menu__heading
+		+font($spec-font-size, $spec-line-height)
+
+		.#{$spec-mod--font-small} &
+			font-size: $spec-font-size--small
+
+		.#{$spec-mod--font-large} &
+			font-size: $spec-font-size--large
+
+	.main-menu__box
+		.#{$spec-mod--font-large} &
+			width: 50.0%
+
+	.main-menu__list
+		li
+			padding-top: 0
+			padding-left: round-float(25px / $spec-font-size, 2) * 1em
+			margin-top: 0.5em
+
+		& > li
+			padding-left: 0
+
+			&:first-child
+				margin-top: 0
+
+		a
+			padding-top: 0.5em
+
+			&:hover
+				color: inherit
+
+		ul
+			li
+				&::before
+					$size: round-float(10px / $spec-font-size, 1) * 1em
+					top: 0.7em
+					+size($size)
+					border-radius: 20px
+					background-color: currentColor
+
+	// promo-slider
+	.promo-slider
+		margin-left: 0
+
+	.promo-slider__item
+		&::before
+			display: none
+
+	.promo-slider__bg
+		position: relative
+		left: auto
+		top: auto
+		height: auto
+		width: 320px
+
+		&::before
+			content: ''
+			display: block
+			+ratio(16, 9)
+
+	.promo-slider__content
+		position: relative
+		left: auto
+		top: auto
+		height: auto
+		width: auto
+		text-align: left
+		background: none
+
+		&::before
+			display: none
+
+	.promo-slider__frame
+		display: block
+		width: auto
+		max-width: none
+
+	// regard
+	.regard-section
+		background: none
+		box-shadow: none
+
+	.regard__item
+		padding: 0
+		width: auto
+		float: none
+		height: auto
+		background: none !important
+		opacity: 1
+
+		&::before
+			display: none
+
+	.regard__inner
+		position: relative
+		left: auto
+		top: auto
+		right: auto
+		bottom: auto
+		padding: 0
+		text-decoration: underline
+
+		&:hover
+			text-decoration: none
+
+		&::before
+			display: none
+
+		& > span
+			display: inline
+			vertical-align: baseline
+			width: auto
+
+	[class*="depict-regard"]
+		display: inline-block
+		vertical-align: baseline
+
+	// links
+	.r-tabs
+		.tab-controls
+			display: none
+
+		.r-tabs-accordion-title
+			display: block
+
+		.r-tabs-anchor
+			text-decoration: none
+			cursor: default
+
+		.tabs-panel
+			display: block !important
+
+	.links__list
+		.links__item
+			display: block
+			padding: 0
+			width: auto
+			box-shadow: none
+
+			&.links__empty
+				display: none
+
+	.links__inner
+		display: inline
+		box-shadow: none
+		background: none
+		text-decoration: none
+
+		&::before
+			display: none
+
+	.links__holder
+		display: inline
+		position: relative
+		left: auto
+		top: auto
+		width: auto
+		height: auto
+
+		&::after
+			display: none
+
+	.links__frame
+		width: auto
+		display: inline
+		text-align: left
+		vertical-align: baseline
+
+	.links__icon
+		display: inline-block
+		vertical-align: baseline
+		margin-right: 1em
+
+		svg
+			polygon, rect, path
+				transition: none
+
+	.links__content
+		max-width: none
+		display: inline-block
+		vertical-align: baseline
+
+	.links__title
+		display: inline
+		max-height: none
+		overflow: visible
+
+		br
+			display: none
+
+	// hover
+	.desktop & .links__inner:hover
+		box-shadow: none
+		background: none
+
+		.links__title
+			color: inherit
+
 
 /*=========== SPECIAL VERSION end ===========

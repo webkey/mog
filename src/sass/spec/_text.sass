@@ -1,0 +1,138 @@
+@import ../../libs/include-media/dist/include-media
+@import ../utils/special-version-variables
+@import ../utils/mixins
+
+.#{$spec-mod}
+	// reset font-family
+	// ------------------------------------------------------------
+	//h1, h2, h3, h4, h5, h6
+		font-family: inherit
+
+	// reset text color
+	// ------------------------------------------------------------
+	//h1, h2, h3, h4, h5, h6
+		color: inherit
+
+
+
+	// reset text size, line-height, letter-spacing, font-family etc.
+	// ------------------------------------------------------------
+	.sv-btn-on,
+	h1, h2, h3, h4, h5, h6, p,
+	.breadcrumbs-list,
+	.datetime time,
+	blockquote q,
+	blockquote > p,
+	blockquote cite,
+	.files,
+	.files .files-item,
+	.file,
+	.footer-bottom,
+	.footer-bottom-holder,
+	.footer-col,
+	.promo-slider__item,
+	.links__list,
+	.links__list .links__item,
+	.links__holder,
+	.links__title,
+	.font-reset,
+	.font-reset
+		+spec-reset-font
+
+
+
+	// Шрифт по умолчанию, текст статьи, текст внутренней страницы
+	// ---------------------------------------------------------------------------
+	.promo-slider__text,
+	.regard__inner,
+	.regard__inner > span,
+	.font-of-text
+		padding: 0
+		margin-bottom: $spec-bottom-space-element
+		+spec-reset-font
+
+		&:last-child
+			margin-bottom: 0
+
+
+
+	// H1, Заголовок страницы
+	// ---------------------------------------------------------------------------
+	.font-of-title
+		padding: 0
+		margin-bottom: $spec-bottom-space-element
+		font:
+			family: inherit
+			weight: bold
+			style: normal
+		+spec-font-title
+		letter-spacing: inherit
+		text-transform: none
+		color: inherit
+		text-align: left
+
+		&:last-child
+			margin-bottom: 0
+
+
+
+	// H2, Заголовки секций
+	// ---------------------------------------------------------------------------
+	.promo-slider__text-add,
+	.font-of-section
+		padding: 0
+		margin-bottom: $spec-bottom-space-element
+		font:
+			family: inherit
+			weight: bold
+			style: normal
+		+spec-font-section
+		letter-spacing: inherit
+		text-transform: none
+		color: inherit
+		text-align: left
+
+		&:last-child
+			margin-bottom: 0
+
+
+
+	// H3, Заголовки пунктов, Заголовки элементов в списке
+	// ---------------------------------------------------------------------------
+	.promo-slider__title,
+	.r-tabs .r-tabs-accordion-title,
+	.font-of-item
+		padding: 0
+		margin-bottom: $spec-bottom-space-element
+		font:
+			family: inherit
+			weight: bold
+			style: normal
+		+spec-font-item
+		letter-spacing: inherit
+		text-transform: none
+		color: inherit
+		text-align: left
+
+		&:last-child
+			margin-bottom: 0
+
+
+
+	// Мелкий текст: сноски, даты и т.д.
+	// ---------------------------------------------------------------------------
+	.font-of-small
+		padding: 0
+		margin-bottom: $spec-bottom-space-element
+		font:
+			family: inherit
+			weight: normal
+			style: italic
+		+spec-font-small
+		letter-spacing: inherit
+		text-transform: none
+		color: inherit
+		text-align: left
+
+		&:last-child
+			margin-bottom: 0

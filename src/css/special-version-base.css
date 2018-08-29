@@ -200,6 +200,10 @@
 	color: white;
 }
 
+.vspec .header .sv-btn-on {
+	color: currentColor;
+}
+
 .footer .sv-btn-on {
 	position: absolute;
 	left: auto;

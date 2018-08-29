@@ -118,9 +118,9 @@ $spec-letter-spacing--large: 0.5em !default
 // Отступы вертикальные
 // ---------------------------------------------------------------------------
 $spec-bottom-space: 1.2em !default
-$spec-bottom-space-section: 2.5em !default
-$spec-bottom-space-item: 2em !default
-$spec-bottom-space-element: 0.5em !default
+$spec-bottom-space-element: round-float($spec-bottom-space / 2, 1) !default
+$spec-bottom-space-item: round-float($spec-bottom-space * 2, 1) !default
+$spec-bottom-space-section: round-float($spec-bottom-space * 3, 1) !default
 
 // Отступы горизонтальные
 // ---------------------------------------------------------------------------
@@ -143,6 +143,8 @@ $spec-border-width: 2px
 	line-height: inherit
 	letter-spacing: inherit
 	color: inherit
+	text-align: left
+	text-transform: none
 
 // Reset background
 =spec-reset-bg()

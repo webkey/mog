@@ -3,8 +3,15 @@
 @import ../utils/mixins
 
 .#{$spec-mod}
+
+	.promo-slider, .promo-slider.slick-dotted
 	.promo-slider,
 	.spec-slider-reset
+		&, &.slick-dotted
+			font-size: inherit
+			line-height: inherit
+			letter-spacing: inherit
+
 		.slick-track
 			opacity: 1 !important
 			left: auto !important

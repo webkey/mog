@@ -34,7 +34,12 @@
 		transition: none
 
 		&:hover
-			text-decoration: underline
+			//color: currentColor
+			text-decoration: none
+
+		// только для текущего проекта
+		& > span
+			border-bottom: none !important
 
 	hr
 		margin-top: $spec-bottom-space-item
