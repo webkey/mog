@@ -1,0 +1,78 @@
+@import ../../libs/include-media/dist/include-media
+@import ../utils/special-version-variables
+@import ../utils/mixins
+
+.#{$spec-mod}
+	// .extra-popup
+
+	.extra-popup
+		+spec-reset-bg
+		//border: $spec-border-width solid currentColor
+		border: none
+
+	.extra-popup__head
+		border: 0 solid currentColor
+		border-width: $spec-border-width 0
+
+		.btn-menu-close
+			top: -$spec-border-width
+
+		.logo
+			background-image: url(../../img/logo-text--bw.svg)
+
+			.#{$spec-mod--schemecolor-wb} &
+				background-image: url(../../img/logo-text--wb.svg)
+
+			.#{$spec-mod--schemecolor-blue} &
+				background-image: url(../../img/logo-text--blue.svg)
+
+	.extra-popup.show-shadow
+		.extra-popup__head
+			box-shadow: 0 0 35px rgba($spec-text-color, 0.35)
+
+			.#{$spec-mod--schemecolor-wb} &
+				box-shadow: 0 0 35px rgba($spec-text-color--scheme-wb, 1)
+
+			.#{$spec-mod--schemecolor-blue} &
+				box-shadow: 0 0 35px rgba($spec-text-color--scheme-blue, 0.35)
+
+
+	.main-menu__box, .main-menu__heading
+		+font($spec-font-size, $spec-line-height)
+
+		.#{$spec-mod--font-small} &
+			font-size: $spec-font-size--small
+
+		.#{$spec-mod--font-large} &
+			font-size: $spec-font-size--large
+
+	.main-menu__box
+		.#{$spec-mod--font-large} &
+			width: 50.0%
+
+	.main-menu__list
+		li
+			padding-top: 0
+			padding-left: round-float(25px / $spec-font-size, 2) * 1em
+			margin-top: 0.5em
+
+		& > li
+			padding-left: 0
+
+			&:first-child
+				margin-top: 0
+
+		a
+			padding-top: 0.5em
+
+			&:hover
+				color: inherit
+
+		ul
+			li
+				&::before
+					$size: round-float(10px / $spec-font-size, 1) * 1em
+					top: 0.7em
+					+size($size)
+					border-radius: 20px
+					background-color: currentColor

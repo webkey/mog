@@ -8,39 +8,85 @@ body.vspec {
 	line-height: 1.78;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	color: #000;
-	background-color: #fff;
+	background: #fff url(../img/empty.png) no-repeat fixed;
 }
 
 /* special version settings */
 /* ============================================================ */
-.vspec--fontsize-small .vspec {
+.vspec--fontsize-small body.vspec {
 	font-size: 14px;
 }
 
-.vspec--fontsize-large .vspec {
+.vspec--fontsize-large body.vspec {
 	font-size: 30px;
 }
 
-.vspec--spacing-medium .vspec {
+.vspec--spacing-medium body.vspec {
 	letter-spacing: 0.2em;
 }
 
-.vspec--spacing-large .vspec {
+.vspec--spacing-large body.vspec {
 	letter-spacing: 0.5em;
 }
 
-.vspec--schemecolor-white .vspec {
+.vspec--schemecolor-white body.vspec {
 	color: #fff;
 	background-color: #000;
 }
 
-.vspec--schemecolor-blue .vspec {
+.vspec--schemecolor-blue body.vspec {
 	color: #004c92;
 	background-color: #c8e5ff;
 }
 
 /* special version reset */
 /* ============================================================ */
+.vspec .reset-full,
+.vspec .products__title,
+.vspec .products__text,
+.vspec .products__list,
+.vspec .products__item,
+.vspec .products__inner,
+.vspec .products__figure,
+.vspec .products__img,
+.vspec .products__img img,
+.vspec .products__content,
+.vspec .reset-full,
+.vspec .reset-full {
+	display: block;
+	float: none;
+	position: initial;
+	overflow: visible;
+	height: auto;
+	min-height: 0;
+	max-height: none;
+	width: auto;
+	min-width: 0;
+	max-width: none;
+	left: auto;
+	top: auto;
+	right: auto;
+	bottom: auto;
+	padding: 0;
+	margin: 0;
+	-ms-transform: none;
+	    transform: none;
+	border: none;
+	box-shadow: none;
+	opacity: 1;
+	visibility: visible;
+	z-index: auto;
+	font-family: inherit;
+	font-weight: normal;
+	font-style: normal;
+	font-size: inherit;
+	line-height: inherit;
+	letter-spacing: inherit;
+	color: inherit;
+	text-align: left;
+	text-transform: none;
+}
+
 .vspec .sv-btn-on,
 .vspec h1, .vspec h2, .vspec h3, .vspec h4, .vspec h5, .vspec h6, .vspec p,
 .vspec .breadcrumbs-list,
@@ -59,6 +105,24 @@ body.vspec {
 .vspec .links__list .links__item,
 .vspec .links__holder,
 .vspec .links__title,
+.vspec .info-center-header,
+.vspec .info__item,
+.vspec .info__label,
+.vspec .branches-popup__holder,
+.vspec .form-note,
+.vspec .form-note__item,
+.vspec .user-options,
+.vspec .user-options li,
+.vspec .user-options a,
+.vspec .years a,
+.vspec .years a > span,
+.vspec .years-drop > a,
+.vspec .sorting a,
+.vspec .sorting a > span,
+.vspec .sorting-drop > a,
+.vspec .info-container__item,
+.vspec .filters__item,
+.vspec .products__item,
 .vspec .font-reset,
 .vspec .font-reset {
 	font-family: inherit;
@@ -72,9 +136,15 @@ body.vspec {
 	text-transform: none;
 }
 
+.vspec .promo-slider__text-add,
 .vspec .promo-slider__text,
 .vspec .regard__inner,
 .vspec .regard__inner > span,
+.vspec .info__text,
+.vspec .news__text,
+.vspec .product__price,
+.vspec .products__text,
+.vspec .font-of-text,
 .vspec .font-of-text {
 	padding: 0;
 	margin-bottom: 0.6em;
@@ -89,9 +159,15 @@ body.vspec {
 	text-transform: none;
 }
 
+.vspec .promo-slider__text-add:last-child,
 .vspec .promo-slider__text:last-child,
 .vspec .regard__inner:last-child,
 .vspec .regard__inner > span:last-child,
+.vspec .info__text:last-child,
+.vspec .news__text:last-child,
+.vspec .product__price:last-child,
+.vspec .products__text:last-child,
+.vspec .font-of-text:last-child,
 .vspec .font-of-text:last-child {
 	margin-bottom: 0;
 }
@@ -114,7 +190,7 @@ body.vspec {
 	margin-bottom: 0;
 }
 
-.vspec .promo-slider__text-add,
+.vspec .info-center-caption,
 .vspec .font-of-section {
 	padding: 0;
 	margin-bottom: 0.6em;
@@ -129,13 +205,19 @@ body.vspec {
 	text-align: left;
 }
 
-.vspec .promo-slider__text-add:last-child,
+.vspec .info-center-caption:last-child,
 .vspec .font-of-section:last-child {
 	margin-bottom: 0;
 }
 
 .vspec .promo-slider__title,
 .vspec .r-tabs .r-tabs-accordion-title,
+.vspec .info__title,
+.vspec .news__title,
+.vspec .share-box__label,
+.vspec .info-container__sub-title,
+.vspec .products__title,
+.vspec .font-of-item,
 .vspec .font-of-item {
 	padding: 0;
 	margin-bottom: 0.6em;
@@ -152,10 +234,17 @@ body.vspec {
 
 .vspec .promo-slider__title:last-child,
 .vspec .r-tabs .r-tabs-accordion-title:last-child,
+.vspec .info__title:last-child,
+.vspec .news__title:last-child,
+.vspec .share-box__label:last-child,
+.vspec .info-container__sub-title:last-child,
+.vspec .products__title:last-child,
+.vspec .font-of-item:last-child,
 .vspec .font-of-item:last-child {
 	margin-bottom: 0;
 }
 
+.vspec .news__data,
 .vspec .font-of-small {
 	padding: 0;
 	margin-bottom: 0.6em;
@@ -170,6 +259,7 @@ body.vspec {
 	text-align: left;
 }
 
+.vspec .news__data:last-child,
 .vspec .font-of-small:last-child {
 	margin-bottom: 0;
 }
@@ -177,6 +267,9 @@ body.vspec {
 .vspec .depict-regard-number,
 .vspec .links__title,
 .vspec .links__inner,
+.vspec .info__inner,
+.vspec .info__content,
+.vspec .info__text,
 .vspec .no-transition,
 .vspec .no-transition {
 	transition: none;
@@ -193,27 +286,62 @@ body.vspec {
 .vspec .footer-gov,
 .vspec .liked,
 .vspec [class*="bg-figure"],
+.vspec .info__divider,
+.vspec .meter,
+.vspec .view-switcher,
 .vspec .spec-hide,
 .vspec .spec-hide {
 	display: none !important;
 }
 
-.vspec polygon,
-.vspec rect,
-.vspec path {
-	fill: currentColor !important;
+.vspec .products__list::before,
+.vspec .products__figure::before,
+.vspec .spec-hide-before::before,
+.vspec .spec-hide-before::before {
+	display: none;
 }
 
-.vspec .header, .vspec .spec-bg, .vspec .extra-popup, .vspec [class*="nav__drop"] {
+.vspec .products__list::before,
+.vspec .products__figure::before,
+.vspec .spec-hide-before::before,
+.vspec .spec-hide-before::before {
+	display: none;
+}
+
+.vspec polygon,
+.vspec rect,
+.vspec path,
+.vspec [class*="depict-regard"] svg path,
+.vspec .svg-path,
+.vspec .svg-path {
+	fill: currentColor;
+}
+
+.vspec .header, .vspec .extra-popup, .vspec [class*="nav__drop"], .vspec .branches-popup__holder, .vspec .branches-popup__close {
 	background-color: #fff;
 }
 
-.vspec--schemecolor-white .vspec .header, .vspec--schemecolor-white .vspec .spec-bg, .vspec--schemecolor-white .vspec .extra-popup, .vspec--schemecolor-white .vspec [class*="nav__drop"] {
+.vspec--schemecolor-white .vspec .header, .vspec--schemecolor-white .vspec .extra-popup, .vspec--schemecolor-white .vspec [class*="nav__drop"], .vspec--schemecolor-white .vspec .branches-popup__holder, .vspec--schemecolor-white .vspec .branches-popup__close {
 	background-color: #000;
 }
 
-.vspec--schemecolor-blue .vspec .header, .vspec--schemecolor-blue .vspec .spec-bg, .vspec--schemecolor-blue .vspec .extra-popup, .vspec--schemecolor-blue .vspec [class*="nav__drop"] {
+.vspec--schemecolor-blue .vspec .header, .vspec--schemecolor-blue .vspec .extra-popup, .vspec--schemecolor-blue .vspec [class*="nav__drop"], .vspec--schemecolor-blue .vspec .branches-popup__holder, .vspec--schemecolor-blue .vspec .branches-popup__close {
 	background-color: #c8e5ff;
+}
+
+.vspec .info__label, .vspec .btn-to-top, .vspec .years, .vspec .years > a, .vspec .years-drop, .vspec .sorting, .vspec .sorting > a, .vspec .sorting-drop {
+	color: #fff;
+	background-color: #000;
+}
+
+.vspec--schemecolor-white .vspec .info__label, .vspec--schemecolor-white .vspec .btn-to-top, .vspec--schemecolor-white .vspec .years, .vspec--schemecolor-white .vspec .years > a, .vspec--schemecolor-white .vspec .years-drop, .vspec--schemecolor-white .vspec .sorting, .vspec--schemecolor-white .vspec .sorting > a, .vspec--schemecolor-white .vspec .sorting-drop {
+	color: #000;
+	background-color: #fff;
+}
+
+.vspec--schemecolor-blue .vspec .info__label, .vspec--schemecolor-blue .vspec .btn-to-top, .vspec--schemecolor-blue .vspec .years, .vspec--schemecolor-blue .vspec .years > a, .vspec--schemecolor-blue .vspec .years-drop, .vspec--schemecolor-blue .vspec .sorting, .vspec--schemecolor-blue .vspec .sorting > a, .vspec--schemecolor-blue .vspec .sorting-drop {
+	color: #c8e5ff;
+	background-color: #004c92;
 }
 
 .vspec .datetime time, .vspec .spec-bg-invert {
@@ -246,6 +374,11 @@ body.vspec {
 .vspec .info-center-section,
 .vspec .branches-section,
 .vspec .links__title,
+.vspec .info__item,
+.vspec .info__text,
+.vspec .section-title,
+.vspec .info-container__row,
+.vspec .info-container__sub-title,
 .vspec .reset-padding,
 .vspec .reset-padding {
 	padding: 0;
@@ -275,53 +408,87 @@ body.vspec {
 	margin-bottom: 0;
 }
 
-.vspec .content-head,
 .vspec .promo-section,
 .vspec .regard-section,
 .vspec .links-section,
 .vspec .info-center-section,
 .vspec .branches-section,
+.vspec .section-title,
+.vspec .news,
+.vspec .promo-shop,
+.vspec .products,
 .vspec .spec-bottom-space-section,
 .vspec .spec-bottom-space-section {
 	margin-bottom: 3.6em;
 }
 
-.vspec .content-head:last-child,
 .vspec .promo-section:last-child,
 .vspec .regard-section:last-child,
 .vspec .links-section:last-child,
 .vspec .info-center-section:last-child,
 .vspec .branches-section:last-child,
+.vspec .section-title:last-child,
+.vspec .news:last-child,
+.vspec .promo-shop:last-child,
+.vspec .products:last-child,
 .vspec .spec-bottom-space-section:last-child,
 .vspec .spec-bottom-space-section:last-child {
 	margin-bottom: 0;
 }
 
+.vspec .content-head,
 .vspec .datetime,
 .vspec .promo-slider__item,
 .vspec .regard__item,
 .vspec .r-tabs .tabs-panel,
+.vspec .info__item,
+.vspec .heading,
+.vspec .news__item,
+.vspec .info-container__item,
+.vspec .info-container__row,
+.vspec .bottom-space,
+.vspec .products__list,
+.vspec .products__item,
 .vspec .spec-bottom-space-item,
 .vspec .spec-bottom-space-item {
 	margin-bottom: 2.4em;
 }
 
+.vspec .content-head:last-child,
 .vspec .datetime:last-child,
 .vspec .promo-slider__item:last-child,
 .vspec .regard__item:last-child,
 .vspec .r-tabs .tabs-panel:last-child,
+.vspec .info__item:last-child,
+.vspec .heading:last-child,
+.vspec .news__item:last-child,
+.vspec .info-container__item:last-child,
+.vspec .info-container__row:last-child,
+.vspec .bottom-space:last-child,
+.vspec .products__list:last-child,
+.vspec .products__item:last-child,
 .vspec .spec-bottom-space-item:last-child,
 .vspec .spec-bottom-space-item:last-child {
 	margin-bottom: 0;
 }
 
 .vspec .links__item,
+.vspec .info__img,
+.vspec .info__label,
+.vspec .news__img,
+.vspec .products__figure,
+.vspec .products__inner,
 .vspec .spec-bottom-space-element,
 .vspec .spec-bottom-space-element {
 	margin-bottom: 0.6em;
 }
 
 .vspec .links__item:last-child,
+.vspec .info__img:last-child,
+.vspec .info__label:last-child,
+.vspec .news__img:last-child,
+.vspec .products__figure:last-child,
+.vspec .products__inner:last-child,
 .vspec .spec-bottom-space-element:last-child,
 .vspec .spec-bottom-space-element:last-child {
 	margin-bottom: 0;
@@ -332,6 +499,7 @@ body.vspec {
 .vspec .logo-img,
 .vspec .promo-slider__bg,
 .vspec .depict-regard-number,
+.vspec .news__img,
 .vspec .grayscale {
 	filter: grayscale(1) contrast(1) invert(0);
 }
@@ -339,13 +507,17 @@ body.vspec {
 html:not(.vspec--imageson) .vspec img,
 html:not(.vspec--imageson) .vspec [class*="depict-files-"],
 html:not(.vspec--imageson) .vspec .promo-slider__bg,
-html:not(.vspec--imageson) .vspec [class*="depict-regard"],
+html:not(.vspec--imageson) .vspec .depict-regard-safety,
 html:not(.vspec--imageson) .vspec .links__icon,
+html:not(.vspec--imageson) .vspec .info__img,
+html:not(.vspec--imageson) .vspec .news__img,
 html:not(.vspec--imageson) .vspec .spec-no-img {
 	display: none !important;
 }
 
 .vspec .promo-slider, .vspec .promo-slider.slick-dotted,
+.vspec .info__list,
+.vspec .info__list.slick-dotted,
 .vspec .spec-slider-reset,
 .vspec .spec-slider-reset.slick-dotted {
 	font-size: inherit;
@@ -353,7 +525,17 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	letter-spacing: inherit;
 }
 
+.vspec .promo-slider.slick-slider,
+.vspec .info__list.slick-slider,
+.vspec .spec-slider-reset.slick-slider {
+	-webkit-user-select: auto !important;
+	   -moz-user-select: auto !important;
+	    -ms-user-select: auto !important;
+	        user-select: auto !important;
+}
+
 .vspec .promo-slider .slick-track,
+.vspec .info__list .slick-track,
 .vspec .spec-slider-reset .slick-track {
 	opacity: 1 !important;
 	left: auto !important;
@@ -363,12 +545,15 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 }
 
 .vspec .promo-slider .slick-track::before, .vspec .promo-slider .slick-track::after,
+.vspec .info__list .slick-track::before,
+.vspec .info__list .slick-track::after,
 .vspec .spec-slider-reset .slick-track::before,
 .vspec .spec-slider-reset .slick-track::after {
 	content: none;
 }
 
 .vspec .promo-slider .slick-slide,
+.vspec .info__list .slick-slide,
 .vspec .spec-slider-reset .slick-slide {
 	position: relative !important;
 	width: auto !important;
@@ -381,11 +566,13 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 }
 
 .vspec .promo-slider .slick-arrow,
+.vspec .info__list .slick-arrow,
 .vspec .spec-slider-reset .slick-arrow {
 	display: none !important;
 }
 
 .vspec .promo-slider .slick-dots,
+.vspec .info__list .slick-dots,
 .vspec .spec-slider-reset .slick-dots {
 	display: none !important;
 }
@@ -412,6 +599,15 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	}
 }
 
+.vspec .text-layout .full-width {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.vspec .user-content > .text-layout > *:last-child {
+	margin-bottom: 0 !important;
+}
+
 /* special version typography */
 /* ============================================================ */
 .vspec h1, .vspec h2, .vspec h3, .vspec h4, .vspec h5, .vspec h6 {
@@ -431,6 +627,12 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 .vspec h2 {
 	font-size: 1.44em;
 	line-height: 1.46;
+}
+
+.vspec .heading h1, .vspec .heading h2 {
+	margin-top: 0 !important;
+	margin-bottom: 0.5cm !important;
+	padding-bottom: 0 !important;
 }
 
 .vspec h3 {
@@ -523,6 +725,15 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	transition: none;
 	background: none;
 	border-color: currentColor;
+}
+
+.vspec--fontsize-large .vspec input[type="text"], .vspec--fontsize-large
+.vspec input[type="password"], .vspec--fontsize-large
+.vspec input[type="email"], .vspec--fontsize-large
+.vspec input[type="search"], .vspec--fontsize-large
+.vspec textarea, .vspec--fontsize-large
+.vspec .select select {
+	font-size: 22px;
 }
 
 .vspec input[type="text"].error,
@@ -628,35 +839,55 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	background-color: currentColor;
 }
 
-.vspec .btn-default, .vspec input[type="submit"], .vspec input[type="button"], .vspec input[type="reset"], .vspec button {
+.vspec .btn-default, .vspec input[type="submit"], .vspec input[type="button"], .vspec input[type="reset"], .vspec button, .vspec .btn__info, .vspec .btn-bay {
+	display: inline-block;
+	vertical-align: top;
+	width: auto;
+	height: auto;
 	font-family: inherit;
 	font-weight: bold;
 	font-style: normal;
 	font-size: inherit;
+	line-height: 1.1;
+	padding: 20px 28px;
+	cursor: pointer;
 	letter-spacing: inherit;
 	text-transform: none;
 	transition: none;
 	text-decoration: none;
+	border: none;
 	color: #fff;
 	background-color: #000;
 }
 
-.vspec--schemecolor-white .vspec .btn-default, .vspec--schemecolor-white .vspec input[type="submit"], .vspec--schemecolor-white .vspec input[type="button"], .vspec--schemecolor-white .vspec input[type="reset"], .vspec--schemecolor-white .vspec button {
+.vspec--schemecolor-white .vspec .btn-default, .vspec--schemecolor-white .vspec input[type="submit"], .vspec--schemecolor-white .vspec input[type="button"], .vspec--schemecolor-white .vspec input[type="reset"], .vspec--schemecolor-white .vspec button, .vspec--schemecolor-white .vspec .btn__info, .vspec--schemecolor-white .vspec .btn-bay {
 	color: #000;
 	background-color: #fff;
 }
 
-.vspec--schemecolor-blue .vspec .btn-default, .vspec--schemecolor-blue .vspec input[type="submit"], .vspec--schemecolor-blue .vspec input[type="button"], .vspec--schemecolor-blue .vspec input[type="reset"], .vspec--schemecolor-blue .vspec button {
+.vspec--schemecolor-blue .vspec .btn-default, .vspec--schemecolor-blue .vspec input[type="submit"], .vspec--schemecolor-blue .vspec input[type="button"], .vspec--schemecolor-blue .vspec input[type="reset"], .vspec--schemecolor-blue .vspec button, .vspec--schemecolor-blue .vspec .btn__info, .vspec--schemecolor-blue .vspec .btn-bay {
 	color: #c8e5ff;
 	background-color: #004c92;
 }
 
-.vspec .btn-default::before, .vspec .btn-default::after, .vspec input[type="submit"]::before, .vspec input[type="submit"]::after, .vspec input[type="button"]::before, .vspec input[type="button"]::after, .vspec input[type="reset"]::before, .vspec input[type="reset"]::after, .vspec button::before, .vspec button::after {
+.vspec .btn-default::before, .vspec .btn-default::after, .vspec input[type="submit"]::before, .vspec input[type="submit"]::after, .vspec input[type="button"]::before, .vspec input[type="button"]::after, .vspec input[type="reset"]::before, .vspec input[type="reset"]::after, .vspec button::before, .vspec button::after, .vspec .btn__info::before, .vspec .btn__info::after, .vspec .btn-bay::before, .vspec .btn-bay::after {
 	display: none !important;
 }
 
-.vspec .btn-default:hover, .vspec input[type="submit"]:hover, .vspec input[type="button"]:hover, .vspec input[type="reset"]:hover, .vspec button:hover {
+.vspec .btn-default:hover, .vspec input[type="submit"]:hover, .vspec input[type="button"]:hover, .vspec input[type="reset"]:hover, .vspec button:hover, .vspec .btn__info:hover, .vspec .btn-bay:hover {
 	text-decoration: underline;
+	color: #fff;
+	background-color: #000;
+}
+
+.vspec--schemecolor-white .vspec .btn-default:hover, .vspec--schemecolor-white .vspec input[type="submit"]:hover, .vspec--schemecolor-white .vspec input[type="button"]:hover, .vspec--schemecolor-white .vspec input[type="reset"]:hover, .vspec--schemecolor-white .vspec button:hover, .vspec--schemecolor-white .vspec .btn__info:hover, .vspec--schemecolor-white .vspec .btn-bay:hover {
+	color: #000;
+	background-color: #fff;
+}
+
+.vspec--schemecolor-blue .vspec .btn-default:hover, .vspec--schemecolor-blue .vspec input[type="submit"]:hover, .vspec--schemecolor-blue .vspec input[type="button"]:hover, .vspec--schemecolor-blue .vspec input[type="reset"]:hover, .vspec--schemecolor-blue .vspec button:hover, .vspec--schemecolor-blue .vspec .btn__info:hover, .vspec--schemecolor-blue .vspec .btn-bay:hover {
+	color: #c8e5ff;
+	background-color: #004c92;
 }
 
 .vspec .btn-default-alt, .vspec input.btn-default-alt[type="submit"], .vspec input.btn-default-alt[type="button"], .vspec input.btn-default-alt[type="reset"], .vspec button.btn-default-alt {
@@ -668,27 +899,53 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	text-transform: none;
 	text-decoration: none;
 	color: #000;
-	border-color: currentColor;
-	background-color: #fff;
+	border: 2px solid currentColor;
+	background-color: transparent;
 }
 
 .vspec--schemecolor-white .vspec .btn-default-alt, .vspec--schemecolor-white .vspec input.btn-default-alt[type="submit"], .vspec--schemecolor-white .vspec input.btn-default-alt[type="button"], .vspec--schemecolor-white .vspec input.btn-default-alt[type="reset"] {
 	color: #fff;
-	background-color: #000;
 }
 
 .vspec--schemecolor-blue .vspec .btn-default-alt, .vspec--schemecolor-blue .vspec input.btn-default-alt[type="submit"], .vspec--schemecolor-blue .vspec input.btn-default-alt[type="button"], .vspec--schemecolor-blue .vspec input.btn-default-alt[type="reset"] {
 	color: #004c92;
-	background-color: #c8e5ff;
 }
 
 .vspec .btn-default-alt:hover, .vspec input.btn-default-alt:hover[type="submit"], .vspec input.btn-default-alt:hover[type="button"], .vspec input.btn-default-alt:hover[type="reset"] {
 	text-decoration: underline;
+	background-color: transparent;
 }
 
-.vspec .user-content ul li::before, .vspec .user-content ul li:first-child::before, .vspec .user-content ol li::before, .vspec .user-content ol li:first-child::before {
+.vspec .user-content ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop) li, .vspec .user-content ol li {
+	padding-top: 0;
+	padding-left: 1.39em;
+	margin-top: 0.25em;
+}
+
+.vspec .user-content ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop) li::before, .vspec .user-content ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop) li:first-child::before, .vspec .user-content ol li::before, .vspec .user-content ol li:first-child::before {
 	color: currentColor;
 	border-color: currentColor;
+}
+
+.vspec .user-content ol li::before {
+	margin-left: -1.39em;
+	min-width: 1.39em;
+	font-weight: bold;
+}
+
+.vspec .user-content ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop) li::before, .vspec .user-content ol ul li::before {
+	top: 0.6em;
+	min-width: 0;
+	margin-left: 0;
+	width: 0.5em;
+	height: 0.5em;
+	border-radius: 0.5em;
+	border: none;
+	background-color: currentColor;
+}
+
+.vspec blockquote {
+	max-width: 34em;
 }
 
 .vspec blockquote q {
@@ -705,57 +962,49 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	margin-left: 0;
 }
 
+.vspec .files .files-item {
+	display: block;
+	width: auto;
+	padding: 0;
+}
+
+.vspec .file {
+	min-height: 0;
+}
+
+.vspec .file [class*="depict-files-"] {
+	display: block;
+	position: relative;
+	left: auto;
+	top: auto;
+}
+
+.vspec .file__title a {
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+
+.vspec .file__info {
+	color: inherit;
+	font-size: 0.89em;
+	line-height: 1.75;
+	font-style: italic;
+}
+
 /* special version components */
 /* ============================================================ */
 /* to top */
-.vspec .back-to-top {
-	box-sizing: border-box;
-	color: inherit;
-	background: none !important;
-	box-shadow: 0 0 0 2px currentColor;
+.vspec .btn-to-top {
+	opacity: 0.5;
 }
 
-.vspec .back-to-top > i {
-	position: relative;
-	width: 4px;
-	margin-right: 14px;
-	background: none;
+.vspec .btn-to-top i::before, .vspec .btn-to-top i::after {
 	background-color: currentColor;
 }
 
-.vspec .back-to-top > i::before {
-	content: "";
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 50%;
-	width: 14px;
-	height: 14px;
-	border: 0 solid currentColor;
-	border-width: 4px 0 0 4px;
-	-ms-transform: rotate(45deg);
-	    transform: rotate(45deg);
-	margin: 0 0 0 -9px;
-}
-
-.vspec .back-to-top > span {
-	transition: none;
-}
-
-.vspec .back-to-top:hover > i {
-	margin-right: 20px;
-}
-
-.vspec .back-to-top:hover {
-	background-color: #fff !important;
-}
-
-.vspec.schemecolor-white .back-to-top:hover {
-	background-color: #000 !important;
-}
-
-.vspec.schemecolor-blue .back-to-top:hover {
-	background-color: #c8e5ff !important;
+.no-touchevents .vspec .btn-to-top:hover {
+	opacity: 0.9;
 }
 
 /* to top end */
@@ -766,6 +1015,10 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 
 .vspec .header {
 	color: currentColor;
+}
+
+.vspec .header-holder {
+	padding-top: 0;
 }
 
 .vspec .main {
@@ -806,6 +1059,9 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 
 .vspec .footer-col {
 	float: left;
+	font-size: 18px;
+	line-height: 1.78;
+	letter-spacing: normal;
 }
 
 .vspec .footer-col:last-child {
@@ -1001,9 +1257,49 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	background: none;
 }
 
+.vspec .user-options {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: start;
+	    align-items: flex-start;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	position: relative;
+	top: auto;
+	right: auto;
+	width: auto;
+	padding: 0;
+	margin-bottom: 0.5em;
+	font-size: 0.89em;
+	line-height: 1.75;
+}
+
+.vspec .user-options li {
+	padding: 0;
+	margin: 0 1em 0.25em 0;
+}
+
 .vspec .user-options a {
 	color: currentColor;
-	text-decoration: none;
+}
+
+.vspec .user-options a::before {
+	display: none;
+}
+
+.vspec .user-options a span {
+	display: inline;
+	border: none;
+	line-height: inherit;
+	transition: none;
+}
+
+.vspec .user-options a span.text-for-mobile {
+	display: none;
+}
+
+.vspec .user-options svg path {
+	fill: currentColor;
 }
 
 .vspec .breadcrumbs-list {
@@ -1011,6 +1307,8 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	height: auto;
 	min-height: 0;
 	overflow: visible;
+	font-size: 0.89em;
+	line-height: 1.75;
 }
 
 .vspec .breadcrumbs-list li, .vspec .breadcrumbs-list a, .vspec .breadcrumbs-list span {
@@ -1020,6 +1318,15 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 
 .vspec .breadcrumbs-list li {
 	display: inline;
+	padding: 0 0.4em 0 1em;
+}
+
+.vspec .breadcrumbs-list li::before {
+	color: inherit;
+}
+
+.vspec .breadcrumbs-list li:first-child {
+	padding-left: 0;
 }
 
 .vspec .breadcrumbs-list li span {
@@ -1028,122 +1335,126 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	white-space: normal;
 }
 
-.vspec .breadcrumbs-list a:hover {
+.vspec .breadcrumbs-list a:hover, .vspec .breadcrumbs-list a:focus {
 	color: inherit;
 }
 
-.vspec .files .files-item {
-	display: block;
-	width: auto;
-	padding: 0;
-}
-
-.vspec .file {
-	min-height: 0;
-}
-
-.vspec .file [class*="depict-files-"] {
-	position: relative;
-	left: auto;
-	top: auto;
-}
-
-.vspec .file__title a {
-	margin: 0;
-	padding: 0;
-	display: inline;
-}
-
-.vspec .file__info {
-	color: inherit;
-	font-size: 0.89em;
-	line-height: 1.75;
-	font-style: italic;
-}
-
-.vspec .extra-popup {
-	background-color: #fff;
-	border: none;
-}
-
-.vspec--schemecolor-white .vspec .extra-popup {
-	background-color: #000;
-}
-
-.vspec--schemecolor-blue .vspec .extra-popup {
-	background-color: #c8e5ff;
-}
-
-.vspec .extra-popup__head {
-	border: 0 solid currentColor;
-	border-width: 2px 0;
-}
-
-.vspec .extra-popup__head .btn-menu-close {
-	top: -2px;
-}
-
-.vspec .extra-popup__head .logo {
-	background-image: url(../img/logo-text--bw.svg);
-}
-
-.vspec--schemecolor-white .vspec .extra-popup__head .logo {
-	background-image: url(../img/logo-text--wb.svg);
-}
-
-.vspec--schemecolor-blue .vspec .extra-popup__head .logo {
-	background-image: url(../img/logo-text--blue.svg);
-}
-
-.vspec .main-menu__box, .vspec .main-menu__heading {
-	font-size: 18px;
-	line-height: 1.78;
-}
-
-.vspec--fontsize-small .vspec .main-menu__box, .vspec--fontsize-small .vspec .main-menu__heading {
-	font-size: 14px;
-}
-
-.vspec--fontsize-large .vspec .main-menu__box, .vspec--fontsize-large .vspec .main-menu__heading {
-	font-size: 30px;
-}
-
-.vspec--fontsize-large .vspec .main-menu__box {
-	width: 50.0%;
-}
-
-.vspec .main-menu__list li {
-	padding-top: 0;
-	padding-left: 1.39em;
-	margin-top: 0.5em;
-}
-
-.vspec .main-menu__list > li {
+.vspec .social-networks li {
 	padding-left: 0;
 }
 
-.vspec .main-menu__list > li:first-child {
-	margin-top: 0;
+.vspec .social-networks a::before {
+	transition: none;
+	border-color: currentColor;
 }
 
-.vspec .main-menu__list a {
-	padding-top: 0.5em;
+.vspec .social-networks path {
+	fill: currentColor;
 }
 
-.vspec .main-menu__list a:hover {
+.vspec .social-networks a:hover path {
+	fill: currentColor;
+}
+
+.vspec .content-foot {
+	border: none;
+	margin: 0;
+	padding-top: 3.6em;
+}
+
+.vspec .user-content > .text-layout + .content-foot {
+	margin-top: 0 !important;
+}
+
+.vspec .content-foot .share-box + div {
+	border-top: 2px solid currentColor;
+}
+
+.vspec .share-box__label {
+	float: none;
+}
+
+.vspec .share-box {
+	padding-bottom: 1.2em;
+}
+
+.vspec .share-box .social-networks {
+	float: none;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+}
+
+.vspec .nav-page {
+	font-size: inherit;
+	letter-spacing: inherit;
+	height: auto;
+	padding: 1.2em 0 0;
+	border-top: 2px solid currentColor;
+}
+
+.vspec .nav-page__item {
+	display: block;
+	border: none;
+	float: none;
+	text-align: left;
 	color: inherit;
 }
 
-.vspec .main-menu__list ul li::before {
-	top: 0.7em;
-	width: 0.6em;
-	height: 0.6em;
-	border-radius: 20px;
-	background-color: currentColor;
+.vspec .nav-page__item a {
+	display: inline;
+	color: inherit;
+	background: none;
+}
+
+.vspec .nav-page__item a > span {
+	display: inline;
+	vertical-align: initial;
+	padding: 0;
+	width: auto;
+	font-size: inherit;
+	line-height: inherit;
+	font-family: inherit;
+	text-transform: none;
+	font-weight: bold;
+	letter-spacing: inherit;
+}
+
+.vspec .nav-page__item a i {
+	display: none;
+}
+
+.vspec .nav-page__item a i::before, .vspec .nav-page__item a i::after {
+	background-color: currentColor !important;
+}
+
+.vspec .nav-page__item a:hover {
+	color: inherit;
+	background-color: inherit;
+}
+
+.vspec .nav-page__item.disabled {
+	background: none;
+}
+
+.vspec .nav-page__item.disabled a, .vspec .nav-page__item.disabled a:hover {
+	text-decoration: none;
+	cursor: default;
+	color: inherit;
+	opacity: 0.5;
+	background-color: inherit;
+}
+
+.vspec .nav-articles .nav-page__item {
+	width: auto;
 }
 
 .vspec .promo-slider {
 	margin-left: 0;
+}
+
+.vspec .promo-slider__item {
+	border: none;
 }
 
 .vspec .promo-slider__item::before {
@@ -1225,6 +1536,10 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	display: inline;
 	vertical-align: baseline;
 	width: auto;
+	font-size: 1.22em;
+	line-height: 1.55;
+	font-weight: bold;
+	text-transform: uppercase;
 }
 
 .vspec [class*="depict-regard"] {
@@ -1299,6 +1614,11 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 
 .vspec .links__icon svg polygon, .vspec .links__icon svg rect, .vspec .links__icon svg path {
 	transition: none;
+	fill: currentColor;
+}
+
+.no-touchevents .vspec a:hover .links__icon svg polygon, .no-touchevents .vspec a:hover .links__icon svg rect, .no-touchevents .vspec a:hover .links__icon svg path {
+	fill: currentColor;
 }
 
 .vspec .links__content {
@@ -1311,19 +1631,597 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	display: inline;
 	max-height: none;
 	overflow: visible;
+	text-decoration: underline;
 }
 
 .vspec .links__title br {
 	display: none;
 }
 
-.desktop .vspec .links__inner:hover {
+.no-touchevents .vspec .links__inner:hover {
 	box-shadow: none;
 	background: none;
 }
 
-.desktop .vspec .links__inner:hover .links__title {
+.no-touchevents .vspec .links__inner:hover .links__title {
 	color: inherit;
+	text-decoration: none;
+}
+
+.vspec .info-center-header {
+	font-weight: bold;
+}
+
+.vspec .info__list {
+	text-align: left;
+	margin: 0;
+}
+
+.vspec .info__item {
+	display: block;
+}
+
+.vspec .info__inner {
+	width: auto;
+	height: auto;
+	overflow: visible;
+	padding: 0;
+	background: none;
+	box-shadow: none;
+	border: none;
+}
+
+.vspec .info__label {
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	left: auto;
+	top: auto;
+	overflow: visible;
+	font-size: 0.89em;
+	line-height: 1.75;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+
+.vspec .info__img {
+	-ms-transform: none;
+	    transform: none;
+	background: none;
+	overflow: visible;
+}
+
+.vspec .info__img::before {
+	content: none;
+}
+
+.vspec .info__figure {
+	position: relative;
+	left: auto;
+	top: auto;
+	width: auto;
+	height: auto;
+	-ms-transform: none;
+	    transform: none;
+	text-align: left;
+}
+
+.vspec .info__figure img {
+	margin: 0;
+}
+
+.vspec .info__content {
+	margin-bottom: 0.6em;
+}
+
+.vspec .info__title, .vspec .info__text {
+	-ms-transform: none;
+	    transform: none;
+	opacity: 1;
+	visibility: visible;
+}
+
+.vspec .info__title .text-wrap, .vspec .info__text .text-wrap {
+	max-height: none;
+	overflow: visible;
+}
+
+.vspec .btn__info {
+	margin: 0;
+}
+
+.vspec .product__price .byn, .vspec .product__price .byr {
+	display: inline;
+	color: inherit;
+	font-size: inherit;
+	font-weight: bold;
+}
+
+.vspec .product__price .byn::before, .vspec .product__price .byr::before {
+	display: none;
+}
+
+.vspec .product__price .price-unit {
+	font-size: 0.89em;
+	line-height: 1.75;
+}
+
+.no-touchevents .vspec a.info__inner:hover {
+	box-shadow: none;
+}
+
+.no-touchevents .vspec .show-animation a:hover .info__img,
+.no-touchevents .vspec .show-animation a:hover .info__content {
+	opacity: 1;
+	visibility: visible;
+	-ms-transform: none;
+	    transform: none;
+}
+
+.vspec .branches {
+	padding-left: 0;
+}
+
+.vspec .branches-map-svg path, .vspec .branches-map-svg polygon {
+	stroke: currentColor;
+	transition: none;
+	fill: #fff;
+}
+
+.vspec--schemecolor-white .vspec .branches-map-svg path, .vspec--schemecolor-white .vspec .branches-map-svg polygon {
+	fill: #000;
+}
+
+.vspec--schemecolor-blue .vspec .branches-map-svg path, .vspec--schemecolor-blue .vspec .branches-map-svg polygon {
+	fill: #c8e5ff;
+}
+
+.vspec .branches-map-svg text {
+	fill: currentColor;
+	transition: none;
+	letter-spacing: normal;
+}
+
+.no-touchevents .vspec .branches-map-svg a:hover path, .no-touchevents .vspec .branches-map-svg a:hover polygon, .no-touchevents .vspec .branches-map-svg a.active path, .no-touchevents .vspec .branches-map-svg a.active polygon, .vspec .branches-map-svg a:hover path, .vspec .branches-map-svg a:hover polygon, .vspec .branches-map-svg a.active path, .vspec .branches-map-svg a.active polygon {
+	fill: currentColor;
+	stroke: currentColor;
+}
+
+.no-touchevents .vspec .branches-map-svg a:hover .branches-map-logo, .no-touchevents .vspec .branches-map-svg a.active .branches-map-logo, .vspec .branches-map-svg a:hover .branches-map-logo, .vspec .branches-map-svg a.active .branches-map-logo {
+	fill: #fff;
+}
+
+.vspec--schemecolor-white .no-touchevents .vspec .branches-map-svg a:hover .branches-map-logo, .vspec--schemecolor-white .no-touchevents .vspec .branches-map-svg a.active .branches-map-logo, .vspec--schemecolor-white .vspec .branches-map-svg a:hover .branches-map-logo, .vspec--schemecolor-white .vspec .branches-map-svg a.active .branches-map-logo {
+	fill: #000;
+}
+
+.vspec--schemecolor-blue .no-touchevents .vspec .branches-map-svg a:hover .branches-map-logo, .vspec--schemecolor-blue .no-touchevents .vspec .branches-map-svg a.active .branches-map-logo, .vspec--schemecolor-blue .vspec .branches-map-svg a:hover .branches-map-logo, .vspec--schemecolor-blue .vspec .branches-map-svg a.active .branches-map-logo {
+	fill: #c8e5ff;
+}
+
+.vspec .branches-popup__holder {
+	border: 2px solid currentColor;
+	box-shadow: none;
+}
+
+.vspec .branches-popup__close::before, .vspec .branches-popup__close::after {
+	background-color: currentColor;
+}
+
+.no-touchevents .vspec .branches-popup__close:hover::before, .no-touchevents .vspec .branches-popup__close:hover::after {
+	background-color: currentColor;
+}
+
+.vspec .branches-popup__cornet {
+	display: none;
+}
+
+.vspec .branches-popup__title, .vspec .branches-popup__subtitle {
+	color: currentColor;
+}
+
+.vspec .branches-popup dl svg path {
+	fill: currentColor;
+	stroke: currentColor;
+}
+
+.vspec .user-form {
+	background: none;
+}
+
+.vspec .user-form .input-wrap::before, .vspec .user-form .input-wrap:after {
+	display: none;
+}
+
+.vspec .user-form .label-holder {
+	float: none;
+	width: auto;
+	padding: 0;
+	margin-bottom: 3px;
+}
+
+.vspec .user-form .label-holder::before {
+	display: none;
+}
+
+.vspec .user-form .label-holder label, .vspec .user-form .label-holder .label {
+	max-width: none;
+	display: inline;
+	vertical-align: initial;
+}
+
+.vspec .user-form .input-holder {
+	margin-left: 0;
+}
+
+.vspec .user-form .form-footer {
+	margin-left: 0;
+	padding-left: 0;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	    align-items: center;
+}
+
+.vspec .user-form .form-note {
+	height: auto;
+}
+
+.vspec .user-form .form-note::before {
+	display: none;
+}
+
+.vspec .user-form .form-note__item {
+	width: auto;
+	display: block;
+}
+
+.vspec .custom-tabs__panels {
+	border-color: currentColor;
+	border-width: 0 2px 2px;
+	background: none;
+}
+
+.vspec .custom-tabs__nav {
+	margin-bottom: -2px;
+}
+
+.vspec .custom-tabs__tab {
+	font-family: inherit;
+	color: inherit;
+}
+
+.vspec .custom-tabs__tab a {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	    align-items: center;
+	-ms-flex-pack: center;
+	    justify-content: center;
+	border: 2px solid currentColor;
+	background: none;
+}
+
+.vspec .custom-tabs__tab a > span {
+	font-size: 24px;
+}
+
+.vspec .custom-tabs__tab a::before {
+	display: none;
+}
+
+.vspec .custom-tabs__tab a.active {
+	color: currentColor;
+	background: none;
+	border-bottom-color: transparent;
+	text-decoration: none;
+	cursor: default;
+}
+
+.no-touchevents .vspec .custom-tabs__tab a:hover {
+	background: none;
+}
+
+.vspec .years, .vspec .sorting {
+	position: relative;
+	top: auto;
+	right: auto;
+	margin-right: 0;
+	border: none;
+	width: 8em;
+	height: auto;
+}
+
+.vspec .years a, .vspec .sorting a {
+	padding: 0.1em 0.5em;
+}
+
+.vspec .years a > span, .vspec .sorting a > span {
+	display: inline;
+	vertical-align: initial;
+	transition: none;
+}
+
+.vspec .years > a, .vspec .sorting > a {
+	position: relative;
+	border: none;
+	text-align: left;
+	padding-right: 1.5em;
+}
+
+.vspec .years > a::before, .vspec .sorting > a::before {
+	display: none;
+}
+
+.vspec .years > a::after, .vspec .sorting > a::after {
+	content: '';
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0.4em;
+	height: 0.4em;
+	border: 0 solid currentColor;
+	border-width: 0 0.1em 0.1em 0;
+	-ms-transform: rotate(0.125turn);
+	    transform: rotate(0.125turn);
+	margin: -0.35em 0.7em 0 0;
+}
+
+.vspec .years > a > i, .vspec .sorting > a > i {
+	display: none;
+}
+
+.vspec .years-drop, .vspec .sorting-drop {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+.vspec .years-drop li, .vspec .sorting-drop li {
+	padding: 0.1em 0;
+}
+
+.vspec .years-drop a, .vspec .sorting-drop a {
+	text-align: left;
+}
+
+.vspec .years-drop a:hover, .vspec .sorting-drop a:hover {
+	color: currentColor;
+}
+
+.vspec .years-drop a.active, .vspec .sorting-drop a.active {
+	text-decoration: none;
+	cursor: default;
+	background-color: #fff;
+	color: #000;
+}
+
+.vspec--schemecolor-white .vspec .years-drop a.active, .vspec--schemecolor-white .vspec .sorting-drop a.active {
+	background-color: #000;
+	color: #fff;
+}
+
+.vspec--schemecolor-blue .vspec .years-drop a.active, .vspec--schemecolor-blue .vspec .sorting-drop a.active {
+	background-color: #c8e5ff;
+	color: #004c92;
+}
+
+.vspec .news {
+	min-height: 0;
+}
+
+.vspec .news__item {
+	border: none;
+}
+
+.vspec .news__inner {
+	display: initial;
+	padding: 0;
+}
+
+.vspec .news__inner::after {
+	display: none;
+}
+
+.vspec .news__img {
+	float: none;
+	margin-top: 0;
+	margin-right: 0;
+}
+
+.vspec .news__data {
+	background: none;
+	position: relative;
+	left: auto;
+	top: auto;
+}
+
+.no-touchevents .vspec .news__inner:hover {
+	background: none;
+}
+
+.no-touchevents .vspec .news__inner:hover .news__title {
+	color: inherit;
+}
+
+.vspec .promo-shop {
+	border: none;
+}
+
+.vspec .info-container__list {
+	margin: 0;
+	font-size: inherit;
+	letter-spacing: inherit;
+}
+
+.vspec .info-container__item {
+	width: auto;
+	display: block;
+	padding: 0;
+}
+
+.vspec .filters__list {
+	margin-right: -0.5em;
+	margin-left: -0.5em;
+	font-size: inherit;
+	letter-spacing: inherit;
+}
+
+.vspec .filters__list::after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.vspec .filters__item {
+	float: left;
+	padding-right: 0.25em;
+	padding-left: 0.25em;
+	margin-bottom: 0.25em;
+}
+
+.vspec .filters__item a {
+	padding-right: 0.25em;
+	padding-left: 0.25em;
+}
+
+.vspec .filters__item a:hover, .vspec .filters__item a:focus, .vspec .filters__item.active a {
+	text-decoration: none;
+	color: #fff;
+	background-color: #000;
+}
+
+.vspec--schemecolor-white .vspec .filters__item a:hover, .vspec--schemecolor-white .vspec .filters__item a:focus, .vspec--schemecolor-white .vspec .filters__item.active a {
+	color: #000;
+	background-color: #fff;
+}
+
+.vspec--schemecolor-blue .vspec .filters__item a:hover, .vspec--schemecolor-blue .vspec .filters__item a:focus, .vspec--schemecolor-blue .vspec .filters__item.active a {
+	color: #c8e5ff;
+	background-color: #004c92;
+}
+
+.vspec .sorting > a {
+	border: none;
+}
+
+.vspec .products__item {
+	height: auto !important;
+}
+
+.vspec .products__item .btn-bay {
+	position: static;
+	left: auto;
+	bottom: auto;
+	-ms-transform: none;
+	    transform: none;
+}
+
+.vspec a.products__inner:hover, .vspec a.products__inner:focus {
+	background: none;
+}
+
+.vspec .products__figure {
+	width: 240px;
+	max-width: 100%;
+}
+
+.vspec .products__img img {
+	max-width: 100%;
+}
+
+.vspec .extra-popup {
+	background-color: #fff;
+	border: none;
+}
+
+.vspec--schemecolor-white .vspec .extra-popup {
+	background-color: #000;
+}
+
+.vspec--schemecolor-blue .vspec .extra-popup {
+	background-color: #c8e5ff;
+}
+
+.vspec .extra-popup__head {
+	border: 0 solid currentColor;
+	border-width: 2px 0;
+}
+
+.vspec .extra-popup__head .btn-menu-close {
+	top: -2px;
+}
+
+.vspec .extra-popup__head .logo {
+	background-image: url(../img/logo-text--bw.svg);
+}
+
+.vspec--schemecolor-white .vspec .extra-popup__head .logo {
+	background-image: url(../img/logo-text--wb.svg);
+}
+
+.vspec--schemecolor-blue .vspec .extra-popup__head .logo {
+	background-image: url(../img/logo-text--blue.svg);
+}
+
+.vspec .extra-popup.show-shadow .extra-popup__head {
+	box-shadow: 0 0 35px rgba(0, 0, 0, 0.35);
+}
+
+.vspec--schemecolor-white .vspec .extra-popup.show-shadow .extra-popup__head {
+	box-shadow: 0 0 35px white;
+}
+
+.vspec--schemecolor-blue .vspec .extra-popup.show-shadow .extra-popup__head {
+	box-shadow: 0 0 35px rgba(0, 76, 146, 0.35);
+}
+
+.vspec .main-menu__box, .vspec .main-menu__heading {
+	font-size: 18px;
+	line-height: 1.78;
+}
+
+.vspec--fontsize-small .vspec .main-menu__box, .vspec--fontsize-small .vspec .main-menu__heading {
+	font-size: 14px;
+}
+
+.vspec--fontsize-large .vspec .main-menu__box, .vspec--fontsize-large .vspec .main-menu__heading {
+	font-size: 30px;
+}
+
+.vspec--fontsize-large .vspec .main-menu__box {
+	width: 50.0%;
+}
+
+.vspec .main-menu__list li {
+	padding-top: 0;
+	padding-left: 1.39em;
+	margin-top: 0.5em;
+}
+
+.vspec .main-menu__list > li {
+	padding-left: 0;
+}
+
+.vspec .main-menu__list > li:first-child {
+	margin-top: 0;
+}
+
+.vspec .main-menu__list a {
+	padding-top: 0.5em;
+}
+
+.vspec .main-menu__list a:hover {
+	color: inherit;
+}
+
+.vspec .main-menu__list ul li::before {
+	top: 0.7em;
+	width: 0.6em;
+	height: 0.6em;
+	border-radius: 20px;
+	background-color: currentColor;
 }
 
 /*=========== SPECIAL VERSION end =========== */

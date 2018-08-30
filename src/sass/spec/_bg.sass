@@ -3,5 +3,8 @@
 @import ../utils/mixins
 
 .#{$spec-mod}
-	.header, .spec-bg, .extra-popup, [class*="nav__drop"]
+	.header, .extra-popup, [class*="nav__drop"], .branches-popup__holder, .branches-popup__close
 		+spec-reset-bg
+
+	.info__label, .btn-to-top, .years, .years > a, .years-drop, .sorting, .sorting > a, .sorting-drop
+		+spec-reset-bg-invert

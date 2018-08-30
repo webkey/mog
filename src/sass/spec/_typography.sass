@@ -17,6 +17,10 @@
 	h2
 		+spec-font-section
 
+	.heading
+		h1, h2
+			+prints-space-bottom-sm
+
 	h3
 		+spec-font-item
 
@@ -98,6 +102,9 @@
 		background: none
 		border-color: currentColor
 
+		.#{$spec-mod--font-large} &
+			font-size: 22px
+
 		&.error
 			border-color: currentColor
 			box-shadow: none
@@ -160,16 +167,24 @@
 					background-color: currentColor
 
 	// buttons
-	.btn-default, input[type="submit"], input[type="button"], input[type="reset"], button
+	.btn-default, input[type="submit"], input[type="button"], input[type="reset"], button, .btn__info, .btn-bay
+		display: inline-block
+		vertical-align: top
+		width: auto
+		height: auto
 		font:
 			family: inherit
 			weight: bold
 			style: normal
 			size: inherit
+		line-height: round-float(20px / 18px, 1)
+		padding: 20px 28px
+		cursor: pointer
 		letter-spacing: inherit
 		text-transform: none
 		transition: none
 		text-decoration: none
+		border: none
 		+spec-reset-bg-invert
 
 		&::before, &::after
@@ -177,6 +192,7 @@
 
 		&:hover
 			text-decoration: underline
+			+spec-reset-bg-invert
 
 	.btn-default-alt
 		font:
@@ -188,19 +204,20 @@
 		text-transform: none
 		text-decoration: none
 		color: $spec-text-color
-		border-color: currentColor
-		background-color: $spec-bg-color
+		border: 2px solid currentColor
+		background-color: transparent
 
 		.#{$spec-mod--schemecolor-wb} &
 			color: $spec-text-color--scheme-wb
-			background-color: $spec-bg-color--scheme-wb
+			//background-color: $spec-bg-color--scheme-wb
 
 		.#{$spec-mod--schemecolor-blue} &
 			color: $spec-text-color--scheme-blue
-			background-color: $spec-bg-color--scheme-blue
+			//background-color: $spec-bg-color--scheme-blue
 
 		&:hover
 			text-decoration: underline
+			background-color: transparent
 
 	input[type="submit"], input[type="button"], input[type="reset"], button
 		&.btn-default-alt
@@ -208,13 +225,40 @@
 
 	// list
 	.#{$user-content}
-		ul, ol
+		ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop), ol
 			li
+				padding-top: 0
+				padding-left: round-float(25px / $spec-font-size, 2) * 1em
+				margin-top: 0.25em
+
 				&::before, &:first-child::before
 					color: currentColor
 					border-color: currentColor
 
+		ol
+			li
+				&::before
+					$space: round-float(25px / $spec-font-size, 2) * 1em
+					margin-left: -$space
+					min-width: $space
+					font-weight: bold
+
+		ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop), ol ul
+			li
+				&::before
+					//$size: round-float(10px / $spec-font-size, 1) * 1em
+					$size: 0.5em
+					top: 0.6em
+					min-width: 0
+					margin-left: 0
+					+size($size)
+					border-radius: $size
+					border: none
+					background-color: currentColor
+
 	blockquote
+		max-width: 34em
+
 		q
 			+spec-font-item
 			border-color: currentColor
@@ -224,3 +268,27 @@
 
 	.files
 		margin-left: 0
+
+		.files-item
+			display: block
+			width: auto
+			padding: 0
+
+	.file
+		min-height: 0
+
+		[class*="depict-files-"]
+			display: block
+			position: relative
+			left: auto
+			top: auto
+
+	.file__title a
+		margin: 0
+		padding: 0
+		display: inline
+
+	.file__info
+		color: inherit
+		+spec-font-small
+		font-style: italic

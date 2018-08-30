@@ -4,13 +4,16 @@
 
 .#{$spec-mod}
 
-	.promo-slider, .promo-slider.slick-dotted
 	.promo-slider,
+	.info__list,
 	.spec-slider-reset
 		&, &.slick-dotted
 			font-size: inherit
 			line-height: inherit
 			letter-spacing: inherit
+
+		&.slick-slider
+			user-select: auto !important
 
 		.slick-track
 			opacity: 1 !important

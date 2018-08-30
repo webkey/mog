@@ -3,6 +3,8 @@
 @import ../utils/mixins
 
 .#{$spec-mod}
+	// hide element
+	// ---------------------------------------------------------------------------
 	.sidebar,
 	.btn-back,
 	.print-hidden,
@@ -14,6 +16,29 @@
 	.footer-gov,
 	.liked,
 	[class*="bg-figure"],
+	.info__divider,
+	.meter,
+	.view-switcher,
 	.spec-hide,
 	.spec-hide
 		display: none !important
+
+
+	// hide ::before
+	// ---------------------------------------------------------------------------
+	.products__list,
+	.products__figure,
+	.spec-hide-before,
+	.spec-hide-before
+		&::before
+			display: none
+
+
+	// hide ::after
+	// ---------------------------------------------------------------------------
+	.products__list,
+	.products__figure,
+	.spec-hide-before,
+	.spec-hide-before
+		&::before
+			display: none

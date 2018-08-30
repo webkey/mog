@@ -202,6 +202,8 @@
 
 .vspec .header .sv-btn-on {
 	color: currentColor;
+	top: auto;
+	bottom: 50px;
 }
 
 .footer .sv-btn-on {

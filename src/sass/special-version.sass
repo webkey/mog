@@ -15,12 +15,12 @@ body.#{$spec-mod}
 	//font-family: Tahoma, Geneva, sans-serif
 	//font-family: "Times New Roman", Serif
 	color: $spec-text-color
-	background-color: $spec-bg-color
+	background: $spec-bg-color url(../img/empty.png) no-repeat fixed
 
 /* special version settings
 /* ============================================================
 
-.#{$spec-mod}
+body.#{$spec-mod}
 	// Специальная версия: Уменьшенный базовый шрифт
 	// ================================================================
 	.#{$spec-mod--font-small} &
@@ -56,9 +56,13 @@ body.#{$spec-mod}
 /* special version reset
 /* ============================================================
 
+// reset all styles
+// ------------------------------------------------------------
+@import spec/reset-full
+
 // reset font
 // ------------------------------------------------------------
-@import spec/text
+@import spec/fonts-spec
 
 // reset transition
 // ------------------------------------------------------------
@@ -110,50 +114,15 @@ body.#{$spec-mod}
 
 /* to top
 .#{$spec-mod}
-	.back-to-top
-		box-sizing: border-box
-		color: inherit
-		background: none !important
-		box-shadow: 0 0 0 2px currentColor
+	.btn-to-top
+		opacity: 0.5
 
-		& > i
-			position: relative
-			width: 4px
-			margin-right: 14px
-			background: none
-			background-color: currentColor
+		i
+			&::before, &::after
+				background-color: currentColor
 
-			&::before
-				content: ""
-				display: block
-				position: absolute
-				top: 0
-				left: 50%
-				width: 14px
-				height: 14px
-				border: 0 solid currentColor
-				border-width: 4px 0 0 4px
-				transform: rotate(45deg)
-				margin: 0 0 0 -9px
-
-		& > span
-			transition: none
-
-		// hover
-		&:hover
-			& > i
-				margin-right: 20px
-
-	.back-to-top:hover
-		background-color: $spec-bg-color !important
-
-	&.schemecolor-white
-		.back-to-top:hover
-			background-color: $spec-bg-color--scheme-wb !important
-
-	&.schemecolor-blue
-		.back-to-top:hover
-			background-color: $spec-bg-color--scheme-blue !important
+		.no-touchevents &:hover
+			opacity: 0.9
 
 /* to top end
 
@@ -164,6 +133,9 @@ body.#{$spec-mod}
 
 	.header
 		color: currentColor
+
+	.header-holder
+		padding-top: 0
 
 	.main
 		padding-top: $spec-bottom-space-section
@@ -193,6 +165,9 @@ body.#{$spec-mod}
 
 	.footer-col
 		float: left
+		font-size: $spec-font-size
+		line-height: $spec-line-height
+		letter-spacing: $spec-letter-spacing
 
 		&:last-child
 			float: right
@@ -221,27 +196,12 @@ body.#{$spec-mod}
 
 	// main-nav
 	.main-nav-frame
-		//$shadow: 0 $spec-border-width 0
-		//box-shadow: $shadow $spec-text-color
 		box-shadow: none
 		transition: none
-
-		//.#{$spec-mod--schemecolor-wb} &
-			box-shadow: $shadow $spec-text-color--scheme-wb
-
-		//.#{$spec-mod--schemecolor-blue} &
-			box-shadow: $shadow $spec-text-color--scheme-blue
 
 	.nav-fixed & .main-nav-frame
 		&:before
 			display: none
-			//background-color: $spec-bg-color
-
-		//.#{$spec-mod--schemecolor-wb}.nav-fixed & .main-nav-frame:before
-			background-color: $spec-bg-color--scheme-wb
-
-		//.#{$spec-mod--schemecolor-blue}.nav-fixed & .main-nav-frame:before
-			background-color: $spec-bg-color--scheme-blue
 
 	.main-nav-holder
 		$shadow: 0 0 0 $spec-border-width
@@ -362,9 +322,41 @@ body.#{$spec-mod}
 			background: none
 
 	.user-options
+		display: flex
+		align-items: flex-start
+		flex-wrap: wrap
+		position: relative
+		top: auto
+		right: auto
+		width: auto
+		padding: 0
+		margin-bottom: 0.5em
+		+spec-font-small
+
+		li
+			padding: 0
+			margin: 0 1em 0.25em 0
+
 		a
 			color: currentColor
-			text-decoration: none
+
+			&::before
+				display: none
+
+			span
+				display: inline
+				border: none
+				line-height: inherit
+				transition: none
+
+				&.text-for-mobile
+					display: none
+
+		svg
+			//display: none
+
+			path
+				fill: currentColor
 
 	// breadcrumbs
 	.breadcrumbs-list
@@ -372,6 +364,7 @@ body.#{$spec-mod}
 		height: auto
 		min-height: 0
 		overflow: visible
+		+spec-font-small
 
 		li, a, span
 			display: inline
@@ -379,6 +372,13 @@ body.#{$spec-mod}
 
 		li
 			display: inline
+			padding: 0 0.4em 0 1em
+
+			&::before
+				color: inherit
+
+			&:first-child
+				padding-left: 0
 
 			span
 				line-height: inherit
@@ -386,100 +386,115 @@ body.#{$spec-mod}
 				white-space: normal
 
 		a
-			&:hover
+			&:hover, &:focus
 				color: inherit
 
-	.files
-		.files-item
-			display: block
-			width: auto
-			padding: 0
-
-	.file
-		min-height: 0
-
-		[class*="depict-files-"]
-			position: relative
-			left: auto
-			top: auto
-
-	.file__title a
-		margin: 0
-		padding: 0
-		display: inline
-
-	.file__info
-		color: inherit
-		+spec-font-small
-		font-style: italic
-
-	// .extra-popup
-	.extra-popup
-		+spec-reset-bg
-		//border: $spec-border-width solid currentColor
-		border: none
-
-	.extra-popup__head
-		border: 0 solid currentColor
-		border-width: $spec-border-width 0
-
-		.btn-menu-close
-			top: -$spec-border-width
-
-		.logo
-			background-image: url(../img/logo-text--bw.svg)
-
-			.#{$spec-mod--schemecolor-wb} &
-				background-image: url(../img/logo-text--wb.svg)
-
-			.#{$spec-mod--schemecolor-blue} &
-				background-image: url(../img/logo-text--blue.svg)
-
-	.main-menu__box, .main-menu__heading
-		+font($spec-font-size, $spec-line-height)
-
-		.#{$spec-mod--font-small} &
-			font-size: $spec-font-size--small
-
-		.#{$spec-mod--font-large} &
-			font-size: $spec-font-size--large
-
-	.main-menu__box
-		.#{$spec-mod--font-large} &
-			width: 50.0%
-
-	.main-menu__list
+	// social networks
+	.social-networks
 		li
-			padding-top: 0
-			padding-left: round-float(25px / $spec-font-size, 2) * 1em
-			margin-top: 0.5em
-
-		& > li
 			padding-left: 0
 
-			&:first-child
-				margin-top: 0
+		a
+			&::before
+				transition: none
+				border-color: currentColor
+
+		path
+			fill: currentColor
+
+		// hover
+		a:hover
+			path
+				fill: currentColor
+
+	// content foot
+	.content-foot
+		border: none
+		margin: 0
+		padding-top: $spec-bottom-space-section
+
+	.user-content > .text-layout + .content-foot
+		margin-top: 0 !important
+
+	.content-foot .share-box + div
+		border-top: $spec-border-width solid currentColor
+
+	// share box
+	.share-box__label
+		float: none
+
+	.share-box
+		padding-bottom: $spec-bottom-space
+
+		.social-networks
+			float: none
+			margin: 0
+			padding: 0
+			text-align: left
+
+	// nav page
+	.nav-page
+		font-size: inherit
+		letter-spacing: inherit
+		height: auto
+		padding: $spec-bottom-space 0 0
+		border-top: $spec-border-width solid currentColor
+
+	.nav-page__item
+		display: block
+		border: none
+		float: none
+		text-align: left
+		color: inherit
 
 		a
-			padding-top: 0.5em
+			display: inline
+			color: inherit
+			background: none
+
+			& > span
+				display: inline
+				vertical-align: initial
+				padding: 0
+				width: auto
+				font-size: inherit
+				line-height: inherit
+				font-family: inherit
+				text-transform: none
+				font-weight: bold
+				letter-spacing: inherit
+
+			i
+				display: none
+
+				&::before, &::after
+					background-color: currentColor !important
 
 			&:hover
 				color: inherit
+				background-color: inherit
 
-		ul
-			li
-				&::before
-					$size: round-float(10px / $spec-font-size, 1) * 1em
-					top: 0.7em
-					+size($size)
-					border-radius: 20px
-					background-color: currentColor
+		// disabled
+		&.disabled
+			background: none
+
+			& a, & a:hover
+				text-decoration: none
+				cursor: default
+				color: inherit
+				opacity: 0.5
+				background-color: inherit
+
+	.nav-articles .nav-page__item
+		width: auto
 
 	// promo-slider
 	.promo-slider
 		margin-left: 0
 
 	.promo-slider__item
+		border: none
+
 		&::before
 			display: none
 
@@ -547,6 +562,9 @@ body.#{$spec-mod}
 			display: inline
 			vertical-align: baseline
 			width: auto
+			+spec-font-item
+			font-weight: bold
+			text-transform: uppercase
 
 	[class*="depict-regard"]
 		display: inline-block
@@ -611,6 +629,12 @@ body.#{$spec-mod}
 		svg
 			polygon, rect, path
 				transition: none
+				fill: currentColor
+
+	.no-touchevents & a:hover .links__icon
+		svg
+			polygon, rect, path
+				fill: currentColor
 
 	.links__content
 		max-width: none
@@ -621,17 +645,460 @@ body.#{$spec-mod}
 		display: inline
 		max-height: none
 		overflow: visible
+		text-decoration: underline
 
 		br
 			display: none
 
 	// hover
-	.desktop & .links__inner:hover
+	.no-touchevents & .links__inner:hover
 		box-shadow: none
 		background: none
 
 		.links__title
 			color: inherit
+			text-decoration: none
 
+	// info center
+	.info-center-header
+		font-weight: bold
+
+	.info__list
+		text-align: left
+		margin: 0
+
+	.info__item
+		display: block
+
+	.info__inner
+		width: auto
+		height: auto
+		overflow: visible
+		padding: 0
+		background: none
+		box-shadow: none
+		border: none
+
+	.info__label
+		display: inline-block
+		vertical-align: top
+		position: relative
+		left: auto
+		top: auto
+		overflow: visible
+		+spec-font-small
+		font-weight: normal
+		text-transform: uppercase
+		
+	.info__img
+		transform: none
+		background: none
+		overflow: visible
+
+		&::before
+			content: none
+
+	.info__figure
+		position: relative
+		left: auto
+		top: auto
+		width: auto
+		height: auto
+		transform: none
+		text-align: left
+
+		img
+			margin: 0
+
+	.info__content
+		margin-bottom: $spec-bottom-space-element
+
+	.info__title, .info__text
+		transform: none
+		opacity: 1
+		visibility: visible
+
+		.text-wrap
+			max-height: none
+			overflow: visible
+
+	.btn__info
+		margin: 0
+
+	.product__price
+		.byn, .byr
+			display: inline
+			color: inherit
+			font-size: inherit
+			font-weight: bold
+
+			&::before
+				display: none
+
+		.price-unit
+			+spec-font-small
+
+	// hover
+	.no-touchevents & a.info__inner:hover
+		box-shadow: none
+
+	.no-touchevents & .show-animation a:hover
+		.info__img,
+		.info__content
+			opacity: 1
+			visibility: visible
+			transform: none
+
+	//branches
+	.branches
+		padding-left: 0
+
+	.branches-map-svg
+		path, polygon
+			stroke: currentColor
+			transition: none
+			fill: $spec-bg-color
+
+			.#{$spec-mod--schemecolor-wb} &
+				fill: $spec-bg-color--scheme-wb
+
+			.#{$spec-mod--schemecolor-blue} &
+				fill: $spec-bg-color--scheme-blue
+
+		text
+			fill: currentColor
+			transition: none
+			letter-spacing: normal
+
+	// hover
+	.no-touchevents &, &
+		.branches-map-svg
+			a:hover, a.active
+				path, polygon
+					fill: currentColor
+					stroke: currentColor
+
+				.branches-map-logo
+					fill: $spec-bg-color
+
+					.#{$spec-mod--schemecolor-wb} &
+						fill: $spec-bg-color--scheme-wb
+
+					.#{$spec-mod--schemecolor-blue} &
+						fill: $spec-bg-color--scheme-blue
+
+	// branches-popup
+	.branches-popup__holder
+		border: $spec-border-width solid currentColor
+		box-shadow: none
+
+	.branches-popup__close
+		&::before, &::after
+			background-color: currentColor
+
+		.no-touchevents &:hover
+			&::before, &::after
+				background-color: currentColor
+
+	.branches-popup__cornet
+		display: none
+
+	.branches-popup__title, .branches-popup__subtitle
+		color: currentColor
+
+	.branches-popup dl svg path
+		fill: currentColor
+		stroke: currentColor
+
+	// user form
+	.user-form
+		background: none
+
+		.input-wrap
+			&::before, &:after
+				display: none
+
+		.label-holder
+			float: none
+			width: auto
+			padding: 0
+			margin-bottom: 3px
+
+			&::before
+				display: none
+
+			label, .label
+				max-width: none
+				display: inline
+				vertical-align: initial
+
+		.input-holder
+			margin-left: 0
+
+		.form-footer
+			margin-left: 0
+			padding-left: 0
+			display: flex
+			align-items: center
+
+		.form-note
+			height: auto
+
+			&::before
+				display: none
+
+		.form-note__item
+			width: auto
+			display: block
+
+	// tabs
+	.custom-tabs__panels
+		border-color: currentColor
+		border-width: 0 $spec-border-width $spec-border-width
+		background: none
+
+	.custom-tabs__nav
+		margin-bottom: -$spec-border-width
+
+	.custom-tabs__tab
+		font-family: inherit
+		color: inherit
+
+		a
+			display: flex
+			align-items: center
+			justify-content: center
+			border: $spec-border-width solid currentColor
+			background: none
+
+			& > span
+				font-size: 24px
+
+			&::before
+				display: none
+
+			&.active
+				color: currentColor
+				background: none
+				border-bottom-color: transparent
+				text-decoration: none
+				cursor: default
+
+			.no-touchevents &:hover
+				background: none
+
+	.years, .sorting
+		position: relative
+		top: auto
+		right: auto
+		margin-right: 0
+		border: none
+		width: 8em
+		height: auto
+
+		a
+			padding: 0.1em 0.5em
+
+			& > span
+				display: inline
+				vertical-align: initial
+				transition: none
+
+		& > a
+			position: relative
+			border: none
+			text-align: left
+			padding-right: 1.5em
+
+			&::before
+				display: none
+
+			&::after
+				content: ''
+				display: block
+				position: absolute
+				right: 0
+				top: 50%
+				+size(0.4em)
+				border: 0 solid currentColor
+				border-width: 0 0.1em 0.1em 0
+				transform: rotate(0.125turn)
+				margin: -0.35em 0.7em 0 0
+
+			& > i
+				display: none
+
+	.years-drop, .sorting-drop
+		border: none
+		padding: 0
+		margin: 0
+
+		li
+			padding: 0.1em 0
+
+		a
+			text-align: left
+
+			&:hover
+				color: currentColor
+
+			&.active
+				text-decoration: none
+				cursor: default
+				background-color: $spec-bg-color
+				color: $spec-text-color
+
+				.#{$spec-mod--schemecolor-wb} &
+					background-color: $spec-bg-color--scheme-wb
+					color: $spec-text-color--scheme-wb
+
+				.#{$spec-mod--schemecolor-blue} &
+					background-color: $spec-bg-color--scheme-blue
+					color: $spec-text-color--scheme-blue
+
+	//news
+	.news
+		min-height: 0
+
+	.news__item
+		border: none
+
+	.news__inner
+		display: initial
+		padding: 0
+
+		&::after
+			display: none
+
+	.news__img
+		float: none
+		margin-top: 0
+		margin-right: 0
+
+	.news__data
+		background: none
+		position: relative
+		left: auto
+		top: auto
+
+	// hover
+	.no-touchevents & .news__inner:hover
+		background: none
+
+		.news__title
+			color: inherit
+
+	// promo shop
+	.promo-shop
+		border: none
+
+	//info container
+	.info-container__list
+		margin: 0
+		font-size: inherit
+		letter-spacing: inherit
+
+	.info-container__item
+		width: auto
+		display: block
+		padding: 0
+
+	// filters
+	.filters__list
+		+margin-horizontal(-0.5em)
+		font-size: inherit
+		letter-spacing: inherit
+
+		+clear
+
+	.filters__item
+		float: left
+		+padding-horizontal(0.25em)
+		margin-bottom: 0.25em
+
+		a
+			+padding-horizontal(0.25em)
+
+	.filters__item
+		a:hover, a:focus, &.active a
+			text-decoration: none
+			+spec-reset-bg-invert
+
+	// sorting
+	.sorting
+		& > a
+			border: none
+
+	// products
+	//.products__list
+		font-size: inherit
+		letter-spacing: inherit
+		+margin-horizontal(0)
+		border: none
+
+		&::before, &::after
+			content: none
+
+	.products__item
+		height: auto !important
+
+		.btn-bay
+			position: static
+			left: auto
+			bottom: auto
+			transform: none
+
+	//.products__item
+		display: block
+		width: auto
+		border: none
+		padding: 0
+
+	//.products__inner
+		padding: 0
+		height: auto
+		transition: none
+		position: static
+		background: none
+
+	a.products__inner
+		&:hover, &:focus
+			background: none
+
+	.products__figure
+		//float: none
+		//font-size: inherit
+		//letter-spacing: inherit
+		//margin-top: 0
+		//margin-right: 0
+		//margin-left: 0
+		width: 240px
+		max-width: 100%
+
+		//&::before
+			display: none
+
+	//.products__img
+		&, & img
+			position: relative
+			left: auto
+			top: auto
+			width: auto
+			height: auto
+			font-size: inherit
+			letter-spacing: inherit
+			transform: none
+			max-height: none
+
+	.products__img
+		img
+			max-width: 100%
+
+	//.products__content
+		padding: 0
+		text-align: left
+		overflow: visible
+
+@import spec/popups
 
 /*=========== SPECIAL VERSION end ===========
