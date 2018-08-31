@@ -38,13 +38,13 @@
 
 
 	.main-menu__box, .main-menu__heading
-		+font($spec-font-size, $spec-line-height)
+		+spec-font-size--normal
 
 		.#{$spec-mod--font-small} &
-			font-size: $spec-font-size--small
+			+spec-font-size--small
 
 		.#{$spec-mod--font-large} &
-			font-size: $spec-font-size--large
+			+spec-font-size--large
 
 	.main-menu__box
 		.#{$spec-mod--font-large} &

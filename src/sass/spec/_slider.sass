@@ -41,3 +41,24 @@
 
 		.slick-dots
 			display: none !important
+
+	// tape slider
+	.tape-slider__arr, .tape-slider__scrollbar
+		display: none !important
+
+	.tape-slider__frame
+		overflow: visible !important
+
+	.tape-slider__holder
+		transform: none !important
+		width: auto !important
+		height: auto
+		+spec-font-reset
+
+		&::before
+			display: none
+
+	.products__item
+		width: auto !important
+		border: none
+		margin-bottom: $spec-bottom-space-item

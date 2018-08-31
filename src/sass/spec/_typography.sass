@@ -12,17 +12,17 @@
 			padding: 0
 
 	h1
-		+spec-font-title
+		+spec-font-size--title
 
 	h2
-		+spec-font-section
+		+spec-font-size--section
 
 	.heading
 		h1, h2
 			+prints-space-bottom-sm
 
 	h3
-		+spec-font-item
+		+spec-font-size--item
 
 	h4, h5, h6
 		font-size: inherit
@@ -45,6 +45,19 @@
 		& > span
 			border-bottom: none !important
 
+	b, strong, th
+		font-weight: bold
+
+	i, em
+		font-style: italic
+
+	i b, i strong,
+	em b, em strong,
+	b i, b em,
+	strong i, strong em
+		font-weight: bold
+		font-style: italic
+
 	hr
 		margin-top: $spec-bottom-space-item
 		border-color: currentColor
@@ -52,15 +65,15 @@
 
 	table
 		td, th
-			font-family: inherit !important
-			font-size: inherit !important
-			line-height: inherit !important
-			color: currentColor !important
-			border: 1px solid currentColor !important
-			background: none !important
+			font-family: inherit
+			font-size: inherit
+			line-height: inherit
+			color: currentColor
+			border: 1px solid currentColor
+			+spec-reset-bg
 
 		th
-			font-weight: bold !important
+			font-weight: bold
 
 		caption
 			font-size: $spec-small-text-font-size
@@ -174,14 +187,14 @@
 		height: auto
 		font:
 			family: inherit
-			weight: bold
+			weight: normal
 			style: normal
 			size: inherit
 		line-height: round-float(20px / 18px, 1)
 		padding: 20px 28px
 		cursor: pointer
 		letter-spacing: inherit
-		text-transform: none
+		text-transform: uppercase
 		transition: none
 		text-decoration: none
 		border: none
@@ -190,7 +203,7 @@
 		&::before, &::after
 			display: none !important
 
-		&:hover
+		&:hover, &:focus
 			text-decoration: underline
 			+spec-reset-bg-invert
 
@@ -215,7 +228,7 @@
 			color: $spec-text-color--scheme-blue
 			//background-color: $spec-bg-color--scheme-blue
 
-		&:hover
+		&:hover, &:focus
 			text-decoration: underline
 			background-color: transparent
 
@@ -224,16 +237,32 @@
 			@extend .btn-default-alt
 
 	// list
-	.#{$user-content}
-		ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop), ol
-			li
-				padding-top: 0
-				padding-left: round-float(25px / $spec-font-size, 2) * 1em
-				margin-top: 0.25em
+	ul, ol
+		list-style: none
+		margin: 0
+		padding: 0
 
-				&::before, &:first-child::before
-					color: currentColor
-					border-color: currentColor
+	.#{$user-content}
+		ul, ol
+			&#{$not-list-classes}
+				padding: 0
+				margin-bottom: $spec-bottom-space
+
+				&:last-child
+					margin-bottom: 0
+
+				ul, ol
+					margin-bottom: 0
+
+				li
+					padding-top: 0
+					padding-left: round-float(25px / $spec-font-size, 2) * 1em
+					margin-top: 0.25em
+
+					&, &:first-child
+						&::before
+							color: currentColor
+							border-color: currentColor
 
 		ol
 			li
@@ -243,24 +272,25 @@
 					min-width: $space
 					font-weight: bold
 
-		ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop), ol ul
-			li
-				&::before
-					//$size: round-float(10px / $spec-font-size, 1) * 1em
-					$size: 0.5em
-					top: 0.6em
-					min-width: 0
-					margin-left: 0
-					+size($size)
-					border-radius: $size
-					border: none
-					background-color: currentColor
+		ul, ol ul
+			&#{$not-list-classes}
+				li
+					&::before
+						//$size: round-float(10px / $spec-font-size, 1) * 1em
+						$size: 0.5em
+						top: 0.65em
+						min-width: 0
+						margin-left: 0
+						+size($size)
+						border-radius: $size
+						border: none
+						background-color: currentColor
 
 	blockquote
 		max-width: 34em
 
 		q
-			+spec-font-item
+			+spec-font-size--item
 			border-color: currentColor
 
 		cite
@@ -290,5 +320,20 @@
 
 	.file__info
 		color: inherit
-		+spec-font-small
+		+spec-font-size--note
 		font-style: italic
+
+	// important-note
+	.important-note
+		padding: 0
+		margin: round-float($spec-bottom-space * 1.5, 1) auto $spec-bottom-space
+
+	.important-note__content
+		border: $spec-border-width solid currentColor
+
+	.important-note__label
+		+spec-reset-bg-invert
+		+spec-font-reset
+		font-weight: bold
+		text-transform: uppercase
+		transform: translate(-50%, calc(-50% - #{round($spec-border-width / 2)}))

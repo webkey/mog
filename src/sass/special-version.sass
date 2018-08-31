@@ -9,8 +9,7 @@
 	display: none !important
 
 body.#{$spec-mod}
-	font-size: $spec-font-size
-	line-height: $spec-line-height
+	+spec-font-size--normal
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
 	//font-family: Tahoma, Geneva, sans-serif
 	//font-family: "Times New Roman", Serif
@@ -24,22 +23,24 @@ body.#{$spec-mod}
 	// Специальная версия: Уменьшенный базовый шрифт
 	// ================================================================
 	.#{$spec-mod--font-small} &
-		font-size: $spec-font-size--small
+		+spec-font-size--small
 
 	// Специальная версия: Увеличенный базовый шрифт
 	// ================================================================
 	.#{$spec-mod--font-large} &
-		font-size: $spec-font-size--large
+		+spec-font-size--large
 
 	// Специальная версия: Средний межбуквенный интервал
 	// ================================================================
 	.#{$spec-mod--spacing-medium} &
 		letter-spacing: $spec-letter-spacing--medium
+		word-spacing: $spec-letter-spacing--medium
 
 	// Специальная версия: Бальшой межбуквенный интервал
 	// ================================================================
 	.#{$spec-mod--spacing-large} &
 		letter-spacing: $spec-letter-spacing--large
+		word-spacing: $spec-letter-spacing--large
 
 	// Специальная версия: Цветовая схема - Белым по черному
 	// ================================================================
@@ -62,7 +63,7 @@ body.#{$spec-mod}
 
 // reset font
 // ------------------------------------------------------------
-@import spec/fonts-spec
+@import spec/fonts-reset
 
 // reset transition
 // ------------------------------------------------------------
@@ -127,9 +128,11 @@ body.#{$spec-mod}
 /* to top end
 
 .#{$spec-mod}
-	.text-layout, .breadcrumbs-list, .user-content .breadcrumbs-list, .expander__header, .calc__box
-		padding-left: 0
-		padding-right: 0
+	.layout
+		max-width: calc(#{$spec-text-page} + #{nth($spec-page-space, 2)} * 2)
+		margin: 0 auto
+		box-sizing: border-box
+		+padding-horizontal(nth($spec-page-space, 2))
 
 	.header
 		color: currentColor
@@ -143,11 +146,41 @@ body.#{$spec-mod}
 
 	.content
 		//border: $spec-border-width solid $spec-text-color
-		margin-left: 0
+		//margin-left: 0
+		margin: 0 auto
+		max-width: $spec-text-layout
 		background: none
 		border: none
 
+	&.home-page .content
+		max-width: none
+
+		.promo-section, .regard-section, .links-section, .info-center-section
+			max-width: $spec-text-layout // костиль для главной страници, чтобы не ограничивать ширину блока с картой
+			+push-auto
+
+	// Убираем js прещет размеров футера
+	// Прижать к тизу нужно попытаться css методами
+	&
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		align-items: stretch
+
+		.wrapper
+			flex-shrink: 0 // нужно, если прижимать к низу с помощью flex
+			flex-grow: 0 // нужно, если прижимать к низу с помощью flex
+			overflow: visible // нужно, если прижимать к низу с помощью flex
+			min-height: 0
+			height: auto
+			width: 100% // нужно, если прижимать к низу с помощью flex
+
+	.spacer
+		display: none !important
+
 	.footer
+		width: 100% // нужно, если прижимать к низу с помощью flex
+		margin-top: 0 !important
 		border-top: $spec-border-width solid currentColor
 
 	.footer,
@@ -165,8 +198,7 @@ body.#{$spec-mod}
 
 	.footer-col
 		float: left
-		font-size: $spec-font-size
-		line-height: $spec-line-height
+		+spec-font-size--normal
 		letter-spacing: $spec-letter-spacing
 
 		&:last-child
@@ -184,15 +216,20 @@ body.#{$spec-mod}
 			display: none
 
 	// logo
-	.logo-title > strong
-		background-image: url(../img/logo-text--bw.svg)
-		background-size: contain
+	.logo-title
+		text-align: left
 
-		.#{$spec-mod--schemecolor-wb} &
-			background: url(../img/logo-text--wb.svg) no-repeat
+		& > strong
+			background-image: url(../img/logo-text--bw.svg)
+			background-repeat: no-repeat
+			background-position: 0 50%
+			//background-size: contain
 
-		.#{$spec-mod--schemecolor-blue} &
-			background: url(../img/logo-text--blue.svg) no-repeat
+			.#{$spec-mod--schemecolor-wb} &
+				background-image: url(../img/logo-text--wb.svg)
+
+			.#{$spec-mod--schemecolor-blue} &
+				background-image: url(../img/logo-text--blue.svg)
 
 	// main-nav
 	.main-nav-frame
@@ -258,7 +295,7 @@ body.#{$spec-mod}
 
 		a
 			padding: 10px 40px
-			+font($spec-font-size, $spec-line-height)
+			+spec-font-size--normal
 			background: none
 			border-top: $spec-border-width solid currentColor
 
@@ -296,7 +333,7 @@ body.#{$spec-mod}
 		& > span
 			display: inline
 			vertical-align: middle
-			font-size: $spec-font-size
+			+spec-font-size--normal
 			font-weight: bold
 			letter-spacing: $spec-letter-spacing
 			text-transform: uppercase
@@ -331,7 +368,7 @@ body.#{$spec-mod}
 		width: auto
 		padding: 0
 		margin-bottom: 0.5em
-		+spec-font-small
+		+spec-font-size--note
 
 		li
 			padding: 0
@@ -364,7 +401,7 @@ body.#{$spec-mod}
 		height: auto
 		min-height: 0
 		overflow: visible
-		+spec-font-small
+		+spec-font-size--note
 
 		li, a, span
 			display: inline
@@ -376,6 +413,14 @@ body.#{$spec-mod}
 
 			&::before
 				color: inherit
+
+			&, &:first-child
+				&::before
+					background: none
+					width: auto
+					height: auto
+					border: none
+					margin: 0
 
 			&:first-child
 				padding-left: 0
@@ -562,7 +607,7 @@ body.#{$spec-mod}
 			display: inline
 			vertical-align: baseline
 			width: auto
-			+spec-font-item
+			+spec-font-size--item
 			font-weight: bold
 			text-transform: uppercase
 
@@ -686,7 +731,7 @@ body.#{$spec-mod}
 		left: auto
 		top: auto
 		overflow: visible
-		+spec-font-small
+		+spec-font-size--note
 		font-weight: normal
 		text-transform: uppercase
 		
@@ -726,6 +771,7 @@ body.#{$spec-mod}
 		margin: 0
 
 	.product__price
+
 		.byn, .byr
 			display: inline
 			color: inherit
@@ -736,7 +782,7 @@ body.#{$spec-mod}
 				display: none
 
 		.price-unit
-			+spec-font-small
+			+spec-font-size--note
 
 	// hover
 	.no-touchevents & a.info__inner:hover
@@ -838,11 +884,24 @@ body.#{$spec-mod}
 		.form-footer
 			margin-left: 0
 			padding-left: 0
-			display: flex
-			align-items: center
+
+		.form-buttons
+			float: none
+			margin-right: 0
+			margin-bottom: $spec-bottom-space-element
+
+			&:last-child
+				margin-bottom: 0
+
+			.btn-submit
+				width: auto
 
 		.form-note
 			height: auto
+			margin-bottom: $spec-bottom-space-element
+
+			&:last-child
+				margin-bottom: 0
 
 			&::before
 				display: none
@@ -857,12 +916,19 @@ body.#{$spec-mod}
 		border-width: 0 $spec-border-width $spec-border-width
 		background: none
 
+	.custom-tabs__panel
+		box-sizing: border-box
+		padding: $spec-bottom-space-item nth($spec-page-space, 2)
+
 	.custom-tabs__nav
 		margin-bottom: -$spec-border-width
 
 	.custom-tabs__tab
 		font-family: inherit
 		color: inherit
+		min-height: 0
+		height: 4em
+		box-sizing: border-box
 
 		a
 			display: flex
@@ -870,9 +936,12 @@ body.#{$spec-mod}
 			justify-content: center
 			border: $spec-border-width solid currentColor
 			background: none
+			min-height: 0
+			height: 100%
+			box-sizing: border-box
 
 			& > span
-				font-size: 24px
+				font-weight: bold
 
 			&::before
 				display: none
@@ -992,17 +1061,6 @@ body.#{$spec-mod}
 	.promo-shop
 		border: none
 
-	//info container
-	.info-container__list
-		margin: 0
-		font-size: inherit
-		letter-spacing: inherit
-
-	.info-container__item
-		width: auto
-		display: block
-		padding: 0
-
 	// filters
 	.filters__list
 		+margin-horizontal(-0.5em)
@@ -1098,6 +1156,243 @@ body.#{$spec-mod}
 		padding: 0
 		text-align: left
 		overflow: visible
+
+	//card
+	.card__state i
+		&::before, &::after
+			background-color: currentColor
+			transition: none
+
+	.card-visual__img
+		img
+			margin: 0
+
+	.card__features
+		li
+			&, &:first-child
+				&::before
+					content: ''
+
+		b, strong
+			font-weight: bold
+
+	//card bar
+	.card-bar
+		position: relative
+
+	.card-bar__panels
+		display: block !important
+
+	.card-bar__panel
+		position: static !important
+
+	// jFiler
+	.jFiler
+		color: inherit
+
+	.jFiler-input-dragDrop
+		+spec-reset-bg
+		border: $spec-border-width dashed currentColor
+		color: currentColor
+
+	.jFiler-input-icon
+		display: none !important
+
+	.jFiler-input-text
+		strong
+			+spec-font-reset
+			text-align: center
+
+	// expander
+	.expander__hand:hover
+		.expander__title
+			color: inherit
+
+	.expander__panel
+		display: block !important
+
+	// calc
+	.calc__box
+		padding: $spec-bottom-space 0
+		border-top: $spec-border-width solid currentColor
+
+		&:first-child
+			border-top: none
+			padding-top: 0
+
+		&:last-child
+			border-bottom: none
+			padding-bottom: 0
+
+	.calc__col
+		display: flex
+		justify-content: flex-start
+		align-items: center
+
+	.label-alt + input[type="text"],
+	.calc__title + input[type="text"],
+	.calc__title + select
+		+spec-reset-bg
+		border-color: currentColor
+		color: currentColor
+		transition: none
+
+		&.error
+			border-color: currentColor !important
+			color: currentColor
+
+	.calc__box .captcha
+		padding: 0
+
+	// .ui-spinner
+	.ui-spinner
+		border-color: currentColor
+
+	.ui-spinner-input
+		color: currentColor
+
+	.ui-spinner-button
+		box-sizing: border-box
+		border: 0 solid currentColor
+		transform: none
+		color: inherit
+		+spec-reset-bg-invert
+
+		&, &:focus
+			&, .no-touchevents &
+				&::before, &::after
+					background-color: currentColor
+
+	.ui-spinner-up
+		border-left-width: 1px
+
+	.ui-spinner-down
+		border-right-width: 1px
+
+	// info map
+	.accident-icon
+		border: 2px solid currentColor
+		box-sizing: border-box
+		$size: 44px
+		width: $size
+		height: $size
+
+	.info-map-label .info-map-count span
+		border: 1px solid currentColor
+		box-sizing: border-box
+		$size: 22px
+		min-width: $size
+		height: $size
+		border-radius: round($size / 2)
+		line-height: 20px
+
+	.map-legend__list
+		li
+			display: flex
+			justify-content: flex-start
+			align-items: center
+
+		.accident-icon
+			position: relative
+			left: auto
+			top: auto
+			transform: none
+			margin-right: 1em
+			//$size: 2.2em
+			$size: 50px
+			width: $size
+			height: $size
+			flex-basis: $size
+			min-width: $size
+			border-color: transparent
+
+			svg
+				//$size: 1.33em
+				$size: 30px
+				width: $size
+				height: $size
+				margin: -#{round-float($size / 2, 2)} 0 0 -#{round-float($size / 2, 2)}
+
+			& ~ .text-inner
+				padding-left: 0
+
+	.custom-date .input-holder .input-button
+		&::after, &::before
+			display: none
+
+	// flatpickr
+	.custom-date .flatpickr-input
+		background: none
+		color: currentColor
+
+	.info-map-svg
+		path, polygon
+			stroke: currentColor
+			transition: none
+			fill: $spec-bg-color
+
+			.#{$spec-mod--schemecolor-wb} &
+				fill: $spec-bg-color--scheme-wb
+
+			.#{$spec-mod--schemecolor-blue} &
+				fill: $spec-bg-color--scheme-blue
+
+		text
+			fill: currentColor
+			transition: none
+			letter-spacing: normal
+
+		a
+			text-decoration: none
+
+	// hover
+	.no-touchevents &, &
+		.info-map-svg
+			a.has-labels
+
+				&:hover, &.active
+					path, polygon
+						fill: currentColor
+						stroke: currentColor
+
+					.branches-map-logo
+						fill: $spec-bg-color
+
+						.#{$spec-mod--schemecolor-wb} &
+							fill: $spec-bg-color--scheme-wb
+
+						.#{$spec-mod--schemecolor-blue} &
+							fill: $spec-bg-color--scheme-blue
+
+	.tbl-dates
+		border: 1px solid currentColor
+
+		td, th
+			padding: 0.5em
+			+spec-font-size--note
+			border-color: currentColor
+
+	.custom-tooltip
+		border-color: currentColor
+		color: currentColor
+
+	.custom-tooltip:after,
+	.custom-tooltip:before
+		color: currentColor
+
+	.custom-tooltip:after
+		border-color: rgba(255, 255, 255, 0)
+		border-bottom-color: $spec-bg-color
+
+		.#{$spec-mod--schemecolor-wb} &
+			border-bottom-color: $spec-bg-color--scheme-wb
+
+		.#{$spec-mod--schemecolor-blue} &
+			border-bottom-color: $spec-bg-color--scheme-blue
+
+	.custom-tooltip:before
+		border-color: rgba(230, 230, 230, 0)
+		border-bottom-color: currentColor
 
 @import spec/popups
 

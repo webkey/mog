@@ -5,7 +5,7 @@
 
 body.vspec {
 	font-size: 18px;
-	line-height: 1.78;
+	line-height: 1.67;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	color: #000;
 	background: #fff url(../img/empty.png) no-repeat fixed;
@@ -15,18 +15,22 @@ body.vspec {
 /* ============================================================ */
 .vspec--fontsize-small body.vspec {
 	font-size: 14px;
+	line-height: 1.71;
 }
 
 .vspec--fontsize-large body.vspec {
 	font-size: 30px;
+	line-height: 1.5;
 }
 
 .vspec--spacing-medium body.vspec {
 	letter-spacing: 0.2em;
+	word-spacing: 0.2em;
 }
 
 .vspec--spacing-large body.vspec {
 	letter-spacing: 0.5em;
+	word-spacing: 0.5em;
 }
 
 .vspec--schemecolor-white body.vspec {
@@ -51,6 +55,54 @@ body.vspec {
 .vspec .products__img,
 .vspec .products__img img,
 .vspec .products__content,
+.vspec .card,
+.vspec .card__title,
+.vspec .card-visual,
+.vspec .card-visual__figure,
+.vspec .card-visual__img,
+.vspec .product__bay,
+.vspec .card-description,
+.vspec .card__features,
+.vspec .card-bar,
+.vspec .card-bar__panels,
+.vspec .card-bar__panel,
+.vspec .similar-products,
+.vspec .tape-slider,
+.vspec .expander,
+.vspec .expander__item,
+.vspec .expander__header,
+.vspec .expander__hand,
+.vspec .expander__title,
+.vspec .expander__panel,
+.vspec .expander__frame,
+.vspec .expander__panel .expander .expander__frame,
+.vspec .expander__panel .expander__item:last-child .expander__panel,
+.vspec .info-container,
+.vspec .info-container__list,
+.vspec .info-container__item,
+.vspec .info-container__row,
+.vspec .info-container__row_lg,
+.vspec .info-container__title,
+.vspec .info-container__sub-title,
+.vspec .contacts-map__info,
+.vspec .map-popup,
+.vspec .map-popup__list,
+.vspec .map-popup__row,
+.vspec .map-popup__row-title,
+.vspec .contacts-map,
+.vspec .calc-form,
+.vspec .calc__box,
+.vspec .calc__title,
+.vspec .calc__row,
+.vspec .calc__col,
+.vspec .calc__btn,
+.vspec .calc__result,
+.vspec .map-legend,
+.vspec .map-legend__list,
+.vspec .map-legend__list li,
+.vspec .text-inner,
+.vspec .custom-date .input-holder,
+.vspec .custom-date .input-holder .input-button,
 .vspec .reset-full,
 .vspec .reset-full {
 	display: block;
@@ -72,6 +124,7 @@ body.vspec {
 	-ms-transform: none;
 	    transform: none;
 	border: none;
+	background-color: transparent;
 	box-shadow: none;
 	opacity: 1;
 	visibility: visible;
@@ -80,8 +133,10 @@ body.vspec {
 	font-weight: normal;
 	font-style: normal;
 	font-size: inherit;
+	text-indent: 0;
 	line-height: inherit;
 	letter-spacing: inherit;
+	word-spacing: inherit;
 	color: inherit;
 	text-align: left;
 	text-transform: none;
@@ -89,11 +144,18 @@ body.vspec {
 
 .vspec .sv-btn-on,
 .vspec h1, .vspec h2, .vspec h3, .vspec h4, .vspec h5, .vspec h6, .vspec p,
+.vspec b, .vspec strong, .vspec th,
+.vspec i, .vspec em,
+.vspec i b, .vspec i strong,
+.vspec em b, .vspec em strong,
+.vspec b i, .vspec b em,
+.vspec strong i, .vspec strong em,
 .vspec .breadcrumbs-list,
 .vspec .datetime time,
 .vspec blockquote q,
 .vspec blockquote > p,
 .vspec blockquote cite,
+.vspec label, .vspec .label,
 .vspec .files,
 .vspec .files .files-item,
 .vspec .file,
@@ -123,6 +185,13 @@ body.vspec {
 .vspec .info-container__item,
 .vspec .filters__item,
 .vspec .products__item,
+.vspec .card__state,
+.vspec .card__features b,
+.vspec .card__features strong,
+.vspec .custom-tabs__tab,
+.vspec .custom-tabs__tab a,
+.vspec .custom-tabs__tab a > span,
+.vspec .tbl-dates, .vspec .tbl-dates td, .vspec .tbl-dates th,
 .vspec .font-reset,
 .vspec .font-reset {
 	font-family: inherit;
@@ -134,6 +203,7 @@ body.vspec {
 	color: inherit;
 	text-align: left;
 	text-transform: none;
+	white-space: normal;
 }
 
 .vspec .promo-slider__text-add,
@@ -157,6 +227,7 @@ body.vspec {
 	color: inherit;
 	text-align: left;
 	text-transform: none;
+	white-space: normal;
 }
 
 .vspec .promo-slider__text-add:last-child,
@@ -181,6 +252,7 @@ body.vspec {
 	font-size: 2em;
 	line-height: 1.33;
 	letter-spacing: inherit;
+	word-spacing: inherit;
 	text-transform: none;
 	color: inherit;
 	text-align: left;
@@ -191,6 +263,8 @@ body.vspec {
 }
 
 .vspec .info-center-caption,
+.vspec .expander__title,
+.vspec .font-of-section,
 .vspec .font-of-section {
 	padding: 0;
 	margin-bottom: 0.6em;
@@ -200,12 +274,15 @@ body.vspec {
 	font-size: 1.44em;
 	line-height: 1.46;
 	letter-spacing: inherit;
+	word-spacing: inherit;
 	text-transform: none;
 	color: inherit;
 	text-align: left;
 }
 
 .vspec .info-center-caption:last-child,
+.vspec .expander__title:last-child,
+.vspec .font-of-section:last-child,
 .vspec .font-of-section:last-child {
 	margin-bottom: 0;
 }
@@ -217,6 +294,10 @@ body.vspec {
 .vspec .share-box__label,
 .vspec .info-container__sub-title,
 .vspec .products__title,
+.vspec .expander__panel .expander__title,
+.vspec .info-container__title,
+.vspec .map-popup__row-title,
+.vspec .calc__title,
 .vspec .font-of-item,
 .vspec .font-of-item {
 	padding: 0;
@@ -227,6 +308,7 @@ body.vspec {
 	font-size: 1.22em;
 	line-height: 1.55;
 	letter-spacing: inherit;
+	word-spacing: inherit;
 	text-transform: none;
 	color: inherit;
 	text-align: left;
@@ -239,6 +321,10 @@ body.vspec {
 .vspec .share-box__label:last-child,
 .vspec .info-container__sub-title:last-child,
 .vspec .products__title:last-child,
+.vspec .expander__panel .expander__title:last-child,
+.vspec .info-container__title:last-child,
+.vspec .map-popup__row-title:last-child,
+.vspec .calc__title:last-child,
 .vspec .font-of-item:last-child,
 .vspec .font-of-item:last-child {
 	margin-bottom: 0;
@@ -254,6 +340,7 @@ body.vspec {
 	font-size: 0.89em;
 	line-height: 1.75;
 	letter-spacing: inherit;
+	word-spacing: inherit;
 	text-transform: none;
 	color: inherit;
 	text-align: left;
@@ -289,6 +376,8 @@ body.vspec {
 .vspec .info__divider,
 .vspec .meter,
 .vspec .view-switcher,
+.vspec .card-bar__nav,
+.vspec .expander__angle,
 .vspec .spec-hide,
 .vspec .spec-hide {
 	display: none !important;
@@ -296,15 +385,21 @@ body.vspec {
 
 .vspec .products__list::before,
 .vspec .products__figure::before,
+.vspec .expander__panel::before,
+.vspec .calc__box::before,
+.vspec .map-legend__list li::before,
 .vspec .spec-hide-before::before,
 .vspec .spec-hide-before::before {
 	display: none;
 }
 
-.vspec .products__list::before,
-.vspec .products__figure::before,
-.vspec .spec-hide-before::before,
-.vspec .spec-hide-before::before {
+.vspec .products__list::after,
+.vspec .products__figure::after,
+.vspec .expander__panel::after,
+.vspec .expander__hand::after,
+.vspec .calc__box::after,
+.vspec .spec-hide-after::after,
+.vspec .spec-hide-after::after {
 	display: none;
 }
 
@@ -312,34 +407,35 @@ body.vspec {
 .vspec rect,
 .vspec path,
 .vspec [class*="depict-regard"] svg path,
+.vspec .info-container__depict svg path,
 .vspec .svg-path,
 .vspec .svg-path {
 	fill: currentColor;
 }
 
-.vspec .header, .vspec .extra-popup, .vspec [class*="nav__drop"], .vspec .branches-popup__holder, .vspec .branches-popup__close {
+.vspec .header, .vspec .extra-popup, .vspec [class*="nav__drop"], .vspec .branches-popup__holder, .vspec .branches-popup__close, .vspec .contacts-map__frame, .vspec .ui-spinner-input, .vspec .custom-tooltip {
 	background-color: #fff;
 }
 
-.vspec--schemecolor-white .vspec .header, .vspec--schemecolor-white .vspec .extra-popup, .vspec--schemecolor-white .vspec [class*="nav__drop"], .vspec--schemecolor-white .vspec .branches-popup__holder, .vspec--schemecolor-white .vspec .branches-popup__close {
+.vspec--schemecolor-white .vspec .header, .vspec--schemecolor-white .vspec .extra-popup, .vspec--schemecolor-white .vspec [class*="nav__drop"], .vspec--schemecolor-white .vspec .branches-popup__holder, .vspec--schemecolor-white .vspec .branches-popup__close, .vspec--schemecolor-white .vspec .contacts-map__frame, .vspec--schemecolor-white .vspec .ui-spinner-input, .vspec--schemecolor-white .vspec .custom-tooltip {
 	background-color: #000;
 }
 
-.vspec--schemecolor-blue .vspec .header, .vspec--schemecolor-blue .vspec .extra-popup, .vspec--schemecolor-blue .vspec [class*="nav__drop"], .vspec--schemecolor-blue .vspec .branches-popup__holder, .vspec--schemecolor-blue .vspec .branches-popup__close {
+.vspec--schemecolor-blue .vspec .header, .vspec--schemecolor-blue .vspec .extra-popup, .vspec--schemecolor-blue .vspec [class*="nav__drop"], .vspec--schemecolor-blue .vspec .branches-popup__holder, .vspec--schemecolor-blue .vspec .branches-popup__close, .vspec--schemecolor-blue .vspec .contacts-map__frame, .vspec--schemecolor-blue .vspec .ui-spinner-input, .vspec--schemecolor-blue .vspec .custom-tooltip {
 	background-color: #c8e5ff;
 }
 
-.vspec .info__label, .vspec .btn-to-top, .vspec .years, .vspec .years > a, .vspec .years-drop, .vspec .sorting, .vspec .sorting > a, .vspec .sorting-drop {
+.vspec .info__label, .vspec .btn-to-top, .vspec .years, .vspec .years > a, .vspec .years-drop, .vspec .sorting, .vspec .sorting > a, .vspec .sorting-drop, .vspec .card__state i, .vspec .accident-icon, .vspec .info-map-label .info-map-count span {
 	color: #fff;
 	background-color: #000;
 }
 
-.vspec--schemecolor-white .vspec .info__label, .vspec--schemecolor-white .vspec .btn-to-top, .vspec--schemecolor-white .vspec .years, .vspec--schemecolor-white .vspec .years > a, .vspec--schemecolor-white .vspec .years-drop, .vspec--schemecolor-white .vspec .sorting, .vspec--schemecolor-white .vspec .sorting > a, .vspec--schemecolor-white .vspec .sorting-drop {
+.vspec--schemecolor-white .vspec .info__label, .vspec--schemecolor-white .vspec .btn-to-top, .vspec--schemecolor-white .vspec .years, .vspec--schemecolor-white .vspec .years > a, .vspec--schemecolor-white .vspec .years-drop, .vspec--schemecolor-white .vspec .sorting, .vspec--schemecolor-white .vspec .sorting > a, .vspec--schemecolor-white .vspec .sorting-drop, .vspec--schemecolor-white .vspec .card__state i, .vspec--schemecolor-white .vspec .accident-icon, .vspec--schemecolor-white .vspec .info-map-label .info-map-count span {
 	color: #000;
 	background-color: #fff;
 }
 
-.vspec--schemecolor-blue .vspec .info__label, .vspec--schemecolor-blue .vspec .btn-to-top, .vspec--schemecolor-blue .vspec .years, .vspec--schemecolor-blue .vspec .years > a, .vspec--schemecolor-blue .vspec .years-drop, .vspec--schemecolor-blue .vspec .sorting, .vspec--schemecolor-blue .vspec .sorting > a, .vspec--schemecolor-blue .vspec .sorting-drop {
+.vspec--schemecolor-blue .vspec .info__label, .vspec--schemecolor-blue .vspec .btn-to-top, .vspec--schemecolor-blue .vspec .years, .vspec--schemecolor-blue .vspec .years > a, .vspec--schemecolor-blue .vspec .years-drop, .vspec--schemecolor-blue .vspec .sorting, .vspec--schemecolor-blue .vspec .sorting > a, .vspec--schemecolor-blue .vspec .sorting-drop, .vspec--schemecolor-blue .vspec .card__state i, .vspec--schemecolor-blue .vspec .accident-icon, .vspec--schemecolor-blue .vspec .info-map-label .info-map-count span {
 	color: #c8e5ff;
 	background-color: #004c92;
 }
@@ -360,6 +456,8 @@ body.vspec {
 }
 
 .vspec h1, .vspec h2, .vspec h3, .vspec h4, .vspec h5, .vspec h6, .vspec p,
+.vspec .text-layout,
+.vspec .calc__box,
 .vspec .content,
 .vspec .datetime,
 .vspec blockquote,
@@ -391,6 +489,13 @@ body.vspec {
 .vspec .files,
 .vspec .files .files-item,
 .vspec .promo-slider__bg,
+.vspec .card__title,
+.vspec .card-visual,
+.vspec .card-description,
+.vspec .expander,
+.vspec .expander__header,
+.vspec .info-container__item,
+.vspec .custom-date .input-holder,
 .vspec .spec-bottom-space,
 .vspec .spec-bottom-space {
 	margin-bottom: 1.2em;
@@ -403,6 +508,13 @@ body.vspec {
 .vspec .files:last-child,
 .vspec .files .files-item:last-child,
 .vspec .promo-slider__bg:last-child,
+.vspec .card__title:last-child,
+.vspec .card-visual:last-child,
+.vspec .card-description:last-child,
+.vspec .expander:last-child,
+.vspec .expander__header:last-child,
+.vspec .info-container__item:last-child,
+.vspec .custom-date .input-holder:last-child,
 .vspec .spec-bottom-space:last-child,
 .vspec .spec-bottom-space:last-child {
 	margin-bottom: 0;
@@ -444,11 +556,18 @@ body.vspec {
 .vspec .info__item,
 .vspec .heading,
 .vspec .news__item,
-.vspec .info-container__item,
-.vspec .info-container__row,
 .vspec .bottom-space,
 .vspec .products__list,
 .vspec .products__item,
+.vspec .card-bar,
+.vspec .card-bar__panel,
+.vspec .expander__item,
+.vspec .info-container,
+.vspec .contacts-map,
+.vspec .contacts-map__info,
+.vspec .contacts-map__frame,
+.vspec .calc-form,
+.vspec .map-legend,
 .vspec .spec-bottom-space-item,
 .vspec .spec-bottom-space-item {
 	margin-bottom: 2.4em;
@@ -462,11 +581,18 @@ body.vspec {
 .vspec .info__item:last-child,
 .vspec .heading:last-child,
 .vspec .news__item:last-child,
-.vspec .info-container__item:last-child,
-.vspec .info-container__row:last-child,
 .vspec .bottom-space:last-child,
 .vspec .products__list:last-child,
 .vspec .products__item:last-child,
+.vspec .card-bar:last-child,
+.vspec .card-bar__panel:last-child,
+.vspec .expander__item:last-child,
+.vspec .info-container:last-child,
+.vspec .contacts-map:last-child,
+.vspec .contacts-map__info:last-child,
+.vspec .contacts-map__frame:last-child,
+.vspec .calc-form:last-child,
+.vspec .map-legend:last-child,
 .vspec .spec-bottom-space-item:last-child,
 .vspec .spec-bottom-space-item:last-child {
 	margin-bottom: 0;
@@ -478,6 +604,21 @@ body.vspec {
 .vspec .news__img,
 .vspec .products__figure,
 .vspec .products__inner,
+.vspec .card-visual__figure,
+.vspec .product__bay,
+.vspec .card__features,
+.vspec .card__title h1,
+.vspec .expander__panel .expander__header,
+.vspec .info-container__row,
+.vspec .info-container__row_lg,
+.vspec .map-popup__row,
+.vspec .map-popup__row-title,
+.vspec .calc__row,
+.vspec .calc__col,
+.vspec .calc__btn,
+.vspec .calc__box .captcha,
+.vspec .map-legend__list li,
+.vspec .custom-date .flatpickr-input,
 .vspec .spec-bottom-space-element,
 .vspec .spec-bottom-space-element {
 	margin-bottom: 0.6em;
@@ -489,6 +630,21 @@ body.vspec {
 .vspec .news__img:last-child,
 .vspec .products__figure:last-child,
 .vspec .products__inner:last-child,
+.vspec .card-visual__figure:last-child,
+.vspec .product__bay:last-child,
+.vspec .card__features:last-child,
+.vspec .card__title h1:last-child,
+.vspec .expander__panel .expander__header:last-child,
+.vspec .info-container__row:last-child,
+.vspec .info-container__row_lg:last-child,
+.vspec .map-popup__row:last-child,
+.vspec .map-popup__row-title:last-child,
+.vspec .calc__row:last-child,
+.vspec .calc__col:last-child,
+.vspec .calc__btn:last-child,
+.vspec .calc__box .captcha:last-child,
+.vspec .map-legend__list li:last-child,
+.vspec .custom-date .flatpickr-input:last-child,
 .vspec .spec-bottom-space-element:last-child,
 .vspec .spec-bottom-space-element:last-child {
 	margin-bottom: 0;
@@ -511,6 +667,10 @@ html:not(.vspec--imageson) .vspec .depict-regard-safety,
 html:not(.vspec--imageson) .vspec .links__icon,
 html:not(.vspec--imageson) .vspec .info__img,
 html:not(.vspec--imageson) .vspec .news__img,
+html:not(.vspec--imageson) .vspec .products__figure,
+html:not(.vspec--imageson) .vspec .card-visual__figure,
+html:not(.vspec--imageson) .vspec .info-container__depict,
+html:not(.vspec--imageson) .vspec .info-container__figure,
 html:not(.vspec--imageson) .vspec .spec-no-img {
 	display: none !important;
 }
@@ -575,6 +735,41 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 .vspec .info__list .slick-dots,
 .vspec .spec-slider-reset .slick-dots {
 	display: none !important;
+}
+
+.vspec .tape-slider__arr, .vspec .tape-slider__scrollbar {
+	display: none !important;
+}
+
+.vspec .tape-slider__frame {
+	overflow: visible !important;
+}
+
+.vspec .tape-slider__holder {
+	-ms-transform: none !important;
+	    transform: none !important;
+	width: auto !important;
+	height: auto;
+	font-family: inherit;
+	font-weight: normal;
+	font-style: normal;
+	font-size: inherit;
+	line-height: inherit;
+	letter-spacing: inherit;
+	color: inherit;
+	text-align: left;
+	text-transform: none;
+	white-space: normal;
+}
+
+.vspec .tape-slider__holder::before {
+	display: none;
+}
+
+.vspec .products__item {
+	width: auto !important;
+	border: none;
+	margin-bottom: 2.4em;
 }
 
 .vspec .someclass,
@@ -664,6 +859,22 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	border-bottom: none !important;
 }
 
+.vspec b, .vspec strong, .vspec th {
+	font-weight: bold;
+}
+
+.vspec i, .vspec em {
+	font-style: italic;
+}
+
+.vspec i b, .vspec i strong,
+.vspec em b, .vspec em strong,
+.vspec b i, .vspec b em,
+.vspec strong i, .vspec strong em {
+	font-weight: bold;
+	font-style: italic;
+}
+
 .vspec hr {
 	margin-top: 2.4em;
 	border-color: currentColor;
@@ -671,16 +882,24 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 }
 
 .vspec table td, .vspec table th {
-	font-family: inherit !important;
-	font-size: inherit !important;
-	line-height: inherit !important;
-	color: currentColor !important;
-	border: 1px solid currentColor !important;
-	background: none !important;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	color: currentColor;
+	border: 1px solid currentColor;
+	background-color: #fff;
+}
+
+.vspec--schemecolor-white .vspec table td, .vspec--schemecolor-white .vspec table th {
+	background-color: #000;
+}
+
+.vspec--schemecolor-blue .vspec table td, .vspec--schemecolor-blue .vspec table th {
+	background-color: #c8e5ff;
 }
 
 .vspec table th {
-	font-weight: bold !important;
+	font-weight: bold;
 }
 
 .vspec table caption {
@@ -845,14 +1064,14 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	width: auto;
 	height: auto;
 	font-family: inherit;
-	font-weight: bold;
+	font-weight: normal;
 	font-style: normal;
 	font-size: inherit;
 	line-height: 1.1;
 	padding: 20px 28px;
 	cursor: pointer;
 	letter-spacing: inherit;
-	text-transform: none;
+	text-transform: uppercase;
 	transition: none;
 	text-decoration: none;
 	border: none;
@@ -874,18 +1093,18 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	display: none !important;
 }
 
-.vspec .btn-default:hover, .vspec input[type="submit"]:hover, .vspec input[type="button"]:hover, .vspec input[type="reset"]:hover, .vspec button:hover, .vspec .btn__info:hover, .vspec .btn-bay:hover {
+.vspec .btn-default:hover, .vspec .btn-default:focus, .vspec input[type="submit"]:hover, .vspec input[type="submit"]:focus, .vspec input[type="button"]:hover, .vspec input[type="button"]:focus, .vspec input[type="reset"]:hover, .vspec input[type="reset"]:focus, .vspec button:hover, .vspec button:focus, .vspec .btn__info:hover, .vspec .btn__info:focus, .vspec .btn-bay:hover, .vspec .btn-bay:focus {
 	text-decoration: underline;
 	color: #fff;
 	background-color: #000;
 }
 
-.vspec--schemecolor-white .vspec .btn-default:hover, .vspec--schemecolor-white .vspec input[type="submit"]:hover, .vspec--schemecolor-white .vspec input[type="button"]:hover, .vspec--schemecolor-white .vspec input[type="reset"]:hover, .vspec--schemecolor-white .vspec button:hover, .vspec--schemecolor-white .vspec .btn__info:hover, .vspec--schemecolor-white .vspec .btn-bay:hover {
+.vspec--schemecolor-white .vspec .btn-default:hover, .vspec--schemecolor-white .vspec .btn-default:focus, .vspec--schemecolor-white .vspec input[type="submit"]:hover, .vspec--schemecolor-white .vspec input[type="submit"]:focus, .vspec--schemecolor-white .vspec input[type="button"]:hover, .vspec--schemecolor-white .vspec input[type="button"]:focus, .vspec--schemecolor-white .vspec input[type="reset"]:hover, .vspec--schemecolor-white .vspec input[type="reset"]:focus, .vspec--schemecolor-white .vspec button:hover, .vspec--schemecolor-white .vspec button:focus, .vspec--schemecolor-white .vspec .btn__info:hover, .vspec--schemecolor-white .vspec .btn__info:focus, .vspec--schemecolor-white .vspec .btn-bay:hover, .vspec--schemecolor-white .vspec .btn-bay:focus {
 	color: #000;
 	background-color: #fff;
 }
 
-.vspec--schemecolor-blue .vspec .btn-default:hover, .vspec--schemecolor-blue .vspec input[type="submit"]:hover, .vspec--schemecolor-blue .vspec input[type="button"]:hover, .vspec--schemecolor-blue .vspec input[type="reset"]:hover, .vspec--schemecolor-blue .vspec button:hover, .vspec--schemecolor-blue .vspec .btn__info:hover, .vspec--schemecolor-blue .vspec .btn-bay:hover {
+.vspec--schemecolor-blue .vspec .btn-default:hover, .vspec--schemecolor-blue .vspec .btn-default:focus, .vspec--schemecolor-blue .vspec input[type="submit"]:hover, .vspec--schemecolor-blue .vspec input[type="submit"]:focus, .vspec--schemecolor-blue .vspec input[type="button"]:hover, .vspec--schemecolor-blue .vspec input[type="button"]:focus, .vspec--schemecolor-blue .vspec input[type="reset"]:hover, .vspec--schemecolor-blue .vspec input[type="reset"]:focus, .vspec--schemecolor-blue .vspec button:hover, .vspec--schemecolor-blue .vspec button:focus, .vspec--schemecolor-blue .vspec .btn__info:hover, .vspec--schemecolor-blue .vspec .btn__info:focus, .vspec--schemecolor-blue .vspec .btn-bay:hover, .vspec--schemecolor-blue .vspec .btn-bay:focus {
 	color: #c8e5ff;
 	background-color: #004c92;
 }
@@ -911,18 +1130,37 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	color: #004c92;
 }
 
-.vspec .btn-default-alt:hover, .vspec input.btn-default-alt:hover[type="submit"], .vspec input.btn-default-alt:hover[type="button"], .vspec input.btn-default-alt:hover[type="reset"] {
+.vspec .btn-default-alt:hover, .vspec input.btn-default-alt:hover[type="submit"], .vspec input.btn-default-alt:hover[type="button"], .vspec input.btn-default-alt:hover[type="reset"], .vspec .btn-default-alt:focus, .vspec input.btn-default-alt:focus[type="submit"], .vspec input.btn-default-alt:focus[type="button"], .vspec input.btn-default-alt:focus[type="reset"] {
 	text-decoration: underline;
 	background-color: transparent;
 }
 
-.vspec .user-content ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop) li, .vspec .user-content ol li {
+.vspec ul, .vspec ol {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.vspec .user-content ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop):not(.map-legend__list), .vspec .user-content ol:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop):not(.map-legend__list) {
+	padding: 0;
+	margin-bottom: 1.2em;
+}
+
+.vspec .user-content ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop):not(.map-legend__list):last-child, .vspec .user-content ol:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop):not(.map-legend__list):last-child {
+	margin-bottom: 0;
+}
+
+.vspec .user-content ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop):not(.map-legend__list) ul, .vspec .user-content ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop):not(.map-legend__list) ol, .vspec .user-content ol:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop):not(.map-legend__list) ul, .vspec .user-content ol:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop):not(.map-legend__list) ol {
+	margin-bottom: 0;
+}
+
+.vspec .user-content ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop):not(.map-legend__list) li, .vspec .user-content ol:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop):not(.map-legend__list) li {
 	padding-top: 0;
 	padding-left: 1.39em;
 	margin-top: 0.25em;
 }
 
-.vspec .user-content ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop) li::before, .vspec .user-content ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop) li:first-child::before, .vspec .user-content ol li::before, .vspec .user-content ol li:first-child::before {
+.vspec .user-content ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop):not(.map-legend__list) li::before, .vspec .user-content ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop):not(.map-legend__list) li:first-child::before, .vspec .user-content ol:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop):not(.map-legend__list) li::before, .vspec .user-content ol:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop):not(.map-legend__list) li:first-child::before {
 	color: currentColor;
 	border-color: currentColor;
 }
@@ -933,8 +1171,8 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	font-weight: bold;
 }
 
-.vspec .user-content ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop) li::before, .vspec .user-content ol ul li::before {
-	top: 0.6em;
+.vspec .user-content ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop):not(.map-legend__list) li::before, .vspec .user-content ol ul:not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop):not(.map-legend__list) li::before {
+	top: 0.65em;
 	min-width: 0;
 	margin-left: 0;
 	width: 0.5em;
@@ -992,6 +1230,44 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	font-style: italic;
 }
 
+.vspec .important-note {
+	padding: 0;
+	margin: 1.8em auto 1.2em;
+}
+
+.vspec .important-note__content {
+	border: 2px solid currentColor;
+}
+
+.vspec .important-note__label {
+	color: #fff;
+	background-color: #000;
+	font-family: inherit;
+	font-weight: normal;
+	font-style: normal;
+	font-size: inherit;
+	line-height: inherit;
+	letter-spacing: inherit;
+	color: inherit;
+	text-align: left;
+	text-transform: none;
+	white-space: normal;
+	font-weight: bold;
+	text-transform: uppercase;
+	-ms-transform: translate(-50%, calc(-50% - 1px));
+	    transform: translate(-50%, calc(-50% - 1px));
+}
+
+.vspec--schemecolor-white .vspec .important-note__label {
+	color: #000;
+	background-color: #fff;
+}
+
+.vspec--schemecolor-blue .vspec .important-note__label {
+	color: #c8e5ff;
+	background-color: #004c92;
+}
+
 /* special version components */
 /* ============================================================ */
 /* to top */
@@ -1008,9 +1284,12 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 }
 
 /* to top end */
-.vspec .text-layout, .vspec .breadcrumbs-list, .vspec .user-content .breadcrumbs-list, .vspec .expander__header, .vspec .calc__box {
-	padding-left: 0;
-	padding-right: 0;
+.vspec .layout {
+	max-width: calc(1280px + 2.22em * 2);
+	margin: 0 auto;
+	box-sizing: border-box;
+	padding-right: 2.22em;
+	padding-left: 2.22em;
 }
 
 .vspec .header {
@@ -1027,12 +1306,51 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 }
 
 .vspec .content {
-	margin-left: 0;
+	margin: 0 auto;
+	max-width: 44em;
 	background: none;
 	border: none;
 }
 
+.vspec.home-page .content {
+	max-width: none;
+}
+
+.vspec.home-page .content .promo-section, .vspec.home-page .content .regard-section, .vspec.home-page .content .links-section, .vspec.home-page .content .info-center-section {
+	max-width: 44em;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.vspec {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	    flex-direction: column;
+	-ms-flex-pack: justify;
+	    justify-content: space-between;
+	-ms-flex-align: stretch;
+	    align-items: stretch;
+}
+
+.vspec .wrapper {
+	-ms-flex-negative: 0;
+	    flex-shrink: 0;
+	-ms-flex-positive: 0;
+	    flex-grow: 0;
+	overflow: visible;
+	min-height: 0;
+	height: auto;
+	width: 100%;
+}
+
+.vspec .spacer {
+	display: none !important;
+}
+
 .vspec .footer {
+	width: 100%;
+	margin-top: 0 !important;
 	border-top: 2px solid currentColor;
 }
 
@@ -1060,7 +1378,7 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 .vspec .footer-col {
 	float: left;
 	font-size: 18px;
-	line-height: 1.78;
+	line-height: 1.67;
 	letter-spacing: normal;
 }
 
@@ -1081,17 +1399,22 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	display: none;
 }
 
+.vspec .logo-title {
+	text-align: left;
+}
+
 .vspec .logo-title > strong {
 	background-image: url(../img/logo-text--bw.svg);
-	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 0 50%;
 }
 
 .vspec--schemecolor-white .vspec .logo-title > strong {
-	background: url(../img/logo-text--wb.svg) no-repeat;
+	background-image: url(../img/logo-text--wb.svg);
 }
 
 .vspec--schemecolor-blue .vspec .logo-title > strong {
-	background: url(../img/logo-text--blue.svg) no-repeat;
+	background-image: url(../img/logo-text--blue.svg);
 }
 
 .vspec .main-nav-frame {
@@ -1179,7 +1502,7 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 .vspec [class*="nav__drop"] a {
 	padding: 10px 40px;
 	font-size: 18px;
-	line-height: 1.78;
+	line-height: 1.67;
 	background: none;
 	border-top: 2px solid currentColor;
 }
@@ -1226,6 +1549,7 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	display: inline;
 	vertical-align: middle;
 	font-size: 18px;
+	line-height: 1.67;
 	font-weight: bold;
 	letter-spacing: normal;
 	text-transform: uppercase;
@@ -1323,6 +1647,14 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 
 .vspec .breadcrumbs-list li::before {
 	color: inherit;
+}
+
+.vspec .breadcrumbs-list li::before, .vspec .breadcrumbs-list li:first-child::before {
+	background: none;
+	width: auto;
+	height: auto;
+	border: none;
+	margin: 0;
 }
 
 .vspec .breadcrumbs-list li:first-child {
@@ -1857,14 +2189,29 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 .vspec .user-form .form-footer {
 	margin-left: 0;
 	padding-left: 0;
-	display: -ms-flexbox;
-	display: flex;
-	-ms-flex-align: center;
-	    align-items: center;
+}
+
+.vspec .user-form .form-buttons {
+	float: none;
+	margin-right: 0;
+	margin-bottom: 0.6em;
+}
+
+.vspec .user-form .form-buttons:last-child {
+	margin-bottom: 0;
+}
+
+.vspec .user-form .form-buttons .btn-submit {
+	width: auto;
 }
 
 .vspec .user-form .form-note {
 	height: auto;
+	margin-bottom: 0.6em;
+}
+
+.vspec .user-form .form-note:last-child {
+	margin-bottom: 0;
 }
 
 .vspec .user-form .form-note::before {
@@ -1882,6 +2229,11 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	background: none;
 }
 
+.vspec .custom-tabs__panel {
+	box-sizing: border-box;
+	padding: 2.4em 2.22em;
+}
+
 .vspec .custom-tabs__nav {
 	margin-bottom: -2px;
 }
@@ -1889,6 +2241,9 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 .vspec .custom-tabs__tab {
 	font-family: inherit;
 	color: inherit;
+	min-height: 0;
+	height: 4em;
+	box-sizing: border-box;
 }
 
 .vspec .custom-tabs__tab a {
@@ -1900,10 +2255,13 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	    justify-content: center;
 	border: 2px solid currentColor;
 	background: none;
+	min-height: 0;
+	height: 100%;
+	box-sizing: border-box;
 }
 
 .vspec .custom-tabs__tab a > span {
-	font-size: 24px;
+	font-weight: bold;
 }
 
 .vspec .custom-tabs__tab a::before {
@@ -2049,18 +2407,6 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	border: none;
 }
 
-.vspec .info-container__list {
-	margin: 0;
-	font-size: inherit;
-	letter-spacing: inherit;
-}
-
-.vspec .info-container__item {
-	width: auto;
-	display: block;
-	padding: 0;
-}
-
 .vspec .filters__list {
 	margin-right: -0.5em;
 	margin-left: -0.5em;
@@ -2131,6 +2477,314 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	max-width: 100%;
 }
 
+.vspec .card__state i::before, .vspec .card__state i::after {
+	background-color: currentColor;
+	transition: none;
+}
+
+.vspec .card-visual__img img {
+	margin: 0;
+}
+
+.vspec .card__features li::before, .vspec .card__features li:first-child::before {
+	content: '';
+}
+
+.vspec .card__features b, .vspec .card__features strong {
+	font-weight: bold;
+}
+
+.vspec .card-bar {
+	position: relative;
+}
+
+.vspec .card-bar__panels {
+	display: block !important;
+}
+
+.vspec .card-bar__panel {
+	position: static !important;
+}
+
+.vspec .jFiler {
+	color: inherit;
+}
+
+.vspec .jFiler-input-dragDrop {
+	background-color: #fff;
+	border: 2px dashed currentColor;
+	color: currentColor;
+}
+
+.vspec--schemecolor-white .vspec .jFiler-input-dragDrop {
+	background-color: #000;
+}
+
+.vspec--schemecolor-blue .vspec .jFiler-input-dragDrop {
+	background-color: #c8e5ff;
+}
+
+.vspec .jFiler-input-icon {
+	display: none !important;
+}
+
+.vspec .jFiler-input-text strong {
+	font-family: inherit;
+	font-weight: normal;
+	font-style: normal;
+	font-size: inherit;
+	line-height: inherit;
+	letter-spacing: inherit;
+	color: inherit;
+	text-align: left;
+	text-transform: none;
+	white-space: normal;
+	text-align: center;
+}
+
+.vspec .expander__hand:hover .expander__title {
+	color: inherit;
+}
+
+.vspec .expander__panel {
+	display: block !important;
+}
+
+.vspec .calc__box {
+	padding: 1.2em 0;
+	border-top: 2px solid currentColor;
+}
+
+.vspec .calc__box:first-child {
+	border-top: none;
+	padding-top: 0;
+}
+
+.vspec .calc__box:last-child {
+	border-bottom: none;
+	padding-bottom: 0;
+}
+
+.vspec .calc__col {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: start;
+	    justify-content: flex-start;
+	-ms-flex-align: center;
+	    align-items: center;
+}
+
+.vspec .label-alt + input[type="text"],
+.vspec .calc__title + input[type="text"],
+.vspec .calc__title + select {
+	background-color: #fff;
+	border-color: currentColor;
+	color: currentColor;
+	transition: none;
+}
+
+.vspec--schemecolor-white .vspec .label-alt + input[type="text"], .vspec--schemecolor-white
+.vspec .calc__title + input[type="text"], .vspec--schemecolor-white
+.vspec .calc__title + select {
+	background-color: #000;
+}
+
+.vspec--schemecolor-blue .vspec .label-alt + input[type="text"], .vspec--schemecolor-blue
+.vspec .calc__title + input[type="text"], .vspec--schemecolor-blue
+.vspec .calc__title + select {
+	background-color: #c8e5ff;
+}
+
+.vspec .label-alt + input[type="text"].error,
+.vspec .calc__title + input[type="text"].error,
+.vspec .calc__title + select.error {
+	border-color: currentColor !important;
+	color: currentColor;
+}
+
+.vspec .calc__box .captcha {
+	padding: 0;
+}
+
+.vspec .ui-spinner {
+	border-color: currentColor;
+}
+
+.vspec .ui-spinner-input {
+	color: currentColor;
+}
+
+.vspec .ui-spinner-button {
+	box-sizing: border-box;
+	border: 0 solid currentColor;
+	-ms-transform: none;
+	    transform: none;
+	color: inherit;
+	color: #fff;
+	background-color: #000;
+}
+
+.vspec--schemecolor-white .vspec .ui-spinner-button {
+	color: #000;
+	background-color: #fff;
+}
+
+.vspec--schemecolor-blue .vspec .ui-spinner-button {
+	color: #c8e5ff;
+	background-color: #004c92;
+}
+
+.vspec .ui-spinner-button::before, .vspec .ui-spinner-button::after, .no-touchevents .vspec .ui-spinner-button::before, .no-touchevents .vspec .ui-spinner-button::after, .vspec .ui-spinner-button:focus::before, .vspec .ui-spinner-button:focus::after, .no-touchevents .vspec .ui-spinner-button:focus::before, .no-touchevents .vspec .ui-spinner-button:focus::after {
+	background-color: currentColor;
+}
+
+.vspec .ui-spinner-up {
+	border-left-width: 1px;
+}
+
+.vspec .ui-spinner-down {
+	border-right-width: 1px;
+}
+
+.vspec .accident-icon {
+	border: 2px solid currentColor;
+	box-sizing: border-box;
+	width: 44px;
+	height: 44px;
+}
+
+.vspec .info-map-label .info-map-count span {
+	border: 1px solid currentColor;
+	box-sizing: border-box;
+	min-width: 22px;
+	height: 22px;
+	border-radius: 11px;
+	line-height: 20px;
+}
+
+.vspec .map-legend__list li {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: start;
+	    justify-content: flex-start;
+	-ms-flex-align: center;
+	    align-items: center;
+}
+
+.vspec .map-legend__list .accident-icon {
+	position: relative;
+	left: auto;
+	top: auto;
+	-ms-transform: none;
+	    transform: none;
+	margin-right: 1em;
+	width: 50px;
+	height: 50px;
+	-ms-flex-preferred-size: 50px;
+	    flex-basis: 50px;
+	min-width: 50px;
+	border-color: transparent;
+}
+
+.vspec .map-legend__list .accident-icon svg {
+	width: 30px;
+	height: 30px;
+	margin: -15px 0 0 -15px;
+}
+
+.vspec .map-legend__list .accident-icon ~ .text-inner {
+	padding-left: 0;
+}
+
+.vspec .custom-date .input-holder .input-button::after, .vspec .custom-date .input-holder .input-button::before {
+	display: none;
+}
+
+.vspec .custom-date .flatpickr-input {
+	background: none;
+	color: currentColor;
+}
+
+.vspec .info-map-svg path, .vspec .info-map-svg polygon {
+	stroke: currentColor;
+	transition: none;
+	fill: #fff;
+}
+
+.vspec--schemecolor-white .vspec .info-map-svg path, .vspec--schemecolor-white .vspec .info-map-svg polygon {
+	fill: #000;
+}
+
+.vspec--schemecolor-blue .vspec .info-map-svg path, .vspec--schemecolor-blue .vspec .info-map-svg polygon {
+	fill: #c8e5ff;
+}
+
+.vspec .info-map-svg text {
+	fill: currentColor;
+	transition: none;
+	letter-spacing: normal;
+}
+
+.vspec .info-map-svg a {
+	text-decoration: none;
+}
+
+.no-touchevents .vspec .info-map-svg a.has-labels:hover path, .no-touchevents .vspec .info-map-svg a.has-labels:hover polygon, .no-touchevents .vspec .info-map-svg a.has-labels.active path, .no-touchevents .vspec .info-map-svg a.has-labels.active polygon, .vspec .info-map-svg a.has-labels:hover path, .vspec .info-map-svg a.has-labels:hover polygon, .vspec .info-map-svg a.has-labels.active path, .vspec .info-map-svg a.has-labels.active polygon {
+	fill: currentColor;
+	stroke: currentColor;
+}
+
+.no-touchevents .vspec .info-map-svg a.has-labels:hover .branches-map-logo, .no-touchevents .vspec .info-map-svg a.has-labels.active .branches-map-logo, .vspec .info-map-svg a.has-labels:hover .branches-map-logo, .vspec .info-map-svg a.has-labels.active .branches-map-logo {
+	fill: #fff;
+}
+
+.vspec--schemecolor-white .no-touchevents .vspec .info-map-svg a.has-labels:hover .branches-map-logo, .vspec--schemecolor-white .no-touchevents .vspec .info-map-svg a.has-labels.active .branches-map-logo, .vspec--schemecolor-white .vspec .info-map-svg a.has-labels:hover .branches-map-logo, .vspec--schemecolor-white .vspec .info-map-svg a.has-labels.active .branches-map-logo {
+	fill: #000;
+}
+
+.vspec--schemecolor-blue .no-touchevents .vspec .info-map-svg a.has-labels:hover .branches-map-logo, .vspec--schemecolor-blue .no-touchevents .vspec .info-map-svg a.has-labels.active .branches-map-logo, .vspec--schemecolor-blue .vspec .info-map-svg a.has-labels:hover .branches-map-logo, .vspec--schemecolor-blue .vspec .info-map-svg a.has-labels.active .branches-map-logo {
+	fill: #c8e5ff;
+}
+
+.vspec .tbl-dates {
+	border: 1px solid currentColor;
+}
+
+.vspec .tbl-dates td, .vspec .tbl-dates th {
+	padding: 0.5em;
+	font-size: 0.89em;
+	line-height: 1.75;
+	border-color: currentColor;
+}
+
+.vspec .custom-tooltip {
+	border-color: currentColor;
+	color: currentColor;
+}
+
+.vspec .custom-tooltip:after,
+.vspec .custom-tooltip:before {
+	color: currentColor;
+}
+
+.vspec .custom-tooltip:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-bottom-color: #fff;
+}
+
+.vspec--schemecolor-white .vspec .custom-tooltip:after {
+	border-bottom-color: #000;
+}
+
+.vspec--schemecolor-blue .vspec .custom-tooltip:after {
+	border-bottom-color: #c8e5ff;
+}
+
+.vspec .custom-tooltip:before {
+	border-color: rgba(230, 230, 230, 0);
+	border-bottom-color: currentColor;
+}
+
 .vspec .extra-popup {
 	background-color: #fff;
 	border: none;
@@ -2179,15 +2833,17 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 
 .vspec .main-menu__box, .vspec .main-menu__heading {
 	font-size: 18px;
-	line-height: 1.78;
+	line-height: 1.67;
 }
 
 .vspec--fontsize-small .vspec .main-menu__box, .vspec--fontsize-small .vspec .main-menu__heading {
 	font-size: 14px;
+	line-height: 1.71;
 }
 
 .vspec--fontsize-large .vspec .main-menu__box, .vspec--fontsize-large .vspec .main-menu__heading {
 	font-size: 30px;
+	line-height: 1.5;
 }
 
 .vspec--fontsize-large .vspec .main-menu__box {

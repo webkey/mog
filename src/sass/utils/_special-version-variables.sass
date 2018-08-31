@@ -51,15 +51,29 @@ $spec-bg-color--scheme-blue: #c8e5ff !default
 // Стандартный базовый шрифт
 // ---------------------------------------------------------------------------
 $spec-font-size: 18px !default // 18px (1em)
-$spec-line-height: round-float(32px / 18px, 2) !default // 32px --> 1.78
+$spec-line-height: round-float(30px / $spec-font-size, 2) !default // 30px --> 1.67
+
+=spec-font-size--normal()
+	font-size: $spec-font-size
+	line-height: $spec-line-height
 
 // Settings: Размер шрифта - Уменьшенный базовый шрифт
 // ---------------------------------------------------------------------------
 $spec-font-size--small: 14px !default
+$spec-line-height--small: round-float(24px / $spec-font-size--small, 2) !default // 24px --> 1.71
+
+=spec-font-size--small()
+	font-size: $spec-font-size--small
+	line-height: $spec-line-height--small
 
 // Settings: Размер шрифта - Увеличенный базовый шрифт
 // ---------------------------------------------------------------------------
 $spec-font-size--large: 30px !default
+$spec-line-height--large: round-float(45px / $spec-font-size--large, 2) !default // 45px --> 1.5
+
+=spec-font-size--large()
+	font-size: $spec-font-size--large
+	line-height: $spec-line-height--large
 
 // H1, Заголовок страницы
 // ---------------------------------------------------------------------------
@@ -67,7 +81,7 @@ $spec-font-size--large: 30px !default
 $spec-title-font-size: round-float(36px / $spec-font-size, 2) * 1em !default // 36px --> 12em
 $spec-title-line-height: round-float(48px / 36px, 2) !default // 48px --> 1.33
 
-=spec-font-title()
+=spec-font-size--title()
 	font-size: $spec-title-font-size
 	line-height: $spec-title-line-height
 
@@ -76,7 +90,7 @@ $spec-title-line-height: round-float(48px / 36px, 2) !default // 48px --> 1.33
 $spec-section-font-size: round-float(26px / $spec-font-size, 2) * 1em !default // 26px --> 1.44em
 $spec-section-line-height: round-float(38px / 26px, 2) !default // 38px --> 1.44
 
-=spec-font-section()
+=spec-font-size--section()
 	font-size: $spec-section-font-size
 	line-height: $spec-section-line-height
 
@@ -85,7 +99,7 @@ $spec-section-line-height: round-float(38px / 26px, 2) !default // 38px --> 1.44
 $spec-item-font-size: round-float(22px / $spec-font-size, 2) * 1em !default // 22px --> 1.22em
 $spec-item-line-height: round-float(34px / 22px, 2) !default // 34px --> 1.55
 
-=spec-font-item()
+=spec-font-size--item()
 	font-size: $spec-item-font-size
 	line-height: $spec-item-line-height
 
@@ -94,7 +108,7 @@ $spec-item-line-height: round-float(34px / 22px, 2) !default // 34px --> 1.55
 $spec-small-text-font-size: round-float(16px / $spec-font-size, 2) * 1em !default // 16px --> 0.89em
 $spec-small-text-line-height: round-float(28px / 16px, 2) !default // 28px --> 1.75
 
-=spec-font-small()
+=spec-font-size--note()
 	font-size: $spec-small-text-font-size
 	line-height: $spec-small-text-line-height
 
@@ -115,6 +129,18 @@ $spec-letter-spacing--large: 0.5em !default
 // Отступы
 // ==========================================================================
 
+// Отступы горизонтальные
+// ---------------------------------------------------------------------------
+$spec-space: 1.5em !default
+$spec-space--sm: 1.25em !default
+$spec-space--mob: 1em !default
+$spec-page-space: (round-float(40px / $spec-font-size, 2) * 1em) (round-float(40px / $spec-font-size, 2) * 1em) !default
+
+// Максимальная ширина контента
+// ---------------------------------------------------------------------------
+$spec-text-page: 1280px !default
+$spec-text-layout: 44em !default // Задавать нужно в em, чтобы при изменении размера шрифта, количество символов в строке сохранялось. Примерно 85 символов в строке
+
 // Отступы вертикальные
 // ---------------------------------------------------------------------------
 $spec-bottom-space: 1.2em !default
@@ -122,19 +148,13 @@ $spec-bottom-space-element: round-float($spec-bottom-space / 2, 1) !default
 $spec-bottom-space-item: round-float($spec-bottom-space * 2, 1) !default
 $spec-bottom-space-section: round-float($spec-bottom-space * 3, 1) !default
 
-// Отступы горизонтальные
-// ---------------------------------------------------------------------------
-$spec-space: 1.5em !default
-$spec-space--sm: 1.25em !default
-$spec-space--mob: 1em !default
-
 
 // Borders
 // ==========================================================================
 $spec-border-width: 2px
 
 // Reset font style
-=spec-reset-font()
+=spec-font-reset()
 	font:
 		family: inherit
 		weight: normal
@@ -145,6 +165,7 @@ $spec-border-width: 2px
 	color: inherit
 	text-align: left
 	text-transform: none
+	white-space: normal
 
 // Reset background
 =spec-reset-bg()
@@ -189,6 +210,7 @@ $spec-border-width: 2px
 	margin: 0
 	transform: none
 	border: none
+	background-color: transparent
 	box-shadow: none
 	opacity: 1
 	visibility: visible
@@ -198,8 +220,17 @@ $spec-border-width: 2px
 		weight: normal
 		style: normal
 		size: inherit
+	text-indent: 0
 	line-height: inherit
 	letter-spacing: inherit
+	word-spacing: inherit
 	color: inherit
 	text-align: left
 	text-transform: none
+
+// Список классов-исключений для тегов ul, ol
+// Добавляются к типографическим стилям списков ul, ol, чтобы не применять стили для указанных класов
+// Example: $not-list-classes: ':not(.class1):not(.class2)'
+// Enter: .user-content ul:not(.class1):not(.class1)
+// ==========================================================================
+$not-list-classes: ':not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop):not(.map-legend__list)'

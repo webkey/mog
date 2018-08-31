@@ -1,12 +1,6 @@
 <a href="#" class="@@classes@@if(context.active){ active}"@@if(context.mod){ data-mod="@@mod"}@@if(!context.titleOn){ title="@@text"}@@if(context.titleOn){ data-title-on="@@titleOn"}@@if(context.titleOff){ data-title-off="@@titleOff"}@@if(context.toggle){ data-toggle}@@if(context.active){ tabindex="-1"}>
-	@@if(context.icon) {
-		@@include("@@icon")
-	}
-	@@if(context.iconOff) {
-		@@include("@@iconOff")
-	}
-	@@if(!context.icon) {
-		<div class="icon"></div>
-	}
+	@@if(context.icon) { @@include("@@icon") }
+	@@if(context.iconOff) { @@include("@@iconOff") }
+	@@if(!context.icon) {<div class="icon"></div>}
 	<span>@@text</span>
 </a>

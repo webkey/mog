@@ -19,11 +19,18 @@
 	// ------------------------------------------------------------
 	.sv-btn-on,
 	h1, h2, h3, h4, h5, h6, p,
+	b, strong, th,
+	i, em,
+	i b, i strong,
+	em b, em strong,
+	b i, b em,
+	strong i, strong em,
 	.breadcrumbs-list,
 	.datetime time,
 	blockquote q,
 	blockquote > p,
 	blockquote cite,
+	label, .label,
 	.files,
 	.files .files-item,
 	.file,
@@ -53,9 +60,16 @@
 	.info-container__item,
 	.filters__item,
 	.products__item,
+	.card__state,
+	.card__features b,
+	.card__features strong,
+	.custom-tabs__tab,
+	.custom-tabs__tab a,
+	.custom-tabs__tab a > span,
+	.tbl-dates, .tbl-dates td, .tbl-dates th,
 	.font-reset,
 	.font-reset
-		+spec-reset-font
+		+spec-font-reset
 
 
 
@@ -73,7 +87,7 @@
 	.font-of-text
 		padding: 0
 		margin-bottom: $spec-bottom-space-element
-		+spec-reset-font
+		+spec-font-reset
 
 		&:last-child
 			margin-bottom: 0
@@ -89,8 +103,9 @@
 			family: inherit
 			weight: bold
 			style: normal
-		+spec-font-title
+		+spec-font-size--title
 		letter-spacing: inherit
+		word-spacing: inherit
 		text-transform: none
 		color: inherit
 		text-align: left
@@ -103,6 +118,8 @@
 	// H2, Заголовки секций
 	// ---------------------------------------------------------------------------
 	.info-center-caption,
+	.expander__title,
+	.font-of-section,
 	.font-of-section
 		padding: 0
 		margin-bottom: $spec-bottom-space-element
@@ -110,8 +127,9 @@
 			family: inherit
 			weight: bold
 			style: normal
-		+spec-font-section
+		+spec-font-size--section
 		letter-spacing: inherit
+		word-spacing: inherit
 		text-transform: none
 		color: inherit
 		text-align: left
@@ -130,6 +148,10 @@
 	.share-box__label,
 	.info-container__sub-title,
 	.products__title,
+	.expander__panel .expander__title,
+	.info-container__title,
+	.map-popup__row-title,
+	.calc__title,
 	.font-of-item,
 	.font-of-item
 		padding: 0
@@ -138,8 +160,9 @@
 			family: inherit
 			weight: bold
 			style: normal
-		+spec-font-item
+		+spec-font-size--item
 		letter-spacing: inherit
+		word-spacing: inherit
 		text-transform: none
 		color: inherit
 		text-align: left
@@ -159,8 +182,9 @@
 			family: inherit
 			weight: normal
 			style: italic
-		+spec-font-small
+		+spec-font-size--note
 		letter-spacing: inherit
+		word-spacing: inherit
 		text-transform: none
 		color: inherit
 		text-align: left
