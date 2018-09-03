@@ -106,6 +106,7 @@ body.vspec {
 .vspec .reset-full,
 .vspec .reset-full {
 	display: block;
+	display: initial;
 	float: none;
 	position: initial;
 	overflow: visible;
@@ -1292,6 +1293,22 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	padding-left: 2.22em;
 }
 
+@media (max-width: 1919px) {
+	.vspec .layout {
+		max-width: calc(1280px + 2.22em * 2 + 70px);
+		padding-right: 2.22em;
+		padding-left: calc(2.22em + 70px);
+	}
+}
+
+@media (max-width: 1199px) {
+	.vspec .layout {
+		max-width: none;
+		padding-right: 1.11em;
+		padding-left: calc(1.11em + 70px);
+	}
+}
+
 .vspec .header {
 	color: currentColor;
 }
@@ -1312,6 +1329,18 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	border: none;
 }
 
+@media (max-width: 1199px) {
+	.vspec .content {
+		max-width: 36em;
+	}
+}
+
+@media (max-width: 767px) {
+	.vspec .content {
+		max-width: none;
+	}
+}
+
 .vspec.home-page .content {
 	max-width: none;
 }
@@ -1322,26 +1351,21 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	margin-left: auto;
 }
 
-.vspec {
-	display: -ms-flexbox;
-	display: flex;
-	-ms-flex-direction: column;
-	    flex-direction: column;
-	-ms-flex-pack: justify;
-	    justify-content: space-between;
-	-ms-flex-align: stretch;
-	    align-items: stretch;
+@media (max-width: 1199px) {
+	.vspec.home-page .content .promo-section, .vspec.home-page .content .regard-section, .vspec.home-page .content .links-section, .vspec.home-page .content .info-center-section {
+		max-width: 36em;
+	}
+}
+
+@media (max-width: 767px) {
+	.vspec.home-page .content .promo-section, .vspec.home-page .content .regard-section, .vspec.home-page .content .links-section, .vspec.home-page .content .info-center-section {
+		max-width: none;
+	}
 }
 
 .vspec .wrapper {
-	-ms-flex-negative: 0;
-	    flex-shrink: 0;
-	-ms-flex-positive: 0;
-	    flex-grow: 0;
-	overflow: visible;
 	min-height: 0;
 	height: auto;
-	width: 100%;
 }
 
 .vspec .spacer {
@@ -1349,7 +1373,6 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 }
 
 .vspec .footer {
-	width: 100%;
 	margin-top: 0 !important;
 	border-top: 2px solid currentColor;
 }
@@ -1367,6 +1390,12 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 .vspec .footer-bottom-holder {
 	padding-top: 1em;
 	padding-bottom: 1em;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: justify;
+	    justify-content: space-between;
+	-ms-flex-align: start;
+	    align-items: flex-start;
 }
 
 .vspec .footer-bottom-holder::after {
@@ -1375,15 +1404,14 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	clear: both;
 }
 
+.vspec .footer-bottom-holder::after {
+	content: none;
+}
+
 .vspec .footer-col {
-	float: left;
 	font-size: 18px;
 	line-height: 1.67;
 	letter-spacing: normal;
-}
-
-.vspec .footer-col:last-child {
-	float: right;
 }
 
 .vspec .developer_logo {
@@ -1407,6 +1435,8 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	background-image: url(../img/logo-text--bw.svg);
 	background-repeat: no-repeat;
 	background-position: 0 50%;
+	font-size: 0;
+	line-height: 0;
 }
 
 .vspec--schemecolor-white .vspec .logo-title > strong {
@@ -1415,6 +1445,18 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 
 .vspec--schemecolor-blue .vspec .logo-title > strong {
 	background-image: url(../img/logo-text--blue.svg);
+}
+
+.vspec .main-nav {
+	height: 80px;
+	margin-top: -40px;
+}
+
+@media (max-width: 1439px) {
+	.vspec .main-nav {
+		height: 60px;
+		margin-top: -30px;
+	}
 }
 
 .vspec .main-nav-frame {
@@ -1428,6 +1470,8 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 
 .vspec .main-nav-holder {
 	box-shadow: 0 0 0 2px #000;
+	padding-left: 80px;
+	background: none;
 	transition: none;
 }
 
@@ -1440,10 +1484,18 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 }
 
 .vspec .nav__list > li > a {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: center;
+	    justify-content: center;
+	-ms-flex-align: center;
+	    align-items: center;
+	height: 80px;
 	color: currentColor;
 	background-color: #fff;
 	border: 0 solid currentColor;
 	border-left-width: 2px;
+	padding: 0 5px;
 }
 
 .vspec--schemecolor-white .vspec .nav__list > li > a {
@@ -1452,6 +1504,12 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 
 .vspec--schemecolor-blue .vspec .nav__list > li > a {
 	background-color: #c8e5ff;
+}
+
+@media (max-width: 1439px) {
+	.vspec .nav__list > li > a {
+		height: 60px;
+	}
 }
 
 .vspec .nav__list > li > a:before {
@@ -1502,9 +1560,16 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 .vspec [class*="nav__drop"] a {
 	padding: 10px 40px;
 	font-size: 18px;
-	line-height: 1.67;
+	line-height: 24px;
 	background: none;
 	border-top: 2px solid currentColor;
+}
+
+@media (max-width: 1439px) {
+	.vspec [class*="nav__drop"] a {
+		font-size: 16px;
+		line-height: 20px;
+	}
 }
 
 .vspec [class*="nav__drop"] li.hover > a {
@@ -1516,6 +1581,8 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 }
 
 .vspec .btn-menu, .vspec .btn-menu-close {
+	width: 80px;
+	height: 80px;
 	display: block;
 	display: -ms-flexbox;
 	display: flex;
@@ -1568,11 +1635,18 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	border-right-width: 2px;
 }
 
+@media (max-width: 1439px) {
+	.vspec .btn-menu {
+		height: 60px;
+	}
+}
+
 .vspec .btn-menu-mobile {
 	display: none;
 }
 
 .vspec .btn-menu-close {
+	height: 60px;
 	width: 120px;
 	border-width: 2px;
 }
@@ -1593,7 +1667,7 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	right: auto;
 	width: auto;
 	padding: 0;
-	margin-bottom: 0.5em;
+	margin: 0.5em 0;
 	font-size: 0.89em;
 	line-height: 1.75;
 }
@@ -1980,6 +2054,10 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 	text-decoration: none;
 }
 
+.vspec .info-center-content {
+	max-width: none;
+}
+
 .vspec .info-center-header {
 	font-weight: bold;
 }
@@ -2232,6 +2310,12 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 .vspec .custom-tabs__panel {
 	box-sizing: border-box;
 	padding: 2.4em 2.22em;
+}
+
+@media (max-width: 1199px) {
+	.vspec .custom-tabs__panel {
+		padding: 2.4em 1.11em;
+	}
 }
 
 .vspec .custom-tabs__nav {
@@ -2788,6 +2872,7 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 .vspec .extra-popup {
 	background-color: #fff;
 	border: none;
+	box-sizing: border-box;
 }
 
 .vspec--schemecolor-white .vspec .extra-popup {
@@ -2844,6 +2929,11 @@ html:not(.vspec--imageson) .vspec .spec-no-img {
 .vspec--fontsize-large .vspec .main-menu__box, .vspec--fontsize-large .vspec .main-menu__heading {
 	font-size: 30px;
 	line-height: 1.5;
+}
+
+.vspec .extra-popup__content {
+	height: calc(100% - 60px);
+	padding: 30px 0 10px;
 }
 
 .vspec--fontsize-large .vspec .main-menu__box {

@@ -134,6 +134,14 @@ body.#{$spec-mod}
 		box-sizing: border-box
 		+padding-horizontal(nth($spec-page-space, 2))
 
+		+media('<desk-hd')
+			max-width: calc(#{$spec-text-page} + #{nth($spec-page-space, 2)} * 2 + #{nth($spec-panel-size, 2)})
+			+padding-horizontal(calc(#{nth($spec-page-space, 2)} + #{nth($spec-panel-size, 2)}), nth($spec-page-space, 2))
+
+		+media('<desk-sm')
+			max-width: none
+			+padding-horizontal(calc(#{nth($spec-page-space--md, 2)} + #{nth($spec-panel-size, 2)}), nth($spec-page-space--md, 2))
+
 	.header
 		color: currentColor
 
@@ -152,6 +160,12 @@ body.#{$spec-mod}
 		background: none
 		border: none
 
+		+media('<desk-sm')
+			max-width: $spec-text-layout--sm
+
+		+media('<tab-sm')
+			max-width: none
+
 	&.home-page .content
 		max-width: none
 
@@ -159,9 +173,16 @@ body.#{$spec-mod}
 			max-width: $spec-text-layout // костиль для главной страници, чтобы не ограничивать ширину блока с картой
 			+push-auto
 
-	// Убираем js прещет размеров футера
+			+media('<desk-sm')
+				max-width: $spec-text-layout--sm
+
+			+media('<tab-sm')
+				max-width: none
+
+	// Убираем js пересчет размеров футера
 	// Прижать к тизу нужно попытаться css методами
-	&
+	// Пока не нашел подходящего решения.
+	//&
 		display: flex
 		flex-direction: column
 		justify-content: space-between
@@ -175,11 +196,15 @@ body.#{$spec-mod}
 			height: auto
 			width: 100% // нужно, если прижимать к низу с помощью flex
 
+	.wrapper
+		min-height: 0
+		height: auto
+
 	.spacer
 		display: none !important
 
 	.footer
-		width: 100% // нужно, если прижимать к низу с помощью flex
+		//width: 100% // нужно, если прижимать к низу с помощью flex
 		margin-top: 0 !important
 		border-top: $spec-border-width solid currentColor
 
@@ -194,14 +219,20 @@ body.#{$spec-mod}
 	.footer-bottom-holder
 		padding-top: 1em
 		padding-bottom: 1em
+		display: flex
+		justify-content: space-between
+		align-items: flex-start
 		+clear
 
+		&::after
+			content: none
+
 	.footer-col
-		float: left
+		//float: left
 		+spec-font-size--normal
 		letter-spacing: $spec-letter-spacing
 
-		&:last-child
+		//&:last-child
 			float: right
 
 	.developer_logo
@@ -223,6 +254,7 @@ body.#{$spec-mod}
 			background-image: url(../img/logo-text--bw.svg)
 			background-repeat: no-repeat
 			background-position: 0 50%
+			+font(0, 0)
 			//background-size: contain
 
 			.#{$spec-mod--schemecolor-wb} &
@@ -232,6 +264,14 @@ body.#{$spec-mod}
 				background-image: url(../img/logo-text--blue.svg)
 
 	// main-nav
+	.main-nav
+		height: $main-nav-height--spec
+		margin-top: -#{round($main-nav-height--spec / 2)}
+
+		+media('<desk-ml')
+			height: $main-nav-height--spec--sm
+			margin-top: -#{round($main-nav-height--spec--sm / 2)}
+
 	.main-nav-frame
 		box-shadow: none
 		transition: none
@@ -243,6 +283,8 @@ body.#{$spec-mod}
 	.main-nav-holder
 		$shadow: 0 0 0 $spec-border-width
 		box-shadow: $shadow $spec-text-color
+		padding-left: $main-nav-height--spec
+		background: none
 		transition: none
 
 		.#{$spec-mod--schemecolor-wb} &
@@ -255,10 +297,18 @@ body.#{$spec-mod}
 	.nav__list
 		& > li
 			& > a
+				display: flex
+				justify-content: center
+				align-items: center
+				height: $main-nav-height--spec
 				color: currentColor
 				+spec-reset-bg
 				border: 0 solid currentColor
 				border-left-width: $spec-border-width
+				padding: 0 5px
+
+				+media('<desk-ml')
+					height: $main-nav-height--spec--sm
 
 				&:before
 					display: none
@@ -292,15 +342,25 @@ body.#{$spec-mod}
 	[class*="nav__drop"]
 		border: $spec-border-width solid currentColor
 		box-shadow: none
+		//display: none
 
 		a
 			padding: 10px 40px
-			+spec-font-size--normal
+			+font(18px, 24px)
 			background: none
 			border-top: $spec-border-width solid currentColor
 
+			+media('<desk-ml')
+				+font(16px, 20px)
+
 		li.hover > a
 			background: none
+
+	//.nav__list li.hover,
+	//.no-js .nav__list li:hover,
+	//.nav__list li.active
+		& > [class*="nav__drop"]
+			display: block
 
 	[class*="nav__list"] > li:first-child > [class*="nav__drop"]
 		border: $spec-border-width solid currentColor
@@ -308,6 +368,7 @@ body.#{$spec-mod}
 	// button open menu / close popups
 
 	.btn-menu, .btn-menu-close
+		+size($main-nav-height--spec)
 		display: block
 		display: flex
 		justify-content: center
@@ -348,10 +409,14 @@ body.#{$spec-mod}
 	.btn-menu
 		border-right-width: $spec-border-width
 
+		+media('<desk-ml')
+			height: $main-nav-height--spec--sm
+
 	.btn-menu-mobile
 		display: none
 
 	.btn-menu-close
+		height: 60px
 		width: 120px
 		border-width: $spec-border-width
 
@@ -367,7 +432,7 @@ body.#{$spec-mod}
 		right: auto
 		width: auto
 		padding: 0
-		margin-bottom: 0.5em
+		margin: 0.5em 0
 		+spec-font-size--note
 
 		li
@@ -705,6 +770,9 @@ body.#{$spec-mod}
 			text-decoration: none
 
 	// info center
+	.info-center-content
+		max-width: none
+
 	.info-center-header
 		font-weight: bold
 
@@ -919,6 +987,9 @@ body.#{$spec-mod}
 	.custom-tabs__panel
 		box-sizing: border-box
 		padding: $spec-bottom-space-item nth($spec-page-space, 2)
+
+		+media('<desk-sm')
+			padding: $spec-bottom-space-item nth($spec-page-space--md, 2)
 
 	.custom-tabs__nav
 		margin-bottom: -$spec-border-width

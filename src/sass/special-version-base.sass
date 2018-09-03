@@ -18,7 +18,7 @@ $displace: 1px
 	left: 0
 	top: 0
 	height: 100%
-	width: 70px
+	//width: 70px
 	z-index: 999
 	font-size: 16px
 	line-height: 1
@@ -122,12 +122,12 @@ $displace: 1px
 
 .spec-panel,
 .spec-panel_h
-	width: 70px
+	width: nth($spec-panel-size, 2)
 	box-sizing: border-box
 
 	+media('<mob-md')
-		height: 56px
-		width: 100%
+		height: nth($spec-panel-size--sm, 1)
+		width: nth($spec-panel-size--sm, 2)
 
 // button enable special version
 .sv-btn-on
@@ -176,9 +176,17 @@ $displace: 1px
 		left: auto
 		right: 15px
 		top: 20px
+		
+		+media('<tab-lg')
+			right: 80px
+			top: auto
+			bottom: 32px
 
 		.home-page &
 			color: white
+
+			+media('<tab-lg')
+				color: inherit
 
 		.#{$spec-mod} &
 			color: currentColor

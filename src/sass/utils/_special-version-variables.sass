@@ -25,6 +25,11 @@ $spec-mod--schemecolor-def: 'vspec--schemecolor-def' !default
 $spec-mod--schemecolor-wb: 'vspec--schemecolor-white' !default
 $spec-mod--schemecolor-blue: 'vspec--schemecolor-blue' !default
 
+// Special Panel
+// ==========================================================================
+$spec-panel-size: 100% 70px // height width
+$spec-panel-size--sm: 56px 100% // height width
+
 
 // СПЕЦИАЛЬНАЯ ВЕРСИЯ: НАСТРОЙКИ
 // ==========================================================================
@@ -135,11 +140,13 @@ $spec-space: 1.5em !default
 $spec-space--sm: 1.25em !default
 $spec-space--mob: 1em !default
 $spec-page-space: (round-float(40px / $spec-font-size, 2) * 1em) (round-float(40px / $spec-font-size, 2) * 1em) !default
+$spec-page-space--md: (round-float(20px / $spec-font-size, 2) * 1em) (round-float(20px / $spec-font-size, 2) * 1em) !default
 
 // Максимальная ширина контента
 // ---------------------------------------------------------------------------
 $spec-text-page: 1280px !default
 $spec-text-layout: 44em !default // Задавать нужно в em, чтобы при изменении размера шрифта, количество символов в строке сохранялось. Примерно 85 символов в строке
+$spec-text-layout--sm: 36em !default // Для небольших экранов
 
 // Отступы вертикальные
 // ---------------------------------------------------------------------------
@@ -193,6 +200,7 @@ $spec-border-width: 2px
 // Reset all styles
 =spec-reset-full()
 	display: block
+	display: initial
 	float: none
 	position: initial
 	overflow: visible
@@ -234,3 +242,9 @@ $spec-border-width: 2px
 // Enter: .user-content ul:not(.class1):not(.class1)
 // ==========================================================================
 $not-list-classes: ':not(.breadcrumbs-list):not(.social-networks):not(.sorting-drop):not(.years-drop):not(.map-legend__list)'
+
+
+// Main Navigation
+// ==========================================================================
+$main-nav-height--spec: 80px
+$main-nav-height--spec--sm: 60px
