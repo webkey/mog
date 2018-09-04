@@ -128,29 +128,64 @@ body.#{$spec-mod}
 /* to top end
 
 .#{$spec-mod}
-	.layout
-		max-width: calc(#{$spec-text-page} + #{nth($spec-page-space, 2)} * 2)
-		margin: 0 auto
-		box-sizing: border-box
-		+padding-horizontal(nth($spec-page-space, 2))
+	&, &.home-page
+		.layout
+			max-width: calc(#{$spec-text-page} + #{nth($spec-page-space, 2)} * 2)
+			margin: 0 auto
+			box-sizing: border-box
+			+padding-horizontal(nth($spec-page-space, 2))
 
-		+media('<desk-hd')
-			max-width: calc(#{$spec-text-page} + #{nth($spec-page-space, 2)} * 2 + #{nth($spec-panel-size, 2)})
-			+padding-horizontal(calc(#{nth($spec-page-space, 2)} + #{nth($spec-panel-size, 2)}), nth($spec-page-space, 2))
+			+media('<desk-hd')
+				max-width: calc(#{$spec-text-page} + #{nth($spec-page-space, 2)} * 2 + #{nth($spec-panel-size, 2)})
+				+padding-horizontal(calc(#{nth($spec-page-space, 2)} + #{nth($spec-panel-size, 2)}), nth($spec-page-space, 2))
 
-		+media('<desk-sm')
-			max-width: none
-			+padding-horizontal(calc(#{nth($spec-page-space--md, 2)} + #{nth($spec-panel-size, 2)}), nth($spec-page-space--md, 2))
+			+media('<desk-sm')
+				max-width: none
+				+padding-horizontal(calc(#{nth($spec-page-space--md, 2)} + #{nth($spec-panel-size, 2)}), nth($spec-page-space--md, 2))
+
+			+media('<mob-md')
+				+padding-horizontal(#{nth($spec-page-space--sm, 2)})
 
 	.header
 		color: currentColor
 
 	.header-holder
+		min-height: 0
 		padding-top: 0
+		padding-bottom: calc(#{round($main-nav-height--spec / 2)} + 1em)
+
+		+media('<desk-ml')
+			padding-bottom: calc(#{round($main-nav-height--spec--sm / 2)} + 1em)
+
+		+media('<tab-lg')
+			height: auto
+			padding-bottom: 0.5em
+			border: 0 solid currentColor
+			border-width: 0 0 1px
+
+		+media('<mob-lg')
+			display: flex
+			flex-direction: column
+			padding-bottom: 0
+			padding-top: 10px
+			border: none
+
+		&::before, &::after
+			display: none
 
 	.main
 		padding-top: $spec-bottom-space-section
 		padding-bottom: $spec-bottom-space-section
+
+		+media('<desk-ml')
+			$space: 2.5em
+			padding-top: $space
+			padding-bottom: $space
+
+		+media('<tab-sm')
+			$space: 2em
+			padding-top: $space
+			padding-bottom: $space
 
 	.content
 		//border: $spec-border-width solid $spec-text-color
@@ -199,6 +234,12 @@ body.#{$spec-mod}
 	.wrapper
 		min-height: 0
 		height: auto
+		overflow-y: visible
+		overflow-x: hidden
+		z-index: 6
+
+		+media('<mob-md')
+			padding-top: nth($spec-panel-size--sm, 1)
 
 	.spacer
 		display: none !important
@@ -216,24 +257,47 @@ body.#{$spec-mod}
 	.footer-common
 		padding-top: 1em
 
-	.footer-bottom-holder
+	.footer-bottom
 		padding-top: 1em
 		padding-bottom: 1em
+
+		+media('<tab-lg')
+			padding-top: 0.5em
+
+	.footer-bottom-holder
+		padding-top: 0
+		padding-bottom: 0
 		display: flex
 		justify-content: space-between
 		align-items: flex-start
+		line-height: 1
 		+clear
+
+		+media('<tab-lg')
+			display: block
 
 		&::after
 			content: none
 
 	.footer-col
 		//float: left
-		+spec-font-size--normal
+		font-size: 18px
+		line-height: 24px
 		letter-spacing: $spec-letter-spacing
+		padding: 0 10px
 
-		//&:last-child
-			float: right
+		+media('<tab-lg')
+			padding: 0.5em 0 0
+
+		&:first-child
+			padding-left: 0
+
+		&:last-child
+			padding-right: 0
+			text-align: right
+
+			+media('<tab-lg')
+				text-align: left
 
 	.developer_logo
 		display: inline
@@ -247,6 +311,27 @@ body.#{$spec-mod}
 			display: none
 
 	// logo
+	.logo
+		float: none
+		display: block
+		-webkit-tap-highlight-color: transparent
+
+		+media('<tab-lg')
+			padding-left: 65px
+
+	.logo-img
+		+media('<tab-lg')
+			left: 0
+
+	.logo-img, .logo::before
+		height: 100px
+
+		+media('<1280px')
+			height: 80px
+
+		+media('<tab-lg')
+			height: 60px
+
 	.logo-title
 		text-align: left
 
@@ -263,6 +348,10 @@ body.#{$spec-mod}
 			.#{$spec-mod--schemecolor-blue} &
 				background-image: url(../img/logo-text--blue.svg)
 
+	.copyright
+		vertical-align: top
+		padding: 0
+
 	// main-nav
 	.main-nav
 		height: $main-nav-height--spec
@@ -276,8 +365,11 @@ body.#{$spec-mod}
 		box-shadow: none
 		transition: none
 
+		&::before
+			display: none
+
 	.nav-fixed & .main-nav-frame
-		&:before
+		&::before
 			display: none
 
 	.main-nav-holder
@@ -294,6 +386,9 @@ body.#{$spec-mod}
 			box-shadow: $shadow $spec-text-color--scheme-blue
 
 	// navigation list
+	.nav
+		box-shadow: none
+
 	.nav__list
 		& > li
 			& > a
@@ -379,6 +474,7 @@ body.#{$spec-mod}
 		border: 0 solid currentColor
 		background-color: $spec-bg-color
 		text-decoration: underline
+		-webkit-tap-highlight-color: transparent
 
 		.#{$spec-mod--schemecolor-wb} &
 			background-color: $spec-bg-color--scheme-wb
@@ -394,10 +490,14 @@ body.#{$spec-mod}
 		& > span
 			display: inline
 			vertical-align: middle
-			+spec-font-size--normal
+			font-size: 18px
+			line-height: inherit
 			font-weight: bold
 			letter-spacing: $spec-letter-spacing
 			text-transform: uppercase
+
+			+media('<mob-md')
+				font-size: 14px
 
 		& > i
 			display: none
@@ -414,14 +514,20 @@ body.#{$spec-mod}
 
 	.btn-menu-mobile
 		display: none
+		border: none
+		height: auto
+		width: auto
+		background: none
+		position: absolute
+		right: 0
+		top: 0
+		margin-top: 0.4em
 
-	.btn-menu-close
-		height: 60px
-		width: 120px
-		border-width: $spec-border-width
+		+media('<tab-lg')
+			display: block
 
-		& > i
-			background: none
+		+media('<mob-lg')
+			margin-top: 20px
 
 	.user-options
 		display: flex
@@ -431,31 +537,77 @@ body.#{$spec-mod}
 		top: auto
 		right: auto
 		width: auto
-		padding: 0
-		margin: 0.5em 0
+		height: auto
+		padding: 0.5em 0
+		margin: 0
 		+spec-font-size--note
+		background: none
+
+		+media('<tab-lg')
+			border: 0 solid currentColor
+			border-width: 0 0 1px
+			margin-bottom: 0.5em
+			padding-right: 80px
+
+		+media('<mob-lg')
+			order: 3
+			padding-right: 0
+			margin-top: 10px
+			border-width: 1px 0
 
 		li
+			position: relative // В обычной версии на планшете два последних пункта позиционируются. Отменяем это
+			right: auto // В обычной версии на планшете два последних пункта позиционируются. Отменяем это
+			top: auto // В обычной версии на планшете два последних пункта позиционируются. Отменяем это
+			left: auto // В обычной версии на планшете два последних пункта позиционируются. Отменяем это
+			bottom: auto // В обычной версии на планшете два последних пункта позиционируются. Отменяем это
+			height: auto
+			width: auto
 			padding: 0
-			margin: 0 1em 0.25em 0
+			margin: 0 1em 0 0
 
 		a
+			padding: 0
+			height: auto
+			width: auto
 			color: currentColor
+			box-shadow: none
+			text-decoration: none
+
+			.touchevents
+				-webkit-tap-highlight-color: transparent
 
 			&::before
 				display: none
 
 			span
 				display: inline
+				vertical-align: middle
 				border: none
 				line-height: inherit
 				transition: none
+				text-decoration: underline
 
 				&.text-for-mobile
 					display: none
 
+			&:hover
+				background-color: transparent
+				color: currentColor
+				box-shadow: none
+
+				svg path
+					fill: currentColor
+
+				span
+					text-decoration: none
+
 		svg
 			//display: none
+			display: inline-block
+			vertical-align: middle
+			+size(24px)
+			transition: none
 
 			path
 				fill: currentColor
@@ -614,6 +766,7 @@ body.#{$spec-mod}
 		top: auto
 		height: auto
 		width: 320px
+		max-width: 100%
 
 		&::before
 			content: ''
@@ -637,9 +790,17 @@ body.#{$spec-mod}
 		width: auto
 		max-width: none
 
+	.promo-slider__title,
+	.promo-slider__text
+		max-height: none
+
 	// regard
 	.regard-section
 		background: none
+		box-shadow: none
+
+	.regard
+		border: none
 		box-shadow: none
 
 	.regard__item
@@ -649,6 +810,12 @@ body.#{$spec-mod}
 		height: auto
 		background: none !important
 		opacity: 1
+		box-shadow: none
+		border: none
+
+		&:nth-child(even)
+			box-shadow: none
+			border: none
 
 		&::before
 			display: none
@@ -867,6 +1034,9 @@ body.#{$spec-mod}
 	.branches
 		padding-left: 0
 
+		+media('<tab-lg')
+			min-height: 0
+
 	.branches-map-svg
 		path, polygon
 			stroke: currentColor
@@ -887,24 +1057,48 @@ body.#{$spec-mod}
 	// hover
 	.no-touchevents &, &
 		.branches-map-svg
-			a:hover, a.active
-				path, polygon
-					fill: currentColor
-					stroke: currentColor
+			a
+				.touchevents &
+					-webkit-tap-highlight-color: transparent
+					user-select: none
 
-				.branches-map-logo
-					fill: $spec-bg-color
+				&:hover, &.active
+					path, polygon
+						fill: currentColor
+						stroke: currentColor
 
-					.#{$spec-mod--schemecolor-wb} &
-						fill: $spec-bg-color--scheme-wb
+					.branches-map-logo
+						fill: $spec-bg-color
 
-					.#{$spec-mod--schemecolor-blue} &
-						fill: $spec-bg-color--scheme-blue
+						.#{$spec-mod--schemecolor-wb} &
+							fill: $spec-bg-color--scheme-wb
+
+						.#{$spec-mod--schemecolor-blue} &
+							fill: $spec-bg-color--scheme-blue
 
 	// branches-popup
+	.branches-popup
+		+media('<mob-lg')
+			position: fixed
+			left: calc(#{round(nth($spec-panel-size, 2) / 2)} + 50%) !important
+			top: 50% !important
+			transform: translate(-50%, -50%)
+
+		+media('<mob-md')
+			left: 50%
+
 	.branches-popup__holder
 		border: $spec-border-width solid currentColor
 		box-shadow: none
+
+		+media('<mob-lg')
+			box-shadow: 0 0 50px rgba($spec-text-color, 0.25)
+
+			.#{$spec-mod--schemecolor-wb} &
+				box-shadow: 0 0 50px rgba($spec-text-color--scheme-wb, 0.50)
+
+			.#{$spec-mod--schemecolor-blue} &
+				box-shadow: 0 0 50px rgba($spec-text-color--scheme-blue, 0.25)
 
 	.branches-popup__close
 		&::before, &::after
@@ -990,6 +1184,9 @@ body.#{$spec-mod}
 
 		+media('<desk-sm')
 			padding: $spec-bottom-space-item nth($spec-page-space--md, 2)
+
+		+media('<mob-md')
+			padding: $spec-bottom-space-item nth($spec-page-space--sm, 2)
 
 	.custom-tabs__nav
 		margin-bottom: -$spec-border-width

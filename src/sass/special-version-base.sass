@@ -26,12 +26,13 @@ $displace: 1px
 	box-shadow: 0 0 0 1px currentColor
 	//background-color: var(--main-bg-color);
 	background-color: inherit
-	will-change: transform
-	-webkit-transform: translate(0, 0)
-	-ms-transform: translate(0, 0)
-	transform: translate(0, 0)
-	-webkit-transition: transform 0.3s linear
-	transition: transform 0.3s linear
+	// transition
+	$prop: transform
+	will-change: $prop
+	transition:
+		property: $prop
+		duration: 0.2s
+		timing-function: ease-in-out
 
 	+media('<mob-md')
 		height: 70px
@@ -58,17 +59,9 @@ $displace: 1px
 			overflow-y: hidden
 			overflow-x: auto
 
-	.nav-opened .inner-page &
-		+media('<tab-lg')
-			transform: translate(-100%, 0)
-
+	.nav-opened-before &
 		+media('<mob-md')
-			transform: translate(0, calc(-100% - 2px))
-			box-shadow: none
-
-	.nav-opened .main-page &
-		+media('<tab-sm')
-			transform: translate(-100%, 0)
+			transform: translate(0, -110%)
 
 	.sv-btn-group
 		+media('<mob-md')
@@ -131,24 +124,30 @@ $displace: 1px
 
 // button enable special version
 .sv-btn-on
-	$size: 42px
 
 	position: fixed
 	left: 10px
 	top: 10px
-	padding-left: 33px
-	font-size: 14px
-	line-height: 16px
+	padding-left: 1.9em
+	font-family: inherit
+	//font-size: inherit
+	//line-height: inherit
+	font-size: 18px
+	line-height: 30px
 	letter-spacing: normal
 	color: inherit
+	font-weight: bold
+	font-style: normal
 	box-sizing: border-box
 	z-index: 9999
+
 
 	//span
 		font-size: 0
 		line-height: 0
 
 	svg
+		+size(1.4em)
 		position: absolute
 		left: 0
 		top: 50%
@@ -175,12 +174,12 @@ $displace: 1px
 		position: absolute
 		left: auto
 		right: 15px
-		top: 20px
+		top: 15px
 		
 		+media('<tab-lg')
 			right: 80px
 			top: auto
-			bottom: 32px
+			bottom: 25px
 
 		.home-page &
 			color: white
@@ -191,7 +190,20 @@ $displace: 1px
 		.#{$spec-mod} &
 			color: currentColor
 			top: auto
+			right: 0
 			bottom: 60px
+
+			+media('<tab-lg')
+				top: auto
+				bottom: 10px
+				right: 0
+
+			+media('<mob-lg')
+				order: 4
+				position: relative
+				top: auto
+				bottom: auto
+				right: auto
 
 	// in footer
 	.footer &

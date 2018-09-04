@@ -15,9 +15,9 @@
 	box-shadow: 0 0 0 1px currentColor;
 	background-color: inherit;
 	will-change: transform;
-	-ms-transform: translate(0, 0);
-	transform: translate(0, 0);
-	transition: transform 0.3s linear;
+	transition-property: transform;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
 }
 
 @media (max-width: 479px) {
@@ -52,25 +52,10 @@
 	}
 }
 
-@media (max-width: 979px) {
-	.nav-opened .inner-page .spec-panel {
-		-ms-transform: translate(-100%, 0);
-		    transform: translate(-100%, 0);
-	}
-}
-
 @media (max-width: 479px) {
-	.nav-opened .inner-page .spec-panel {
-		-ms-transform: translate(0, calc(-100% - 2px));
-		    transform: translate(0, calc(-100% - 2px));
-		box-shadow: none;
-	}
-}
-
-@media (max-width: 767px) {
-	.nav-opened .main-page .spec-panel {
-		-ms-transform: translate(-100%, 0);
-		    transform: translate(-100%, 0);
+	.nav-opened-before .spec-panel {
+		-ms-transform: translate(0, -110%);
+		    transform: translate(0, -110%);
 	}
 }
 
@@ -150,16 +135,21 @@
 	position: fixed;
 	left: 10px;
 	top: 10px;
-	padding-left: 33px;
-	font-size: 14px;
-	line-height: 16px;
+	padding-left: 1.9em;
+	font-family: inherit;
+	font-size: 18px;
+	line-height: 30px;
 	letter-spacing: normal;
 	color: inherit;
+	font-weight: bold;
+	font-style: normal;
 	box-sizing: border-box;
 	z-index: 9999;
 }
 
 .sv-btn-on svg {
+	width: 1.4em;
+	height: 1.4em;
 	position: absolute;
 	left: 0;
 	top: 50%;
@@ -192,14 +182,14 @@
 	position: absolute;
 	left: auto;
 	right: 15px;
-	top: 20px;
+	top: 15px;
 }
 
 @media (max-width: 979px) {
 	.header .sv-btn-on {
 		right: 80px;
 		top: auto;
-		bottom: 32px;
+		bottom: 25px;
 	}
 }
 
@@ -216,7 +206,27 @@
 .vspec .header .sv-btn-on {
 	color: currentColor;
 	top: auto;
+	right: 0;
 	bottom: 60px;
+}
+
+@media (max-width: 979px) {
+	.vspec .header .sv-btn-on {
+		top: auto;
+		bottom: 10px;
+		right: 0;
+	}
+}
+
+@media (max-width: 639px) {
+	.vspec .header .sv-btn-on {
+		-ms-flex-order: 4;
+		    order: 4;
+		position: relative;
+		top: auto;
+		bottom: auto;
+		right: auto;
+	}
 }
 
 .footer .sv-btn-on {

@@ -4,6 +4,8 @@
 
 .#{$spec-mod}
 	// .extra-popup
+	$head-height: 60px
+	$head-height--sm: 40px
 
 	.extra-popup
 		//padding-left: nth($spec-panel-size, 2)
@@ -13,20 +15,71 @@
 		box-sizing: border-box
 
 	.extra-popup__head
+		$close-btn-width: 120px
+		$close-btn-width--sm: 80px
+
+		height: $head-height
+		display: flex
+		justify-content: center
+		align-items: center
 		border: 0 solid currentColor
 		border-width: $spec-border-width 0
 
-		.btn-menu-close
-			top: -$spec-border-width
+		+media('<desk-hd')
+			padding-right: $close-btn-width
+			padding-left: nth($spec-panel-size, 2)
+
+		+media('<mob-md')
+			height: $head-height--sm
+			padding-left: 0
+			padding-right: $close-btn-width--sm
 
 		.logo
+			position: relative
+			opacity: 1
+			visibility: visible
+			width: 215px
+			height: auto
+			margin: 0
+			left: auto
+			top: auto
+			padding-left: 0
 			background-image: url(../../img/logo-text--bw.svg)
+			transition: none
+			font-size: 0
+			line-height: 0
+
+			+media('<mob-md')
+				width: 180px
 
 			.#{$spec-mod--schemecolor-wb} &
 				background-image: url(../../img/logo-text--wb.svg)
 
 			.#{$spec-mod--schemecolor-blue} &
 				background-image: url(../../img/logo-text--blue.svg)
+
+			&::before
+				content: ""
+				display: block
+				+ratio(215, 18)
+
+		.btn-menu-close
+			position: absolute
+			left: auto
+			bottom: auto
+			top: -$spec-border-width
+			height: calc(100% + #{round($spec-border-width * 2)})
+			width: $close-btn-width
+			border-width: $spec-border-width
+			border-right: none
+			visibility: visible
+			opacity: 1
+
+			+media('<mob-md')
+				width: $close-btn-width--sm
+
+			& > i
+				background: none
 
 	.extra-popup.show-shadow
 		.extra-popup__head
@@ -38,7 +91,6 @@
 			.#{$spec-mod--schemecolor-blue} &
 				box-shadow: 0 0 35px rgba($spec-text-color--scheme-blue, 0.35)
 
-
 	.main-menu__box, .main-menu__heading
 		+spec-font-size--normal
 
@@ -49,8 +101,11 @@
 			+spec-font-size--large
 
 	.extra-popup__content
-		height: calc(100% - 60px)
+		height: calc(100% - #{$head-height})
 		padding: 30px 0 10px
+
+		+media('<desk-qhd')
+			height: calc(100% - #{$head-height--sm})
 
 	.main-menu__box
 		.#{$spec-mod--font-large} &

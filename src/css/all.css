@@ -1979,6 +1979,10 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 }
 .user-options .login-link svg,
 .user-options .search-link svg{ margin: 0; }
+.user-options .login-link a > span,
+.user-options .search-link a > span{
+	display: none;
+}
 .user-options svg path{
 	fill: #262626;
 	stroke: none;
