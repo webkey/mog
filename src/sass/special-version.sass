@@ -44,13 +44,13 @@ body.#{$spec-mod}
 
 	// Специальная версия: Цветовая схема - Белым по черному
 	// ================================================================
-	.#{$spec-mod--schemecolor-wb} &
+	.#{$spec-mod--scheme-wb} &
 		color: $spec-text-color--scheme-wb
 		background-color: $spec-bg-color--scheme-wb
 
 	// Специальная версия: Цветовая схема - Синим по голубому
 	// ================================================================
-	.#{$spec-mod--schemecolor-blue} &
+	.#{$spec-mod--scheme-blue} &
 		color: $spec-text-color--scheme-blue
 		background-color: $spec-bg-color--scheme-blue
 
@@ -80,10 +80,6 @@ body.#{$spec-mod}
 // special version background color
 // ------------------------------------------------------------
 @import spec/bg
-
-// special version background and text color invert
-// ------------------------------------------------------------
-@import spec/bg-invert
 
 // special reset padding
 // ---------------------------------------------------------------------------
@@ -299,6 +295,11 @@ body.#{$spec-mod}
 			+media('<tab-lg')
 				text-align: left
 
+	// developer
+	.developer
+		.text-inner
+			display: inline
+
 	.developer_logo
 		display: inline
 		text-indent: 0
@@ -342,10 +343,10 @@ body.#{$spec-mod}
 			+font(0, 0)
 			//background-size: contain
 
-			.#{$spec-mod--schemecolor-wb} &
+			.#{$spec-mod--scheme-wb} &
 				background-image: url(../img/logo-text--wb.svg)
 
-			.#{$spec-mod--schemecolor-blue} &
+			.#{$spec-mod--scheme-blue} &
 				background-image: url(../img/logo-text--blue.svg)
 
 	.copyright
@@ -379,10 +380,10 @@ body.#{$spec-mod}
 		background: none
 		transition: none
 
-		.#{$spec-mod--schemecolor-wb} &
+		.#{$spec-mod--scheme-wb} &
 			box-shadow: $shadow $spec-text-color--scheme-wb
 
-		.#{$spec-mod--schemecolor-blue} &
+		.#{$spec-mod--scheme-blue} &
 			box-shadow: $shadow $spec-text-color--scheme-blue
 
 	// navigation list
@@ -467,6 +468,7 @@ body.#{$spec-mod}
 		display: block
 		display: flex
 		justify-content: center
+		line-height: 24px
 		align-items: center
 		color: $spec-text-color
 		transition: none
@@ -476,11 +478,11 @@ body.#{$spec-mod}
 		text-decoration: underline
 		-webkit-tap-highlight-color: transparent
 
-		.#{$spec-mod--schemecolor-wb} &
+		.#{$spec-mod--scheme-wb} &
 			background-color: $spec-bg-color--scheme-wb
 			color: $spec-text-color--scheme-wb
 
-		.#{$spec-mod--schemecolor-blue} &
+		.#{$spec-mod--scheme-blue} &
 			background-color: $spec-bg-color--scheme-blue
 			color: $spec-text-color--scheme-blue
 
@@ -491,7 +493,7 @@ body.#{$spec-mod}
 			display: inline
 			vertical-align: middle
 			font-size: 18px
-			line-height: inherit
+			line-height: 24px
 			font-weight: bold
 			letter-spacing: $spec-letter-spacing
 			text-transform: uppercase
@@ -527,7 +529,7 @@ body.#{$spec-mod}
 			display: block
 
 		+media('<mob-lg')
-			margin-top: 20px
+			margin-top: 24px
 
 	.user-options
 		display: flex
@@ -565,6 +567,11 @@ body.#{$spec-mod}
 			width: auto
 			padding: 0
 			margin: 0 1em 0 0
+
+			+media('<mob-md')
+				display: block
+				margin: 0
+				flex-basis: 100%
 
 		a
 			padding: 0
@@ -1043,10 +1050,10 @@ body.#{$spec-mod}
 			transition: none
 			fill: $spec-bg-color
 
-			.#{$spec-mod--schemecolor-wb} &
+			.#{$spec-mod--scheme-wb} &
 				fill: $spec-bg-color--scheme-wb
 
-			.#{$spec-mod--schemecolor-blue} &
+			.#{$spec-mod--scheme-blue} &
 				fill: $spec-bg-color--scheme-blue
 
 		text
@@ -1070,10 +1077,10 @@ body.#{$spec-mod}
 					.branches-map-logo
 						fill: $spec-bg-color
 
-						.#{$spec-mod--schemecolor-wb} &
+						.#{$spec-mod--scheme-wb} &
 							fill: $spec-bg-color--scheme-wb
 
-						.#{$spec-mod--schemecolor-blue} &
+						.#{$spec-mod--scheme-blue} &
 							fill: $spec-bg-color--scheme-blue
 
 	// branches-popup
@@ -1085,7 +1092,7 @@ body.#{$spec-mod}
 			transform: translate(-50%, -50%)
 
 		+media('<mob-md')
-			left: 50%
+			left: 50% !important
 
 	.branches-popup__holder
 		border: $spec-border-width solid currentColor
@@ -1094,10 +1101,10 @@ body.#{$spec-mod}
 		+media('<mob-lg')
 			box-shadow: 0 0 50px rgba($spec-text-color, 0.25)
 
-			.#{$spec-mod--schemecolor-wb} &
+			.#{$spec-mod--scheme-wb} &
 				box-shadow: 0 0 50px rgba($spec-text-color--scheme-wb, 0.50)
 
-			.#{$spec-mod--schemecolor-blue} &
+			.#{$spec-mod--scheme-blue} &
 				box-shadow: 0 0 50px rgba($spec-text-color--scheme-blue, 0.25)
 
 	.branches-popup__close
@@ -1202,6 +1209,7 @@ body.#{$spec-mod}
 			display: flex
 			align-items: center
 			justify-content: center
+			text-align: center
 			border: $spec-border-width solid currentColor
 			background: none
 			min-height: 0
@@ -1210,6 +1218,12 @@ body.#{$spec-mod}
 
 			& > span
 				font-weight: bold
+				max-height: none
+				text-align: center
+				line-height: 1.2
+
+				+media('<mob-md')
+					font-size: 16px
 
 			&::before
 				display: none
@@ -1285,11 +1299,11 @@ body.#{$spec-mod}
 				background-color: $spec-bg-color
 				color: $spec-text-color
 
-				.#{$spec-mod--schemecolor-wb} &
+				.#{$spec-mod--scheme-wb} &
 					background-color: $spec-bg-color--scheme-wb
 					color: $spec-text-color--scheme-wb
 
-				.#{$spec-mod--schemecolor-blue} &
+				.#{$spec-mod--scheme-blue} &
 					background-color: $spec-bg-color--scheme-blue
 					color: $spec-text-color--scheme-blue
 
@@ -1497,6 +1511,9 @@ body.#{$spec-mod}
 		justify-content: flex-start
 		align-items: center
 
+		.label-alt
+			line-height: 1.2
+
 	.label-alt + input[type="text"],
 	.calc__title + input[type="text"],
 	.calc__title + select
@@ -1504,6 +1521,10 @@ body.#{$spec-mod}
 		border-color: currentColor
 		color: currentColor
 		transition: none
+		max-width: 100%
+
+		+media('<mob-md')
+			width: 100%
 
 		&.error
 			border-color: currentColor !important
@@ -1515,9 +1536,16 @@ body.#{$spec-mod}
 	// .ui-spinner
 	.ui-spinner
 		border-color: currentColor
+		flex-shrink: 0
 
 	.ui-spinner-input
 		color: currentColor
+		appearance: none
+
+		&:hover, &:focus
+			border-color: currentColor
+			outline: none
+
 
 	.ui-spinner-button
 		box-sizing: border-box
@@ -1599,10 +1627,10 @@ body.#{$spec-mod}
 			transition: none
 			fill: $spec-bg-color
 
-			.#{$spec-mod--schemecolor-wb} &
+			.#{$spec-mod--scheme-wb} &
 				fill: $spec-bg-color--scheme-wb
 
-			.#{$spec-mod--schemecolor-blue} &
+			.#{$spec-mod--scheme-blue} &
 				fill: $spec-bg-color--scheme-blue
 
 		text
@@ -1626,10 +1654,10 @@ body.#{$spec-mod}
 					.branches-map-logo
 						fill: $spec-bg-color
 
-						.#{$spec-mod--schemecolor-wb} &
+						.#{$spec-mod--scheme-wb} &
 							fill: $spec-bg-color--scheme-wb
 
-						.#{$spec-mod--schemecolor-blue} &
+						.#{$spec-mod--scheme-blue} &
 							fill: $spec-bg-color--scheme-blue
 
 	.tbl-dates
@@ -1652,15 +1680,17 @@ body.#{$spec-mod}
 		border-color: rgba(255, 255, 255, 0)
 		border-bottom-color: $spec-bg-color
 
-		.#{$spec-mod--schemecolor-wb} &
+		.#{$spec-mod--scheme-wb} &
 			border-bottom-color: $spec-bg-color--scheme-wb
 
-		.#{$spec-mod--schemecolor-blue} &
+		.#{$spec-mod--scheme-blue} &
 			border-bottom-color: $spec-bg-color--scheme-blue
 
 	.custom-tooltip:before
 		border-color: rgba(230, 230, 230, 0)
 		border-bottom-color: currentColor
+
+.fotorama__caption
 
 @import spec/popups
 

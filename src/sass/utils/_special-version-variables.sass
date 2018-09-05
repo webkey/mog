@@ -21,9 +21,9 @@ $spec-mod--font-large: 'vspec--fontsize-large' !default
 $spec-mod--spacing-normal: 'vspec--spacing-normal' !default
 $spec-mod--spacing-medium: 'vspec--spacing-medium' !default
 $spec-mod--spacing-large: 'vspec--spacing-large' !default
-$spec-mod--schemecolor-def: 'vspec--schemecolor-def' !default
-$spec-mod--schemecolor-wb: 'vspec--schemecolor-white' !default
-$spec-mod--schemecolor-blue: 'vspec--schemecolor-blue' !default
+$spec-mod--scheme-def: 'vspec--schemecolor-def' !default
+$spec-mod--scheme-wb: 'vspec--schemecolor-white' !default
+$spec-mod--scheme-blue: 'vspec--schemecolor-blue' !default
 
 // Special Panel
 // ==========================================================================
@@ -180,10 +180,10 @@ $spec-border-width: 2px
 =spec-reset-bg()
 	background-color: $spec-bg-color
 
-	.#{$spec-mod--schemecolor-wb} &
+	.#{$spec-mod--scheme-wb} &
 		background-color: $spec-bg-color--scheme-wb
 
-	.#{$spec-mod--schemecolor-blue} &
+	.#{$spec-mod--scheme-blue} &
 		background-color: $spec-bg-color--scheme-blue
 
 // Reset background + invert
@@ -191,18 +191,18 @@ $spec-border-width: 2px
 	color: $spec-bg-color
 	background-color: $spec-text-color
 
-	.#{$spec-mod--schemecolor-wb} &
+	.#{$spec-mod--scheme-wb} &
 		color: $spec-bg-color--scheme-wb
 		background-color: $spec-text-color--scheme-wb
 
-	.#{$spec-mod--schemecolor-blue} &
+	.#{$spec-mod--scheme-blue} &
 		color: $spec-bg-color--scheme-blue
 		background-color: $spec-text-color--scheme-blue
 
 // Reset all styles
 =spec-reset-full()
 	display: block
-	display: initial
+	//display: initial
 	float: none
 	position: initial
 	overflow: visible

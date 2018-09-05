@@ -89,11 +89,11 @@
 
 		$class: '.blah'
 
-		.#{$spec-mod--schemecolor-wb} &
+		.#{$spec-mod--scheme-wb} &
 			color: $spec-bg-color--scheme-wb
 			background-color: $spec-text-color--scheme-wb
 
-		.#{$spec-mod--schemecolor-blue} &
+		.#{$spec-mod--scheme-blue} &
 			color: $spec-bg-color--scheme-blue
 			background-color: $spec-text-color--scheme-blue
 
@@ -114,6 +114,10 @@
 		transition: none
 		background: none
 		border-color: currentColor
+
+		.touchevents &
+			appearance: none
+			outline: none
 
 		.#{$spec-mod--font-large} &
 			font-size: 22px
@@ -220,11 +224,11 @@
 		border: 2px solid currentColor
 		background-color: transparent
 
-		.#{$spec-mod--schemecolor-wb} &
+		.#{$spec-mod--scheme-wb} &
 			color: $spec-text-color--scheme-wb
 			//background-color: $spec-bg-color--scheme-wb
 
-		.#{$spec-mod--schemecolor-blue} &
+		.#{$spec-mod--scheme-blue} &
 			color: $spec-text-color--scheme-blue
 			//background-color: $spec-bg-color--scheme-blue
 

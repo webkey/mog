@@ -1,0 +1,26 @@
+/*tape gallery */
+.gallery {
+	margin-bottom: 24px;
+}
+
+.gallery:last-child {
+	margin-bottom: 0;
+}
+
+.tape-gallery {
+	margin-bottom: 24px;
+	text-align: center;
+}
+
+.tape-gallery:last-child {
+	margin-bottom: 0;
+}
+
+.fotorama__caption__wrap {
+	max-width: 980px;
+	margin: 0 auto;
+}
+
+/*tape gallery end */
+
+/*# sourceMappingURL=components.css.map */
