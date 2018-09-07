@@ -3,7 +3,7 @@
 }
 
 .spec-panel,
-.spec-panel_h {
+.spec-panel__holder {
 	width: 70px;
 	box-sizing: border-box;
 }
@@ -18,7 +18,6 @@
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
 	line-height: 1;
-	overflow: hidden;
 	box-shadow: 0 0 0 1px currentColor;
 	background-color: inherit;
 	will-change: transform;
@@ -34,31 +33,16 @@
 		border-width: 0 0 2px 0;
 		box-shadow: 0 0 0 2px currentColor, 0 4px 4px rgba(0, 0, 0, 0.3);
 	}
-	.vspec--schemecolor-white .spec-panel {
+	.vspec-mod_scheme-color_white .spec-panel {
 		box-shadow: 0 0 0 2px currentColor, 0 4px 4px rgba(255, 255, 255, 0.3);
 	}
-	.vspec--schemecolor-blue .spec-panel {
+	.vspec-mod_scheme-color_blue .spec-panel {
 		box-shadow: 0 0 0 2px currentColor, 0 4px 4px rgba(0, 76, 146, 0.3);
 	}
 }
 
 .vspec .spec-panel {
 	display: block;
-}
-
-.spec-panel:hover,
-.touchevents .spec-panel,
-.no-js .spec-panel {
-	overflow-y: auto;
-}
-
-@media (max-width: 479px) {
-	.spec-panel:hover,
-	.touchevents .spec-panel,
-	.no-js .spec-panel {
-		overflow-y: hidden;
-		overflow-x: auto;
-	}
 }
 
 @media (max-width: 479px) {
@@ -68,13 +52,13 @@
 	}
 }
 
-.spec-panel .sv-btn-group {
+.spec-panel .spec-btn-group {
 	border: 0 solid currentColor;
 	border-width: 1px 0 0;
 }
 
 @media (max-width: 479px) {
-	.spec-panel .sv-btn-group {
+	.spec-panel .spec-btn-group {
 		display: -ms-flexbox;
 		display: flex;
 		border-width: 0 0 0 1px;
@@ -84,30 +68,49 @@
 	}
 }
 
-.spec-panel .sv-btn-group:first-child {
+.spec-panel .spec-btn-group:first-child {
 	border-top: 0;
 	border-left: 0;
 }
 
-.spec-panel .sv-btn {
+.spec-panel .spec-btn {
 	display: block;
 	margin: 20px auto;
 }
 
 @media (max-width: 479px) {
-	.spec-panel .sv-btn {
+	.spec-panel .spec-btn {
 		display: inline-block;
 		vertical-align: top;
 		margin: 0 5px;
 	}
 }
 
-.spec-panel_h {
+.spec-panel__layout {
+	overflow: hidden;
+}
+
+.spec-panel__layout:hover,
+.touchevents .spec-panel__layout,
+.no-js .spec-panel__layout {
+	overflow-y: auto;
+}
+
+@media (max-width: 479px) {
+	.spec-panel__layout:hover,
+	.touchevents .spec-panel__layout,
+	.no-js .spec-panel__layout {
+		overflow-y: hidden;
+		overflow-x: auto;
+	}
+}
+
+.spec-panel__holder {
 	text-align: center;
 }
 
 @media (max-width: 479px) {
-	.spec-panel_h {
+	.spec-panel__holder {
 		display: -ms-flexbox;
 		display: flex;
 		height: 56px;
@@ -115,7 +118,7 @@
 	}
 }
 
-.sv-btn-on {
+.spec-btn-switcher {
 	position: fixed;
 	left: 10px;
 	top: 10px;
@@ -131,7 +134,7 @@
 	z-index: 9999;
 }
 
-.sv-btn-on svg {
+.spec-btn-switcher svg {
 	width: 1.4em;
 	height: 1.4em;
 	position: absolute;
@@ -142,27 +145,27 @@
 	box-sizing: border-box;
 }
 
-.sv-btn-on svg.icon-spec-on {
+.spec-btn-switcher svg.icon-spec-on {
 	display: block;
 }
 
-.vspec .sv-btn-on svg.icon-spec-on {
+.vspec .spec-btn-switcher svg.icon-spec-on {
 	display: none;
 }
 
-.sv-btn-on svg.icon-spec-off {
+.spec-btn-switcher svg.icon-spec-off {
 	display: none;
 }
 
-.vspec .sv-btn-on svg.icon-spec-off {
+.vspec .spec-btn-switcher svg.icon-spec-off {
 	display: block;
 }
 
-.sv-btn-on path {
+.spec-btn-switcher path {
 	fill: currentColor;
 }
 
-.header .sv-btn-on {
+.header .spec-btn-switcher {
 	position: absolute;
 	left: auto;
 	right: 15px;
@@ -170,18 +173,18 @@
 }
 
 @media (max-width: 979px) {
-	.header .sv-btn-on {
+	.header .spec-btn-switcher {
 		right: 90px;
 		top: 5px;
 	}
 }
 
-.home-page .header .sv-btn-on {
+.home-page .header .spec-btn-switcher {
 	color: white;
 }
 
 @media (max-width: 979px) {
-	.header .sv-btn-on span {
+	.header .spec-btn-switcher span {
 		display: inline-block;
 		vertical-align: top;
 		font-size: 14px;
@@ -189,14 +192,14 @@
 }
 
 @media (max-width: 479px) {
-	.header .sv-btn-on span {
+	.header .spec-btn-switcher span {
 		width: 110px;
 		font-size: 14px;
 		line-height: 16px;
 	}
 }
 
-.vspec .header .sv-btn-on {
+.vspec .header .spec-btn-switcher {
 	color: currentColor;
 	top: auto;
 	right: 0;
@@ -204,7 +207,7 @@
 }
 
 @media (max-width: 979px) {
-	.vspec .header .sv-btn-on {
+	.vspec .header .spec-btn-switcher {
 		top: auto;
 		bottom: 10px;
 		right: 0;
@@ -212,7 +215,7 @@
 }
 
 @media (max-width: 639px) {
-	.vspec .header .sv-btn-on {
+	.vspec .header .spec-btn-switcher {
 		-ms-flex-order: 4;
 		    order: 4;
 		position: relative;
@@ -225,12 +228,12 @@
 	}
 }
 
-.vspec .header .sv-btn-on span {
+.vspec .header .spec-btn-switcher span {
 	width: auto;
 	line-height: inherit;
 }
 
-.footer .sv-btn-on {
+.footer .spec-btn-switcher {
 	position: absolute;
 	left: auto;
 	top: auto;
@@ -238,13 +241,13 @@
 	color: rgba(255, 255, 255, 0.8);
 }
 
-.vspec .footer .sv-btn-on {
+.vspec .footer .spec-btn-switcher {
 	color: currentColor;
 	position: relative;
 	bottom: auto;
 }
 
-.spec-panel .sv-btn {
+.spec-panel .spec-btn {
 	width: 42px;
 	height: 42px;
 	position: relative;
@@ -263,21 +266,21 @@
 }
 
 @media (max-width: 479px) {
-	.spec-panel .sv-btn {
+	.spec-panel .spec-btn {
 		width: 36px;
 		height: 36px;
 	}
 }
 
-.vspec--schemecolor-white .spec-panel .sv-btn {
+.vspec-mod_scheme-color_white .spec-panel .spec-btn {
 	border-color: #fff;
 }
 
-.vspec--schemecolor-blue .spec-panel .sv-btn {
+.vspec-mod_scheme-color_blue .spec-panel .spec-btn {
 	border-color: #004c92;
 }
 
-.spec-panel .sv-btn::after {
+.spec-panel .spec-btn::after {
 	content: "";
 	display: none;
 	position: absolute;
@@ -295,7 +298,7 @@
 }
 
 @media (max-width: 479px) {
-	.spec-panel .sv-btn::after {
+	.spec-panel .spec-btn::after {
 		border: none;
 		width: 0;
 		height: 0;
@@ -311,50 +314,50 @@
 	}
 }
 
-.spec-panel .sv-btn:hover, .spec-panel .sv-btn:focus,
-.spec-panel .sv-btn[data-toggle]:hover,
-.spec-panel .sv-btn[data-toggle]:focus,
-.spec-panel .sv-btn.active[data-toggle]:hover,
-.spec-panel .sv-btn.active[data-toggle]:focus {
+.spec-panel .spec-btn:hover, .spec-panel .spec-btn:focus,
+.spec-panel .spec-btn[data-toggle]:hover,
+.spec-panel .spec-btn[data-toggle]:focus,
+.spec-panel .spec-btn.active[data-toggle]:hover,
+.spec-panel .spec-btn.active[data-toggle]:focus {
 	box-shadow: 0 0 0 2px #fff, 0 0 0 5px #000;
 }
 
-.vspec--schemecolor-white .spec-panel .sv-btn:hover, .vspec--schemecolor-white .spec-panel .sv-btn:focus, .vspec--schemecolor-white
-.spec-panel .sv-btn[data-toggle]:hover, .vspec--schemecolor-white
-.spec-panel .sv-btn[data-toggle]:focus, .vspec--schemecolor-white
-.spec-panel .sv-btn.active[data-toggle]:hover, .vspec--schemecolor-white
-.spec-panel .sv-btn.active[data-toggle]:focus {
+.vspec-mod_scheme-color_white .spec-panel .spec-btn:hover, .vspec-mod_scheme-color_white .spec-panel .spec-btn:focus, .vspec-mod_scheme-color_white
+.spec-panel .spec-btn[data-toggle]:hover, .vspec-mod_scheme-color_white
+.spec-panel .spec-btn[data-toggle]:focus, .vspec-mod_scheme-color_white
+.spec-panel .spec-btn.active[data-toggle]:hover, .vspec-mod_scheme-color_white
+.spec-panel .spec-btn.active[data-toggle]:focus {
 	box-shadow: 0 0 0 2px #000, 0 0 0 5px #fff;
 }
 
-.vspec--schemecolor-blue .spec-panel .sv-btn:hover, .vspec--schemecolor-blue .spec-panel .sv-btn:focus, .vspec--schemecolor-blue
-.spec-panel .sv-btn[data-toggle]:hover, .vspec--schemecolor-blue
-.spec-panel .sv-btn[data-toggle]:focus, .vspec--schemecolor-blue
-.spec-panel .sv-btn.active[data-toggle]:hover, .vspec--schemecolor-blue
-.spec-panel .sv-btn.active[data-toggle]:focus {
+.vspec-mod_scheme-color_blue .spec-panel .spec-btn:hover, .vspec-mod_scheme-color_blue .spec-panel .spec-btn:focus, .vspec-mod_scheme-color_blue
+.spec-panel .spec-btn[data-toggle]:hover, .vspec-mod_scheme-color_blue
+.spec-panel .spec-btn[data-toggle]:focus, .vspec-mod_scheme-color_blue
+.spec-panel .spec-btn.active[data-toggle]:hover, .vspec-mod_scheme-color_blue
+.spec-panel .spec-btn.active[data-toggle]:focus {
 	box-shadow: 0 0 0 2px #c8e5ff, 0 0 0 5px #004c92;
 }
 
-.spec-panel .sv-btn.active, .spec-panel .sv-btn.active:hover, .spec-panel .sv-btn.active:focus {
+.spec-panel .spec-btn.active, .spec-panel .spec-btn.active:hover, .spec-panel .spec-btn.active:focus {
 	cursor: default;
 	box-shadow: none;
 	border-width: 4px;
 }
 
-.spec-panel .sv-btn.active::after {
+.spec-panel .spec-btn.active::after {
 	display: block;
 }
 
-.spec-panel .sv-btn.active[data-toggle], .spec-panel .sv-btn.active[data-toggle]:hover, .spec-panel .sv-btn.active[data-toggle]:focus {
+.spec-panel .spec-btn.active[data-toggle], .spec-panel .spec-btn.active[data-toggle]:hover, .spec-panel .spec-btn.active[data-toggle]:focus {
 	cursor: pointer;
 }
 
-.spec-panel .sv-btn span {
+.spec-panel .spec-btn span {
 	font-size: 0;
 	line-height: 0;
 }
 
-.spec-panel .sv-btn svg {
+.spec-panel .spec-btn svg {
 	display: block;
 	position: absolute;
 	left: 50%;
@@ -365,25 +368,25 @@
 }
 
 @media (max-width: 479px) {
-	.spec-panel .sv-btn svg {
+	.spec-panel .spec-btn svg {
 		-ms-transform: translate(-50%, -50%) scale(0.85);
 		    transform: translate(-50%, -50%) scale(0.85);
 	}
 }
 
-.spec-panel .sv-btn path {
+.spec-panel .spec-btn path {
 	fill: currentColor;
 }
 
-.spec-panel .sv-btn-off {
+.spec-panel .spec-btn-off {
 	display: none;
 }
 
-.vspec .spec-panel .sv-btn-off {
+.vspec .spec-panel .spec-btn-off {
 	display: block;
 }
 
-.vspec .spec-panel .sv-btn-off::before {
+.vspec .spec-panel .spec-btn-off::before {
 	content: "";
 	display: block;
 	position: absolute;
@@ -399,39 +402,39 @@
 }
 
 @media (max-width: 479px) {
-	.vspec .spec-panel .sv-btn-off::before {
+	.vspec .spec-panel .spec-btn-off::before {
 		width: 34px;
 		margin: -1px 0 0 -17px;
 	}
 }
 
-.vspec .spec-panel .sv-btn-off::after {
+.vspec .spec-panel .spec-btn-off::after {
 	content: none;
 }
 
 @media (max-width: 479px) {
-	.vspec .spec-panel .sv-btn-off {
+	.vspec .spec-panel .spec-btn-off {
 		display: inline-block;
 	}
 }
 
 /* special version color */
-.spec-panel .vcolor-btn-black {
+.spec-panel .spec-btn_color_def {
 	color: #000;
 	background-color: #fff;
 }
 
-.spec-panel .vcolor-btn-white {
+.spec-panel .spec-btn_color_white {
 	color: #fff;
 	background-color: #000;
 }
 
-.spec-panel .vcolor-btn-blue {
+.spec-panel .spec-btn_color_blue {
 	color: #004c92;
 	background-color: #c8e5ff;
 }
 
-.spec-panel .sv-spacing-btn--small .icon, .spec-panel .sv-spacing-btn--small .icon::before, .spec-panel .sv-spacing-btn--small .icon::after, .spec-panel .sv-spacing-btn--medium .icon, .spec-panel .sv-spacing-btn--medium .icon::before, .spec-panel .sv-spacing-btn--medium .icon::after, .spec-panel .sv-spacing-btn--large .icon, .spec-panel .sv-spacing-btn--large .icon::before, .spec-panel .sv-spacing-btn--large .icon::after {
+.spec-panel .spec-btn_spacing_sm .icon, .spec-panel .spec-btn_spacing_sm .icon::before, .spec-panel .spec-btn_spacing_sm .icon::after, .spec-panel .spec-btn_spacing_md .icon, .spec-panel .spec-btn_spacing_md .icon::before, .spec-panel .spec-btn_spacing_md .icon::after, .spec-panel .spec-btn_spacing_lg .icon, .spec-panel .spec-btn_spacing_lg .icon::before, .spec-panel .spec-btn_spacing_lg .icon::after {
 	display: block;
 	position: absolute;
 	left: 50%;
@@ -441,49 +444,67 @@
 	background-color: currentColor;
 }
 
-.spec-panel .sv-spacing-btn--small .icon, .spec-panel .sv-spacing-btn--medium .icon, .spec-panel .sv-spacing-btn--large .icon {
+.spec-panel .spec-btn_spacing_sm .icon, .spec-panel .spec-btn_spacing_md .icon, .spec-panel .spec-btn_spacing_lg .icon {
 	margin: -8px 0 0 -1px;
 }
 
 @media (max-width: 479px) {
-	.spec-panel .sv-spacing-btn--small .icon, .spec-panel .sv-spacing-btn--medium .icon, .spec-panel .sv-spacing-btn--large .icon {
+	.spec-panel .spec-btn_spacing_sm .icon, .spec-panel .spec-btn_spacing_md .icon, .spec-panel .spec-btn_spacing_lg .icon {
 		-ms-transform: scale(0.85);
 		    transform: scale(0.85);
 	}
 }
 
-.spec-panel .sv-spacing-btn--small .icon::before, .spec-panel .sv-spacing-btn--small .icon::after, .spec-panel .sv-spacing-btn--medium .icon::before, .spec-panel .sv-spacing-btn--medium .icon::after, .spec-panel .sv-spacing-btn--large .icon::before, .spec-panel .sv-spacing-btn--large .icon::after {
+.spec-panel .spec-btn_spacing_sm .icon::before, .spec-panel .spec-btn_spacing_sm .icon::after, .spec-panel .spec-btn_spacing_md .icon::before, .spec-panel .spec-btn_spacing_md .icon::after, .spec-panel .spec-btn_spacing_lg .icon::before, .spec-panel .spec-btn_spacing_lg .icon::after {
 	content: "";
 	margin-top: -8px;
 }
 
-.spec-panel .sv-spacing-btn--small .icon::before, .spec-panel .sv-spacing-btn--medium .icon::before, .spec-panel .sv-spacing-btn--large .icon::before {
+.spec-panel .spec-btn_spacing_sm .icon::before, .spec-panel .spec-btn_spacing_md .icon::before, .spec-panel .spec-btn_spacing_lg .icon::before {
 	margin-left: -6px;
 }
 
-.spec-panel .sv-spacing-btn--small .icon::after, .spec-panel .sv-spacing-btn--medium .icon::after, .spec-panel .sv-spacing-btn--large .icon::after {
+.spec-panel .spec-btn_spacing_sm .icon::after, .spec-panel .spec-btn_spacing_md .icon::after, .spec-panel .spec-btn_spacing_lg .icon::after {
 	margin-left: 4px;
 }
 
-.spec-panel .sv-spacing-btn--medium .icon::before {
+.spec-panel .spec-btn_spacing_md .icon::before {
 	margin-left: -9px;
 }
 
-.spec-panel .sv-spacing-btn--medium .icon::after {
+.spec-panel .spec-btn_spacing_md .icon::after {
 	margin-left: 7px;
 }
 
-.spec-panel .sv-spacing-btn--large .icon::before {
+.spec-panel .spec-btn_spacing_lg .icon::before {
 	margin-left: -12px;
 }
 
-.spec-panel .sv-spacing-btn--large .icon::after {
+.spec-panel .spec-btn_spacing_lg .icon::after {
 	margin-left: 10px;
 }
 
 .main-contacts,
 .local-map {
 	height: 595px;
+}
+
+.spec-drop {
+	position: absolute;
+	left: 90px;
+	top: 50px;
+	border: 1px solid currentColor;
+	padding: 20px;
+}
+
+.spec-panel-mob {
+	left: auto;
+	right: 0;
+}
+
+.spec-panel-mob .spec-drop {
+	left: auto;
+	right: 90px;
 }
 
 /*# sourceMappingURL=special-version-base.css.map */

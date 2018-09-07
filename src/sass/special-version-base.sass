@@ -8,12 +8,12 @@
 $displace: 1px
 // variables end
 
-// только для текуще проекта
+// только для текущего проекта
 .footer-nav
 	position: relative
 
 .spec-panel,
-.spec-panel_h
+.spec-panel__holder
 	width: nth($spec-panel-size, 2)
 	box-sizing: border-box
 
@@ -28,7 +28,7 @@ $displace: 1px
 	font-family: Arial, Helvetica, sans-serif
 	font-size: 16px
 	line-height: 1
-	overflow: hidden
+	//overflow: hidden
 	box-shadow: 0 0 0 1px currentColor
 	//background-color: var(--main-bg-color);
 	background-color: inherit
@@ -57,20 +57,11 @@ $displace: 1px
 	.vspec &
 		display: block
 
-	&:hover,
-	.touchevents &,
-	.no-js &
-		overflow-y: auto
-
-		+media('<mob-md')
-			overflow-y: hidden
-			overflow-x: auto
-
 	.nav-opened-before &
 		+media('<mob-md')
 			transform: translate(0, -110%)
 
-	.sv-btn-group
+	.spec-btn-group
 		border: 0 solid currentColor
 		border-width: 1px 0 0
 
@@ -84,23 +75,7 @@ $displace: 1px
 			border-top: 0
 			border-left: 0
 
-	//.sv-btn-sep
-		border: 0 solid currentColor
-		border-bottom-width: 1px
-		margin: 20px 0
-		font-size: 0
-		line-height: 0
-
-		+media('<mob-md')
-			display: inline-block
-			vertical-align: top
-			border-left: 1px solid currentColor
-			border: none
-			width: 0
-			height: 36px
-			margin: 0 10px 0 0
-
-	.sv-btn
+	.spec-btn
 		display: block
 		margin: 20px auto
 
@@ -109,7 +84,19 @@ $displace: 1px
 			vertical-align: top
 			margin: 0 5px
 
-.spec-panel_h
+.spec-panel__layout
+	overflow: hidden
+
+	&:hover,
+	.touchevents &,
+	.no-js &
+		overflow-y: auto
+
+		+media('<mob-md')
+			overflow-y: hidden
+			overflow-x: auto
+
+.spec-panel__holder
 	//padding: 20px 0
 	text-align: center
 
@@ -120,7 +107,7 @@ $displace: 1px
 		//padding: 10px
 
 // button enable special version
-.sv-btn-on
+.spec-btn-switcher
 	position: fixed
 	left: 10px
 	top: 10px
@@ -237,7 +224,7 @@ $displace: 1px
 			position: relative
 			bottom: auto
 
-.spec-panel .sv-btn
+.spec-panel .spec-btn
 	$size: 42px
 	$arr: 24px
 
@@ -288,9 +275,9 @@ $displace: 1px
 			margin: 0 0 0 -#{round($arr/2)}
 
 .spec-panel
-	.sv-btn,
-	.sv-btn[data-toggle],
-	.sv-btn.active[data-toggle]
+	.spec-btn,
+	.spec-btn[data-toggle],
+	.spec-btn.active[data-toggle]
 		$w1: 0 0 0 2px
 		$w2: 0 0 0 5px
 		$w1--sm: 0 0 0 2px
@@ -306,7 +293,7 @@ $displace: 1px
 			.#{$spec-mod--scheme-blue} &
 				box-shadow: $w1 $spec-bg-color--scheme-blue, $w2 $spec-text-color--scheme-blue
 
-	.sv-btn.active
+	.spec-btn.active
 		&, &:hover, &:focus
 			cursor: default
 			box-shadow: none
@@ -342,11 +329,11 @@ $displace: 1px
 		&::after
 			display: block
 
-	.sv-btn.active[data-toggle]
+	.spec-btn.active[data-toggle]
 		&, &:hover, &:focus
 			cursor: pointer
 
-	.sv-btn
+	.spec-btn
 		span
 			font-size: 0
 			line-height: 0
@@ -365,10 +352,10 @@ $displace: 1px
 		path
 			fill: currentColor
 
-.spec-panel .sv-btn-off
+.spec-panel .spec-btn-off
 	display: none
 
-.vspec .spec-panel .sv-btn-off
+.vspec .spec-panel .spec-btn-off
 	display: block
 
 	&::before
@@ -395,22 +382,22 @@ $displace: 1px
 		display: inline-block
 
 /* special version color
-.spec-panel .vcolor-btn-black
+.spec-panel .spec-btn_color_def
 	color: $spec-text-color
 	background-color: $spec-bg-color
 
-.spec-panel .vcolor-btn-white
+.spec-panel .spec-btn_color_white
 	color: $spec-text-color--scheme-wb
 	background-color: $spec-bg-color--scheme-wb
 
-.spec-panel .vcolor-btn-blue
+.spec-panel .spec-btn_color_blue
 	color: $spec-text-color--scheme-blue
 	background-color: $spec-bg-color--scheme-blue
 
 // letter spacing
 $icon-spacing--size: 16px 2px // h w
 $icon-spacing--space: 3px // h
-.sv-spacing-btn--small, .sv-spacing-btn--medium, .sv-spacing-btn--large
+.spec-btn_spacing_sm, .spec-btn_spacing_md, .spec-btn_spacing_lg
 	.spec-panel &
 		.icon
 			&, &::before, &::after
@@ -438,7 +425,7 @@ $icon-spacing--space: 3px // h
 			&::after
 				margin-left: #{$icon-spacing--space + round(nth($icon-spacing--size, 2)*0.5)}
 
-.sv-spacing-btn--medium
+.spec-btn_spacing_md
 	.spec-panel &
 		.icon
 			$icon-spacing--space: 6px // h
@@ -449,7 +436,7 @@ $icon-spacing--space: 3px // h
 			&::after
 				margin-left: #{$icon-spacing--space + round(nth($icon-spacing--size, 2)*0.5)}
 
-.sv-spacing-btn--large
+.spec-btn_spacing_lg
 	.spec-panel &
 		.icon
 			$icon-spacing--space: 9px // h
@@ -464,3 +451,26 @@ $icon-spacing--space: 3px // h
 .main-contacts,
 .local-map
 	height: 595px
+
+
+
+// Special Version Advanced Settings
+.spec-drop
+	position: absolute
+	left: nth($spec-panel-size, 2) + 20px
+	top: 50px
+	border: 1px solid currentColor
+	padding: 20px
+
+// Special Version Advanced Settings end
+
+// Duplicate Special Version Panel
+.spec-panel-mob
+	left: auto
+	right: 0
+
+	.spec-drop
+		left: auto
+		right: nth($spec-panel-size, 2) + 20px
+
+// Duplicate Special Version Panel end
