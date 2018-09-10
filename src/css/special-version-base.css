@@ -247,7 +247,7 @@
 	bottom: auto;
 }
 
-.spec-panel .spec-btn {
+.spec-btn {
 	width: 42px;
 	height: 42px;
 	position: relative;
@@ -266,21 +266,25 @@
 }
 
 @media (max-width: 479px) {
-	.spec-panel .spec-btn {
+	.spec-btn {
 		width: 36px;
 		height: 36px;
 	}
 }
 
-.vspec-mod_scheme-color_white .spec-panel .spec-btn {
+.spec-btn:focus {
+	outline: none;
+}
+
+.vspec-mod_scheme-color_white .spec-btn {
 	border-color: #fff;
 }
 
-.vspec-mod_scheme-color_blue .spec-panel .spec-btn {
+.vspec-mod_scheme-color_blue .spec-btn {
 	border-color: #004c92;
 }
 
-.spec-panel .spec-btn::after {
+.spec-btn::after {
 	content: "";
 	display: none;
 	position: absolute;
@@ -298,7 +302,7 @@
 }
 
 @media (max-width: 479px) {
-	.spec-panel .spec-btn::after {
+	.spec-btn::after {
 		border: none;
 		width: 0;
 		height: 0;

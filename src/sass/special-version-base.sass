@@ -224,7 +224,7 @@ $displace: 1px
 			position: relative
 			bottom: auto
 
-.spec-panel .spec-btn
+.spec-btn
 	$size: 42px
 	$arr: 24px
 
@@ -247,6 +247,9 @@ $displace: 1px
 		$size: 36px
 		width: $size
 		height: $size
+
+	&:focus
+		outline: none
 
 	.#{$spec-mod--scheme-wb} &
 		border-color: $spec-text-color--scheme-wb

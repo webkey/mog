@@ -11,27 +11,17 @@
 			$html = $('html'),
 			$body = $('body'),
 			$element = $(element),
-			$specialBtn = $('.spec-btn-switcher-js'),
+			$switcher = $(config.switcher),
 			pref = 'jq-spec',
 			pluginClasses = {
 				initClass: pref + '--initialized',
-				element: pref + '__switcher',
-				complete: pref + '__complete'
+				panel: pref + '__toolbar',
+				switcher: pref + '__switcher'
 			},
-			cssId = '#special-version',
 			path = cssPath || 'css/',
-			cookies = {
-				'specVersionOn': 'special-version',
-				'specVersionMods': 'special-mods'
-			},
-			elem = {
-				'btn': '.spec-btn-js',
-				'btnGroup': '.spec-btn-group-js'
-			},
-			mod = {
-				'specOn': 'vspec',
-				'hidePage': 'vspec--hide-page',
-				'btnActive': 'active' // active class of the buttons
+			cookieName = {
+				specVersionOn: 'special-version-on',
+				specVersionSettings: 'special-version-settings'
 			};
 
 		var callbacks = function () {
@@ -108,14 +98,17 @@
 			/**
 			 * !Toggle special version
 			 */
-			$specialBtn.on('click', function (e) {
+			// Если для cпец. версии создаются отдельные шаблоны,
+			// этот функционал не нужен
+			console.log("getCookie(cookieName.specVersionOn): ", getCookie(cookieName.specVersionOn));
+			$switcher.on('click', function (e) {
 				e.preventDefault();
-				$('body').addClass(mod.hidePage); // first hide content
+				$('body').addClass(config.modifiers.hidePage); // first hide content
 				// toggle special version cookie
-				if(getCookie(cookies.specVersionOn) === 'true'){
-					setCookieMod(cookies.specVersionOn, "false");
+				if(getCookie(cookieName.specVersionOn) === 'true'){
+					setCookieMod(cookieName.specVersionOn, "false");
 				} else {
-					setCookieMod(cookies.specVersionOn, "true");
+					setCookieMod(cookieName.specVersionOn, "true");
 				}
 				location.reload(); // reload page
 			});
@@ -123,116 +116,133 @@
 			/**
 			 * !Change settings
 			 * */
-			$body.on('click', elem.btn, function (e) {
+			$(config.btn).on('click', function (e) {
 				e.preventDefault();
 				var $curBtn = $(this);
 
-				if(!$curBtn.hasClass(mod.btnActive) || $curBtn.attr('data-toggle') !== undefined) {
-					var $curGroup = $curBtn.closest(elem.btnGroup),
-						modsArr = [],
-						_curMod = $curBtn.attr('data-mod');
+				if(!$curBtn.hasClass(config.modifiers.activeClass) || $curBtn.attr('data-toggle') !== undefined) {
+					var $curGroup = $curBtn.closest(config.btnGroup),
+						modsArr = [];
 
 					// create modifiers class array
-					$.each($curGroup.find(elem.btn), function (i, el) {
-						modsArr.push($(el).attr('data-mod'));
-					});
+					// $.each($curGroup.find(config.btn), function (i, el) {
+					// 	modsArr.push($(el).attr('data-mod'));
+					// });
 
-					// console.log("modsArr: ", modsArr);
+					var settings = getCookie(cookieName.specVersionSettings);
 
-					// toggle a cookies
-					// for(var i = 0; i < modsArr.length; i++){
-					// 	setCookieMod(modsArr[i], 'false');
+					// console.log("settings: ", settings);
+					// console.log("settings []: ", settings.split(', '));
+
+					// var testJsonStr = '{"fontSize":"FONTSIZE1","letterSpacing":"LETTERSPACING1"}';
+					// var testJsonObj = JSON.parse(testJsonStr);
+					// console.log("testJsonObj: ", testJsonObj);
+					// // var key;
+					// // for (key in testJsonObj) {
+					// // 	console.log("key: ", key);
+					// // }
+					// testJsonObj["fontSize"] = "FONTSIZE2";
+					// testJsonObj["imgOn"] = "true";
+					// console.log("testJsonObj (new): ", testJsonObj);
+					// var testJsonStrNew = JSON.stringify(testJsonObj);
+					// console.log("testJsonStrNew: ", testJsonStrNew);
+
+
+					// var newCookieModsArr = settings ? settings.split(', ') : [];
+					//
+					// for (var i = 0; i < modsArr.length; i++) {
+					// 	for (var j = 0; j < newCookieModsArr.length; j++) {
+					// 		if (modsArr[i] === newCookieModsArr[j]) {
+					// 			newCookieModsArr.splice(j, 1);
+					// 		}
+					// 	}
 					// }
-					// setCookieMod(_curMod, 'true');
 
-					// console.log("$curBtn.attr('data-toggle'): ", $curBtn.attr('data-toggle') !== undefined);
+					if (!$curBtn.hasClass(config.modifiers.activeClass)) {
+						// Create settings object
+						var settingsObj = settings ? JSON.parse(settings) : {};
+						console.log("settingsObj: ", settingsObj);
 
-					var curCookieMods = getCookie(cookies.specVersionMods);
-					// console.log("getCookie(cookies.specVersionOn): ", curCookieMods);
-					var newCookieModsArr = curCookieMods ? curCookieMods.split(', ') : [];
-					// console.log("newCookieModsArr (before change): ", newCookieModsArr);
-
-					for (var i = 0; i < modsArr.length; i++) {
-						// console.log("modsArr[i]: ", modsArr[i]);
-						for (var j = 0; j < newCookieModsArr.length; j++) {
-							// console.log("newCookieModsArr[j]: ", newCookieModsArr[j]);
-							if (modsArr[i] === newCookieModsArr[j]) {
-								// console.log("newCookieModsArr[j]: ", newCookieModsArr[j]);
-								// newModsArr.push(newCookieModsArr[j]);
-								// break outer;
-								// console.log("j: ", j);
-								newCookieModsArr.splice(j, 1);
-							}
+						// remove modifier classes from html
+						for (var key in settingsObj) {
+							$html.removeClass(settingsObj[key]);
 						}
-					}
 
-					if (!$curBtn.hasClass(mod.btnActive)) {
-						newCookieModsArr.push(_curMod);
+						// Add or change the setting in settings object
+						var modName = $curBtn.attr('data-mod-name'),
+							modVal = $curBtn.attr('data-mod-value');
+
+						settingsObj[modName] = modVal;
+						console.log("settingsObj (new): ", settingsObj);
+
+						// add modifier classes to html
+						for (var newKey in settingsObj) {
+							$html.addClass(settingsObj[newKey]);
+						}
 
 						// remove active class from buttons
-						$curGroup.find(elem.btn).removeClass(mod.btnActive).attr('tabindex', '');
+						$element.find('[data-mod-name*=' + modName + ']').removeClass(config.modifiers.activeClass).attr('tabindex', '');
+
 						// add active class on current button
-						$curBtn.addClass(mod.btnActive);
+						$element.find('[data-mod-value*=' + modVal + ']').addClass(config.modifiers.activeClass).attr('tabindex', '1');
+
 						if ($curBtn.attr('data-toggle') === undefined){
 							$curBtn.attr('tabindex', '-1');
 						}
-
-						// remove modifier classes
-						$html.removeClass(modsArr.join(' '));
-						// add active class
-						$html.addClass(_curMod);
-					} else if ($curBtn.attr('data-toggle') !== undefined) {
-						// remove active class from current button
-						$curBtn.removeClass(mod.btnActive).attr('tabindex', '');
-						// remove active class from a body
-						$html.removeClass(_curMod);
 					}
+					// else if ($curBtn.attr('data-toggle') !== undefined) {
+					// 	// remove active class from current button
+					// 	$curBtn.removeClass(config.modifiers.activeClass).attr('tabindex', '');
+					// 	// remove active class from a body
+					// 	$html.removeClass(modVal);
+					// }
 
-					// console.log("newCookieModsArr (after change): ", newCookieModsArr);
-					setCookieMod(cookies.specVersionMods, newCookieModsArr.join(', '));
+					// Save settings in cookie
+					setCookieMod(cookieName.specVersionSettings, JSON.stringify(settingsObj));
 				}
 			});
 		}, init = function () {
 
-			$element.addClass(pluginClasses.element + ' ' + pluginClasses.initClass).addClass(config.modifiers.initClass);
+			$element.addClass(pluginClasses.panel + ' ' + pluginClasses.initClass).addClass(config.modifiers.initClass);
 
+			// Если для cпец. версии создаются отдельные шаблоны,
+			// этот функционал не нужен
 			/**
 			 * !include special css and add special class on a body
 			 */
-			if (getCookie(cookies.specVersionOn) === 'true' && !$(cssId).length) {
+			if (getCookie(cookieName.specVersionOn) === 'true' && !$('#' + config.cssId).length) {
 				$('<link/>', {
-					id: cssId.substr(1),
+					id: config.cssId,
 					rel: 'stylesheet',
 					href: path + 'special-version.css'
 				}).appendTo('head');
 
-				$body.addClass(mod.specOn);
+				$body.addClass(config.modifiers.specOn);
 			}
 
 			/**
 			 * !add special modifiers class
 			 * */
-			var cookieMods = getCookie(cookies.specVersionMods);
-			// console.log("cookieMods (after document ready): ", cookieMods);
-			if (cookieMods) {
-				$html.addClass(cookieMods.replace(/, /g, ' '));
-				$(elem.btn).removeClass(mod.btnActive);
-
-				var cookieModsArr = cookieMods.split(', ');
-				for(var i = 0; i < cookieModsArr.length; i++){
-					// console.log(cookieModsArr[i]);
-					$('[data-mod=' + cookieModsArr[i] + ']').addClass(mod.btnActive);
-				}
-			}
+			// var cookieMods = getCookie(cookieName.specVersionSettings);
+			// // console.log("cookieMods (after document ready): ", cookieMods);
+			// if (cookieMods) {
+			// 	$html.addClass(cookieMods.replace(/, /g, ' '));
+			// 	$(config.btn).removeClass(config.modifiers.activeClass);
+			//
+			// 	var cookieModsArr = cookieMods.split(', ');
+			// 	for(var i = 0; i < cookieModsArr.length; i++){
+			// 		$('[data-mod=' + cookieModsArr[i] + ']').addClass(config.modifiers.activeClass);
+			// 	}
+			// }
 
 			/**
 			 * !switch special version
 			 * */
 			/* replace title and text in buttons */
-			$.each($specialBtn, function () {
+			$.each($switcher, function () {
 				var $curBtn = $(this),
 					$text = $('span', $curBtn);
-				if(getCookie(cookies.specVersionOn) === 'true'){
+				if(getCookie(cookieName.specVersionOn) === 'true'){
 					var titleOff = $curBtn.attr('data-title-off');
 					$curBtn.attr('title', titleOff);
 					$text.html(titleOff);
@@ -269,6 +279,7 @@
 				elem[i].spec.init();
 				elem[i].spec.callbacks();
 				elem[i].spec.toggleSpec();
+				console.log(2);
 				elem[i].spec.changeSettings();
 			}
 			else {
@@ -282,10 +293,16 @@
 	};
 
 	$.fn.spec.defaultOptions = {
+		switcher: '.spec-btn-switcher-js',
+		btn: '.spec-btn-js',
+		btnGroup: '.spec-btn-group-js',
 		event: 'click',
+		cssId: 'special-version',
 		modifiers: {
 			initClass: null,
-			activeClass: 'active'
+			specOn: 'vspec',
+			hidePage: 'vspec--hide-page',
+			activeClass: 'active' // active class of the buttons
 		}
 	}
 
@@ -293,11 +310,19 @@
 
 $(document).ready(function () {
 	var specVersionInit = function() {
-		var $specPanel = $('.spec-panel-js');
-
+		var $specPanel = $('.spec-btn-switcher-js');
 		if ($specPanel.length) {
-			$.each($specPanel, function () {
-				$(this).spec();
+			$('.spec-panel-js').spec({
+				specOn: 'vspec',
+				hidePage: 'vspec--hide-page',
+				activeClass: 'active'
+			});
+		}
+
+		var $specPanelMob = $('.spec-btn-switcher-js');
+		if ($specPanelMob.length) {
+			$('.spec-panel-mob-js').spec({
+				switcher: '.spec-btn-switcher-mob-js'
 			});
 		}
 	};
