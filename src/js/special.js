@@ -12,6 +12,7 @@
 			$body = $('body'),
 			$element = $(element),
 			$switcher = $(config.switcher),
+			$btn = $element.find(config.btn),
 			pref = 'jq-spec',
 			pluginClasses = {
 				initClass: pref + '--initialized',
@@ -100,7 +101,6 @@
 			 */
 			// Если для cпец. версии создаются отдельные шаблоны,
 			// этот функционал не нужен
-			console.log("getCookie(cookieName.specVersionOn): ", getCookie(cookieName.specVersionOn));
 			$switcher.on('click', function (e) {
 				e.preventDefault();
 				$('body').addClass(config.modifiers.hidePage); // first hide content
@@ -112,94 +112,120 @@
 				}
 				location.reload(); // reload page
 			});
-		}, changeSettings = function () {
+		}, setActiveState = function ($btn) {
 			/**
-			 * !Change settings
+			 * !Set active state to the button
+			 */
+
+			// Add active class
+			// Add tabindex="-1". For pass focus
+			// Add aria-checked="true". See: http://prgssr.ru/development/ispolzovanie-aria-v-html5.html
+			$btn
+				.addClass(config.modifiers.activeClass)
+				.attr('tabindex', '-1')
+				.attr('aria-checked', 'true');
+
+		}, setInactiveState = function ($btn) {
+			/**
+			 * !Set inactive state to the button
+			 */
+
+			// Remove active class
+			// Reset tabindex
+			// Add aria-checked="false". See: http://prgssr.ru/development/ispolzovanie-aria-v-html5.html
+			$btn
+				.removeClass(config.modifiers.activeClass)
+				.attr('tabindex', '')
+				.attr('aria-checked', 'false');
+
+		}, changeSettings = function (initialObj, currentObj) {
+			/**
+			 * !Change setting of a special version
+			 */
+			var keyRemove, keyAdd;
+			
+			// Remove special classes from html
+			for (keyRemove in initialObj) {
+				$html.removeClass(initialObj[keyRemove]);
+			}
+
+			// Reset state for all buttons
+			setInactiveState($btn);
+
+			// Merge current object of settings into initial object of settings
+			$.extend(true, initialObj, currentObj);
+			// console.log("mergeSettings: ", initialObj);
+			// console.log('===========================');
+
+			// For the merged object of default settings
+			for (keyAdd in initialObj) {
+				// Add modifier classes to html
+				$html.addClass(initialObj[keyAdd]);
+				// console.log("newKey: ", defaultSettingObj[keyAdd]);
+
+				// Reset all buttons in group
+				var $allBtnInGroup = $element.find('[data-mod-name*=' + keyAdd + ']');
+				setInactiveState($allBtnInGroup);
+
+				// Set active state for active buttons
+				var $activeBtn = $element.find('[data-mod-value*=' + initialObj[keyAdd] + ']');
+				setActiveState($activeBtn);
+			}
+
+			// Save settings in cookie
+			setCookieMod(cookieName.specVersionSettings, JSON.stringify(initialObj));
+
+			return false;
+		}, settingsByDefault = function () {
+			/**
+			 * !Activate setting buttons by default
+			 * todo: В идеале, этот этап нужно сделать на php
 			 * */
-			$(config.btn).on('click', function (e) {
-				e.preventDefault();
-				var $curBtn = $(this);
 
-				if(!$curBtn.hasClass(config.modifiers.activeClass) || $curBtn.attr('data-toggle') !== undefined) {
-					var $curGroup = $curBtn.closest(config.btnGroup),
-						modsArr = [];
+			// Create object from default active buttons
+			var defaultSettingsObj = {},
+				$btnByDefaultActive = $btn.filter('[data-default=true]');
 
-					// create modifiers class array
-					// $.each($curGroup.find(config.btn), function (i, el) {
-					// 	modsArr.push($(el).attr('data-mod'));
-					// });
+			$.each($btnByDefaultActive, function () {
+				var $this = $(this);
+				defaultSettingsObj[$this.attr('data-mod-name')] = $this.attr('data-mod-value');
+			});
+			// console.log("defaultSettingsObj: ", defaultSettingsObj);
 
-					var settings = getCookie(cookieName.specVersionSettings);
+			// Take saved settings object or create new one
+			var savedSettingsStr = getCookie(cookieName.specVersionSettings),
+				savedSettingsObj = savedSettingsStr ? JSON.parse(savedSettingsStr) : {};
+			// console.log("savedSettingsObj: ", savedSettingsObj);
 
-					// console.log("settings: ", settings);
-					// console.log("settings []: ", settings.split(', '));
+			changeSettings(defaultSettingsObj, savedSettingsObj);
 
-					// var testJsonStr = '{"fontSize":"FONTSIZE1","letterSpacing":"LETTERSPACING1"}';
-					// var testJsonObj = JSON.parse(testJsonStr);
-					// console.log("testJsonObj: ", testJsonObj);
-					// // var key;
-					// // for (key in testJsonObj) {
-					// // 	console.log("key: ", key);
-					// // }
-					// testJsonObj["fontSize"] = "FONTSIZE2";
-					// testJsonObj["imgOn"] = "true";
-					// console.log("testJsonObj (new): ", testJsonObj);
-					// var testJsonStrNew = JSON.stringify(testJsonObj);
-					// console.log("testJsonStrNew: ", testJsonStrNew);
+		}, selectSetting = function () {
+			/**
+			 * !Select setting for special version
+			 * */
+			$btn.on('click', function (e) {
+				var $curBtn = $(this),
+					settingsStr = getCookie(cookieName.specVersionSettings),
+					modName = $curBtn.attr('data-mod-name'),
+					modVal = $curBtn.attr('data-mod-value');
 
+				// Create object of current setting
+				var currentSettingsObj = {};
+				currentSettingsObj[modName] = modVal;
+				// console.log("currentSettingsObj: ", currentSettingsObj);
 
-					// var newCookieModsArr = settings ? settings.split(', ') : [];
-					//
-					// for (var i = 0; i < modsArr.length; i++) {
-					// 	for (var j = 0; j < newCookieModsArr.length; j++) {
-					// 		if (modsArr[i] === newCookieModsArr[j]) {
-					// 			newCookieModsArr.splice(j, 1);
-					// 		}
-					// 	}
-					// }
+				// Take saved settings object or create new one
+				var saveSettingsObj = settingsStr ? JSON.parse(settingsStr) : {};
+				// console.log("saveSettingsObj: ", saveSettingsObj);
 
-					if (!$curBtn.hasClass(config.modifiers.activeClass)) {
-						// Create settings object
-						var settingsObj = settings ? JSON.parse(settings) : {};
-						console.log("settingsObj: ", settingsObj);
-
-						// remove modifier classes from html
-						for (var key in settingsObj) {
-							$html.removeClass(settingsObj[key]);
-						}
-
-						// Add or change the setting in settings object
-						var modName = $curBtn.attr('data-mod-name'),
-							modVal = $curBtn.attr('data-mod-value');
-
-						settingsObj[modName] = modVal;
-						console.log("settingsObj (new): ", settingsObj);
-
-						// add modifier classes to html
-						for (var newKey in settingsObj) {
-							$html.addClass(settingsObj[newKey]);
-						}
-
-						// remove active class from buttons
-						$element.find('[data-mod-name*=' + modName + ']').removeClass(config.modifiers.activeClass).attr('tabindex', '');
-
-						// add active class on current button
-						$element.find('[data-mod-value*=' + modVal + ']').addClass(config.modifiers.activeClass).attr('tabindex', '1');
-
-						if ($curBtn.attr('data-toggle') === undefined){
-							$curBtn.attr('tabindex', '-1');
-						}
-					}
-					// else if ($curBtn.attr('data-toggle') !== undefined) {
-					// 	// remove active class from current button
-					// 	$curBtn.removeClass(config.modifiers.activeClass).attr('tabindex', '');
-					// 	// remove active class from a body
-					// 	$html.removeClass(modVal);
-					// }
-
-					// Save settings in cookie
-					setCookieMod(cookieName.specVersionSettings, JSON.stringify(settingsObj));
+				// If the button is checkbox-type
+				if ($curBtn.attr('data-toggle') !== undefined && $curBtn.hasClass(config.modifiers.activeClass)) {
+					currentSettingsObj[modName] = null;
 				}
+
+				changeSettings(saveSettingsObj, currentSettingsObj);
+
+				e.preventDefault();
 			});
 		}, init = function () {
 
@@ -219,21 +245,6 @@
 
 				$body.addClass(config.modifiers.specOn);
 			}
-
-			/**
-			 * !add special modifiers class
-			 * */
-			// var cookieMods = getCookie(cookieName.specVersionSettings);
-			// // console.log("cookieMods (after document ready): ", cookieMods);
-			// if (cookieMods) {
-			// 	$html.addClass(cookieMods.replace(/, /g, ' '));
-			// 	$(config.btn).removeClass(config.modifiers.activeClass);
-			//
-			// 	var cookieModsArr = cookieMods.split(', ');
-			// 	for(var i = 0; i < cookieModsArr.length; i++){
-			// 		$('[data-mod=' + cookieModsArr[i] + ']').addClass(config.modifiers.activeClass);
-			// 	}
-			// }
 
 			/**
 			 * !switch special version
@@ -258,8 +269,9 @@
 
 		self = {
 			callbacks: callbacks,
+			settingsByDefault: settingsByDefault,
 			toggleSpec: toggleSpec,
-			changeSettings: changeSettings,
+			selectSetting: selectSetting,
 			init: init
 		};
 
@@ -278,9 +290,9 @@
 				elem[i].spec = new Spec(elem[i], $.extend(true, {}, $.fn.spec.defaultOptions, opt));
 				elem[i].spec.init();
 				elem[i].spec.callbacks();
+				elem[i].spec.settingsByDefault();
 				elem[i].spec.toggleSpec();
-				console.log(2);
-				elem[i].spec.changeSettings();
+				elem[i].spec.selectSetting();
 			}
 			else {
 				ret = elem[i].spec[opt].apply(elem[i].spec, args);
@@ -298,6 +310,9 @@
 		btnGroup: '.spec-btn-group-js',
 		event: 'click',
 		cssId: 'special-version',
+		settings: {
+			"spacing":"vspec-mod_spacing_lg"
+		},
 		modifiers: {
 			initClass: null,
 			specOn: 'vspec',
@@ -317,10 +332,7 @@ $(document).ready(function () {
 				hidePage: 'vspec--hide-page',
 				activeClass: 'active'
 			});
-		}
 
-		var $specPanelMob = $('.spec-btn-switcher-js');
-		if ($specPanelMob.length) {
 			$('.spec-panel-mob-js').spec({
 				switcher: '.spec-btn-switcher-mob-js'
 			});
