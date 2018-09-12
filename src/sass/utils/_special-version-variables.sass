@@ -24,11 +24,20 @@ $spec-mod--spacing-large: 'vspec-mod_spacing_lg' !default
 $spec-mod--scheme-def: 'vspec-mod_scheme-color_def' !default
 $spec-mod--scheme-wb: 'vspec-mod_scheme-color_white' !default
 $spec-mod--scheme-blue: 'vspec-mod_scheme-color_blue' !default
+$spec-mod--scheme-green: 'vspec-mod_scheme-color_green' !default
 
 // Special Panel
 // ==========================================================================
-$spec-panel-size: 100% 70px // height width
-$spec-panel-size--sm: 56px 100% // height width
+//$spec-panel-size: 100% 70px // height width
+$spec-panel-size: 74px auto // height width
+$spec-panel-size--sm: 56px auto // height width
+$spec-panel-inner-space: 20px
+$spec-panel-inner-space--sm: 10px
+$spec-panel__btn-size: 42px
+$spec-panel__btn-size--sm: 36px
+$spec-panel__btn-arr-size: 24px
+$spec-panel__btn-shadow-inside: 0 0 0 2px
+$spec-panel__btn-shadow-outside: 0 0 0 5px
 
 
 // СПЕЦИАЛЬНАЯ ВЕРСИЯ: НАСТРОЙКИ
@@ -48,6 +57,11 @@ $spec-bg-color--scheme-wb: #000 !default
 // ---------------------------------------------------------------------------
 $spec-text-color--scheme-blue: #004c92 !default
 $spec-bg-color--scheme-blue: #c8e5ff !default
+
+// Специальная версия: Цветовая схема - Зеленым по темно-коричневому
+// ---------------------------------------------------------------------------
+$spec-text-color--scheme-green: #a9e44d !default
+$spec-bg-color--scheme-green: #3b2716 !default
 
 
 // Fonts
@@ -120,7 +134,7 @@ $spec-small-text-line-height: round-float(28px / 16px, 2) !default // 28px --> 1
 
 // Базовый межбуквенный интервал
 // ---------------------------------------------------------------------------
-$spec-letter-spacing: normal !default
+$spec-letter-spacing--normal: normal !default
 
 // Settings: Средний межбуквенный интервал
 // ---------------------------------------------------------------------------
@@ -186,6 +200,9 @@ $spec-border-width: 2px
 	.#{$spec-mod--scheme-blue} &
 		background-color: $spec-bg-color--scheme-blue
 
+	.#{$spec-mod--scheme-green} &
+		background-color: $spec-bg-color--scheme-green
+
 // Reset background + invert
 =spec-reset-bg-invert()
 	color: $spec-bg-color
@@ -198,6 +215,10 @@ $spec-border-width: 2px
 	.#{$spec-mod--scheme-blue} &
 		color: $spec-bg-color--scheme-blue
 		background-color: $spec-text-color--scheme-blue
+
+	.#{$spec-mod--scheme-green} &
+		color: $spec-bg-color--scheme-green
+		background-color: $spec-text-color--scheme-green
 
 // Reset all styles
 =spec-reset-full()

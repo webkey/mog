@@ -58,6 +58,9 @@
 			.#{$spec-mod--scheme-blue} &
 				background-image: url(../../img/logo-text--blue.svg)
 
+			.#{$spec-mod--scheme-green} &
+				background-image: url(../../img/logo-text--green.svg)
+
 			&::before
 				content: ""
 				display: block
@@ -90,6 +93,9 @@
 
 			.#{$spec-mod--scheme-blue} &
 				box-shadow: 0 0 35px rgba($spec-text-color--scheme-blue, 0.35)
+
+			.#{$spec-mod--scheme-green} &
+				box-shadow: 0 0 35px rgba($spec-text-color--scheme-green, 0.35)
 
 	.main-menu__box, .main-menu__heading
 		+spec-font-size--normal
@@ -175,6 +181,9 @@
 		.#{$spec-mod--scheme-blue} &
 			color: $spec-bg-color--scheme-blue
 
+		.#{$spec-mod--scheme-green} &
+			color: $spec-bg-color--scheme-green
+
 		.search-form__label, & + .search-form__label
 			label
 				color: inherit
@@ -187,6 +196,9 @@
 
 			.#{$spec-mod--scheme-blue} &
 				color: $spec-bg-color--scheme-blue
+
+			.#{$spec-mod--scheme-green} &
+				color: $spec-bg-color--scheme-green
 
 			svg path
 				fill: currentColor

@@ -154,8 +154,8 @@
 
 			// Merge current object of settings into initial object of settings
 			$.extend(true, initialObj, currentObj);
-			// console.log("mergeSettings: ", initialObj);
-			// console.log('===========================');
+			console.log("mergeSettings: ", initialObj);
+			console.log('===========================');
 
 			// For the merged object of default settings
 			for (keyAdd in initialObj) {

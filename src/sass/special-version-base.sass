@@ -8,30 +8,16 @@
 $displace: 1px
 // variables end
 
-// только для текущего проекта
-.footer-nav
-	position: relative
-
-.spec-panel,
-.spec-panel__holder
-	width: nth($spec-panel-size, 2)
-	box-sizing: border-box
-
 .spec-panel
 	display: none
-	position: fixed
-	left: 0
-	top: 0
-	height: 100%
-	//width: 70px
+	position: relative
+	width: nth($spec-panel-size, 2)
+	max-width: #{$spec-text-page}
+	margin: 0 auto 20px
 	z-index: 999
-	font-family: Arial, Helvetica, sans-serif
-	font-size: 16px
-	line-height: 1
-	//overflow: hidden
-	box-shadow: 0 0 0 1px currentColor
-	//background-color: var(--main-bg-color);
-	background-color: inherit
+	box-sizing: border-box
+	border: 0 solid currentColor
+	border-width: 0 $spec-border-width $spec-border-width
 	// transition
 	$prop: transform
 	will-change: $prop
@@ -54,67 +40,453 @@ $displace: 1px
 		.#{$spec-mod--scheme-blue} &
 			box-shadow: $sh1 currentColor, $sh2 rgba($spec-text-color--scheme-blue, 0.3)
 
+		.#{$spec-mod--scheme-green} &
+			box-shadow: $sh1 currentColor, $sh2 rgba($spec-text-color--scheme-green, 0.3)
+
 	.vspec &
 		display: block
 
-	.nav-opened-before &
-		+media('<mob-md')
-			transform: translate(0, -110%)
-
-	.spec-btn-group
-		border: 0 solid currentColor
-		border-width: 1px 0 0
-
-		+media('<mob-md')
-			display: flex
-			border-width: 0 0 0 1px
-			align-items: center
-			padding: 0 5px
-
-		&:first-child
-			border-top: 0
-			border-left: 0
-
-	.spec-btn
-		display: block
-		margin: 20px auto
-
-		+media('<mob-md')
-			display: inline-block
-			vertical-align: top
-			margin: 0 5px
-
 .spec-panel__layout
 	overflow: hidden
+	overflow-y: hidden
+	overflow-x: hidden
+	box-sizing: border-box
+	+spec-reset-bg
 
 	&:hover,
 	.touchevents &,
 	.no-js &
-		overflow-y: auto
-
-		+media('<mob-md')
-			overflow-y: hidden
-			overflow-x: auto
+		overflow-x: auto
 
 .spec-panel__holder
-	//padding: 20px 0
-	text-align: center
+	display: flex
+	justify-content: flex-start
+	box-sizing: border-box
+	padding: 0 round($spec-panel-inner-space / 2)
 
 	+media('<mob-md')
-		display: flex
 		height: nth($spec-panel-size--sm, 1)
-		width: auto
-		//padding: 10px
+		padding: 0 round($spec-panel-inner-space--sm / 2)
 
-// button enable special version
+.spec-panel__layout,
+.spec-panel__holder,
+.spec-panel__item
+	height: nth($spec-panel-size, 1)
+
+.spec-panel__item
+	display: flex
+	justify-content: flex-start
+	align-items: center
+	padding: 0 round($spec-panel-inner-space / 2)
+
+.spec-panel__label
+	white-space: nowrap
+	//padding: 0 round($spec-panel-inner-space / 2) 0 0
+	//font-family: Arial, Helvetica, sans-serif
+	font-family: inherit
+	font-size: 18px
+	line-height: 22px
+	letter-spacing: normal
+	word-spacing: normal
+	word-break: normal
+
+	//+media('<mob-md')
+		padding: 0 round($spec-panel-inner-space--sm / 2)
+
+.spec-panel__btn-group
+	display: flex
+	align-items: center
+	border-color: currentColor
+
+.spec-panel__btn
+	position: relative
+	display: inline-block
+	vertical-align: top
+	width: $spec-panel__btn-size
+	height: $spec-panel__btn-size
+	margin: 0 0 0 round($spec-panel-inner-space / 2)
+	font-size: 18px
+	line-height: 22px
+	letter-spacing: normal
+	word-spacing: normal
+	border-radius: 4px
+	//border: 1px solid $spec-text-color
+	border: 1px solid currentColor
+	box-sizing: border-box
+	// reset outline
+	outline: none
+	-webkit-tap-highlight-color: rgba(0,0,0,0) !important
+	user-select: none !important
+
+	&, .#{$spec-mod} &
+		text-decoration: none
+		color: currentColor
+
+	//.#{$spec-mod--scheme-wb} &
+		border-color: $spec-text-color--scheme-wb
+
+	//.#{$spec-mod--scheme-blue} &
+		border-color: $spec-text-color--scheme-blue
+
+	+media('<mob-md')
+		width: $spec-panel__btn-size
+		height: $spec-panel__btn-size
+		margin: 0 0 0 round($spec-panel-inner-space--sm / 2)
+
+	// marker arrow
+	&::before, &::after
+		display: none
+		content: ""
+		position: absolute
+		left: 50%
+		margin: 3px 0 3px -#{round($spec-panel__btn-arr-size / 2)}
+
+	&::before
+		bottom: 100%
+		+triangle("bottom", currentColor, round($spec-panel__btn-arr-size / 2), 0.8)
+
+	&::after
+		top: 100%
+		+triangle("top", currentColor, round($spec-panel__btn-arr-size / 2), 0.8)
+
+	// hover, focus
+	&:hover, &:focus
+		//transform: translate(-$displace, -$displace)
+		outline: none
+		box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color, $spec-panel__btn-shadow-outside $spec-text-color
+
+		.#{$spec-mod--scheme-wb} &
+			box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-wb, $spec-panel__btn-shadow-outside $spec-text-color--scheme-wb
+
+		.#{$spec-mod--scheme-blue} &
+			box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-blue, $spec-panel__btn-shadow-outside $spec-text-color--scheme-blue
+
+		.#{$spec-mod--scheme-green} &
+			box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-green, $spec-panel__btn-shadow-outside $spec-text-color--scheme-green
+
+	// focus
+	//&:focus
+		outline: none
+
+	// active
+	&.active
+		&, &:hover, &:focus
+			cursor: default
+			//box-shadow: none
+			//border-width: 4px
+			box-shadow: inset 0 0 0 3px currentColor
+
+		&::before, &::after
+			display: block
+
+	&.active[data-toggle]
+		&, &:hover, &:focus
+			cursor: pointer
+
+	& > span
+		display: none
+
+	svg
+		display: block
+		position: absolute
+		left: 50%
+		top: 50%
+		transform: translate(-50%, -50%)
+		box-sizing: border-box
+
+		+media('<mob-md')
+			transform: translate(-50%, -50%) scale(0.85)
+
+	path
+		fill: currentColor
+
+.spec-panel__btn_color_def
+	&, .#{$spec-mod} &
+		color: $spec-text-color
+		background-color: $spec-bg-color
+
+.spec-panel__btn_color_white
+	&, .#{$spec-mod} &
+		color: $spec-text-color--scheme-wb
+		background-color: $spec-bg-color--scheme-wb
+
+.spec-panel__btn_color_blue
+	&, .#{$spec-mod} &
+		color: $spec-text-color--scheme-blue
+		background-color: $spec-bg-color--scheme-blue
+
+.spec-panel__btn_color_green
+	&, .#{$spec-mod} &
+		color: $spec-text-color--scheme-green
+		background-color: $spec-bg-color--scheme-green
+
+$icon-spacing--size: 16px 2px // h w
+$icon-spacing--space: 3px // h
+.spec-panel__btn_spacing_sm, .spec-panel__btn_spacing_md, .spec-panel__btn_spacing_lg
+	.icon
+		&, &::before, &::after
+			display: block
+			position: absolute
+			left: 50%
+			top: 50%
+			height: nth($icon-spacing--size, 1)
+			width: nth($icon-spacing--size, 2)
+			background-color: currentColor
+
+		&
+			margin: -#{round(nth($icon-spacing--size, 1)/2)} 0 0 -#{round(nth($icon-spacing--size, 2)/2)}
+
+			+media('<mob-md')
+				transform: scale(0.85)
+
+		&::before, &::after
+			content: ""
+			margin-top: -#{round(nth($icon-spacing--size, 1)/2)}
+
+		&::before
+			margin-left: -#{$icon-spacing--space + round(nth($icon-spacing--size, 2)*1.5)}
+
+		&::after
+			margin-left: #{$icon-spacing--space + round(nth($icon-spacing--size, 2)*0.5)}
+
+.spec-panel__btn_spacing_md
+	.icon
+		$icon-spacing--space: 6px // h
+
+		&::before
+			margin-left: -#{$icon-spacing--space + round(nth($icon-spacing--size, 2)*1.5)}
+
+		&::after
+			margin-left: #{$icon-spacing--space + round(nth($icon-spacing--size, 2)*0.5)}
+
+.spec-panel__btn_spacing_lg
+	.icon
+		$icon-spacing--space: 9px // h
+
+		&::before
+			margin-left: -#{$icon-spacing--space + round(nth($icon-spacing--size, 2)*1.5)}
+
+		&::after
+			margin-left: #{$icon-spacing--space + round(nth($icon-spacing--size, 2)*0.5)}
+
+// Special Version Advanced Settings
+.spec-drop
+	+spec-reset-bg
+	overflow: hidden
+
+.spec-drop__layout
+	padding: $spec-panel-inner-space
+	border-top: $spec-border-width solid currentColor
+
+.spec-drop__title
+	+spec-font-size--title
+	//+font(36px, 48px)
+	//font-weight: bold
+	//letter-spacing: normal
+	//word-spacing: normal
+	word-wrap: break-word
+	margin-bottom: round($spec-panel-inner-space / 2)
+
+	.spec-drop__item + &
+		margin-top: round($spec-panel-inner-space * 2)
+
+.spec-drop__item
+	display: flex
+	flex-wrap: wrap
+	justify-content: flex-start
+	align-items: center
+	margin: round($spec-panel-inner-space / 2) 0 0
+
+	.spec-drop__title + &
+		margin-top: 0
+
+.spec-drop__label
+	display: inline-block // if not support flex
+	vertical-align: top // if not support flex
+	margin: round($spec-panel-inner-space / 2) 0
+	+spec-font-size--item
+	//+font(22px, 34px)
+	//font-weight: bold
+	//letter-spacing: normal
+	//word-spacing: normal
+	word-wrap: break-word
+
+.spec-drop__btn-group
+	display: inline-block // if not support flex
+	vertical-align: top // if not support flex
+	display: flex
+	justify-content: flex-start
+	align-items: center
+
+.spec-drop__btn
+	position: relative
+	display: inline-block // if not support flex
+	vertical-align: top // if not support flex
+	display: flex
+	justify-content: flex-start
+	align-items: center
+	margin: round($spec-panel-inner-space / 2)
+	margin-right: 0
+	padding: 0 10px
+	//+spec-font-size--normal
+	//letter-spacing: normal
+	//word-spacing: normal
+	height: 50px
+	border-radius: 4px
+	box-sizing: border-box
+	border: 1px solid currentColor
+	// reset outline
+	outline: none
+	-webkit-tap-highlight-color: rgba(0,0,0,0) !important
+	user-select: none !important
+
+	&, .#{$spec-mod} &
+		text-decoration: none
+		color: currentColor
+
+	+media('<mob-md')
+		height: $spec-panel__btn-size
+		margin: 0 0 0 round($spec-panel-inner-space--sm / 2)
+
+	// marker arrow
+	&::before, &::after
+		display: none
+		content: ""
+		position: absolute
+		left: 50%
+		margin: 3px 0 3px -#{round($spec-panel__btn-arr-size / 2)}
+
+	&::before
+		bottom: 100%
+		+triangle("bottom", currentColor, round($spec-panel__btn-arr-size / 2), 0.8)
+
+	&::after
+		top: 100%
+		+triangle("top", currentColor, round($spec-panel__btn-arr-size / 2), 0.8)
+
+	svg
+		display: none
+		box-sizing: border-box
+		margin-right: 5px
+
+	path
+		fill: currentColor
+
+	.icon
+		display: none
+
+	// hover, focus
+	&:hover, &:focus
+		//transform: translate(-$displace, -$displace)
+		outline: none
+		box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color, $spec-panel__btn-shadow-outside $spec-text-color
+
+		.#{$spec-mod--scheme-wb} &
+			box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-wb, $spec-panel__btn-shadow-outside $spec-text-color--scheme-wb
+
+		.#{$spec-mod--scheme-blue} &
+			box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-blue, $spec-panel__btn-shadow-outside $spec-text-color--scheme-blue
+
+		.#{$spec-mod--scheme-green} &
+			box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-green, $spec-panel__btn-shadow-outside $spec-text-color--scheme-green
+
+	// active
+	&.active
+		&, &:hover, &:focus
+			cursor: default
+			//border-width: 4px
+			box-shadow: inset 0 0 0 3px currentColor
+
+		&::before, &::after
+			display: block
+
+	&.active[data-toggle]
+		&, &:hover, &:focus
+			cursor: pointer
+
+// Font size
+//.spec-drop__btn_size_sm,
+//.spec-drop__btn_size_md,
+//.spec-drop__btn_size_lg
+	letter-spacing: inherit
+	word-spacing: inherit
+
+.spec-drop__btn_size_sm
+	+spec-font-size--small
+
+.spec-drop__btn_size_md
+	+spec-font-size--normal
+
+.spec-drop__btn_size_lg
+	+spec-font-size--large
+
+// Letter spacing
+//.spec-drop__btn_spacing_normal,
+//.spec-drop__btn_spacing_md,
+//.spec-drop__btn_spacing_lg
+	font-size: inherit
+
+.spec-drop__btn_spacing_normal
+	letter-spacing: $spec-letter-spacing--normal
+	word-spacing: $spec-letter-spacing--normal
+
+.spec-drop__btn_spacing_md
+	letter-spacing: $spec-letter-spacing--medium
+	word-spacing: $spec-letter-spacing--medium
+
+.spec-drop__btn_spacing_lg
+	letter-spacing: $spec-letter-spacing--large
+	word-spacing: $spec-letter-spacing--large
+
+// color scheme
+.spec-drop__btn_color_def
+	&, .#{$spec-mod} &
+		color: $spec-text-color
+		background-color: $spec-bg-color
+
+.spec-drop__btn_color_white
+	&, .#{$spec-mod} &
+		color: $spec-text-color--scheme-wb
+		background-color: $spec-bg-color--scheme-wb
+
+.spec-drop__btn_color_blue
+	&, .#{$spec-mod} &
+		color: $spec-text-color--scheme-blue
+		background-color: $spec-bg-color--scheme-blue
+
+.spec-drop__btn_color_green
+	&, .#{$spec-mod} &
+		color: $spec-text-color--scheme-green
+		background-color: $spec-bg-color--scheme-green
+
+// Special Version Advanced Settings end
+
+// Duplicate Special Version Panel
+.spec-panel-mob
+	position: fixed
+	left: 0
+	bottom: 0
+	width: 100%
+	border-width: 2px
+
+	.spec-drop
+		position: absolute
+		left: 0
+		width: 100%
+		bottom: nth($spec-panel-size, 1) + 20
+
+// Duplicate Special Version Panel end
+
+
+
+
+/*button switch special version
 .spec-btn-switcher
 	position: fixed
 	left: 10px
 	top: 10px
 	padding-left: 1.9em
 	font-family: Arial, Helvetica, sans-serif
-	//font-size: inherit
-	//line-height: inherit
 	font-size: 18px
 	line-height: 30px
 	letter-spacing: normal
@@ -123,11 +495,6 @@ $displace: 1px
 	font-style: normal
 	box-sizing: border-box
 	z-index: 9999
-
-
-	//span
-		font-size: 0
-		line-height: 0
 
 	svg
 		+size(1.4em)
@@ -158,19 +525,13 @@ $displace: 1px
 		left: auto
 		right: 15px
 		top: 15px
-		
+
 		+media('<tab-lg')
 			right: 90px
 			top: 5px
-			//right: 80px
-			//top: auto
-			//bottom: 25px
 
 		.home-page &
 			color: white
-
-			//+media('<tab-lg')
-				color: inherit
 
 		span
 			+media('<tab-lg')
@@ -212,11 +573,6 @@ $displace: 1px
 		left: auto
 		top: auto
 		bottom: 10px
-		//position: absolute
-		//left: auto
-		//right: 15px
-		//top: auto
-		//bottom: 10px
 		color: rgba(white, 0.8)
 
 		.#{$spec-mod} &
@@ -224,256 +580,12 @@ $displace: 1px
 			position: relative
 			bottom: auto
 
-.spec-btn
-	$size: 42px
-	$arr: 24px
+/*button switch special version end
 
-	width: $size
-	height: $size
+// только для текущего проекта
+.footer-nav
 	position: relative
-	font-size: 16px
-	line-height: 1
-	letter-spacing: normal
-	text-decoration: none
-	border-radius: 1px
-	//border: 3px solid
-	//border-color: rgba($spec-text-color, 0.2) rgba($spec-text-color, 0.6) $spec-text-color rgba($spec-text-color, 0.4)
-	border: 1px solid $spec-text-color
-	box-sizing: border-box
-	-webkit-tap-highlight-color: rgba(0,0,0,0) !important
-	user-select: none !important
 
+//.nav-opened-before .spec-panel
 	+media('<mob-md')
-		$size: 36px
-		width: $size
-		height: $size
-
-	&:focus
-		outline: none
-
-	.#{$spec-mod--scheme-wb} &
-		border-color: $spec-text-color--scheme-wb
-
-	.#{$spec-mod--scheme-blue} &
-		border-color: $spec-text-color--scheme-blue
-
-	&::after
-		content: ""
-		display: none
-		position: absolute
-		top: 50%
-		right: -22px
-		height: $arr
-		width: $arr
-		margin-top: -#{round($arr/2)}
-		+triangle("left", currentColor, round($arr/2), 1.2)
-
-		+media('<mob-md')
-			border: none
-			+triangle("top", currentColor, round($arr/2), 1.2)
-			top: auto
-			right: auto
-			left: 50%
-			bottom: -20px
-			margin: 0 0 0 -#{round($arr/2)}
-
-.spec-panel
-	.spec-btn,
-	.spec-btn[data-toggle],
-	.spec-btn.active[data-toggle]
-		$w1: 0 0 0 2px
-		$w2: 0 0 0 5px
-		$w1--sm: 0 0 0 2px
-		$w2--sm: 0 0 0 4px
-
-		&:hover, &:focus
-			//transform: translate(-$displace, -$displace)
-			box-shadow: $w1 $spec-bg-color, $w2 $spec-text-color
-
-			.#{$spec-mod--scheme-wb} &
-				box-shadow: $w1 $spec-bg-color--scheme-wb, $w2 $spec-text-color--scheme-wb
-
-			.#{$spec-mod--scheme-blue} &
-				box-shadow: $w1 $spec-bg-color--scheme-blue, $w2 $spec-text-color--scheme-blue
-
-	.spec-btn.active
-		&, &:hover, &:focus
-			cursor: default
-			box-shadow: none
-			border-width: 4px
-
-			//transform: translate(0, 0)
-			//$w1: 0 0 0 4px
-			//$w2: 0 0 0 10px
-			//$w1--sm: 0 0 0 2px
-			//$w2--sm: 0 0 0 4px
-
-			//cursor: default
-			//transform: translate(0, 0)
-			//border-color: currentColor
-			//border-width: 1px
-			//box-shadow: $w1 $spec-bg-color, $w2 $spec-text-color
-			//
-			//+media('<mob-md')
-			//	box-shadow: $w1--sm $spec-bg-color, $w2--sm $spec-text-color
-			//
-			//.schemecolor-white &
-			//	box-shadow: $w1 $spec-bg-color--scheme-white, $w2 $spec-text-color--scheme-white
-			//
-			//	+media('<mob-md')
-			//		box-shadow: $w1--sm $spec-bg-color--scheme-white, $w2--sm $spec-text-color--scheme-white
-			//
-			//.schemecolor-blue &
-			//	box-shadow: $w1 $spec-bg-color--scheme-blue, $w2 $spec-text-color--scheme-blue
-			//
-			//	+media('<mob-md')
-			//		box-shadow: $w1--sm $spec-bg-color--scheme-blue, $w2--sm $spec-text-color--scheme-blue
-
-		&::after
-			display: block
-
-	.spec-btn.active[data-toggle]
-		&, &:hover, &:focus
-			cursor: pointer
-
-	.spec-btn
-		span
-			font-size: 0
-			line-height: 0
-
-		svg
-			display: block
-			position: absolute
-			left: 50%
-			top: 50%
-			transform: translate(-50%, -50%)
-			box-sizing: border-box
-
-			+media('<mob-md')
-				transform: translate(-50%, -50%) scale(0.85)
-
-		path
-			fill: currentColor
-
-.spec-panel .spec-btn-off
-	display: none
-
-.vspec .spec-panel .spec-btn-off
-	display: block
-
-	&::before
-		content: ""
-		display: block
-		position: absolute
-		left: 50%
-		top: 50%
-		width: 40px
-		height: 3px
-		margin: -1px 0 0 -20px
-		border: none
-		background-color: currentColor
-		transform: rotate(-0.1turn)
-
-		+media('<mob-md')
-			width: 34px
-			margin: -1px 0 0 -17px
-
-	&::after
-		content: none
-
-	+media('<mob-md')
-		display: inline-block
-
-/* special version color
-.spec-panel .spec-btn_color_def
-	color: $spec-text-color
-	background-color: $spec-bg-color
-
-.spec-panel .spec-btn_color_white
-	color: $spec-text-color--scheme-wb
-	background-color: $spec-bg-color--scheme-wb
-
-.spec-panel .spec-btn_color_blue
-	color: $spec-text-color--scheme-blue
-	background-color: $spec-bg-color--scheme-blue
-
-// letter spacing
-$icon-spacing--size: 16px 2px // h w
-$icon-spacing--space: 3px // h
-.spec-btn_spacing_sm, .spec-btn_spacing_md, .spec-btn_spacing_lg
-	.spec-panel &
-		.icon
-			&, &::before, &::after
-				display: block
-				position: absolute
-				left: 50%
-				top: 50%
-				height: nth($icon-spacing--size, 1)
-				width: nth($icon-spacing--size, 2)
-				background-color: currentColor
-
-			&
-				margin: -#{round(nth($icon-spacing--size, 1)/2)} 0 0 -#{round(nth($icon-spacing--size, 2)/2)}
-
-				+media('<mob-md')
-					transform: scale(0.85)
-
-			&::before, &::after
-				content: ""
-				margin-top: -#{round(nth($icon-spacing--size, 1)/2)}
-
-			&::before
-				margin-left: -#{$icon-spacing--space + round(nth($icon-spacing--size, 2)*1.5)}
-
-			&::after
-				margin-left: #{$icon-spacing--space + round(nth($icon-spacing--size, 2)*0.5)}
-
-.spec-btn_spacing_md
-	.spec-panel &
-		.icon
-			$icon-spacing--space: 6px // h
-
-			&::before
-				margin-left: -#{$icon-spacing--space + round(nth($icon-spacing--size, 2)*1.5)}
-
-			&::after
-				margin-left: #{$icon-spacing--space + round(nth($icon-spacing--size, 2)*0.5)}
-
-.spec-btn_spacing_lg
-	.spec-panel &
-		.icon
-			$icon-spacing--space: 9px // h
-
-			&::before
-				margin-left: -#{$icon-spacing--space + round(nth($icon-spacing--size, 2)*1.5)}
-
-			&::after
-				margin-left: #{$icon-spacing--space + round(nth($icon-spacing--size, 2)*0.5)}
-
-// добавить в all.css
-.main-contacts,
-.local-map
-	height: 595px
-
-
-
-// Special Version Advanced Settings
-.spec-drop
-	position: absolute
-	left: nth($spec-panel-size, 2) + 20px
-	top: 50px
-	border: 1px solid currentColor
-	padding: 20px
-
-// Special Version Advanced Settings end
-
-// Duplicate Special Version Panel
-.spec-panel-mob
-	left: auto
-	right: 0
-
-	.spec-drop
-		left: auto
-		right: nth($spec-panel-size, 2) + 20px
-
-// Duplicate Special Version Panel end
+		transform: translate(0, -110%)

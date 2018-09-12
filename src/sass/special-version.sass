@@ -54,6 +54,12 @@ body.#{$spec-mod}
 		color: $spec-text-color--scheme-blue
 		background-color: $spec-bg-color--scheme-blue
 
+	// Специальная версия: Цветовая схема - Зеленым по темно-коричневому
+	// ================================================================
+	.#{$spec-mod--scheme-green} &
+		color: $spec-text-color--scheme-green
+		background-color: $spec-bg-color--scheme-green
+
 /* special version reset
 /* ============================================================
 
@@ -131,16 +137,17 @@ body.#{$spec-mod}
 			box-sizing: border-box
 			+padding-horizontal(nth($spec-page-space, 2))
 
-			+media('<desk-hd')
+			//+media('<desk-hd')
 				max-width: calc(#{$spec-text-page} + #{nth($spec-page-space, 2)} * 2 + #{nth($spec-panel-size, 2)})
 				+padding-horizontal(calc(#{nth($spec-page-space, 2)} + #{nth($spec-panel-size, 2)}), nth($spec-page-space, 2))
 
 			+media('<desk-sm')
 				max-width: none
-				+padding-horizontal(calc(#{nth($spec-page-space--md, 2)} + #{nth($spec-panel-size, 2)}), nth($spec-page-space--md, 2))
+				//+padding-horizontal(calc(#{nth($spec-page-space--md, 2)} + #{nth($spec-panel-size, 2)}), nth($spec-page-space--md, 2))
+				+padding-horizontal(nth($spec-page-space--md, 2))
 
 			+media('<mob-md')
-				+padding-horizontal(#{nth($spec-page-space--sm, 2)})
+				+padding-horizontal(nth($spec-page-space--sm, 2))
 
 	.header
 		color: currentColor
@@ -279,7 +286,7 @@ body.#{$spec-mod}
 		//float: left
 		font-size: 18px
 		line-height: 24px
-		letter-spacing: $spec-letter-spacing
+		letter-spacing: $spec-letter-spacing--normal
 		padding: 0 10px
 
 		+media('<tab-lg')
@@ -349,6 +356,9 @@ body.#{$spec-mod}
 			.#{$spec-mod--scheme-blue} &
 				background-image: url(../img/logo-text--blue.svg)
 
+			.#{$spec-mod--scheme-green} &
+				background-image: url(../img/logo-text--green.svg)
+
 	.copyright
 		vertical-align: top
 		padding: 0
@@ -385,6 +395,9 @@ body.#{$spec-mod}
 
 		.#{$spec-mod--scheme-blue} &
 			box-shadow: $shadow $spec-text-color--scheme-blue
+
+		.#{$spec-mod--scheme-green} &
+			box-shadow: $shadow $spec-text-color--scheme-green
 
 	// navigation list
 	.nav
@@ -486,6 +499,10 @@ body.#{$spec-mod}
 			background-color: $spec-bg-color--scheme-blue
 			color: $spec-text-color--scheme-blue
 
+		.#{$spec-mod--scheme-green} &
+			background-color: $spec-bg-color--scheme-green
+			color: $spec-text-color--scheme-green
+
 		&::before
 			display: none
 
@@ -495,7 +512,7 @@ body.#{$spec-mod}
 			font-size: 18px
 			line-height: 24px
 			font-weight: bold
-			letter-spacing: $spec-letter-spacing
+			letter-spacing: $spec-letter-spacing--normal
 			text-transform: uppercase
 
 			+media('<mob-md')
@@ -1058,6 +1075,9 @@ body.#{$spec-mod}
 			.#{$spec-mod--scheme-blue} &
 				fill: $spec-bg-color--scheme-blue
 
+			.#{$spec-mod--scheme-green} &
+				fill: $spec-bg-color--scheme-green
+
 		text
 			fill: currentColor
 			transition: none
@@ -1085,11 +1105,14 @@ body.#{$spec-mod}
 						.#{$spec-mod--scheme-blue} &
 							fill: $spec-bg-color--scheme-blue
 
+						.#{$spec-mod--scheme-green} &
+							fill: $spec-bg-color--scheme-green
+
 	// branches-popup
 	.branches-popup
 		+media('<mob-lg')
 			position: fixed
-			left: calc(#{round(nth($spec-panel-size, 2) / 2)} + 50%) !important
+			//left: calc(#{round(nth($spec-panel-size, 2) / 2)} + 50%) !important
 			top: 50% !important
 			transform: translate(-50%, -50%)
 
@@ -1108,6 +1131,9 @@ body.#{$spec-mod}
 
 			.#{$spec-mod--scheme-blue} &
 				box-shadow: 0 0 50px rgba($spec-text-color--scheme-blue, 0.25)
+
+			.#{$spec-mod--scheme-green} &
+				box-shadow: 0 0 50px rgba($spec-text-color--scheme-green, 0.25)
 
 	.branches-popup__close
 		&::before, &::after
@@ -1308,6 +1334,10 @@ body.#{$spec-mod}
 				.#{$spec-mod--scheme-blue} &
 					background-color: $spec-bg-color--scheme-blue
 					color: $spec-text-color--scheme-blue
+
+				.#{$spec-mod--scheme-green} &
+					background-color: $spec-bg-color--scheme-green
+					color: $spec-text-color--scheme-green
 
 	//news
 	.news
@@ -1635,6 +1665,9 @@ body.#{$spec-mod}
 			.#{$spec-mod--scheme-blue} &
 				fill: $spec-bg-color--scheme-blue
 
+			.#{$spec-mod--scheme-green} &
+				fill: $spec-bg-color--scheme-green
+
 		text
 			fill: currentColor
 			transition: none
@@ -1662,6 +1695,9 @@ body.#{$spec-mod}
 						.#{$spec-mod--scheme-blue} &
 							fill: $spec-bg-color--scheme-blue
 
+						.#{$spec-mod--scheme-green} &
+							fill: $spec-bg-color--scheme-green
+
 	.tbl-dates
 		border: 1px solid currentColor
 
@@ -1687,6 +1723,9 @@ body.#{$spec-mod}
 
 		.#{$spec-mod--scheme-blue} &
 			border-bottom-color: $spec-bg-color--scheme-blue
+
+		.#{$spec-mod--scheme-green} &
+			border-bottom-color: $spec-bg-color--scheme-green
 
 	.custom-tooltip:before
 		border-color: rgba(230, 230, 230, 0)
