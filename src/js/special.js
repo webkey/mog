@@ -13,6 +13,9 @@
 			$element = $(element),
 			$switcher = $(config.switcher),
 			$btn = $element.find(config.btn),
+			$settingsBtn = $element.find(config.settingOpener),
+			$settingsDrop = $element.find(config.settingDrop),
+			$settingsResetBtn = $element.find(config.settingReset),
 			pref = 'jq-spec',
 			pluginClasses = {
 				initClass: pref + '--initialized',
@@ -22,7 +25,8 @@
 			path = cssPath || 'css/',
 			cookieName = {
 				specVersionOn: 'special-version-on',
-				specVersionSettings: 'special-version-settings'
+				specVersionSettings: 'special-version-settings',
+				fullSettingsOpened: 'special-version-settings-opened'
 			};
 
 		var callbacks = function () {
@@ -74,27 +78,37 @@
 				// domain: "mog.by",
 				path: "/"
 			});
-		}, toggleClass = function (elements) {
-			// Первый аргумент функции (elements) - один или несколько ([]) елементов, на которые добуаляется/удаляется класс.
-			// Второй аргумент функции указыает удалять класс (false) или добавлять (true - указыать не обязательно).
-			// Пример использования: toggleClass([$elem1, $elem2, $('.class', $elem2), $('.class'), '.class'], false);
-			if (!elements)
-				return;
-
-			var condRemove = (arguments[1] === undefined) ? true : !!arguments[1],
-				$elements = (typeof elements === "object") ? elements : $(elements);
-
-			$.each($elements, function () {
-				var currentElem = this;
-				if ($.isArray(currentElem)) {
-					// Если массив, то запускаем функицию повторно
-					toggleClass(currentElem, condRemove);
-				} else {
-					// Если второй аргумент false, то удаляем класс
-					// Если второй аргумент НЕ false, то добавляем класс
-					$(currentElem).toggleClass(config.modifiers.activeClass, !!condRemove)
+		}, focusing = function () {
+			/**
+			 * !Clear focus state after mouse key up
+			 */
+			$btn.add($settingsBtn).add($settingsResetBtn).on('mouseup', function () {
+				$(this).blur();
+			})
+		}, getDefaultSettingsObj = function () {
+			/**
+			 * Create object from default active buttons
+			 */
+			var defaultSettingsObj = {};
+			if(typeof config.settingsDefault === 'object' && config.settingsDefault !== null) {
+				for (var key in config.settingsDefault) {
+					defaultSettingsObj[key] = config.settingsDefault[key];
 				}
-			});
+			} else {
+				var $btnByDefaultActive = $btn.filter('[data-default=true]');
+
+				$.each($btnByDefaultActive, function () {
+					var $this = $(this);
+					defaultSettingsObj[$this.attr('data-mod-name')] = $this.attr('data-mod-value');
+				});
+			}
+			return defaultSettingsObj;
+		}, toggleTitle = function ($btn) {
+			var title = (!!$btn.hasClass(config.modifiers.activeClass) && $btn.attr('data-title-on') !== undefined)
+				? $btn.attr('data-title-on')
+				: $btn.attr('data-title-off');
+
+			$btn.attr('title', title).attr('aria-label', title);
 		}, toggleSpec = function () {
 			/**
 			 * !Toggle special version
@@ -105,11 +119,9 @@
 				e.preventDefault();
 				$('body').addClass(config.modifiers.hidePage); // first hide content
 				// toggle special version cookie
-				if(getCookie(cookieName.specVersionOn) === 'true'){
-					setCookieMod(cookieName.specVersionOn, "false");
-				} else {
-					setCookieMod(cookieName.specVersionOn, "true");
-				}
+				var val = getCookie(cookieName.specVersionOn) !== 'true';
+				setCookieMod(cookieName.specVersionOn, val);
+
 				location.reload(); // reload page
 			});
 		}, setActiveState = function ($btn) {
@@ -118,12 +130,18 @@
 			 */
 
 			// Add active class
-			// Add tabindex="-1". For pass focus
-			// Add aria-checked="true". See: http://prgssr.ru/development/ispolzovanie-aria-v-html5.html
 			$btn
 				.addClass(config.modifiers.activeClass)
-				.attr('tabindex', '-1')
 				.attr('aria-checked', 'true');
+
+			// Add tabindex="-1". For pass focus
+			// Add aria-checked="true". See: http://prgssr.ru/development/ispolzovanie-aria-v-html5.html
+			$btn.not('[data-toggle]')
+				.attr('tabindex', '-1');
+
+			if ($btn.attr('data-toggle') !== undefined) {
+				toggleTitle($btn);
+			}
 
 		}, setInactiveState = function ($btn) {
 			/**
@@ -138,7 +156,14 @@
 				.attr('tabindex', '')
 				.attr('aria-checked', 'false');
 
+			if ($btn.attr('data-toggle') !== undefined) {
+				toggleTitle($btn);
+			}
+
 		}, changeSettings = function (initialObj, currentObj) {
+			/* метка начала выполнения скрипта */
+			var time = performance.now();
+
 			/**
 			 * !Change setting of a special version
 			 */
@@ -175,29 +200,23 @@
 			// Save settings in cookie
 			setCookieMod(cookieName.specVersionSettings, JSON.stringify(initialObj));
 
+			/* время выполнения скрипта */
+			time -= performance.now();
+			console.log('Время выполнения = ', -time);
+
 			return false;
-		}, settingsByDefault = function () {
+		}, settingOnLoad = function () {
 			/**
-			 * !Activate setting buttons by default
+			 * !Set settings of special version after page load
 			 * todo: В идеале, этот этап нужно сделать на php
 			 * */
-
-			// Create object from default active buttons
-			var defaultSettingsObj = {},
-				$btnByDefaultActive = $btn.filter('[data-default=true]');
-
-			$.each($btnByDefaultActive, function () {
-				var $this = $(this);
-				defaultSettingsObj[$this.attr('data-mod-name')] = $this.attr('data-mod-value');
-			});
-			// console.log("defaultSettingsObj: ", defaultSettingsObj);
 
 			// Take saved settings object or create new one
 			var savedSettingsStr = getCookie(cookieName.specVersionSettings),
 				savedSettingsObj = savedSettingsStr ? JSON.parse(savedSettingsStr) : {};
 			// console.log("savedSettingsObj: ", savedSettingsObj);
 
-			changeSettings(defaultSettingsObj, savedSettingsObj);
+			changeSettings(getDefaultSettingsObj(), savedSettingsObj);
 
 		}, selectSetting = function () {
 			/**
@@ -227,6 +246,69 @@
 
 				e.preventDefault();
 			});
+		}, toggleDropSettings = function () {
+			/**
+			 * !Open / Close full settings
+			 * */
+			var settingsBtnActivate = function () {
+				$element.data('drop-is-open', true).addClass(config.modifiers.settingsOpenClass);
+				$settingsBtn.addClass(config.modifiers.activeClass);
+				$settingsDrop.find(config.settingOpener).removeClass(config.modifiers.activeClass); // Remove active class for buttons in the drop
+			};
+
+			/**
+			 * !After document ready
+			 * */
+			if (getCookie(cookieName.fullSettingsOpened) === 'true') {
+				settingsBtnActivate();
+				$settingsDrop.show();
+			}
+
+			/**
+			 * !On events
+			 * */
+			$settingsBtn.on('click', function (event) {
+				if($element.data('drop-is-open') === true){
+					$element.data('drop-is-open', false).removeClass(config.modifiers.settingsOpenClass);
+					$settingsBtn.removeClass(config.modifiers.activeClass);
+					setCookieMod(cookieName.fullSettingsOpened, "false");
+					$settingsDrop.stop().slideUp();
+				} else {
+					settingsBtnActivate();
+					setCookieMod(cookieName.fullSettingsOpened, "true");
+					$settingsDrop.stop().slideDown();
+				}
+
+				event.preventDefault();
+			})
+		}, settingsReset = function () {
+			/**
+			 * !Reset setting by default for special version
+			 * */
+
+			$settingsResetBtn.on('click', function (event) {
+
+				// Take saved settings object or create new one
+				var savedSettingsStr = getCookie(cookieName.specVersionSettings),
+					savedSettingsObj = savedSettingsStr ? JSON.parse(savedSettingsStr) : {},
+					clearedSettingsObj = {};
+
+				for (var key in savedSettingsObj) {
+					clearedSettingsObj[key] = savedSettingsObj[key];
+				}
+				for (var keyClear in clearedSettingsObj) {
+					clearedSettingsObj[keyClear] = null;
+				}
+				// console.log("savedSettingsObj: ", savedSettingsObj);
+				// console.log("clearedSettingsObj: ", clearedSettingsObj);
+
+
+				changeSettings(savedSettingsObj, clearedSettingsObj);
+
+				changeSettings(clearedSettingsObj, getDefaultSettingsObj());
+
+				event.preventDefault();
+			})
 		}, init = function () {
 
 			$element.addClass(pluginClasses.panel + ' ' + pluginClasses.initClass).addClass(config.modifiers.initClass);
@@ -246,32 +328,17 @@
 				$body.addClass(config.modifiers.specOn);
 			}
 
-			/**
-			 * !switch special version
-			 * */
-			/* replace title and text in buttons */
-			$.each($switcher, function () {
-				var $curBtn = $(this),
-					$text = $('span', $curBtn);
-				if(getCookie(cookieName.specVersionOn) === 'true'){
-					var titleOff = $curBtn.attr('data-title-off');
-					$curBtn.attr('title', titleOff);
-					$text.html(titleOff);
-				} else {
-					var titleOn = $curBtn.attr('data-title-on');
-					$curBtn.attr('title', titleOn);
-					$text.html(titleOn);
-				}
-			});
-
 			$element.trigger('spec.afterInit');
 		};
 
 		self = {
 			callbacks: callbacks,
-			settingsByDefault: settingsByDefault,
+			focusing: focusing,
 			toggleSpec: toggleSpec,
+			settingOnLoad: settingOnLoad,
 			selectSetting: selectSetting,
+			toggleDropSettings: toggleDropSettings,
+			settingsReset: settingsReset,
 			init: init
 		};
 
@@ -289,10 +356,13 @@
 			if (typeof opt === 'object' || typeof opt === 'undefined') {
 				elem[i].spec = new Spec(elem[i], $.extend(true, {}, $.fn.spec.defaultOptions, opt));
 				elem[i].spec.init();
+				elem[i].spec.focusing();
 				elem[i].spec.callbacks();
-				elem[i].spec.settingsByDefault();
 				elem[i].spec.toggleSpec();
+				elem[i].spec.settingOnLoad();
 				elem[i].spec.selectSetting();
+				elem[i].spec.toggleDropSettings();
+				elem[i].spec.settingsReset();
 			}
 			else {
 				ret = elem[i].spec[opt].apply(elem[i].spec, args);
@@ -308,18 +378,32 @@
 		switcher: '.spec-btn-switcher-js',
 		btn: '.spec-btn-js',
 		btnGroup: '.spec-btn-group-js',
+		settingOpener: '.spec-btn-settings-js',
+		settingDrop: '.spec-settings-js',
+		settingReset: '.spec-btn-reset-js',
+		settingsDefault: null,
 		event: 'click',
 		cssId: 'special-version',
-		settings: {
-			"spacing":"vspec-mod_spacing_lg"
-		},
 		modifiers: {
 			initClass: null,
 			specOn: 'vspec',
 			hidePage: 'vspec--hide-page',
-			activeClass: 'active' // active class of the buttons
+			activeClass: 'active', // active class of the buttons
+			settingsOpenClass: 'settings-is-open'
 		}
 	}
+
+	// You can set default settings options
+	// add data-default="true" to button
+	// or in options
+	// or global param of plugin
+	// @example:
+	// $.fn.spec.defaultOptions.settingsDefault = {
+	// 	"scheme-color":"vspec-mod_scheme-color_blue",
+	// 	"font-size":"vspec-mod_font-size_lg",
+	// 	"spacing":"vspec-mod_spacing_md",
+	// 	"img":"vspec-mod_img_off"
+	// };
 
 })(jQuery);
 
@@ -327,15 +411,7 @@ $(document).ready(function () {
 	var specVersionInit = function() {
 		var $specPanel = $('.spec-btn-switcher-js');
 		if ($specPanel.length) {
-			$('.spec-panel-js').spec({
-				specOn: 'vspec',
-				hidePage: 'vspec--hide-page',
-				activeClass: 'active'
-			});
-
-			$('.spec-panel-mob-js').spec({
-				switcher: '.spec-btn-switcher-mob-js'
-			});
+			$('.spec-panel-js').spec();
 		}
 	};
 

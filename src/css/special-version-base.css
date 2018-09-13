@@ -8,8 +8,8 @@
 	box-sizing: border-box;
 	border: 0 solid currentColor;
 	border-width: 0 2px 2px;
-	will-change: transform;
-	transition-property: transform;
+	will-change: transform, box-shadow;
+	transition-property: transform, box-shadow;
 	transition-duration: 0.2s;
 	transition-timing-function: ease-in-out;
 }
@@ -30,6 +30,10 @@
 	.vspec-mod_scheme-color_green .spec-panel {
 		box-shadow: 0 0 0 2px currentColor, 0 4px 4px rgba(169, 228, 77, 0.3);
 	}
+}
+
+.spec-panel.settings-is-open {
+	box-shadow: 0 0 0 4px currentColor;
 }
 
 .vspec .spec-panel {
@@ -80,11 +84,12 @@
 
 .spec-panel__layout,
 .spec-panel__holder,
-.spec-panel__item {
+.spec-panel__item,
+.spec-panel__footer {
 	height: 74px;
 }
 
-.spec-panel__item {
+.spec-panel__item, .spec-panel__footer {
 	display: -ms-flexbox;
 	display: flex;
 	-ms-flex-pack: start;
@@ -94,8 +99,13 @@
 	padding: 0 10px;
 }
 
+.spec-panel__footer {
+	margin-left: auto;
+}
+
 .spec-panel__label {
 	white-space: nowrap;
+	padding-right: 10px;
 	font-family: inherit;
 	font-size: 18px;
 	line-height: 22px;
@@ -110,6 +120,17 @@
 	-ms-flex-align: center;
 	    align-items: center;
 	border-color: currentColor;
+	margin-right: 10px;
+}
+
+@media (max-width: 479px) {
+	.spec-panel__btn-group {
+		margin-right: 5px;
+	}
+}
+
+.spec-panel__btn-group:last-child {
+	margin-right: 0;
 }
 
 .spec-panel__btn {
@@ -118,7 +139,7 @@
 	vertical-align: top;
 	width: 42px;
 	height: 42px;
-	margin: 0 0 0 10px;
+	margin-right: 10px;
 	font-size: 18px;
 	line-height: 22px;
 	letter-spacing: normal;
@@ -143,8 +164,37 @@
 	.spec-panel__btn {
 		width: 42px;
 		height: 42px;
-		margin: 0 0 0 5px;
+		margin-right: 5px;
 	}
+}
+
+.spec-panel__btn:last-child {
+	margin-right: 0;
+}
+
+.spec-panel__btn > span {
+	display: none;
+}
+
+.spec-panel__btn svg {
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-ms-transform: translate(-50%, -50%);
+	    transform: translate(-50%, -50%);
+	box-sizing: border-box;
+}
+
+@media (max-width: 479px) {
+	.spec-panel__btn svg {
+		-ms-transform: translate(-50%, -50%) scale(0.85);
+		    transform: translate(-50%, -50%) scale(0.85);
+	}
+}
+
+.spec-panel__btn path {
+	fill: currentColor;
 }
 
 .spec-panel__btn::before, .spec-panel__btn::after {
@@ -153,6 +203,7 @@
 	position: absolute;
 	left: 50%;
 	margin: 3px 0 3px -12px;
+	pointer-events: none;
 }
 
 .spec-panel__btn::before {
@@ -192,42 +243,32 @@
 	box-shadow: 0 0 0 2px #3b2716, 0 0 0 5px #a9e44d;
 }
 
-.spec-panel__btn.active, .spec-panel__btn.active:hover, .spec-panel__btn.active:focus {
+.spec-panel__btn.active:hover, .spec-panel__btn.active:focus {
+	box-shadow: inset 0 0 0 3px currentColor, 0 0 0 2px #fff, 0 0 0 5px #000;
+}
+
+.vspec-mod_scheme-color_white .spec-panel__btn.active:hover, .vspec-mod_scheme-color_white .spec-panel__btn.active:focus {
+	box-shadow: inset 0 0 0 3px currentColor, 0 0 0 2px #000, 0 0 0 5px #fff;
+}
+
+.vspec-mod_scheme-color_blue .spec-panel__btn.active:hover, .vspec-mod_scheme-color_blue .spec-panel__btn.active:focus {
+	box-shadow: inset 0 0 0 3px currentColor, 0 0 0 2px #c8e5ff, 0 0 0 5px #004c92;
+}
+
+.vspec-mod_scheme-color_green .spec-panel__btn.active:hover, .vspec-mod_scheme-color_green .spec-panel__btn.active:focus {
+	box-shadow: inset 0 0 0 3px currentColor, 0 0 0 2px #3b2716, 0 0 0 5px #a9e44d;
+}
+
+.spec-panel__btn.active[tabindex="-1"] {
 	cursor: default;
+}
+
+.spec-panel__btn.active, .spec-panel__btn.active[tabindex="-1"]:hover, .spec-panel__btn.active[tabindex="-1"]:focus {
 	box-shadow: inset 0 0 0 3px currentColor;
 }
 
 .spec-panel__btn.active::before, .spec-panel__btn.active::after {
 	display: block;
-}
-
-.spec-panel__btn.active[data-toggle], .spec-panel__btn.active[data-toggle]:hover, .spec-panel__btn.active[data-toggle]:focus {
-	cursor: pointer;
-}
-
-.spec-panel__btn > span {
-	display: none;
-}
-
-.spec-panel__btn svg {
-	display: block;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	-ms-transform: translate(-50%, -50%);
-	    transform: translate(-50%, -50%);
-	box-sizing: border-box;
-}
-
-@media (max-width: 479px) {
-	.spec-panel__btn svg {
-		-ms-transform: translate(-50%, -50%) scale(0.85);
-		    transform: translate(-50%, -50%) scale(0.85);
-	}
-}
-
-.spec-panel__btn path {
-	fill: currentColor;
 }
 
 .spec-panel__btn_color_def, .vspec .spec-panel__btn_color_def {
@@ -303,6 +344,7 @@
 .spec-drop {
 	background-color: #fff;
 	overflow: hidden;
+	display: none;
 }
 
 .vspec-mod_scheme-color_white .spec-drop {
@@ -325,6 +367,7 @@
 .spec-drop__title {
 	font-size: 2em;
 	line-height: 1.33;
+	font-weight: bold;
 	word-wrap: break-word;
 	margin-bottom: 10px;
 }
@@ -333,7 +376,7 @@
 	margin-top: 40px;
 }
 
-.spec-drop__item {
+.spec-drop__item, .spec-drop__footer {
 	display: -ms-flexbox;
 	display: flex;
 	-ms-flex-wrap: wrap;
@@ -345,14 +388,21 @@
 	margin: 10px 0 0;
 }
 
-.spec-drop__title + .spec-drop__item {
+.spec-drop__title + .spec-drop__item, .spec-drop__title + .spec-drop__footer {
 	margin-top: 0;
+}
+
+.spec-drop__footer {
+	margin-top: 40px;
+	-ms-flex-pack: end;
+	    justify-content: flex-end;
 }
 
 .spec-drop__label {
 	display: inline-block;
 	vertical-align: top;
-	margin: 10px 0;
+	margin: 10px;
+	margin-left: 0;
 	font-size: 1.22em;
 	line-height: 1.55;
 	word-wrap: break-word;
@@ -363,10 +413,25 @@
 	vertical-align: top;
 	display: -ms-flexbox;
 	display: flex;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
 	-ms-flex-pack: start;
 	    justify-content: flex-start;
 	-ms-flex-align: center;
 	    align-items: center;
+	-ms-flex-align: stretch;
+	    align-items: stretch;
+	margin-right: 10px;
+}
+
+@media (max-width: 479px) {
+	.spec-drop__btn-group {
+		margin-right: 5px;
+	}
+}
+
+.spec-drop__btn-group:last-child {
+	margin-right: 0;
 }
 
 .spec-drop__btn {
@@ -380,9 +445,9 @@
 	-ms-flex-align: center;
 	    align-items: center;
 	margin: 10px;
-	margin-right: 0;
-	padding: 0 10px;
-	height: 50px;
+	margin-left: 0;
+	padding: 0 0.5em;
+	min-height: 50px;
 	border-radius: 4px;
 	box-sizing: border-box;
 	border: 1px solid currentColor;
@@ -406,12 +471,26 @@
 	}
 }
 
+.spec-drop__btn svg {
+	box-sizing: border-box;
+	margin-right: 5px;
+}
+
+.spec-drop__btn path {
+	fill: currentColor;
+}
+
+.spec-drop__btn .icon {
+	display: none;
+}
+
 .spec-drop__btn::before, .spec-drop__btn::after {
 	display: none;
 	content: "";
 	position: absolute;
 	left: 50%;
 	margin: 3px 0 3px -12px;
+	pointer-events: none;
 }
 
 .spec-drop__btn::before {
@@ -434,20 +513,6 @@
 	border-right: 12px solid transparent;
 }
 
-.spec-drop__btn svg {
-	display: none;
-	box-sizing: border-box;
-	margin-right: 5px;
-}
-
-.spec-drop__btn path {
-	fill: currentColor;
-}
-
-.spec-drop__btn .icon {
-	display: none;
-}
-
 .spec-drop__btn:hover, .spec-drop__btn:focus {
 	outline: none;
 	box-shadow: 0 0 0 2px #fff, 0 0 0 5px #000;
@@ -465,17 +530,32 @@
 	box-shadow: 0 0 0 2px #3b2716, 0 0 0 5px #a9e44d;
 }
 
-.spec-drop__btn.active, .spec-drop__btn.active:hover, .spec-drop__btn.active:focus {
+.spec-drop__btn.active:hover, .spec-drop__btn.active:focus {
+	box-shadow: inset 0 0 0 3px currentColor, 0 0 0 2px #fff, 0 0 0 5px #000;
+}
+
+.vspec-mod_scheme-color_white .spec-drop__btn.active:hover, .vspec-mod_scheme-color_white .spec-drop__btn.active:focus {
+	box-shadow: inset 0 0 0 3px currentColor, 0 0 0 2px #000, 0 0 0 5px #fff;
+}
+
+.vspec-mod_scheme-color_blue .spec-drop__btn.active:hover, .vspec-mod_scheme-color_blue .spec-drop__btn.active:focus {
+	box-shadow: inset 0 0 0 3px currentColor, 0 0 0 2px #c8e5ff, 0 0 0 5px #004c92;
+}
+
+.vspec-mod_scheme-color_green .spec-drop__btn.active:hover, .vspec-mod_scheme-color_green .spec-drop__btn.active:focus {
+	box-shadow: inset 0 0 0 3px currentColor, 0 0 0 2px #3b2716, 0 0 0 5px #a9e44d;
+}
+
+.spec-drop__btn.active[tabindex="-1"] {
 	cursor: default;
+}
+
+.spec-drop__btn.active, .spec-drop__btn.active[tabindex="-1"]:hover, .spec-drop__btn.active[tabindex="-1"]:focus {
 	box-shadow: inset 0 0 0 3px currentColor;
 }
 
 .spec-drop__btn.active::before, .spec-drop__btn.active::after {
 	display: block;
-}
-
-.spec-drop__btn.active[data-toggle], .spec-drop__btn.active[data-toggle]:hover, .spec-drop__btn.active[data-toggle]:focus {
-	cursor: pointer;
 }
 
 .spec-drop__btn_size_sm {
@@ -560,6 +640,14 @@
 	z-index: 9999;
 }
 
+body:not(.vspec) .spec-btn-switcher.to_normal {
+	display: none;
+}
+
+.vspec .spec-btn-switcher:not(.to_normal) {
+	display: none;
+}
+
 .spec-btn-switcher svg {
 	width: 1.4em;
 	height: 1.4em;
@@ -569,22 +657,6 @@
 	-ms-transform: translate(0, -50%);
 	    transform: translate(0, -50%);
 	box-sizing: border-box;
-}
-
-.spec-btn-switcher svg.icon-spec-on {
-	display: block;
-}
-
-.vspec .spec-btn-switcher svg.icon-spec-on {
-	display: none;
-}
-
-.spec-btn-switcher svg.icon-spec-off {
-	display: none;
-}
-
-.vspec .spec-btn-switcher svg.icon-spec-off {
-	display: block;
 }
 
 .spec-btn-switcher path {

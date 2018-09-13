@@ -58,36 +58,13 @@
 				</div>
 			</div>
 
-			<div class="spec-panel__item">
-				<div class="spec-panel__label">Изображение:</div>
-				<div class="spec-panel__btn-group spec-panel__btn-group-js">
-					@@include("_tpl_spacial--tools-btn.html", {
-						"classes": "spec-panel__btn spec-panel__btn_img_switch spec-btn-js",
-						"active": "true",
-						"modName": "img",
-						"mod": "vspec-mod_img_on",
-						"icon": "includes/svg/icon-images.svg",
-						"text": "Изображения",
-						"titleOn": "Выключить изображения",
-						"titleOff": "Включить изображения",
-						"toggle": "true"
-					})
-				</div>
-			</div>
-
-			<div class="spec-panel__item">
-				<div class="spec-panel__label">Все настройки:</div>
+			<div class="spec-panel__footer">
 				<div class="spec-panel__btn-group">
 					@@include("_tpl_spacial--tools-btn.html", {
-						"classes": "spec-panel__btn spec-panel__btn_settings spec-btn-js",
-						"active": "true",
-						"modName": "img",
-						"mod": "vspec-mod_settings_open",
+						"classes": "spec-panel__btn spec-panel__btn_settings spec-btn-settings-js",
 						"icon": "includes/svg/icon-settings.svg",
-						"text": "Изображения",
-						"titleOn": "Показать расширенные настройки",
-						"titleOff": "Скрыть расширенные настройки",
-						"toggle": "true"
+						"text": "Расширенные настройки",
+						"title": "Открыть/закрыть расширенные настройки"
 					})
 				</div>
 			</div>
@@ -95,9 +72,30 @@
 	</div>
 
 	<!--Special Version Full Settings -->
-	<div class="spec-drop">
+	<div class="spec-drop spec-settings-js">
 		<div class="spec-drop__layout">
 			<div class="spec-drop__title">Настройки текста:</div>
+
+			<div class="spec-drop__item">
+				<div class="spec-drop__label">Выберите начертание шрифта:</div>
+				<div class="spec-drop__btn-group spec-drop__btn-group-js">
+					@@include("_tpl_spacial--tools-btn.html", {
+						"classes": "spec-drop__btn spec-drop__btn_serif spec-btn-js",
+						"modName": "font-style",
+						"mod": "vspec-mod_font-style_serif",
+						"text": "С засечками (serif)",
+						"title": "Шрифт с засечками"
+					})
+					@@include("_tpl_spacial--tools-btn.html", {
+						"classes": "spec-drop__btn spec-drop__btn_sans-serif spec-btn-js",
+						"active": "true",
+						"modName": "font-style",
+						"mod": "vspec-mod_font-style_sans-serif",
+						"text": "Без засечек (sans serif)",
+						"title": "Шрифт без засечек"
+					})
+				</div>
+			</div>
 
 			<div class="spec-drop__item">
 				<div class="spec-drop__label">Размер шрифта:</div>
@@ -188,32 +186,65 @@
 				</div>
 			</div>
 
-			<div class="spec-drop__title">Изображения:</div>
+			<div class="spec-drop__title">Графика:</div>
 
 			<div class="spec-drop__item">
-				<div class="spec-drop__label">Вкл./выкл. изображение:</div>
+				<div class="spec-drop__label">Изображение:</div>
 				<div class="spec-drop__btn-group spec-drop__btn-group-js">
 					@@include("_tpl_spacial--tools-btn.html", {
-						"classes": "spec-drop__btn spec-drop__btn_img_switch spec-btn-js",
-						"active": "true",
+						"classes": "spec-drop__btn spec-drop__btn_img spec-btn-js",
 						"modName": "img",
 						"mod": "vspec-mod_img_on",
-						"icon": "includes/svg/icon-images.svg",
-						"text": "Изображения",
-						"titleOn": "Выключить изображения",
-						"titleOff": "Включить изображения",
+						"text": "Включить",
+						"title": "Включить изображения"
+					})
+					@@include("_tpl_spacial--tools-btn.html", {
+						"classes": "spec-drop__btn spec-drop__btn_img spec-btn-js",
+						"active": "true",
+						"modName": "img",
+						"mod": "vspec-mod_img_off",
+						"text": "Выключить",
+						"title": "Выключить изображения"
+					})
+				</div>
+				<div class="spec-drop__btn-group spec-drop__btn-group-js">
+					@@include("_tpl_spacial--tools-btn.html", {
+						"classes": "spec-drop__btn spec-drop__btn_mono spec-btn-js",
+						"active": "true",
+						"modName": "mono",
+						"mod": "vspec-mod_mono",
+						"text": "Монохромные изображения",
+						"titleOn": "Отключить монохромность изображений",
+						"titleOff": "Включить монохромность изображений",
 						"toggle": "true"
 					})
 				</div>
 			</div>
 
-			<div class="spec-drop__item">
-				<div class="spec-drop__label">Настройки:</div>
+			<div class="spec-drop__footer">
 				<div class="spec-drop__btn-group">
-					<a href="#" class="spec-drop__btn">
-						@@include("includes/svg/icon-settings.svg")
-						<span>Настройки</span>
-					</a>
+					@@include("_tpl_spacial--tools-btn.html", {
+						"classes": "spec-drop__btn spec-drop__btn_settings spec-btn-reset-js",
+						"icon": "includes/svg/icon-reset.svg",
+						"text": "Вернуть стандартные настройки",
+						"title": "Сбросить пользовательские настройки"
+					})
+				</div>
+				<div class="spec-drop__btn-group">
+					@@include("_tpl_spacial--tools-btn.html", {
+						"classes": "spec-drop__btn spec-drop__btn_switcher spec-btn-switcher-js",
+						"icon": "includes/svg/icon-special-off.svg",
+						"text": "Обычная версия сайта",
+						"title": "Переключить на обычнаю версию сайта"
+					})
+				</div>
+				<div class="spec-drop__btn-group">
+					@@include("_tpl_spacial--tools-btn.html", {
+						"classes": "spec-drop__btn spec-drop__btn_settings spec-btn-settings-js",
+						"icon": "includes/svg/icon-close.svg",
+						"text": "Закрыть",
+						"title": "Закрыть расширенные настройки"
+					})
 				</div>
 			</div>
 		</div>
@@ -223,148 +254,4 @@
 <!--Special Version Tools Panel end-->
 
 <!--Duplicate Special Version Tools Panel-->
-<div class="spec-panel spec-panel-mob spec-panel-mob-js">
-	<div class="spec-panel__layout">
-		<div class="spec-panel__holder">
-			<div class="spec-panel__btn-group spec-panel__btn-group-js">
-				@@include("_tpl_spacial--tools-btn.html", {
-					"classes": "spec-panel__btn spec-panel__btn_size_sm spec-btn-js",
-					"modName": "font-size",
-					"mod": "vspec-mod_font-size_sm",
-					"icon": "includes/svg/icon-text-size--sm.svg",
-					"text": "Маленкий размер шрифта"
-				})
-				@@include("_tpl_spacial--tools-btn.html", {
-					"classes": "spec-panel__btn spec-panel__btn_size_md spec-btn-js",
-					"active": "true",
-					"modName": "font-size",
-					"mod": "vspec-mod_font-size_norm",
-					"icon": "includes/svg/icon-text-size.svg",
-					"text": "Средний размер шрифта"
-				})
-				@@include("_tpl_spacial--tools-btn.html", {
-					"classes": "spec-panel__btn spec-panel__btn_size_lg spec-btn-js",
-					"modName": "font-size",
-					"mod": "vspec-mod_font-size_lg",
-					"icon": "includes/svg/icon-text-size--lg.svg",
-					"text": "Большой размер шрифта"
-				})
-			</div>
-			<div class="spec-panel__btn-group spec-panel__btn-group-js">
-				@@include("_tpl_spacial--tools-btn.html", {
-					"classes": "spec-panel__btn spec-panel__btn_color_def spec-btn-js",
-					"active": "true",
-					"modName": "scheme-color",
-					"mod": "vspec-mod_scheme-color_def",
-					"icon": "includes/svg/icon-scheme-color.svg",
-					"text": "Черным по белому"
-				})
-				@@include("_tpl_spacial--tools-btn.html", {
-					"classes": "spec-panel__btn spec-panel__btn_color_white spec-btn-js",
-					"modName": "scheme-color",
-					"mod": "vspec-mod_scheme-color_white",
-					"icon": "includes/svg/icon-scheme-color.svg",
-					"text": "Белым по черному"
-				})
-				@@include("_tpl_spacial--tools-btn.html", {
-					"classes": "spec-panel__btn spec-panel__btn_color_blue spec-btn-js",
-					"modName": "scheme-color",
-					"mod": "vspec-mod_scheme-color_blue",
-					"icon": "includes/svg/icon-scheme-color.svg",
-					"text": "Темно-синим по голубому"
-				})
-			</div>
-			<div class="spec-panel__btn-group spec-panel__btn-group-js">
-				@@include("_tpl_spacial--tools-btn.html", {
-					"classes": "spec-panel__btn spec-panel__btn_spacing_sm spec-btn-js",
-					"active": "true",
-					"modName": "spacing",
-					"mod": "vspec-mod_spacing_norm",
-					"icon": "",
-					"text": "Стандартный интервал"
-				})
-				@@include("_tpl_spacial--tools-btn.html", {
-					"classes": "spec-panel__btn spec-panel__btn_spacing_md spec-btn-js",
-					"modName": "spacing",
-					"mod": "vspec-mod_spacing_md",
-					"icon": "",
-					"text": "Средний интервал"
-				})
-				@@include("_tpl_spacial--tools-btn.html", {
-					"classes": "spec-panel__btn spec-panel__btn_spacing_lg spec-btn-js",
-					"modName": "spacing",
-					"mod": "vspec-mod_spacing_lg",
-					"icon": "",
-					"text": "Большой интервал"
-				})
-			</div>
-			<div class="spec-panel__btn-group spec-panel__btn-group-js">
-				@@include("_tpl_spacial--tools-btn.html", {
-					"classes": "spec-panel__btn spec-panel__btn_img_switch spec-btn-js",
-					"modName": "img",
-					"mod": "vspec-mod_img_on",
-					"icon": "includes/svg/icon-images.svg",
-					"text": "Изображения",
-					"titleOn": "Выключить изображения",
-					"titleOff": "Включить изображения",
-					"toggle": "true"
-				})
-			</div>
-		</div>
-	</div>
-
-	<!--Special Version Advanced Settings -->
-	<div class="spec-drop">
-		Доп. меню
-		<div class="spec-panel__btn-group spec-panel__btn-group-js">
-			@@include("_tpl_spacial--tools-btn.html", {
-				"classes": "spec-panel__btn spec-panel__btn_size_sm spec-btn-js",
-				"modName": "font-size",
-				"mod": "vspec-mod_font-size_sm",
-				"icon": "includes/svg/icon-text-size--sm.svg",
-				"text": "Маленкий размер шрифта"
-			})
-			@@include("_tpl_spacial--tools-btn.html", {
-				"classes": "spec-panel__btn spec-panel__btn_size_md spec-btn-js",
-				"active": "true",
-				"modName": "font-size",
-				"mod": "vspec-mod_font-size_norm",
-				"icon": "includes/svg/icon-text-size.svg",
-				"text": "Средний размер шрифта"
-			})
-			@@include("_tpl_spacial--tools-btn.html", {
-				"classes": "spec-panel__btn spec-panel__btn_size_lg spec-btn-js",
-				"modName": "font-size",
-				"mod": "vspec-mod_font-size_lg",
-				"icon": "includes/svg/icon-text-size--lg.svg",
-				"text": "Большой размер шрифта"
-			})
-		</div>
-		<div class="spec-panel__btn-group spec-panel__btn-group-js">
-			@@include("_tpl_spacial--tools-btn.html", {
-				"classes": "spec-panel__btn spec-panel__btn_color_def spec-btn-js",
-				"active": "true",
-				"modName": "scheme-color",
-				"mod": "vspec-mod_scheme-color_def",
-				"icon": "includes/svg/icon-scheme-color.svg",
-				"text": "Черным по белому"
-			})
-			@@include("_tpl_spacial--tools-btn.html", {
-				"classes": "spec-panel__btn spec-panel__btn_color_white spec-btn-js",
-				"mod": "vspec-mod_scheme-color_white",
-				"modName": "scheme-color",
-				"icon": "includes/svg/icon-scheme-color.svg",
-				"text": "Белым по черному"
-			})
-			@@include("_tpl_spacial--tools-btn.html", {
-				"classes": "spec-panel__btn spec-panel__btn_color_blue spec-btn-js",
-				"modName": "scheme-color",
-				"mod": "vspec-mod_scheme-color_blue",
-				"icon": "includes/svg/icon-scheme-color.svg",
-				"text": "Темно-синим по голубому"
-			})
-		</div>
-	</div>
-	<!--Special Version Advanced Settings end -->
-</div>
 <!--Duplicate Special Version Tools Panel end-->

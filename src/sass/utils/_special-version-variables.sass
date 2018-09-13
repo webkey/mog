@@ -15,6 +15,7 @@ $user-content: 'user-content' !default
 $spec-mod: 'vspec' !default
 $spec-mod--image-on: 'vspec-mod_img_on' !default
 $spec-mod--image-off: 'vspec-mod_img_off' !default
+$spec-mod--mono: 'vspec-mod_mono' !default
 $spec-mod--font-small: 'vspec-mod_font-size_sm' !default
 $spec-mod--font-normal: 'vspec-mod_font-size_norm' !default
 $spec-mod--font-large: 'vspec-mod_font-size_lg' !default
@@ -38,6 +39,7 @@ $spec-panel__btn-size--sm: 36px
 $spec-panel__btn-arr-size: 24px
 $spec-panel__btn-shadow-inside: 0 0 0 2px
 $spec-panel__btn-shadow-outside: 0 0 0 5px
+$spec-panel__btn-shadow-hover: inset 0 0 0 3px
 
 
 // СПЕЦИАЛЬНАЯ ВЕРСИЯ: НАСТРОЙКИ
@@ -271,3 +273,65 @@ $not-list-classes: ':not(.breadcrumbs-list):not(.social-networks):not(.sorting-d
 // ==========================================================================
 $main-nav-height--spec: 80px
 $main-nav-height--spec--sm: 60px
+
+
+// Button State
+// ==========================================================================
+/// @description: Примесь добавляет на кнопки настроек специальной версии выд для сотояний: :hover, :focus, .active
+=spec-button-states()
+	// marker arrow
+	&::before, &::after
+		display: none
+		content: ""
+		position: absolute
+		left: 50%
+		margin: 3px 0 3px -#{round($spec-panel__btn-arr-size / 2)}
+		pointer-events: none
+
+	&::before
+		bottom: 100%
+		+triangle("bottom", currentColor, round($spec-panel__btn-arr-size / 2), 0.8)
+
+	&::after
+		top: 100%
+		+triangle("top", currentColor, round($spec-panel__btn-arr-size / 2), 0.8)
+
+	// hover, focus
+	&:hover, &:focus
+		outline: none
+		box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color, $spec-panel__btn-shadow-outside $spec-text-color
+
+		.#{$spec-mod--scheme-wb} &
+			box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-wb, $spec-panel__btn-shadow-outside $spec-text-color--scheme-wb
+
+		.#{$spec-mod--scheme-blue} &
+			box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-blue, $spec-panel__btn-shadow-outside $spec-text-color--scheme-blue
+
+		.#{$spec-mod--scheme-green} &
+			box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-green, $spec-panel__btn-shadow-outside $spec-text-color--scheme-green
+
+	// active
+	&.active
+		&:hover, &:focus
+			box-shadow: $spec-panel__btn-shadow-hover currentColor, $spec-panel__btn-shadow-inside $spec-bg-color, $spec-panel__btn-shadow-outside $spec-text-color
+
+			.#{$spec-mod--scheme-wb} &
+				box-shadow: $spec-panel__btn-shadow-hover currentColor, $spec-panel__btn-shadow-inside $spec-bg-color--scheme-wb, $spec-panel__btn-shadow-outside $spec-text-color--scheme-wb
+
+			.#{$spec-mod--scheme-blue} &
+				box-shadow: $spec-panel__btn-shadow-hover currentColor, $spec-panel__btn-shadow-inside $spec-bg-color--scheme-blue, $spec-panel__btn-shadow-outside $spec-text-color--scheme-blue
+
+			.#{$spec-mod--scheme-green} &
+				box-shadow: $spec-panel__btn-shadow-hover currentColor, $spec-panel__btn-shadow-inside $spec-bg-color--scheme-green, $spec-panel__btn-shadow-outside $spec-text-color--scheme-green
+
+	&.active
+		&[tabindex="-1"]
+			cursor: default
+
+		// Показывать активное состояние для всех кнопок,
+		// но навидение и фокуса не показыать только для кнопок с tabindex="-1"
+		&, &[tabindex="-1"]:hover, &[tabindex="-1"]:focus
+			box-shadow: $spec-panel__btn-shadow-hover currentColor
+
+		&::before, &::after
+			display: block

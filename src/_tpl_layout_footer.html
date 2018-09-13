@@ -1027,17 +1027,18 @@
 				</div>
 			</div>
 			<!--footer nav end-->
-			<!--switcher spacial version-->
 			@@include("_tpl_spacial--tools-btn.html", {
 				"classes": "spec-btn-switcher spec-btn-switcher-js",
-				"mod": "",
 				"icon": "includes/svg/icon-special-on.svg",
-				"iconOff": "includes/svg/icon-special-off.svg",
 				"text": "Версия для слабовидящих",
-				"titleOn": "Версия для слабовидящих",
-				"titleOff": "Обычная версия"
+				"title": "Перейти на версию сайта для слабовидящих"
 			})
-			<!--switcher spacial version end-->
+			@@include("_tpl_spacial--tools-btn.html", {
+				"classes": "spec-btn-switcher to_normal spec-btn-switcher-js",
+				"icon": "includes/svg/icon-special-off.svg",
+				"text": "Обычная версия",
+				"title": "Перейти на обычную версию сайта"
+			})
 		</div>
 	</div>
 	<!--footer common end-->

@@ -19,7 +19,7 @@ $displace: 1px
 	border: 0 solid currentColor
 	border-width: 0 $spec-border-width $spec-border-width
 	// transition
-	$prop: transform
+	$prop: transform, box-shadow
 	will-change: $prop
 	transition:
 		property: $prop
@@ -43,7 +43,10 @@ $displace: 1px
 		.#{$spec-mod--scheme-green} &
 			box-shadow: $sh1 currentColor, $sh2 rgba($spec-text-color--scheme-green, 0.3)
 
-	.vspec &
+	&.settings-is-open
+		box-shadow: 0 0 0 4px currentColor
+
+	.#{$spec-mod} &
 		display: block
 
 .spec-panel__layout
@@ -70,18 +73,22 @@ $displace: 1px
 
 .spec-panel__layout,
 .spec-panel__holder,
-.spec-panel__item
+.spec-panel__item,
+.spec-panel__footer
 	height: nth($spec-panel-size, 1)
 
-.spec-panel__item
+.spec-panel__item, .spec-panel__footer
 	display: flex
 	justify-content: flex-start
 	align-items: center
 	padding: 0 round($spec-panel-inner-space / 2)
 
+.spec-panel__footer
+	margin-left: auto
+
 .spec-panel__label
 	white-space: nowrap
-	//padding: 0 round($spec-panel-inner-space / 2) 0 0
+	padding-right: round($spec-panel-inner-space / 2)
 	//font-family: Arial, Helvetica, sans-serif
 	font-family: inherit
 	font-size: 18px
@@ -97,6 +104,13 @@ $displace: 1px
 	display: flex
 	align-items: center
 	border-color: currentColor
+	margin-right: round($spec-panel-inner-space / 2)
+
+	+media('<mob-md')
+		margin-right: round($spec-panel-inner-space--sm / 2)
+
+	&:last-child
+		margin-right: 0
 
 .spec-panel__btn
 	position: relative
@@ -104,7 +118,7 @@ $displace: 1px
 	vertical-align: top
 	width: $spec-panel__btn-size
 	height: $spec-panel__btn-size
-	margin: 0 0 0 round($spec-panel-inner-space / 2)
+	margin-right: round($spec-panel-inner-space / 2)
 	font-size: 18px
 	line-height: 22px
 	letter-spacing: normal
@@ -122,66 +136,13 @@ $displace: 1px
 		text-decoration: none
 		color: currentColor
 
-	//.#{$spec-mod--scheme-wb} &
-		border-color: $spec-text-color--scheme-wb
-
-	//.#{$spec-mod--scheme-blue} &
-		border-color: $spec-text-color--scheme-blue
-
 	+media('<mob-md')
 		width: $spec-panel__btn-size
 		height: $spec-panel__btn-size
-		margin: 0 0 0 round($spec-panel-inner-space--sm / 2)
+		margin-right: round($spec-panel-inner-space--sm / 2)
 
-	// marker arrow
-	&::before, &::after
-		display: none
-		content: ""
-		position: absolute
-		left: 50%
-		margin: 3px 0 3px -#{round($spec-panel__btn-arr-size / 2)}
-
-	&::before
-		bottom: 100%
-		+triangle("bottom", currentColor, round($spec-panel__btn-arr-size / 2), 0.8)
-
-	&::after
-		top: 100%
-		+triangle("top", currentColor, round($spec-panel__btn-arr-size / 2), 0.8)
-
-	// hover, focus
-	&:hover, &:focus
-		//transform: translate(-$displace, -$displace)
-		outline: none
-		box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color, $spec-panel__btn-shadow-outside $spec-text-color
-
-		.#{$spec-mod--scheme-wb} &
-			box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-wb, $spec-panel__btn-shadow-outside $spec-text-color--scheme-wb
-
-		.#{$spec-mod--scheme-blue} &
-			box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-blue, $spec-panel__btn-shadow-outside $spec-text-color--scheme-blue
-
-		.#{$spec-mod--scheme-green} &
-			box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-green, $spec-panel__btn-shadow-outside $spec-text-color--scheme-green
-
-	// focus
-	//&:focus
-		outline: none
-
-	// active
-	&.active
-		&, &:hover, &:focus
-			cursor: default
-			//box-shadow: none
-			//border-width: 4px
-			box-shadow: inset 0 0 0 3px currentColor
-
-		&::before, &::after
-			display: block
-
-	&.active[data-toggle]
-		&, &:hover, &:focus
-			cursor: pointer
+	&:last-child
+		margin-right: 0
 
 	& > span
 		display: none
@@ -199,6 +160,9 @@ $displace: 1px
 
 	path
 		fill: currentColor
+
+	// states of special buttons
+	+spec-button-states
 
 .spec-panel__btn_color_def
 	&, .#{$spec-mod} &
@@ -273,6 +237,7 @@ $icon-spacing--space: 3px // h
 .spec-drop
 	+spec-reset-bg
 	overflow: hidden
+	display: none
 
 .spec-drop__layout
 	padding: $spec-panel-inner-space
@@ -281,7 +246,7 @@ $icon-spacing--space: 3px // h
 .spec-drop__title
 	+spec-font-size--title
 	//+font(36px, 48px)
-	//font-weight: bold
+	font-weight: bold
 	//letter-spacing: normal
 	//word-spacing: normal
 	word-wrap: break-word
@@ -290,7 +255,7 @@ $icon-spacing--space: 3px // h
 	.spec-drop__item + &
 		margin-top: round($spec-panel-inner-space * 2)
 
-.spec-drop__item
+.spec-drop__item, .spec-drop__footer
 	display: flex
 	flex-wrap: wrap
 	justify-content: flex-start
@@ -300,10 +265,15 @@ $icon-spacing--space: 3px // h
 	.spec-drop__title + &
 		margin-top: 0
 
+.spec-drop__footer
+	margin-top: round($spec-panel-inner-space * 2)
+	justify-content: flex-end
+
 .spec-drop__label
 	display: inline-block // if not support flex
 	vertical-align: top // if not support flex
-	margin: round($spec-panel-inner-space / 2) 0
+	margin: round($spec-panel-inner-space / 2)
+	margin-left: 0
 	+spec-font-size--item
 	//+font(22px, 34px)
 	//font-weight: bold
@@ -315,8 +285,17 @@ $icon-spacing--space: 3px // h
 	display: inline-block // if not support flex
 	vertical-align: top // if not support flex
 	display: flex
+	flex-wrap: wrap
 	justify-content: flex-start
 	align-items: center
+	align-items: stretch
+	margin-right: round($spec-panel-inner-space / 2)
+
+	+media('<mob-md')
+		margin-right: round($spec-panel-inner-space--sm / 2)
+
+	&:last-child
+		margin-right: 0
 
 .spec-drop__btn
 	position: relative
@@ -326,12 +305,12 @@ $icon-spacing--space: 3px // h
 	justify-content: flex-start
 	align-items: center
 	margin: round($spec-panel-inner-space / 2)
-	margin-right: 0
-	padding: 0 10px
+	margin-left: 0
+	padding: 0 0.5em
 	//+spec-font-size--normal
 	//letter-spacing: normal
 	//word-spacing: normal
-	height: 50px
+	min-height: 50px
 	border-radius: 4px
 	box-sizing: border-box
 	border: 1px solid currentColor
@@ -348,24 +327,8 @@ $icon-spacing--space: 3px // h
 		height: $spec-panel__btn-size
 		margin: 0 0 0 round($spec-panel-inner-space--sm / 2)
 
-	// marker arrow
-	&::before, &::after
-		display: none
-		content: ""
-		position: absolute
-		left: 50%
-		margin: 3px 0 3px -#{round($spec-panel__btn-arr-size / 2)}
-
-	&::before
-		bottom: 100%
-		+triangle("bottom", currentColor, round($spec-panel__btn-arr-size / 2), 0.8)
-
-	&::after
-		top: 100%
-		+triangle("top", currentColor, round($spec-panel__btn-arr-size / 2), 0.8)
-
 	svg
-		display: none
+		//display: none
 		box-sizing: border-box
 		margin-right: 5px
 
@@ -375,34 +338,8 @@ $icon-spacing--space: 3px // h
 	.icon
 		display: none
 
-	// hover, focus
-	&:hover, &:focus
-		//transform: translate(-$displace, -$displace)
-		outline: none
-		box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color, $spec-panel__btn-shadow-outside $spec-text-color
-
-		.#{$spec-mod--scheme-wb} &
-			box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-wb, $spec-panel__btn-shadow-outside $spec-text-color--scheme-wb
-
-		.#{$spec-mod--scheme-blue} &
-			box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-blue, $spec-panel__btn-shadow-outside $spec-text-color--scheme-blue
-
-		.#{$spec-mod--scheme-green} &
-			box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-green, $spec-panel__btn-shadow-outside $spec-text-color--scheme-green
-
-	// active
-	&.active
-		&, &:hover, &:focus
-			cursor: default
-			//border-width: 4px
-			box-shadow: inset 0 0 0 3px currentColor
-
-		&::before, &::after
-			display: block
-
-	&.active[data-toggle]
-		&, &:hover, &:focus
-			cursor: pointer
+	// states of special buttons
+	+spec-button-states
 
 // Font size
 //.spec-drop__btn_size_sm,
@@ -496,6 +433,12 @@ $icon-spacing--space: 3px // h
 	box-sizing: border-box
 	z-index: 9999
 
+	body:not(.#{$spec-mod}) &.to_normal
+		display: none
+
+	.#{$spec-mod} &:not(.to_normal)
+		display: none
+
 	svg
 		+size(1.4em)
 		position: absolute
@@ -504,13 +447,13 @@ $icon-spacing--space: 3px // h
 		transform: translate(0, -50%)
 		box-sizing: border-box
 
-		&.icon-spec-on
+		//&.icon-spec-on
 			display: block
 
 			.vspec &
 				display: none
 
-		&.icon-spec-off
+		//&.icon-spec-off
 			display: none
 
 			.vspec &

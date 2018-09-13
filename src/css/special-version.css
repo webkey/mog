@@ -652,13 +652,13 @@ body.vspec {
 	margin-bottom: 0;
 }
 
-.vspec img,
-.vspec [class*="depict-files-"],
-.vspec .logo-img,
-.vspec .promo-slider__bg,
-.vspec .depict-regard-number,
-.vspec .news__img,
-.vspec .grayscale {
+.vspec-mod_mono .vspec img,
+.vspec-mod_mono .vspec [class*="depict-files-"],
+.vspec-mod_mono .vspec .logo-img,
+.vspec-mod_mono .vspec .promo-slider__bg,
+.vspec-mod_mono .vspec .depict-regard-number,
+.vspec-mod_mono .vspec .news__img,
+.vspec-mod_mono .vspec .grayscale {
 	filter: grayscale(1) contrast(1) invert(0);
 }
 
@@ -2550,6 +2550,10 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	fill: #c8e5ff;
 }
 
+.vspec-mod_scheme-color_green .no-touchevents .vspec .branches-map-svg a:hover .branches-map-logo, .vspec-mod_scheme-color_green .no-touchevents .vspec .branches-map-svg a.active .branches-map-logo, .vspec-mod_scheme-color_green .vspec .branches-map-svg a:hover .branches-map-logo, .vspec-mod_scheme-color_green .vspec .branches-map-svg a.active .branches-map-logo {
+	fill: #3b2716;
+}
+
 @media (max-width: 639px) {
 	.vspec .branches-popup {
 		position: fixed;
@@ -2579,6 +2583,9 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	}
 	.vspec-mod_scheme-color_blue .vspec .branches-popup__holder {
 		box-shadow: 0 0 50px rgba(0, 76, 146, 0.25);
+	}
+	.vspec-mod_scheme-color_green .vspec .branches-popup__holder {
+		box-shadow: 0 0 50px rgba(169, 228, 77, 0.25);
 	}
 }
 
@@ -2831,6 +2838,11 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 .vspec-mod_scheme-color_blue .vspec .years-drop a.active, .vspec-mod_scheme-color_blue .vspec .sorting-drop a.active {
 	background-color: #c8e5ff;
 	color: #004c92;
+}
+
+.vspec-mod_scheme-color_green .vspec .years-drop a.active, .vspec-mod_scheme-color_green .vspec .sorting-drop a.active {
+	background-color: #3b2716;
+	color: #a9e44d;
 }
 
 .vspec .news {
@@ -3230,6 +3242,10 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	fill: #c8e5ff;
 }
 
+.vspec-mod_scheme-color_green .vspec .info-map-svg path, .vspec-mod_scheme-color_green .vspec .info-map-svg polygon {
+	fill: #3b2716;
+}
+
 .vspec .info-map-svg text {
 	fill: currentColor;
 	transition: none;
@@ -3255,6 +3271,10 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 
 .vspec-mod_scheme-color_blue .no-touchevents .vspec .info-map-svg a.has-labels:hover .branches-map-logo, .vspec-mod_scheme-color_blue .no-touchevents .vspec .info-map-svg a.has-labels.active .branches-map-logo, .vspec-mod_scheme-color_blue .vspec .info-map-svg a.has-labels:hover .branches-map-logo, .vspec-mod_scheme-color_blue .vspec .info-map-svg a.has-labels.active .branches-map-logo {
 	fill: #c8e5ff;
+}
+
+.vspec-mod_scheme-color_green .no-touchevents .vspec .info-map-svg a.has-labels:hover .branches-map-logo, .vspec-mod_scheme-color_green .no-touchevents .vspec .info-map-svg a.has-labels.active .branches-map-logo, .vspec-mod_scheme-color_green .vspec .info-map-svg a.has-labels:hover .branches-map-logo, .vspec-mod_scheme-color_green .vspec .info-map-svg a.has-labels.active .branches-map-logo {
+	fill: #3b2716;
 }
 
 .vspec .tbl-dates {
@@ -3289,6 +3309,10 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 
 .vspec-mod_scheme-color_blue .vspec .custom-tooltip:after {
 	border-bottom-color: #c8e5ff;
+}
+
+.vspec-mod_scheme-color_green .vspec .custom-tooltip:after {
+	border-bottom-color: #3b2716;
 }
 
 .vspec .custom-tooltip:before {
