@@ -391,27 +391,29 @@
 			activeClass: 'active', // active class of the buttons
 			settingsOpenClass: 'settings-is-open'
 		}
-	}
+	};
 
-	// You can set default settings options
-	// add data-default="true" to button
-	// or in options
-	// or global param of plugin
-	// @example:
-	// $.fn.spec.defaultOptions.settingsDefault = {
-	// 	"scheme-color":"vspec-mod_scheme-color_blue",
-	// 	"font-size":"vspec-mod_font-size_lg",
-	// 	"spacing":"vspec-mod_spacing_md",
-	// 	"img":"vspec-mod_img_off"
-	// };
+	/**
+	 * You can set default settings options
+	 * add data-default="true" to a button
+	 * or in options
+	 * or global param of the plugin
+	 * @example:
+	 * $.fn.spec.defaultOptions.settingsDefault = {
+	 *	"scheme-color":"vspec-mod_scheme-color_blue",
+	 *	"font-size":"vspec-mod_font-size_lg",
+	 *	"spacing":"vspec-mod_spacing_md",
+	 *	"img":"vspec-mod_img_off"
+	 *};
+ 	 */
 
 })(jQuery);
 
 $(document).ready(function () {
 	var specVersionInit = function() {
-		var $specPanel = $('.spec-btn-switcher-js');
+		var $specPanel = $('.spec-panel-js');
 		if ($specPanel.length) {
-			$('.spec-panel-js').spec();
+			$specPanel.spec();
 		}
 	};
 
