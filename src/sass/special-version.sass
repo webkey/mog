@@ -9,10 +9,12 @@
 	display: none !important
 
 body.#{$spec-mod}
-	+spec-font-size--normal
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
-	//font-family: Tahoma, Geneva, sans-serif
-	//font-family: "Times New Roman", Serif
+	//+spec-font-size--normal
+	font-family: $spec-font-style--sans-serif
+	font-weight: normal
+	font-style: normal
+	font-size: $spec-font-size--medium
+	line-height: $spec-line-height--small
 	color: $spec-text-color
 	background: $spec-bg-color url(../img/empty.png) no-repeat fixed
 
@@ -20,16 +22,55 @@ body.#{$spec-mod}
 /* ============================================================
 
 body.#{$spec-mod}
+	// >>> Font Style <<<
+	// Специальная версия: Шрифт без засечек (sans-serif)
+	// ================================================================
+	.#{$spec-mod--sans-serif} &
+		font-family: $spec-font-style--sans-serif
+
+	// Специальная версия: Шрифт с засечками (serif)
+	// ================================================================
+	.#{$spec-mod--serif} &
+		font-family: $spec-font-style--serif
+
+	// Специальная версия: Моноширинный шрифт (monospace)
+	// ================================================================
+	.#{$spec-mod--monospace} &
+		font-family: $spec-font-style--monospace
+
+	// >>> Font Size <<<
+	// Специальная версия: Стандартный базовый шрифт
+	// ================================================================
+	.#{$spec-mod--font-normal} &
+		font-size: $spec-font-size--medium
+
 	// Специальная версия: Уменьшенный базовый шрифт
 	// ================================================================
 	.#{$spec-mod--font-small} &
-		+spec-font-size--small
+		font-size: $spec-font-size--small
 
 	// Специальная версия: Увеличенный базовый шрифт
 	// ================================================================
 	.#{$spec-mod--font-large} &
-		+spec-font-size--large
+		font-size: $spec-font-size--large
 
+	// >>> Line Height <<<
+	// Специальная версия: Междустрочный интервал - Одинарный
+	// ================================================================
+	.#{$spec-mod--line-height-small} &
+		line-height: $spec-line-height--small
+
+	// Специальная версия: Междустрочный интервал - Полуторный (нормальный)
+	// ================================================================
+	.#{$spec-mod--line-height-medium} &
+		line-height: $spec-line-height--medium
+
+	// Специальная версия: Междустрочный интервал - Двойной
+	// ================================================================
+	.#{$spec-mod--line-height-large} &
+		line-height: $spec-line-height--large
+
+	// >>> Letter Spacing <<<
 	// Специальная версия: Средний межбуквенный интервал
 	// ================================================================
 	.#{$spec-mod--spacing-medium} &
@@ -42,6 +83,7 @@ body.#{$spec-mod}
 		letter-spacing: $spec-letter-spacing--large
 		word-spacing: $spec-letter-spacing--large
 
+	// >>> Color scheme <<<
 	// Специальная версия: Цветовая схема - Белым по черному
 	// ================================================================
 	.#{$spec-mod--scheme-wb} &
@@ -53,6 +95,12 @@ body.#{$spec-mod}
 	.#{$spec-mod--scheme-blue} &
 		color: $spec-text-color--scheme-blue
 		background-color: $spec-bg-color--scheme-blue
+
+	// Специальная версия: Цветовая схема - Коричневым по бежевому
+	// ================================================================
+	.#{$spec-mod--scheme-brown} &
+		color: $spec-text-color--scheme-brown
+		background-color: $spec-bg-color--scheme-brown
 
 	// Специальная версия: Цветовая схема - Зеленым по темно-коричневому
 	// ================================================================
@@ -241,7 +289,7 @@ body.#{$spec-mod}
 		overflow-x: hidden
 		z-index: 6
 
-		+media('<mob-md')
+		//+media('<mob-md')
 			padding-top: nth($spec-panel-size--sm, 1)
 
 	.spacer
@@ -356,6 +404,9 @@ body.#{$spec-mod}
 			.#{$spec-mod--scheme-blue} &
 				background-image: url(../img/logo-text--blue.svg)
 
+			.#{$spec-mod--scheme-brown} &
+				background-image: url(../img/logo-text--brown.svg)
+
 			.#{$spec-mod--scheme-green} &
 				background-image: url(../img/logo-text--green.svg)
 
@@ -396,6 +447,9 @@ body.#{$spec-mod}
 		.#{$spec-mod--scheme-blue} &
 			box-shadow: $shadow $spec-text-color--scheme-blue
 
+		.#{$spec-mod--scheme-brown} &
+			box-shadow: $shadow $spec-text-color--scheme-brown
+
 		.#{$spec-mod--scheme-green} &
 			box-shadow: $shadow $spec-text-color--scheme-green
 
@@ -404,6 +458,9 @@ body.#{$spec-mod}
 		box-shadow: none
 
 	.nav__list
+		a
+			font-family: inherit
+
 		& > li
 			& > a
 				display: flex
@@ -498,6 +555,10 @@ body.#{$spec-mod}
 		.#{$spec-mod--scheme-blue} &
 			background-color: $spec-bg-color--scheme-blue
 			color: $spec-text-color--scheme-blue
+
+		.#{$spec-mod--scheme-brown} &
+			background-color: $spec-bg-color--scheme-brown
+			color: $spec-text-color--scheme-brown
 
 		.#{$spec-mod--scheme-green} &
 			background-color: $spec-bg-color--scheme-green
@@ -1075,13 +1136,19 @@ body.#{$spec-mod}
 			.#{$spec-mod--scheme-blue} &
 				fill: $spec-bg-color--scheme-blue
 
+			.#{$spec-mod--scheme-brown} &
+				fill: $spec-bg-color--scheme-brown
+
 			.#{$spec-mod--scheme-green} &
 				fill: $spec-bg-color--scheme-green
 
 		text
+			font-family: inherit
 			fill: currentColor
 			transition: none
 			letter-spacing: normal
+			word-spacing: normal
+			line-height: $spec-line-height--small
 
 	// hover
 	.no-touchevents &, &
@@ -1104,6 +1171,9 @@ body.#{$spec-mod}
 
 						.#{$spec-mod--scheme-blue} &
 							fill: $spec-bg-color--scheme-blue
+
+						.#{$spec-mod--scheme-brown} &
+							fill: $spec-bg-color--scheme-brown
 
 						.#{$spec-mod--scheme-green} &
 							fill: $spec-bg-color--scheme-green
@@ -1132,6 +1202,9 @@ body.#{$spec-mod}
 			.#{$spec-mod--scheme-blue} &
 				box-shadow: 0 0 50px rgba($spec-text-color--scheme-blue, 0.25)
 
+			.#{$spec-mod--scheme-brown} &
+				box-shadow: 0 0 50px rgba($spec-text-color--scheme-brown, 0.25)
+
 			.#{$spec-mod--scheme-green} &
 				box-shadow: 0 0 50px rgba($spec-text-color--scheme-green, 0.25)
 
@@ -1147,6 +1220,8 @@ body.#{$spec-mod}
 		display: none
 
 	.branches-popup__title, .branches-popup__subtitle
+		font-family: inherit
+		font-weight: bold
 		color: currentColor
 
 	.branches-popup dl svg path
@@ -1334,6 +1409,10 @@ body.#{$spec-mod}
 				.#{$spec-mod--scheme-blue} &
 					background-color: $spec-bg-color--scheme-blue
 					color: $spec-text-color--scheme-blue
+
+				.#{$spec-mod--scheme-brown} &
+					background-color: $spec-bg-color--scheme-brown
+					color: $spec-text-color--scheme-brown
 
 				.#{$spec-mod--scheme-green} &
 					background-color: $spec-bg-color--scheme-green
@@ -1665,6 +1744,9 @@ body.#{$spec-mod}
 			.#{$spec-mod--scheme-blue} &
 				fill: $spec-bg-color--scheme-blue
 
+			.#{$spec-mod--scheme-brown} &
+				fill: $spec-bg-color--scheme-brown
+
 			.#{$spec-mod--scheme-green} &
 				fill: $spec-bg-color--scheme-green
 
@@ -1695,6 +1777,9 @@ body.#{$spec-mod}
 						.#{$spec-mod--scheme-blue} &
 							fill: $spec-bg-color--scheme-blue
 
+						.#{$spec-mod--scheme-brown} &
+							fill: $spec-bg-color--scheme-brown
+
 						.#{$spec-mod--scheme-green} &
 							fill: $spec-bg-color--scheme-green
 
@@ -1724,14 +1809,15 @@ body.#{$spec-mod}
 		.#{$spec-mod--scheme-blue} &
 			border-bottom-color: $spec-bg-color--scheme-blue
 
+		.#{$spec-mod--scheme-brown} &
+			border-bottom-color: $spec-bg-color--scheme-brown
+
 		.#{$spec-mod--scheme-green} &
 			border-bottom-color: $spec-bg-color--scheme-green
 
 	.custom-tooltip:before
 		border-color: rgba(230, 230, 230, 0)
 		border-bottom-color: currentColor
-
-.fotorama__caption
 
 @import spec/popups
 

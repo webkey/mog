@@ -16,15 +16,22 @@ $spec-mod: 'vspec' !default
 $spec-mod--image-on: 'vspec-mod_img_on' !default
 $spec-mod--image-off: 'vspec-mod_img_off' !default
 $spec-mod--mono: 'vspec-mod_mono' !default
+$spec-mod--sans-serif: 'vspec-mod_font-style_sans-serif' !default
+$spec-mod--serif: 'vspec-mod_font-style_serif' !default
+$spec-mod--monospace: 'vspec-mod_font-style_monospace' !default
 $spec-mod--font-small: 'vspec-mod_font-size_sm' !default
 $spec-mod--font-normal: 'vspec-mod_font-size_norm' !default
 $spec-mod--font-large: 'vspec-mod_font-size_lg' !default
+$spec-mod--line-height-small: 'vspec-mod_line-height_sm' !default
+$spec-mod--line-height-medium: 'vspec-mod_line-height_md' !default
+$spec-mod--line-height-large: 'vspec-mod_line-height_lg' !default
 $spec-mod--spacing-normal: 'vspec-mod_spacing_norm' !default
 $spec-mod--spacing-medium: 'vspec-mod_spacing_md' !default
 $spec-mod--spacing-large: 'vspec-mod_spacing_lg' !default
 $spec-mod--scheme-def: 'vspec-mod_scheme-color_def' !default
 $spec-mod--scheme-wb: 'vspec-mod_scheme-color_white' !default
 $spec-mod--scheme-blue: 'vspec-mod_scheme-color_blue' !default
+$spec-mod--scheme-brown: 'vspec-mod_scheme-color_brown' !default
 $spec-mod--scheme-green: 'vspec-mod_scheme-color_green' !default
 
 // Special Panel
@@ -32,8 +39,8 @@ $spec-mod--scheme-green: 'vspec-mod_scheme-color_green' !default
 //$spec-panel-size: 100% 70px // height width
 $spec-panel-size: 74px auto // height width
 $spec-panel-size--sm: 56px auto // height width
-$spec-panel-inner-space: 20px
-$spec-panel-inner-space--sm: 10px
+$spec-panel-inner-space: 16px
+$spec-panel-inner-space--sm: 12px
 $spec-panel__btn-size: 42px
 $spec-panel__btn-size--sm: 36px
 $spec-panel__btn-arr-size: 24px
@@ -45,10 +52,15 @@ $spec-panel__btn-shadow-hover: inset 0 0 0 3px
 // СПЕЦИАЛЬНАЯ ВЕРСИЯ: НАСТРОЙКИ
 // ==========================================================================
 
+// >>> Color scheme <<<
+// ==========================================================================
+
 // Специальная версия: Цветовая схема - Черным по белому (стандартная)
 // ---------------------------------------------------------------------------
 $spec-text-color: #000 !default
+$spec-text-color--scheme-def: $spec-text-color !default
 $spec-bg-color: #fff !default
+$spec-bg-color--scheme-def: $spec-bg-color !default
 
 // Специальная версия: Цветовая схема - Белым по черному
 // ---------------------------------------------------------------------------
@@ -60,41 +72,108 @@ $spec-bg-color--scheme-wb: #000 !default
 $spec-text-color--scheme-blue: #004c92 !default
 $spec-bg-color--scheme-blue: #c8e5ff !default
 
+// Специальная версия: Цветовая схема - Коричневым по бежевому
+// ---------------------------------------------------------------------------
+$spec-text-color--scheme-brown: #4d4b43 !default
+$spec-bg-color--scheme-brown: #f7f3d6 !default
+
 // Специальная версия: Цветовая схема - Зеленым по темно-коричневому
 // ---------------------------------------------------------------------------
 $spec-text-color--scheme-green: #a9e44d !default
 $spec-bg-color--scheme-green: #3b2716 !default
 
 
-// Fonts
+// >>> Font Style <<<
+// ==========================================================================
+
+// Специальная версия: Начертание шрифта - Без засечками (serif)
+// ---------------------------------------------------------------------------
+//$spec-sans-serif: Arial, Helvetica, Geneva, "Trebuchet MS", sans-serif !default
+$spec-font-style--sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default
+
+// Специальная версия: Начертание шрифта - С засечками (serif)
+// ---------------------------------------------------------------------------
+//$spec-serif: Bookman, serif !default
+$spec-font-style--serif: "Times New Roman", Times, Georgia, serif !default
+
+// Специальная версия: Начертание шрифта - Моноширинный шрифт (monospace)
+// ---------------------------------------------------------------------------
+$spec-font-style--monospace: Consolas, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace !default
+
+
+// >>> Font Size <<<
+// ==========================================================================
+
+// Специальная версия: Размер шрифта - Стандартный базовый шрифт
+// ---------------------------------------------------------------------------
+$spec-font-size: 18px !default // 18px (1em)
+$spec-font-size--medium: $spec-font-size !default
+//$spec-line-height: round-float(30px / $spec-font-size, 2) !default // 30px --> 1.67
+
+// Специальная версия: Размер шрифта - Уменьшенный базовый шрифт
+// ---------------------------------------------------------------------------
+$spec-font-size--small: 14px !default
+//$spec-line-height--small: round-float(24px / $spec-font-size--small, 2) !default // 24px --> 1.71
+
+// Специальная версия: Размер шрифта - Увеличенный базовый шрифт
+// ---------------------------------------------------------------------------
+$spec-font-size--large: 30px !default
+//$spec-line-height--large: round-float(45px / $spec-font-size--large, 2) !default // 45px --> 1.5
+
+
+// >>> Line Height (Line Spacing) <<<
+// ==========================================================================
+
+// Специальная версия: Междустрочный интервал - Одинарный (нормальный)
+// ---------------------------------------------------------------------------
+$spec-line-height--small: 1.5 !default
+
+// Специальная версия: Междустрочный интервал - Полуторный
+// ---------------------------------------------------------------------------
+$spec-line-height--medium: 2.0 !default
+
+// Специальная версия: Междустрочный интервал - Двойной
+// ---------------------------------------------------------------------------
+$spec-line-height--large: 2.5 !default
+
+
+// >>> Letter Spacing (Kerning) <<<
+// ==========================================================================
+
+// Специальная версия: Межбуквенный интервал - Базовый (нормальный)
+// ---------------------------------------------------------------------------
+$spec-letter-spacing--normal: normal !default
+
+// Специальная версия: Межбуквенный интервал - Средний
+// ---------------------------------------------------------------------------
+$spec-letter-spacing--medium: 0.2em !default
+
+// Специальная версия: Межбуквенный интервал - Бальшой
+// ---------------------------------------------------------------------------
+$spec-letter-spacing--large: 0.5em !default
+
+
+// Группы текста по размерам
 // ==========================================================================
 
 // Стандартный базовый шрифт
 // ---------------------------------------------------------------------------
-$spec-font-size: 18px !default // 18px (1em)
-$spec-line-height: round-float(30px / $spec-font-size, 2) !default // 30px --> 1.67
-
 =spec-font-size--normal()
 	font-size: $spec-font-size
-	line-height: $spec-line-height
+	//line-height: $spec-line-height
 
-// Settings: Размер шрифта - Уменьшенный базовый шрифт
+// Уменьшенный базовый шрифт
 // ---------------------------------------------------------------------------
-$spec-font-size--small: 14px !default
-$spec-line-height--small: round-float(24px / $spec-font-size--small, 2) !default // 24px --> 1.71
-
 =spec-font-size--small()
 	font-size: $spec-font-size--small
-	line-height: $spec-line-height--small
+	//line-height: $spec-line-height--small
 
-// Settings: Размер шрифта - Увеличенный базовый шрифт
+// Увеличенный базовый шрифт
 // ---------------------------------------------------------------------------
-$spec-font-size--large: 30px !default
-$spec-line-height--large: round-float(45px / $spec-font-size--large, 2) !default // 45px --> 1.5
-
 =spec-font-size--large()
 	font-size: $spec-font-size--large
-	line-height: $spec-line-height--large
+	//line-height: $spec-line-height--large
+
 
 // H1, Заголовок страницы
 // ---------------------------------------------------------------------------
@@ -132,19 +211,6 @@ $spec-small-text-line-height: round-float(28px / 16px, 2) !default // 28px --> 1
 =spec-font-size--note()
 	font-size: $spec-small-text-font-size
 	line-height: $spec-small-text-line-height
-
-
-// Базовый межбуквенный интервал
-// ---------------------------------------------------------------------------
-$spec-letter-spacing--normal: normal !default
-
-// Settings: Средний межбуквенный интервал
-// ---------------------------------------------------------------------------
-$spec-letter-spacing--medium: 0.2em !default
-
-// Settings: Бальшой межбуквенный интервал
-// ---------------------------------------------------------------------------
-$spec-letter-spacing--large: 0.5em !default
 
 
 // Отступы
@@ -202,10 +268,14 @@ $spec-border-width: 2px
 	.#{$spec-mod--scheme-blue} &
 		background-color: $spec-bg-color--scheme-blue
 
+	.#{$spec-mod--scheme-brown} &
+		background-color: $spec-bg-color--scheme-brown
+
 	.#{$spec-mod--scheme-green} &
 		background-color: $spec-bg-color--scheme-green
 
 // Reset background + invert
+// @example: buttons, table headings, mark elements
 =spec-reset-bg-invert()
 	color: $spec-bg-color
 	background-color: $spec-text-color
@@ -217,6 +287,10 @@ $spec-border-width: 2px
 	.#{$spec-mod--scheme-blue} &
 		color: $spec-bg-color--scheme-blue
 		background-color: $spec-text-color--scheme-blue
+
+	.#{$spec-mod--scheme-brown} &
+		color: $spec-bg-color--scheme-brown
+		background-color: $spec-text-color--scheme-brown
 
 	.#{$spec-mod--scheme-green} &
 		color: $spec-bg-color--scheme-green
@@ -262,7 +336,7 @@ $spec-border-width: 2px
 	text-transform: none
 
 // Список классов-исключений для тегов ul, ol
-// Добавляются к типографическим стилям списков ul, ol, чтобы не применять стили для указанных класов
+// Добавляются к типографическим стилям списков ul, ol, чтобы не применять стили для указанных классов
 // Example: $not-list-classes: ':not(.class1):not(.class2)'
 // Enter: .user-content ul:not(.class1):not(.class1)
 // ==========================================================================
@@ -307,6 +381,9 @@ $main-nav-height--spec--sm: 60px
 		.#{$spec-mod--scheme-blue} &
 			box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-blue, $spec-panel__btn-shadow-outside $spec-text-color--scheme-blue
 
+		.#{$spec-mod--scheme-brown} &
+			box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-brown, $spec-panel__btn-shadow-outside $spec-text-color--scheme-brown
+
 		.#{$spec-mod--scheme-green} &
 			box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-green, $spec-panel__btn-shadow-outside $spec-text-color--scheme-green
 
@@ -320,6 +397,9 @@ $main-nav-height--spec--sm: 60px
 
 			.#{$spec-mod--scheme-blue} &
 				box-shadow: $spec-panel__btn-shadow-hover currentColor, $spec-panel__btn-shadow-inside $spec-bg-color--scheme-blue, $spec-panel__btn-shadow-outside $spec-text-color--scheme-blue
+
+			.#{$spec-mod--scheme-brown} &
+				box-shadow: $spec-panel__btn-shadow-hover currentColor, $spec-panel__btn-shadow-inside $spec-bg-color--scheme-brown, $spec-panel__btn-shadow-outside $spec-text-color--scheme-brown
 
 			.#{$spec-mod--scheme-green} &
 				box-shadow: $spec-panel__btn-shadow-hover currentColor, $spec-panel__btn-shadow-inside $spec-bg-color--scheme-green, $spec-panel__btn-shadow-outside $spec-text-color--scheme-green
@@ -335,3 +415,6 @@ $main-nav-height--spec--sm: 60px
 
 		&::before, &::after
 			display: block
+
+			+media('<mob-md')
+				display: none

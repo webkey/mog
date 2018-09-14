@@ -58,6 +58,9 @@
 			.#{$spec-mod--scheme-blue} &
 				background-image: url(../../img/logo-text--blue.svg)
 
+			.#{$spec-mod--scheme-brown} &
+				background-image: url(../../img/logo-text--brown.svg)
+
 			.#{$spec-mod--scheme-green} &
 				background-image: url(../../img/logo-text--green.svg)
 
@@ -94,17 +97,20 @@
 			.#{$spec-mod--scheme-blue} &
 				box-shadow: 0 0 35px rgba($spec-text-color--scheme-blue, 0.35)
 
+			.#{$spec-mod--scheme-brown} &
+				box-shadow: 0 0 35px rgba($spec-text-color--scheme-brown, 0.35)
+
 			.#{$spec-mod--scheme-green} &
 				box-shadow: 0 0 35px rgba($spec-text-color--scheme-green, 0.35)
 
 	.main-menu__box, .main-menu__heading
-		+spec-font-size--normal
+		font-size: $spec-font-size--medium
 
 		.#{$spec-mod--font-small} &
-			+spec-font-size--small
+			font-size: $spec-font-size--small
 
 		.#{$spec-mod--font-large} &
-			+spec-font-size--large
+			font-size: $spec-font-size--large
 
 	.extra-popup__content
 		height: calc(100% - #{$head-height})
@@ -181,6 +187,9 @@
 		.#{$spec-mod--scheme-blue} &
 			color: $spec-bg-color--scheme-blue
 
+		.#{$spec-mod--scheme-brown} &
+			color: $spec-bg-color--scheme-brown
+
 		.#{$spec-mod--scheme-green} &
 			color: $spec-bg-color--scheme-green
 
@@ -196,6 +205,9 @@
 
 			.#{$spec-mod--scheme-blue} &
 				color: $spec-bg-color--scheme-blue
+
+			.#{$spec-mod--scheme-brown} &
+				color: $spec-bg-color--scheme-brown
 
 			.#{$spec-mod--scheme-green} &
 				color: $spec-bg-color--scheme-green

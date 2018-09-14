@@ -7,6 +7,9 @@
 		font-weight: bold
 		text-align: left
 
+		+media('<mob-lg')
+			word-break: break-word
+
 	p, ul, ol
 		& + h2, & + h3, & + h4, & + h5, & + h6
 			padding: 0
@@ -96,6 +99,10 @@
 		.#{$spec-mod--scheme-blue} &
 			color: $spec-bg-color--scheme-blue
 			background-color: $spec-text-color--scheme-blue
+
+		.#{$spec-mod--scheme-brown} &
+			color: $spec-bg-color--scheme-brown
+			background-color: $spec-text-color--scheme-brown
 
 		.#{$spec-mod--scheme-green} &
 			color: $spec-bg-color--scheme-green
@@ -235,6 +242,10 @@
 		.#{$spec-mod--scheme-blue} &
 			color: $spec-text-color--scheme-blue
 			//background-color: $spec-bg-color--scheme-blue
+
+		.#{$spec-mod--scheme-brown} &
+			color: $spec-text-color--scheme-brown
+			//background-color: $spec-bg-color--scheme-brown
 
 		.#{$spec-mod--scheme-green} &
 			color: $spec-text-color--scheme-green

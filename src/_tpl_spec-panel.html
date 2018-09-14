@@ -61,9 +61,18 @@
 			<div class="spec-panel__footer">
 				<div class="spec-panel__btn-group">
 					@@include("_tpl_spacial--tools-btn.html", {
+						"classes": "spec-panel__btn spec-panel__btn_search",
+						"href": "all-pages.html",
+						"icon": "includes/svg/icon-search.svg",
+						"text": "Поиск",
+						"title": "Поиск по сайту"
+					})
+				</div>
+				<div class="spec-panel__btn-group">
+					@@include("_tpl_spacial--tools-btn.html", {
 						"classes": "spec-panel__btn spec-panel__btn_settings spec-btn-settings-js",
 						"icon": "includes/svg/icon-settings.svg",
-						"text": "Расширенные настройки",
+						"text": "Настройки",
 						"title": "Открыть/закрыть расширенные настройки"
 					})
 				</div>
@@ -80,6 +89,14 @@
 				<div class="spec-drop__label">Выберите начертание шрифта:</div>
 				<div class="spec-drop__btn-group spec-drop__btn-group-js">
 					@@include("_tpl_spacial--tools-btn.html", {
+						"classes": "spec-drop__btn spec-drop__btn_sans-serif spec-btn-js",
+						"active": "true",
+						"modName": "font-style",
+						"mod": "vspec-mod_font-style_sans-serif",
+						"text": "Без засечек (sans serif)",
+						"title": "Шрифт без засечек"
+					})
+					@@include("_tpl_spacial--tools-btn.html", {
 						"classes": "spec-drop__btn spec-drop__btn_serif spec-btn-js",
 						"modName": "font-style",
 						"mod": "vspec-mod_font-style_serif",
@@ -87,12 +104,11 @@
 						"title": "Шрифт с засечками"
 					})
 					@@include("_tpl_spacial--tools-btn.html", {
-						"classes": "spec-drop__btn spec-drop__btn_sans-serif spec-btn-js",
-						"active": "true",
+						"classes": "spec-drop__btn spec-drop__btn_monospace spec-btn-js",
 						"modName": "font-style",
-						"mod": "vspec-mod_font-style_sans-serif",
-						"text": "Без засечек (sans serif)",
-						"title": "Шрифт без засечек"
+						"mod": "vspec-mod_font-style_monospace",
+						"text": "Моноширинный (monospace)",
+						"title": "Шрифт моноширинный"
 					})
 				</div>
 			</div>
@@ -129,7 +145,7 @@
 				<div class="spec-drop__label">Интервал между буквами (Кернинг):</div>
 				<div class="spec-drop__btn-group spec-drop__btn-group-js">
 					@@include("_tpl_spacial--tools-btn.html", {
-						"classes": "spec-drop__btn spec-drop__btn_spacing_normal spec-btn-js",
+						"classes": "spec-drop__btn spec-drop__btn_spacing_norm spec-btn-js",
 						"active": "true",
 						"modName": "spacing",
 						"mod": "vspec-mod_spacing_norm",
@@ -149,6 +165,34 @@
 						"mod": "vspec-mod_spacing_lg",
 						"text": "Большой",
 						"title": "Большой интервал"
+					})
+				</div>
+			</div>
+
+			<div class="spec-drop__item">
+				<div class="spec-drop__label">Интервал между строками:</div>
+				<div class="spec-drop__btn-group spec-drop__btn-group-js">
+					@@include("_tpl_spacial--tools-btn.html", {
+						"classes": "spec-drop__btn spec-drop__btn_line_sm spec-btn-js",
+						"modName": "line-height",
+						"mod": "vspec-mod_line-height_sm",
+						"text": "Одинарный<br> интервал",
+						"title": "Одинарный интервал"
+					})
+					@@include("_tpl_spacial--tools-btn.html", {
+						"classes": "spec-drop__btn spec-drop__btn_line_md spec-btn-js",
+						"active": "true",
+						"modName": "line-height",
+						"mod": "vspec-mod_line-height_md",
+						"text": "Полуторный<br> интервал",
+						"title": "Полуторный интервал"
+					})
+					@@include("_tpl_spacial--tools-btn.html", {
+						"classes": "spec-drop__btn spec-drop__btn_line_lg spec-btn-js",
+						"modName": "line-height",
+						"mod": "vspec-mod_line-height_lg",
+						"text": "Двойной<br> интервал",
+						"title": "Двойной интервал"
 					})
 				</div>
 			</div>
@@ -176,6 +220,12 @@
 						"modName": "scheme-color",
 						"mod": "vspec-mod_scheme-color_blue",
 						"text": "Темно-синим по голубому"
+					})
+					@@include("_tpl_spacial--tools-btn.html", {
+						"classes": "spec-drop__btn spec-drop__btn_color_brown spec-btn-js",
+						"modName": "scheme-color",
+						"mod": "vspec-mod_scheme-color_brown",
+						"text": "Коричневым по бежевому"
 					})
 					@@include("_tpl_spacial--tools-btn.html", {
 						"classes": "spec-drop__btn spec-drop__btn_color_green spec-btn-js",
@@ -252,6 +302,3 @@
 	<!--Special Version Full Settings end -->
 </div>
 <!--Special Version Tools Panel end-->
-
-<!--Duplicate Special Version Tools Panel-->
-<!--Duplicate Special Version Tools Panel end-->

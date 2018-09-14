@@ -4,23 +4,51 @@
 }
 
 body.vspec {
-	font-size: 18px;
-	line-height: 1.67;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-weight: normal;
+	font-style: normal;
+	font-size: 18px;
+	line-height: 1.5;
 	color: #000;
 	background: #fff url(../img/empty.png) no-repeat fixed;
 }
 
 /* special version settings */
 /* ============================================================ */
+.vspec-mod_font-style_sans-serif body.vspec {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.vspec-mod_font-style_serif body.vspec {
+	font-family: "Times New Roman", Times, Georgia, serif;
+}
+
+.vspec-mod_font-style_monospace body.vspec {
+	font-family: Consolas, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace;
+}
+
+.vspec-mod_font-size_norm body.vspec {
+	font-size: 18px;
+}
+
 .vspec-mod_font-size_sm body.vspec {
 	font-size: 14px;
-	line-height: 1.71;
 }
 
 .vspec-mod_font-size_lg body.vspec {
 	font-size: 30px;
+}
+
+.vspec-mod_line-height_sm body.vspec {
 	line-height: 1.5;
+}
+
+.vspec-mod_line-height_md body.vspec {
+	line-height: 2;
+}
+
+.vspec-mod_line-height_lg body.vspec {
+	line-height: 2.5;
 }
 
 .vspec-mod_spacing_md body.vspec {
@@ -41,6 +69,11 @@ body.vspec {
 .vspec-mod_scheme-color_blue body.vspec {
 	color: #004c92;
 	background-color: #c8e5ff;
+}
+
+.vspec-mod_scheme-color_brown body.vspec {
+	color: #4d4b43;
+	background-color: #f7f3d6;
 }
 
 .vspec-mod_scheme-color_green body.vspec {
@@ -431,6 +464,10 @@ body.vspec {
 	background-color: #c8e5ff;
 }
 
+.vspec-mod_scheme-color_brown .vspec .header, .vspec-mod_scheme-color_brown .vspec .extra-popup, .vspec-mod_scheme-color_brown .vspec [class*="nav__drop"], .vspec-mod_scheme-color_brown .vspec .branches-popup__holder, .vspec-mod_scheme-color_brown .vspec .branches-popup__close, .vspec-mod_scheme-color_brown .vspec .contacts-map__frame, .vspec-mod_scheme-color_brown .vspec .ui-spinner-input, .vspec-mod_scheme-color_brown .vspec .custom-tooltip, .vspec-mod_scheme-color_brown .vspec .fotorama--fullscreen, .vspec-mod_scheme-color_brown .vspec .fotorama--fullscreen .fotorama__nav, .vspec-mod_scheme-color_brown .vspec .fotorama--fullscreen .fotorama__stage {
+	background-color: #f7f3d6;
+}
+
 .vspec-mod_scheme-color_green .vspec .header, .vspec-mod_scheme-color_green .vspec .extra-popup, .vspec-mod_scheme-color_green .vspec [class*="nav__drop"], .vspec-mod_scheme-color_green .vspec .branches-popup__holder, .vspec-mod_scheme-color_green .vspec .branches-popup__close, .vspec-mod_scheme-color_green .vspec .contacts-map__frame, .vspec-mod_scheme-color_green .vspec .ui-spinner-input, .vspec-mod_scheme-color_green .vspec .custom-tooltip, .vspec-mod_scheme-color_green .vspec .fotorama--fullscreen, .vspec-mod_scheme-color_green .vspec .fotorama--fullscreen .fotorama__nav, .vspec-mod_scheme-color_green .vspec .fotorama--fullscreen .fotorama__stage {
 	background-color: #3b2716;
 }
@@ -448,6 +485,11 @@ body.vspec {
 .vspec-mod_scheme-color_blue .vspec .datetime time, .vspec-mod_scheme-color_blue .vspec .spec-bg-invert, .vspec-mod_scheme-color_blue .vspec .fotorama__caption__wrap, .vspec-mod_scheme-color_blue .vspec .btn-to-top, .vspec-mod_scheme-color_blue .vspec .years, .vspec-mod_scheme-color_blue .vspec .years > a, .vspec-mod_scheme-color_blue .vspec .years-drop, .vspec-mod_scheme-color_blue .vspec .sorting, .vspec-mod_scheme-color_blue .vspec .sorting > a, .vspec-mod_scheme-color_blue .vspec .sorting-drop, .vspec-mod_scheme-color_blue .vspec .card__state i, .vspec-mod_scheme-color_blue .vspec .accident-icon, .vspec-mod_scheme-color_blue .vspec .info-map-label .info-map-count span {
 	color: #c8e5ff;
 	background-color: #004c92;
+}
+
+.vspec-mod_scheme-color_brown .vspec .datetime time, .vspec-mod_scheme-color_brown .vspec .spec-bg-invert, .vspec-mod_scheme-color_brown .vspec .fotorama__caption__wrap, .vspec-mod_scheme-color_brown .vspec .btn-to-top, .vspec-mod_scheme-color_brown .vspec .years, .vspec-mod_scheme-color_brown .vspec .years > a, .vspec-mod_scheme-color_brown .vspec .years-drop, .vspec-mod_scheme-color_brown .vspec .sorting, .vspec-mod_scheme-color_brown .vspec .sorting > a, .vspec-mod_scheme-color_brown .vspec .sorting-drop, .vspec-mod_scheme-color_brown .vspec .card__state i, .vspec-mod_scheme-color_brown .vspec .accident-icon, .vspec-mod_scheme-color_brown .vspec .info-map-label .info-map-count span {
+	color: #f7f3d6;
+	background-color: #4d4b43;
 }
 
 .vspec-mod_scheme-color_green .vspec .datetime time, .vspec-mod_scheme-color_green .vspec .spec-bg-invert, .vspec-mod_scheme-color_green .vspec .fotorama__caption__wrap, .vspec-mod_scheme-color_green .vspec .btn-to-top, .vspec-mod_scheme-color_green .vspec .years, .vspec-mod_scheme-color_green .vspec .years > a, .vspec-mod_scheme-color_green .vspec .years-drop, .vspec-mod_scheme-color_green .vspec .sorting, .vspec-mod_scheme-color_green .vspec .sorting > a, .vspec-mod_scheme-color_green .vspec .sorting-drop, .vspec-mod_scheme-color_green .vspec .card__state i, .vspec-mod_scheme-color_green .vspec .accident-icon, .vspec-mod_scheme-color_green .vspec .info-map-label .info-map-count span {
@@ -813,6 +855,12 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	text-align: left;
 }
 
+@media (max-width: 639px) {
+	.vspec h1, .vspec h2, .vspec h3, .vspec h4, .vspec h5, .vspec h6 {
+		word-break: break-word;
+	}
+}
+
 .vspec p + h2, .vspec p + h3, .vspec p + h4, .vspec p + h5, .vspec p + h6, .vspec ul + h2, .vspec ul + h3, .vspec ul + h4, .vspec ul + h5, .vspec ul + h6, .vspec ol + h2, .vspec ol + h3, .vspec ol + h4, .vspec ol + h5, .vspec ol + h6 {
 	padding: 0;
 }
@@ -901,6 +949,10 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	background-color: #c8e5ff;
 }
 
+.vspec-mod_scheme-color_brown .vspec table td, .vspec-mod_scheme-color_brown .vspec table th {
+	background-color: #f7f3d6;
+}
+
 .vspec-mod_scheme-color_green .vspec table td, .vspec-mod_scheme-color_green .vspec table th {
 	background-color: #3b2716;
 }
@@ -933,6 +985,11 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 .vspec-mod_scheme-color_blue .vspec .mark {
 	color: #c8e5ff;
 	background-color: #004c92;
+}
+
+.vspec-mod_scheme-color_brown .vspec .mark {
+	color: #f7f3d6;
+	background-color: #4d4b43;
 }
 
 .vspec-mod_scheme-color_green .vspec .mark {
@@ -1048,6 +1105,11 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	background-color: #004c92;
 }
 
+.vspec-mod_scheme-color_brown .vspec .select:before, .vspec-mod_scheme-color_brown .vspec .select:after {
+	color: #f7f3d6;
+	background-color: #4d4b43;
+}
+
 .vspec-mod_scheme-color_green .vspec .select:before, .vspec-mod_scheme-color_green .vspec .select:after {
 	color: #3b2716;
 	background-color: #a9e44d;
@@ -1118,6 +1180,11 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	background-color: #004c92;
 }
 
+.vspec-mod_scheme-color_brown .vspec .btn-default, .vspec-mod_scheme-color_brown .vspec input[type="submit"], .vspec-mod_scheme-color_brown .vspec input[type="button"], .vspec-mod_scheme-color_brown .vspec input[type="reset"], .vspec-mod_scheme-color_brown .vspec button, .vspec-mod_scheme-color_brown .vspec .btn__info, .vspec-mod_scheme-color_brown .vspec .btn-bay {
+	color: #f7f3d6;
+	background-color: #4d4b43;
+}
+
 .vspec-mod_scheme-color_green .vspec .btn-default, .vspec-mod_scheme-color_green .vspec input[type="submit"], .vspec-mod_scheme-color_green .vspec input[type="button"], .vspec-mod_scheme-color_green .vspec input[type="reset"], .vspec-mod_scheme-color_green .vspec button, .vspec-mod_scheme-color_green .vspec .btn__info, .vspec-mod_scheme-color_green .vspec .btn-bay {
 	color: #3b2716;
 	background-color: #a9e44d;
@@ -1141,6 +1208,11 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 .vspec-mod_scheme-color_blue .vspec .btn-default:hover, .vspec-mod_scheme-color_blue .vspec .btn-default:focus, .vspec-mod_scheme-color_blue .vspec input[type="submit"]:hover, .vspec-mod_scheme-color_blue .vspec input[type="submit"]:focus, .vspec-mod_scheme-color_blue .vspec input[type="button"]:hover, .vspec-mod_scheme-color_blue .vspec input[type="button"]:focus, .vspec-mod_scheme-color_blue .vspec input[type="reset"]:hover, .vspec-mod_scheme-color_blue .vspec input[type="reset"]:focus, .vspec-mod_scheme-color_blue .vspec button:hover, .vspec-mod_scheme-color_blue .vspec button:focus, .vspec-mod_scheme-color_blue .vspec .btn__info:hover, .vspec-mod_scheme-color_blue .vspec .btn__info:focus, .vspec-mod_scheme-color_blue .vspec .btn-bay:hover, .vspec-mod_scheme-color_blue .vspec .btn-bay:focus {
 	color: #c8e5ff;
 	background-color: #004c92;
+}
+
+.vspec-mod_scheme-color_brown .vspec .btn-default:hover, .vspec-mod_scheme-color_brown .vspec .btn-default:focus, .vspec-mod_scheme-color_brown .vspec input[type="submit"]:hover, .vspec-mod_scheme-color_brown .vspec input[type="submit"]:focus, .vspec-mod_scheme-color_brown .vspec input[type="button"]:hover, .vspec-mod_scheme-color_brown .vspec input[type="button"]:focus, .vspec-mod_scheme-color_brown .vspec input[type="reset"]:hover, .vspec-mod_scheme-color_brown .vspec input[type="reset"]:focus, .vspec-mod_scheme-color_brown .vspec button:hover, .vspec-mod_scheme-color_brown .vspec button:focus, .vspec-mod_scheme-color_brown .vspec .btn__info:hover, .vspec-mod_scheme-color_brown .vspec .btn__info:focus, .vspec-mod_scheme-color_brown .vspec .btn-bay:hover, .vspec-mod_scheme-color_brown .vspec .btn-bay:focus {
+	color: #f7f3d6;
+	background-color: #4d4b43;
 }
 
 .vspec-mod_scheme-color_green .vspec .btn-default:hover, .vspec-mod_scheme-color_green .vspec .btn-default:focus, .vspec-mod_scheme-color_green .vspec input[type="submit"]:hover, .vspec-mod_scheme-color_green .vspec input[type="submit"]:focus, .vspec-mod_scheme-color_green .vspec input[type="button"]:hover, .vspec-mod_scheme-color_green .vspec input[type="button"]:focus, .vspec-mod_scheme-color_green .vspec input[type="reset"]:hover, .vspec-mod_scheme-color_green .vspec input[type="reset"]:focus, .vspec-mod_scheme-color_green .vspec button:hover, .vspec-mod_scheme-color_green .vspec button:focus, .vspec-mod_scheme-color_green .vspec .btn__info:hover, .vspec-mod_scheme-color_green .vspec .btn__info:focus, .vspec-mod_scheme-color_green .vspec .btn-bay:hover, .vspec-mod_scheme-color_green .vspec .btn-bay:focus {
@@ -1167,6 +1239,10 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 
 .vspec-mod_scheme-color_blue .vspec .btn-default-alt, .vspec-mod_scheme-color_blue .vspec input.btn-default-alt[type="submit"], .vspec-mod_scheme-color_blue .vspec input.btn-default-alt[type="button"], .vspec-mod_scheme-color_blue .vspec input.btn-default-alt[type="reset"] {
 	color: #004c92;
+}
+
+.vspec-mod_scheme-color_brown .vspec .btn-default-alt, .vspec-mod_scheme-color_brown .vspec input.btn-default-alt[type="submit"], .vspec-mod_scheme-color_brown .vspec input.btn-default-alt[type="button"], .vspec-mod_scheme-color_brown .vspec input.btn-default-alt[type="reset"] {
+	color: #4d4b43;
 }
 
 .vspec-mod_scheme-color_green .vspec .btn-default-alt, .vspec-mod_scheme-color_green .vspec input.btn-default-alt[type="submit"], .vspec-mod_scheme-color_green .vspec input.btn-default-alt[type="button"], .vspec-mod_scheme-color_green .vspec input.btn-default-alt[type="reset"] {
@@ -1309,6 +1385,11 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 .vspec-mod_scheme-color_blue .vspec .important-note__label {
 	color: #c8e5ff;
 	background-color: #004c92;
+}
+
+.vspec-mod_scheme-color_brown .vspec .important-note__label {
+	color: #f7f3d6;
+	background-color: #4d4b43;
 }
 
 .vspec-mod_scheme-color_green .vspec .important-note__label {
@@ -1462,12 +1543,6 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	overflow-y: visible;
 	overflow-x: hidden;
 	z-index: 6;
-}
-
-@media (max-width: 479px) {
-	.vspec .wrapper {
-		padding-top: 56px;
-	}
 }
 
 .vspec .spacer {
@@ -1627,6 +1702,10 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	background-image: url(../img/logo-text--blue.svg);
 }
 
+.vspec-mod_scheme-color_brown .vspec .logo-title > strong {
+	background-image: url(../img/logo-text--brown.svg);
+}
+
 .vspec-mod_scheme-color_green .vspec .logo-title > strong {
 	background-image: url(../img/logo-text--green.svg);
 }
@@ -1676,12 +1755,20 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	box-shadow: 0 0 0 2px #004c92;
 }
 
+.vspec-mod_scheme-color_brown .vspec .main-nav-holder {
+	box-shadow: 0 0 0 2px #4d4b43;
+}
+
 .vspec-mod_scheme-color_green .vspec .main-nav-holder {
 	box-shadow: 0 0 0 2px #a9e44d;
 }
 
 .vspec .nav {
 	box-shadow: none;
+}
+
+.vspec .nav__list a {
+	font-family: inherit;
 }
 
 .vspec .nav__list > li > a {
@@ -1705,6 +1792,10 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 
 .vspec-mod_scheme-color_blue .vspec .nav__list > li > a {
 	background-color: #c8e5ff;
+}
+
+.vspec-mod_scheme-color_brown .vspec .nav__list > li > a {
+	background-color: #f7f3d6;
 }
 
 .vspec-mod_scheme-color_green .vspec .nav__list > li > a {
@@ -1751,6 +1842,11 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 .vspec-mod_scheme-color_blue .vspec .nav__list > li.current > a {
 	color: #c8e5ff;
 	background-color: #004c92;
+}
+
+.vspec-mod_scheme-color_brown .vspec .nav__list > li.current > a {
+	color: #f7f3d6;
+	background-color: #4d4b43;
 }
 
 .vspec-mod_scheme-color_green .vspec .nav__list > li.current > a {
@@ -1818,6 +1914,11 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 .vspec-mod_scheme-color_blue .vspec .btn-menu, .vspec-mod_scheme-color_blue .vspec .btn-menu-close {
 	background-color: #c8e5ff;
 	color: #004c92;
+}
+
+.vspec-mod_scheme-color_brown .vspec .btn-menu, .vspec-mod_scheme-color_brown .vspec .btn-menu-close {
+	background-color: #f7f3d6;
+	color: #4d4b43;
 }
 
 .vspec-mod_scheme-color_green .vspec .btn-menu, .vspec-mod_scheme-color_green .vspec .btn-menu-close {
@@ -2515,14 +2616,21 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	fill: #c8e5ff;
 }
 
+.vspec-mod_scheme-color_brown .vspec .branches-map-svg path, .vspec-mod_scheme-color_brown .vspec .branches-map-svg polygon {
+	fill: #f7f3d6;
+}
+
 .vspec-mod_scheme-color_green .vspec .branches-map-svg path, .vspec-mod_scheme-color_green .vspec .branches-map-svg polygon {
 	fill: #3b2716;
 }
 
 .vspec .branches-map-svg text {
+	font-family: inherit;
 	fill: currentColor;
 	transition: none;
 	letter-spacing: normal;
+	word-spacing: normal;
+	line-height: 1.5;
 }
 
 .touchevents .no-touchevents .vspec .branches-map-svg a, .touchevents .vspec .branches-map-svg a {
@@ -2548,6 +2656,10 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 
 .vspec-mod_scheme-color_blue .no-touchevents .vspec .branches-map-svg a:hover .branches-map-logo, .vspec-mod_scheme-color_blue .no-touchevents .vspec .branches-map-svg a.active .branches-map-logo, .vspec-mod_scheme-color_blue .vspec .branches-map-svg a:hover .branches-map-logo, .vspec-mod_scheme-color_blue .vspec .branches-map-svg a.active .branches-map-logo {
 	fill: #c8e5ff;
+}
+
+.vspec-mod_scheme-color_brown .no-touchevents .vspec .branches-map-svg a:hover .branches-map-logo, .vspec-mod_scheme-color_brown .no-touchevents .vspec .branches-map-svg a.active .branches-map-logo, .vspec-mod_scheme-color_brown .vspec .branches-map-svg a:hover .branches-map-logo, .vspec-mod_scheme-color_brown .vspec .branches-map-svg a.active .branches-map-logo {
+	fill: #f7f3d6;
 }
 
 .vspec-mod_scheme-color_green .no-touchevents .vspec .branches-map-svg a:hover .branches-map-logo, .vspec-mod_scheme-color_green .no-touchevents .vspec .branches-map-svg a.active .branches-map-logo, .vspec-mod_scheme-color_green .vspec .branches-map-svg a:hover .branches-map-logo, .vspec-mod_scheme-color_green .vspec .branches-map-svg a.active .branches-map-logo {
@@ -2584,6 +2696,9 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	.vspec-mod_scheme-color_blue .vspec .branches-popup__holder {
 		box-shadow: 0 0 50px rgba(0, 76, 146, 0.25);
 	}
+	.vspec-mod_scheme-color_brown .vspec .branches-popup__holder {
+		box-shadow: 0 0 50px rgba(77, 75, 67, 0.25);
+	}
 	.vspec-mod_scheme-color_green .vspec .branches-popup__holder {
 		box-shadow: 0 0 50px rgba(169, 228, 77, 0.25);
 	}
@@ -2602,6 +2717,8 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 }
 
 .vspec .branches-popup__title, .vspec .branches-popup__subtitle {
+	font-family: inherit;
+	font-weight: bold;
 	color: currentColor;
 }
 
@@ -2840,6 +2957,11 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	color: #004c92;
 }
 
+.vspec-mod_scheme-color_brown .vspec .years-drop a.active, .vspec-mod_scheme-color_brown .vspec .sorting-drop a.active {
+	background-color: #f7f3d6;
+	color: #4d4b43;
+}
+
 .vspec-mod_scheme-color_green .vspec .years-drop a.active, .vspec-mod_scheme-color_green .vspec .sorting-drop a.active {
 	background-color: #3b2716;
 	color: #a9e44d;
@@ -2928,6 +3050,11 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	background-color: #004c92;
 }
 
+.vspec-mod_scheme-color_brown .vspec .filters__item a:hover, .vspec-mod_scheme-color_brown .vspec .filters__item a:focus, .vspec-mod_scheme-color_brown .vspec .filters__item.active a {
+	color: #f7f3d6;
+	background-color: #4d4b43;
+}
+
 .vspec-mod_scheme-color_green .vspec .filters__item a:hover, .vspec-mod_scheme-color_green .vspec .filters__item a:focus, .vspec-mod_scheme-color_green .vspec .filters__item.active a {
 	color: #3b2716;
 	background-color: #a9e44d;
@@ -3007,6 +3134,10 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 
 .vspec-mod_scheme-color_blue .vspec .jFiler-input-dragDrop {
 	background-color: #c8e5ff;
+}
+
+.vspec-mod_scheme-color_brown .vspec .jFiler-input-dragDrop {
+	background-color: #f7f3d6;
 }
 
 .vspec-mod_scheme-color_green .vspec .jFiler-input-dragDrop {
@@ -3089,6 +3220,12 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	background-color: #c8e5ff;
 }
 
+.vspec-mod_scheme-color_brown .vspec .label-alt + input[type="text"], .vspec-mod_scheme-color_brown
+.vspec .calc__title + input[type="text"], .vspec-mod_scheme-color_brown
+.vspec .calc__title + select {
+	background-color: #f7f3d6;
+}
+
 .vspec-mod_scheme-color_green .vspec .label-alt + input[type="text"], .vspec-mod_scheme-color_green
 .vspec .calc__title + input[type="text"], .vspec-mod_scheme-color_green
 .vspec .calc__title + select {
@@ -3150,6 +3287,11 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 .vspec-mod_scheme-color_blue .vspec .ui-spinner-button {
 	color: #c8e5ff;
 	background-color: #004c92;
+}
+
+.vspec-mod_scheme-color_brown .vspec .ui-spinner-button {
+	color: #f7f3d6;
+	background-color: #4d4b43;
 }
 
 .vspec-mod_scheme-color_green .vspec .ui-spinner-button {
@@ -3242,6 +3384,10 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	fill: #c8e5ff;
 }
 
+.vspec-mod_scheme-color_brown .vspec .info-map-svg path, .vspec-mod_scheme-color_brown .vspec .info-map-svg polygon {
+	fill: #f7f3d6;
+}
+
 .vspec-mod_scheme-color_green .vspec .info-map-svg path, .vspec-mod_scheme-color_green .vspec .info-map-svg polygon {
 	fill: #3b2716;
 }
@@ -3271,6 +3417,10 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 
 .vspec-mod_scheme-color_blue .no-touchevents .vspec .info-map-svg a.has-labels:hover .branches-map-logo, .vspec-mod_scheme-color_blue .no-touchevents .vspec .info-map-svg a.has-labels.active .branches-map-logo, .vspec-mod_scheme-color_blue .vspec .info-map-svg a.has-labels:hover .branches-map-logo, .vspec-mod_scheme-color_blue .vspec .info-map-svg a.has-labels.active .branches-map-logo {
 	fill: #c8e5ff;
+}
+
+.vspec-mod_scheme-color_brown .no-touchevents .vspec .info-map-svg a.has-labels:hover .branches-map-logo, .vspec-mod_scheme-color_brown .no-touchevents .vspec .info-map-svg a.has-labels.active .branches-map-logo, .vspec-mod_scheme-color_brown .vspec .info-map-svg a.has-labels:hover .branches-map-logo, .vspec-mod_scheme-color_brown .vspec .info-map-svg a.has-labels.active .branches-map-logo {
+	fill: #f7f3d6;
 }
 
 .vspec-mod_scheme-color_green .no-touchevents .vspec .info-map-svg a.has-labels:hover .branches-map-logo, .vspec-mod_scheme-color_green .no-touchevents .vspec .info-map-svg a.has-labels.active .branches-map-logo, .vspec-mod_scheme-color_green .vspec .info-map-svg a.has-labels:hover .branches-map-logo, .vspec-mod_scheme-color_green .vspec .info-map-svg a.has-labels.active .branches-map-logo {
@@ -3311,6 +3461,10 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	border-bottom-color: #c8e5ff;
 }
 
+.vspec-mod_scheme-color_brown .vspec .custom-tooltip:after {
+	border-bottom-color: #f7f3d6;
+}
+
 .vspec-mod_scheme-color_green .vspec .custom-tooltip:after {
 	border-bottom-color: #3b2716;
 }
@@ -3332,6 +3486,10 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 
 .vspec-mod_scheme-color_blue .vspec .extra-popup {
 	background-color: #c8e5ff;
+}
+
+.vspec-mod_scheme-color_brown .vspec .extra-popup {
+	background-color: #f7f3d6;
 }
 
 .vspec-mod_scheme-color_green .vspec .extra-popup {
@@ -3395,6 +3553,10 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	background-image: url(../img/logo-text--blue.svg);
 }
 
+.vspec-mod_scheme-color_brown .vspec .extra-popup__head .logo {
+	background-image: url(../img/logo-text--brown.svg);
+}
+
 .vspec-mod_scheme-color_green .vspec .extra-popup__head .logo {
 	background-image: url(../img/logo-text--green.svg);
 }
@@ -3441,23 +3603,24 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	box-shadow: 0 0 35px rgba(0, 76, 146, 0.35);
 }
 
+.vspec-mod_scheme-color_brown .vspec .extra-popup.show-shadow .extra-popup__head {
+	box-shadow: 0 0 35px rgba(77, 75, 67, 0.35);
+}
+
 .vspec-mod_scheme-color_green .vspec .extra-popup.show-shadow .extra-popup__head {
 	box-shadow: 0 0 35px rgba(169, 228, 77, 0.35);
 }
 
 .vspec .main-menu__box, .vspec .main-menu__heading {
 	font-size: 18px;
-	line-height: 1.67;
 }
 
 .vspec-mod_font-size_sm .vspec .main-menu__box, .vspec-mod_font-size_sm .vspec .main-menu__heading {
 	font-size: 14px;
-	line-height: 1.71;
 }
 
 .vspec-mod_font-size_lg .vspec .main-menu__box, .vspec-mod_font-size_lg .vspec .main-menu__heading {
 	font-size: 30px;
-	line-height: 1.5;
 }
 
 .vspec .extra-popup__content {
@@ -3545,6 +3708,11 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	color: #c8e5ff;
 }
 
+.vspec-mod_scheme-color_brown .vspec .search-form__input:focus, .vspec-mod_scheme-color_brown
+.vspec .input--filled .search-form__input {
+	color: #f7f3d6;
+}
+
 .vspec-mod_scheme-color_green .vspec .search-form__input:focus, .vspec-mod_scheme-color_green
 .vspec .input--filled .search-form__input {
 	color: #3b2716;
@@ -3572,6 +3740,12 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 .vspec .input--filled .search-form__input ~ .search-form__btn, .vspec-mod_scheme-color_blue
 .vspec .input--filled .search-form__input .search-form__btn {
 	color: #c8e5ff;
+}
+
+.vspec-mod_scheme-color_brown .vspec .search-form__input:focus ~ .search-form__btn, .vspec-mod_scheme-color_brown .vspec .search-form__input:focus .search-form__btn, .vspec-mod_scheme-color_brown
+.vspec .input--filled .search-form__input ~ .search-form__btn, .vspec-mod_scheme-color_brown
+.vspec .input--filled .search-form__input .search-form__btn {
+	color: #f7f3d6;
 }
 
 .vspec-mod_scheme-color_green .vspec .search-form__input:focus ~ .search-form__btn, .vspec-mod_scheme-color_green .vspec .search-form__input:focus .search-form__btn, .vspec-mod_scheme-color_green
