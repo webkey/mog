@@ -233,7 +233,7 @@
 	content: "";
 	position: absolute;
 	left: 50%;
-	margin: 3px 0 3px -12px;
+	margin: -1px 0 -1px -12px;
 	pointer-events: none;
 }
 
@@ -599,7 +599,7 @@
 	content: "";
 	position: absolute;
 	left: 50%;
-	margin: 3px 0 3px -12px;
+	margin: -1px 0 -1px -12px;
 	pointer-events: none;
 }
 
@@ -704,25 +704,6 @@
 
 .spec-drop__btn_size_lg {
 	font-size: 30px;
-}
-
-.spec-drop__btn_line_sm,
-.spec-drop__btn_line_md,
-.spec-drop__btn_line_lg {
-	padding-left: 1em;
-	padding-right: 1em;
-}
-
-.spec-drop__btn_line_sm {
-	line-height: 1.5;
-}
-
-.spec-drop__btn_line_md {
-	line-height: 2;
-}
-
-.spec-drop__btn_line_lg {
-	line-height: 2.5;
 }
 
 .spec-drop__btn_spacing_norm {
