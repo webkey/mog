@@ -22,5 +22,91 @@
 }
 
 /*tape gallery end */
+/*google translate */
+.translate-ling .goog-te-gadget {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	color: currentColor;
+}
+
+.user-options .translate-ling a {
+	cursor: pointer;
+	padding: 0;
+	width: auto;
+	border: none;
+	text-decoration: none;
+}
+
+@media (max-width: 979px) {
+	.user-options .translate-ling a {
+		display: inline-block;
+		vertical-align: middle;
+		color: white;
+	}
+}
+
+.user-options .translate-ling a::before {
+	display: none;
+}
+
+.user-options .translate-ling a span {
+	display: initial;
+	border: none;
+	color: inherit !important;
+	border-color: currentColor !important;
+	text-decoration: none;
+}
+
+@media (max-width: 1365px) {
+	.user-options .translate-ling a span {
+		display: initial;
+	}
+}
+
+.translate-ling .goog-te-gadget-simple {
+	background-color: transparent;
+	border-color: rgba(0, 0, 0, 0.35);
+	font-size: inherit;
+	line-height: inherit;
+}
+
+@media (max-width: 979px) {
+	.translate-ling .goog-te-gadget-simple {
+		border: none;
+		padding: 0 15px;
+	}
+}
+
+@media (max-width: 479px) {
+	.translate-ling .goog-te-gadget-simple {
+		padding: 0 5px;
+	}
+}
+
+.home-page .translate-ling .goog-te-gadget-simple {
+	border-color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 979px) {
+	.translate-ling .goog-te-gadget-icon + span {
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+
+body .goog-te-menu-frame {
+	box-shadow: none;
+}
+
+/*google translate end */
+.blah {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: justify;
+	    justify-content: space-between;
+	-ms-flex-align: center;
+	    align-items: center;
+}
 
 /*# sourceMappingURL=components.css.map */

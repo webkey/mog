@@ -24,3 +24,75 @@ $animation-speed: 0.2s !default
 	margin: 0 auto
 
 /*tape gallery end
+
+/*google translate
+.translate-ling
+
+	.goog-te-gadget
+		font-family: inherit
+		font-size: inherit
+		line-height: inherit
+		color: currentColor
+
+	.user-options &
+		//padding-left: 0
+
+		a
+			//color: inherit
+			cursor: pointer
+			padding: 0
+			width: auto
+			border: none
+			text-decoration: none
+
+			+media('<tab-lg')
+				display: inline-block
+				vertical-align: middle
+				color: white
+
+			&::before
+				display: none
+
+			span
+				display: initial
+				border: none
+				color: inherit !important
+				border-color: currentColor !important
+				text-decoration: none
+
+				+media('<desk-md')
+					display: initial
+
+	.goog-te-gadget-simple
+		background-color: transparent
+		border-color: rgba(black, 0.35)
+		font-size: inherit
+		line-height: inherit
+
+		+media('<tab-lg')
+			//border-color: rgba(white, 0.5)
+			border: none
+			padding: 0 15px
+
+		+media('<mob-md')
+			padding: 0 5px
+
+		.home-page &
+			border-color: rgba(white, 0.5)
+
+	.goog-te-gadget-icon
+		& + span
+			+media('<tab-lg')
+				display: inline-block
+				vertical-align: middle
+
+body
+	.goog-te-menu-frame
+		box-shadow: none
+
+/*google translate end
+
+.blah
+	display: flex
+	justify-content: space-between
+	align-items: center

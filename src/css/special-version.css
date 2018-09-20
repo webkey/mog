@@ -704,7 +704,7 @@ body.vspec {
 	filter: grayscale(1) contrast(1) invert(0);
 }
 
-html:not(.vspec-mod_img_on) .vspec img,
+html:not(.vspec-mod_img_on) .vspec img:not([src*="google.com"]),
 html:not(.vspec-mod_img_on) .vspec [class*="depict-files-"],
 html:not(.vspec-mod_img_on) .vspec .promo-slider__bg,
 html:not(.vspec-mod_img_on) .vspec .depict-regard-safety,
@@ -2055,6 +2055,7 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 	color: currentColor;
 	box-shadow: none;
 	text-decoration: none;
+	border: none;
 }
 
 .vspec .user-options a .touchevents {
@@ -2102,6 +2103,16 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 
 .vspec .user-options svg path {
 	fill: currentColor;
+}
+
+.vspec .user-options .translate-ling a span {
+	text-decoration: none;
+}
+
+.vspec .user-options .goog-te-gadget-simple {
+	border-color: currentColor;
+	padding-right: 0;
+	padding-left: 0;
 }
 
 .vspec .breadcrumbs-list {
@@ -2626,7 +2637,7 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 
 .vspec .branches-map-svg text {
 	font-family: inherit;
-	fill: currentColor;
+	fill: currentColor !important;
 	transition: none;
 	letter-spacing: normal;
 	word-spacing: normal;
@@ -3363,6 +3374,10 @@ html:not(.vspec-mod_img_on) .vspec .spec-no-img {
 
 .vspec .custom-date .input-holder .input-button::after, .vspec .custom-date .input-holder .input-button::before {
 	display: none;
+}
+
+.vspec .gallery {
+	display: none !important;
 }
 
 .vspec .custom-date .flatpickr-input {

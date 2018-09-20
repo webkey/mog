@@ -1896,7 +1896,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	top: calc(50% - 42px);
 	right: 0;
 	width: 100%;
-	padding: 0 0 0 530px;
+	padding: 0 0 0 550px;
 	margin: 0;
 	line-height: 1;
 	list-style: none;
@@ -1909,17 +1909,18 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .user-options--cabinet {
     top: calc(50% - 0px);
 }
+.user-options--cabinet,
 .user-options-cabinet_mobile{
     display: none !important;
 }
-@media only screen and (max-width: 979px){
+/*@media only screen and (max-width: 979px){
     .user-options-cabinet_mobile{
         display: inline-block !important;
     }
     .user-options--cabinet{
         display: none;
     }
-}
+}*/
 
 .user-options li{
 	display: inline-block;
@@ -1977,12 +1978,10 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	vertical-align: middle;
 	margin-right: 6px;
 }
-.user-options .login-link svg,
+/*.user-options .login-link svg,
 .user-options .search-link svg{ margin: 0; }
 .user-options .login-link a > span,
-.user-options .search-link a > span{
-	display: none;
-}
+.user-options .search-link a > span{ display: none; }*/
 .user-options svg path{
 	fill: #262626;
 	stroke: none;
@@ -7658,23 +7657,32 @@ a.links__inner{ cursor: pointer; }
 }
 .footer-bottom-holder{
 	position: relative;
-	text-align: justify;
-	overflow: hidden;
-	cursor: default;
+	/*text-align: justify;*/
+	/*overflow: hidden;*/
+	/*cursor: default;*/
 	padding-top: 19px;
 	padding-bottom: 19px;
 	box-sizing: border-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-ms-flex-align: center;
+	align-items: center;
 
-	font-size: 1px;
-	line-height: 0;
-	letter-spacing: -4px;
+	/*font-size: 1px;*/
+	/*line-height: 0;*/
+	/*letter-spacing: -4px;*/
 }
 .footer-bottom-holder:after{
-	content: "1";
-	margin-left: 100%;
-	height: 1px;
-	overflow: hidden;
-	display: inline-block;
+	content: '';
+	display: block;
+	width: 240px;
+	/*content: "1";*/
+	/*margin-left: 100%;*/
+	/*height: 1px;*/
+	/*overflow: hidden;*/
+	/*display: inline-block;*/
 }
 .footer-bottom-holder a{
 	color: rgba(255, 255, 255, 0.51);

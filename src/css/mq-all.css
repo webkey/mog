@@ -20,7 +20,7 @@
 	.logo-img{ width: 70px; }
 	.logo-text > b { font-size: 14px; }
 
-	.user-options { padding-left: 470px; }
+	.user-options { padding-left: 530px; }
 	.user-options a span{ display: none; }
 	.user-options a .text-for-mobile{ display: inline-block; }
 
@@ -181,8 +181,8 @@
 		position: absolute;
 		top: 0;
 		right: 0;
-		height: 40px;
-		width: 40px;
+		/*height: 40px;*/
+		/*width: 40px;*/
 		z-index: 1;
 	}
 	.user-options .login-link{
@@ -193,6 +193,7 @@
 	.user-options .search-link a{
 		display: block;
 		height: 40px;
+		width: 40px;
 		text-align: center;
 		padding: 0;
 		box-shadow: -1px 0 0 0 rgba(255, 255, 255, 0.35);
@@ -395,6 +396,12 @@
 		padding-top: 12px;
 		padding-bottom: 12px;
 	}
+	.footer-bottom-holder {
+		display: block;
+	}
+	.footer-bottom-holder:after {
+		display: none;
+	}
 	.footer-col{
 		display: block;
 		text-align: center;
@@ -404,6 +411,18 @@
 	.footer-figure-left { margin-right: 360px; }
 	.footer-figure-right { margin-left: 400px; }
 	/*FOOTER end*/
+}
+
+@media only screen and (max-width: 939px){
+	.user-options a {
+		padding: 0;
+		width: 40px;
+		height: 40px;
+		text-align: center;
+		border-right: 1px solid rgba(255, 255, 255, 0.35);
+	}
+	.user-options a .text-for-mobile{ display: none; }
+	.user-options a svg{margin: 0;}
 }
 
 @media only screen and (max-width: 767px){
@@ -421,6 +440,19 @@
 		line-height: 32px;
 	}
 	/*------ TYPOGRAPHIC STYLES end ------*/
+
+	/*user options*/
+	.user-options a {
+		/*padding: 0 10px;*/
+		font-size: 13px;
+		letter-spacing: normal;
+	}
+	.user-options svg {
+		height: 20px;
+		width: 20px;
+		margin-right: 2px;
+	}
+	/*user options end*/
 
 	/*MAIN BLOCKS*/
 	.main { padding: 0; }
@@ -827,9 +859,6 @@
 	/*FOOTER end*/
 }
 
-@media only screen and (max-width: 599px){
-    .user-options a .text-for-mobile{ display: none; }
-}
 @media only screen and (max-width: 479px){
 	/*MAIN BLOCKS*/
 	.sidebar{ display: none; }
@@ -841,19 +870,6 @@
 	/*USER CONTENT end*/
 
 	/*HEADER*/
-	/*user options*/
-	.user-options a {
-		padding: 0 10px;
-		font-size: 13px;
-		letter-spacing: normal;
-	}
-	.user-options svg {
-		height: 20px;
-		width: 20px;
-		margin-right: 2px;
-	}
-	/*user options end*/
-
 	/*logo*/
 	.logo {
 		width: 230px;
@@ -1103,6 +1119,7 @@
 	/*CONTENT end*/
 	/*MAIN end*/
 }
+
 @media only screen and (max-width: 459px){
     .personal-account-form .input.captcha{
         max-width: 45%;
@@ -1114,11 +1131,20 @@
 		width: 100%;
 	}
 }
+
 @media only screen and (max-width: 419px){
+	/*user options*/
+	.user-options a,
+	.user-options .login-link a,
+	.user-options .search-link a{
+		width: 30px;
+	}
+	/*user options end*/
     .personal-account-form .input.captcha{
         max-width: 42%;
     }
 }
+
 @media only screen and (max-width: 399px){
     /*.user-options a {
         padding: 0px 7px;
@@ -1135,4 +1161,14 @@
         margin-top: 15px !important;
         display: block !important;
     }
+}
+
+@media only screen and (max-width: 359px){
+	/*user options*/
+	.user-options a,
+	.user-options .login-link a,
+	.user-options .search-link a{
+		width: 28px;
+	}
+	/*user options end*/
 }

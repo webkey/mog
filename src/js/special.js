@@ -162,7 +162,7 @@
 
 		}, changeSettings = function (initialObj, currentObj) {
 			/* метка начала выполнения скрипта */
-			var time = performance.now();
+			/** var time = performance.now(); */
 
 			/**
 			 * !Change setting of a special version
@@ -179,8 +179,8 @@
 
 			// Merge current object of settings into initial object of settings
 			$.extend(true, initialObj, currentObj);
-			console.log("mergeSettings: ", initialObj);
-			console.log('===========================');
+			// console.log("mergeSettings: ", initialObj);
+			// console.log('===========================');
 
 			// For the merged object of default settings
 			for (keyAdd in initialObj) {
@@ -201,8 +201,8 @@
 			setCookieMod(cookieName.specVersionSettings, JSON.stringify(initialObj));
 
 			/* время выполнения скрипта */
-			time -= performance.now();
-			console.log('Время выполнения = ', -time);
+			/** time -= performance.now(); */
+			/** console.log('Время выполнения = ', -time); */
 
 			return false;
 		}, settingOnLoad = function () {

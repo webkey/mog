@@ -658,6 +658,7 @@ body.#{$spec-mod}
 			color: currentColor
 			box-shadow: none
 			text-decoration: none
+			border: none
 
 			.touchevents
 				-webkit-tap-highlight-color: transparent
@@ -696,6 +697,16 @@ body.#{$spec-mod}
 
 			path
 				fill: currentColor
+
+		.translate-ling
+
+			a
+				span
+					text-decoration: none
+
+		.goog-te-gadget-simple
+			border-color: currentColor
+			+padding-horizontal(0)
 
 	// breadcrumbs
 	.breadcrumbs-list
@@ -1144,7 +1155,7 @@ body.#{$spec-mod}
 
 		text
 			font-family: inherit
-			fill: currentColor
+			fill: currentColor !important
 			transition: none
 			letter-spacing: normal
 			word-spacing: normal
@@ -1726,6 +1737,10 @@ body.#{$spec-mod}
 	.custom-date .input-holder .input-button
 		&::after, &::before
 			display: none
+
+	// gallery
+	.gallery
+		display: none !important
 
 	// flatpickr
 	.custom-date .flatpickr-input

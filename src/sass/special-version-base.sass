@@ -15,7 +15,7 @@ $displace: 1px
 	max-width: #{$spec-text-page}
 	margin: 0 auto 20px
 	line-height: $spec-line-height--small
-	z-index: 999
+	z-index: 995
 	box-sizing: border-box
 	border: 0 solid currentColor
 	border-width: 0 $spec-border-width $spec-border-width
@@ -520,7 +520,7 @@ $icon-spacing--space: 3px // h
 		top: 15px
 
 		+media('<tab-lg')
-			right: 90px
+			right: 55px
 			top: 5px
 			color: white
 
@@ -533,10 +533,34 @@ $icon-spacing--space: 3px // h
 				vertical-align: top
 				font-size: 14px
 
+			+media('<mob-lg')
+				//width: 110px
+				//font-size: 14px
+				//line-height: 16px
+				width: 95px
+				font-size: 13px
+				line-height: 15px
+
+		&:not(.to_normal)
+			+media('<559px')
+				right: 40px
+				top: 0
+				height: 40px
+				width: 40px
+				padding-left: 0
+				box-shadow: inset 1px 0 0 rgba(white, 0.35)
+
 			+media('<mob-md')
-				width: 110px
-				font-size: 14px
-				line-height: 16px
+				right: 30px
+
+			svg
+				+media('<559px')
+					left: 50%
+					transform: translate(-50%, -50%)
+
+			span
+				+media('<559px')
+					display: none
 
 		.#{$spec-mod} &
 			color: currentColor
@@ -546,7 +570,7 @@ $icon-spacing--space: 3px // h
 
 			+media('<tab-lg')
 				top: auto
-				bottom: 10px
+				bottom: 24px
 				right: 0
 
 			+media('<mob-lg')
