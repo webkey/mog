@@ -2479,6 +2479,17 @@ function datePickerInit() {
 	}
 }
 
+/**
+ * !datepicker initial
+ * */
+function rolls() {
+	var $rolls = $('.roll-js');
+	$('ul', $rolls).prev('a').on('click', function (event) {
+		$(this).next().stop().slideToggle('fast');
+		event.preventDefault();
+	})
+}
+
 /** ready/load/resize document **/
 
 $(window).on('load', function () {
@@ -2526,6 +2537,7 @@ $(document).ready(function(){
 	branchesMapPopup();
 	addLabelsOnMap();
 	datePickerInit();
+	rolls();
 
 	footerBottom();
 

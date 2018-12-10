@@ -427,15 +427,15 @@
 
 @media only screen and (max-width: 767px){
 	/*------ TYPOGRAPHIC STYLES ------*/
-	h1{
+	h1, .h1{
 		font-size: 30px;
 		line-height: 42px;
 	}
-	h2{
+	h2, .h2{
 		font-size: 24px;
 		line-height: 34px;
 	}
-	h3{
+	h3, .h3{
 		font-size: 18px;
 		line-height: 32px;
 	}
@@ -857,6 +857,16 @@
 	.footer-nav__col { width: 99.98%; }
 	/*footer common end*/
 	/*FOOTER end*/
+
+	.s-center__figure{
+		float: none;
+		margin: 0 0 30px;
+	}
+	.s-center__title h1, .h1,
+	.s-center__address{
+		float: none;
+		width: auto;
+	}
 }
 
 @media only screen and (max-width: 479px){
