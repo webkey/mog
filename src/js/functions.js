@@ -2484,8 +2484,18 @@ function datePickerInit() {
  * */
 function rolls() {
 	var $rolls = $('.roll-js');
+	var timeout;
+
 	$('ul', $rolls).prev('a').on('click', function (event) {
-		$(this).next().stop().slideToggle('fast');
+		$(this).next().stop().slideToggle('fast', function () {
+			$(document.body).trigger("sticky_kit:recalc");
+
+			clearTimeout(timeout);
+			timeout = setTimeout(function () {
+				console.log(1);
+				$(document.body).trigger("sticky_kit:recalc");
+			}, 50);
+		});
 		event.preventDefault();
 	})
 }

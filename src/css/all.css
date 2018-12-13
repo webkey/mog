@@ -8210,6 +8210,9 @@ a.links__inner{ cursor: pointer; }
 .s-center__figure:last-child {
 	margin-bottom: 0;
 }
+.s-center__title img{
+	width: 100%;
+}
 .s-center__title h1, .h1,
 .s-center__address{
 	float: right;
