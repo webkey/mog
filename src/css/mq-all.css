@@ -50,6 +50,11 @@
 		padding: 3px;
 	}
 	/*news end*/
+
+	.services ul a{
+		font-size: 16px;
+		line-height: 21px;
+	}
 }
 
 @media only screen and (min-width: 980px) and (max-width: 1180px){
@@ -411,6 +416,11 @@
 	.footer-figure-left { margin-right: 360px; }
 	.footer-figure-right { margin-left: 400px; }
 	/*FOOTER end*/
+
+	.services ul a{
+		font-size: 20px;
+		line-height: 24px;
+	}
 }
 
 @media only screen and (max-width: 939px){
@@ -834,6 +844,11 @@
 	.optlata-info-cnt .form-group > div {
 		margin-bottom: 20px;
 	}
+
+	.services ul a{
+		font-size: 16px;
+		line-height: 20px;
+	}
 }
 
 @media only screen and (max-width: 639px){
@@ -1128,6 +1143,11 @@
 	/*leaders end*/
 	/*CONTENT end*/
 	/*MAIN end*/
+
+	.services ul a{
+		font-size: 14px;
+		line-height: 18px;
+	}
 }
 
 @media only screen and (max-width: 459px){
